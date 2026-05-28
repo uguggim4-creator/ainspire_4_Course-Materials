@@ -919,10 +919,25 @@
 (function(){
   var TOTAL = 24;
   var cur = 0;
+  var cleanupHandle = null;
   function slide(i){ return document.getElementById('s'+(i+1)); }
+  function flushCleanup(){
+    if(cleanupHandle){ clearTimeout(cleanupHandle); cleanupHandle = null; }
+    // 현재 활성 슬라이드 외 모든 슬라이드의 inline style·active 잔여물 제거
+    for(var i = 0; i < TOTAL; i++){
+      if(i === cur) continue;
+      var s = slide(i);
+      s.style.transition = '';
+      s.style.opacity = '';
+      s.style.transform = '';
+      s.style.pointerEvents = '';
+      s.classList.remove('active');
+    }
+  }
   function go(dir){
     var next = cur + dir;
     if(next < 0 || next >= TOTAL) return;
+    flushCleanup();
     var from = slide(cur), to = slide(next);
     from.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
     from.style.opacity = '0';
@@ -939,15 +954,16 @@
         to.style.pointerEvents = 'all';
       });
     });
-    setTimeout(function(){
+    to.classList.add('active');
+    cur = next;
+    updateUI();
+    cleanupHandle = setTimeout(function(){
       from.style.transition = '';
       from.style.opacity = '';
       from.style.transform = '';
       from.classList.remove('active');
+      cleanupHandle = null;
     }, 380);
-    to.classList.add('active');
-    cur = next;
-    updateUI();
   }
   function updateUI(){
     document.getElementById('progressBar').style.width = ((cur+1)/TOTAL*100)+'%';
