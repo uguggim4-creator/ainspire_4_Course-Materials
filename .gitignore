@@ -10,3 +10,6 @@ node_modules/
 *.ai
 .DS_Store
 Thumbs.db
+
+# 공용 보관 폴더 (GitHub 불필요)
+_archive/공용/
