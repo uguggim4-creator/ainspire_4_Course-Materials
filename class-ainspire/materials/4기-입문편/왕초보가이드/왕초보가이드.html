@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>왕초보 가이드 — AInspire 4기</title>
+<style>
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800; font-display: swap;
+  }
+  :root { --ink:#1a1530; --purple:#6020ff; --line:#e5dff0; --bg:#ffffff; --purple-light:#f7f3ff; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width:100%; height:100%; overflow:hidden;
+    font-family:'Paperlogy', sans-serif;
+    background:#000; color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .deck {
+    position:relative; width:1280px; height:720px;
+    flex-shrink:0; overflow:hidden;
+    background:var(--bg); transform-origin:center center;
+  }
+  .slide {
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    display:flex; flex-direction:column;
+    justify-content:flex-start; align-items:flex-start;
+    padding:44px 80px;
+    opacity:0; transform:translateX(60px);
+    pointer-events:none; background:#fff;
+  }
+  .slide.active { opacity:1; transform:translateX(0); pointer-events:all; }
+  .slide.centered { justify-content:center; align-items:center; text-align:center; }
+
+  .step-label { font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:14px; }
+  .slide-title { font-size:40px; font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--ink); margin-bottom:10px; }
+  .slide-title .accent { color:var(--purple); }
+  .slide-subtitle { font-size:17px; font-weight:400; color:#5a5070; line-height:1.5; margin-bottom:20px; }
+  .divider { width:48px; height:3px; background:var(--purple); border-radius:2px; margin-bottom:20px; flex-shrink:0; }
+
+  /* 표지 */
+  .title-kicker { font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--purple); margin-bottom:18px; }
+  .title-main { font-size:64px; font-weight:800; letter-spacing:-0.04em; line-height:1.05; color:var(--ink); margin-bottom:14px; }
+  .title-main .accent { color:var(--purple); }
+  .title-sub { font-size:20px; font-weight:400; color:#5a5070; margin-bottom:36px; }
+  .title-tags { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .tag { border:1.5px solid var(--purple); border-radius:99px; padding:6px 18px; font-size:13px; font-weight:700; color:var(--purple); }
+  .tag.fill { background:var(--purple); color:#fff; }
+
+  /* 엔딩 */
+  .ending-main { font-size:50px; font-weight:800; letter-spacing:-0.03em; line-height:1.2; color:var(--ink); text-align:center; margin-bottom:20px; }
+  .ending-main .accent { color:var(--purple); }
+  .ending-sub { font-size:18px; font-weight:400; color:#5a5070; line-height:1.7; text-align:center; max-width:580px; margin-bottom:32px; }
+
+  /* 포인트 목록 */
+  .point-list { display:flex; flex-direction:column; gap:10px; width:100%; max-width:1100px; }
+  .point-item { display:flex; align-items:flex-start; gap:14px; border:1px solid var(--line); border-radius:12px; padding:14px 20px; background:#fff; }
+  .point-num { width:26px; height:26px; border-radius:50%; background:var(--purple); color:#fff; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .point-text { font-size:15px; color:var(--ink); line-height:1.6; }
+  .point-text strong { font-weight:800; color:var(--purple); }
+
+  /* 2열 레이아웃 */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:28px; width:100%; max-width:1120px; align-items:start; }
+  .col-l, .col-r { display:flex; flex-direction:column; gap:10px; }
+
+  /* 기능 목록 */
+  .feat-list { display:flex; flex-direction:column; gap:8px; }
+  .feat-item { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--ink); line-height:1.5; }
+  .feat-dot { width:6px; height:6px; border-radius:50%; background:var(--purple); flex-shrink:0; margin-top:6px; }
+
+  /* 2x2 카드 */
+  .grid22 { display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%; max-width:1120px; }
+  .card22 { border:1px solid var(--line); border-radius:14px; padding:18px 20px; background:#fff; display:flex; flex-direction:column; gap:6px; }
+  .card22-icon { font-size:22px; margin-bottom:4px; }
+  .card22-name { font-size:16px; font-weight:800; color:var(--ink); }
+  .card22-desc { font-size:13px; color:#5a5070; line-height:1.55; }
+  .card22-badge { font-size:11px; font-weight:700; color:var(--purple); background:var(--purple-light); border-radius:6px; padding:4px 10px; align-self:flex-start; margin-top:4px; }
+
+  /* 3열 카드 */
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; width:100%; max-width:1120px; }
+  .tool-card { border:1px solid var(--line); border-radius:14px; padding:16px; background:#fff; display:flex; flex-direction:column; gap:7px; }
+  .tool-icon { font-size:22px; }
+  .tool-name { font-size:15px; font-weight:800; color:var(--purple); }
+  .tool-use { font-size:11px; font-weight:700; color:var(--ink); }
+  .tool-desc { font-size:12px; color:#5a5070; line-height:1.6; }
+  .tool-free { font-size:11px; font-weight:700; color:#00a878; }
+
+  /* 철학 박스 */
+  .phil-box { border-left:3px solid var(--purple); background:var(--purple-light); border-radius:0 10px 10px 0; padding:11px 14px; font-size:13px; color:var(--ink); line-height:1.6; }
+  .phil-box strong { color:var(--purple); font-weight:800; }
+
+  /* 공식 박스 */
+  .formula-box { width:100%; max-width:1120px; background:#1a1530; border-radius:14px; padding:22px 28px; color:#e8e0ff; }
+  .formula-row { display:flex; align-items:center; gap:12px; font-size:18px; font-weight:700; flex-wrap:wrap; margin-bottom:16px; }
+  .formula-part { background:rgba(255,255,255,0.08); border-radius:8px; padding:6px 14px; }
+  .formula-plus { color:#b39dff; font-weight:800; }
+  .formula-examples { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px; }
+  .formula-ex { background:rgba(255,255,255,0.05); border-radius:8px; padding:10px 14px; font-size:12px; color:#c8beff; line-height:1.6; }
+  .formula-ex strong { color:#e8e0ff; font-weight:800; }
+
+  /* 실수 목록 */
+  .mistake-list { display:flex; flex-direction:column; gap:8px; width:100%; max-width:1120px; }
+  .mistake-item { display:flex; gap:14px; align-items:flex-start; border:1px solid #f0ddd8; border-radius:10px; padding:12px 16px; background:#fff9f8; }
+  .mistake-n { width:24px; height:24px; border-radius:50%; background:#e85542; color:#fff; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .mistake-body { font-size:13px; color:var(--ink); line-height:1.55; }
+  .mistake-body strong { font-weight:800; color:#c0392b; }
+  .mistake-body .fix { color:#00a878; font-weight:700; }
+
+  /* 스텝 리스트 */
+  .step-list { display:flex; flex-direction:column; gap:14px; width:100%; max-width:820px; }
+  .step-item { display:flex; align-items:center; gap:20px; }
+  .step-circle { width:38px; height:38px; border-radius:50%; background:var(--purple); color:#fff; font-size:17px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-content { font-size:15px; color:var(--ink); line-height:1.5; }
+  .step-content strong { font-weight:800; }
+
+  /* sec-label */
+  .sec-label { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple); margin-bottom:4px; }
+
+  /* 노트 */
+  .note { font-size:11px; color:#8a8099; line-height:1.55; border-left:2px solid var(--line); padding-left:10px; }
+
+  /* 플로우 */
+  .flow-row { display:flex; align-items:center; gap:0; width:100%; max-width:1120px; }
+  .flow-step { flex:1; text-align:center; }
+  .flow-box { border:2px solid var(--purple); border-radius:12px; padding:14px 10px; background:var(--purple-light); }
+  .flow-num { font-size:11px; font-weight:800; color:var(--purple); margin-bottom:4px; }
+  .flow-label { font-size:15px; font-weight:800; color:var(--ink); margin-bottom:4px; }
+  .flow-desc { font-size:11px; color:#5a5070; line-height:1.4; }
+  .flow-arrow { font-size:22px; color:var(--purple); font-weight:800; flex-shrink:0; padding:0 8px; margin-top:-10px; }
+
+  /* 진행 바 & 인디케이터 */
+  .progress-bar { position:fixed; bottom:0; left:0; width:0%; height:3px; background:var(--purple); z-index:100; }
+  .page-indicator { position:fixed; bottom:14px; right:24px; font-size:12px; font-weight:700; color:#b0a8c8; font-family:'Paperlogy',sans-serif; z-index:100; letter-spacing:0.05em; }
+  .nav-zone { position:fixed; top:0; width:12%; height:100%; z-index:50; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.2s; }
+  .nav-zone:hover { opacity:1; }
+  .nav-zone.left { left:0; }
+  .nav-zone.right { right:0; }
+  .nav-arrow { font-size:22px; font-weight:700; color:var(--purple); background:var(--purple-light); border:1.5px solid var(--line); border-radius:50%; width:42px; height:42px; display:flex; align-items:center; justify-content:center; }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- ===== 슬라이드 01 — 표지 ===== -->
+<div class="slide centered active" id="s1">
+  <div class="title-kicker">AInspire 4기 · 입문 가이드</div>
+  <div class="title-main">왕초보도 할 수 있다<br><span class="accent">AI 영상 제작</span> 첫 걸음</div>
+  <div class="title-sub">아무것도 몰라도 괜찮아요 — 순서대로 따라오면 됩니다</div>
+  <div class="title-tags">
+    <span class="tag fill">완전 입문</span>
+    <span class="tag">이미지 생성</span>
+    <span class="tag">영상 생성</span>
+    <span class="tag">프롬프트 기초</span>
+    <span class="tag">레퍼런스 수집</span>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 02 — 대상 & 목표 ===== -->
+<div class="slide" id="s2">
+  <div class="step-label">Who · What</div>
+  <div class="slide-title">이 가이드가 <span class="accent">필요한 분</span></div>
+  <div class="divider"></div>
+  <div class="two-col">
+    <div class="col-l">
+      <div class="sec-label">이런 분께 딱 맞습니다</div>
+      <div class="point-list">
+        <div class="point-item">
+          <div class="point-num">✓</div>
+          <div class="point-text">AI 영상이 뭔지는 알지만 <strong>어디서 시작해야 할지 모르는 분</strong></div>
+        </div>
+        <div class="point-item">
+          <div class="point-num">✓</div>
+          <div class="point-text">Midjourney·Kling 같은 이름은 들었지만 <strong>한 번도 써본 적 없는 분</strong></div>
+        </div>
+        <div class="point-item">
+          <div class="point-num">✓</div>
+          <div class="point-text">영어 프롬프트를 어떻게 쓰는지 <strong>감조차 없는 분</strong></div>
+        </div>
+        <div class="point-item">
+          <div class="point-num">✓</div>
+          <div class="point-text"><strong>시간이 없어서</strong> 핵심만 빠르게 익히고 싶은 분</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-r">
+      <div class="sec-label">이 가이드를 마치면</div>
+      <div class="feat-list">
+        <div class="feat-item"><div class="feat-dot"></div><div>AI 이미지 1장을 직접 만들어볼 수 있습니다</div></div>
+        <div class="feat-item"><div class="feat-dot"></div><div>이미지를 영상으로 바꾸는 워크플로우를 이해합니다</div></div>
+        <div class="feat-item"><div class="feat-dot"></div><div>프롬프트를 이 공식 하나로 쓸 수 있습니다</div></div>
+        <div class="feat-item"><div class="feat-dot"></div><div>레퍼런스를 수집하고 분석하는 방법을 압니다</div></div>
+        <div class="feat-item"><div class="feat-dot"></div><div>어떤 도구가 나한테 맞는지 고를 수 있습니다</div></div>
+      </div>
+      <div class="note" style="margin-top:6px;">전제 조건: 스마트폰·PC 기본 사용 가능, 이메일 계정 보유. 그게 전부입니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 03 — 전체 흐름 ===== -->
+<div class="slide" id="s3">
+  <div class="step-label">Overview</div>
+  <div class="slide-title">AI 영상 제작 <span class="accent">전체 흐름</span></div>
+  <div class="slide-subtitle">어떤 고수도 이 4단계를 반복합니다. 오늘은 1→2단계를 체험합니다.</div>
+  <div class="divider"></div>
+  <div class="flow-row">
+    <div class="flow-step">
+      <div class="flow-box">
+        <div class="flow-num">STEP 1</div>
+        <div class="flow-label">레퍼런스 수집</div>
+        <div class="flow-desc">마음에 드는 영상·이미지를<br>모아서 분위기 파악</div>
+      </div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-box" style="border-color:var(--purple);background:#ede8ff;">
+        <div class="flow-num">STEP 2</div>
+        <div class="flow-label">이미지 생성</div>
+        <div class="flow-desc">프롬프트 → AI가<br>이미지를 만들어 줌</div>
+      </div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-box">
+        <div class="flow-num">STEP 3</div>
+        <div class="flow-label">영상 생성</div>
+        <div class="flow-desc">이미지 → AI가<br>움직임을 추가해 줌</div>
+      </div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-box">
+        <div class="flow-num">STEP 4</div>
+        <div class="flow-label">편집 & 완성</div>
+        <div class="flow-desc">클립 이어 붙이기<br>자막·음악 추가</div>
+      </div>
+    </div>
+  </div>
+  <div class="phil-box" style="margin-top:20px;max-width:1120px;">
+    <strong>처음엔 Step 1–2만 잘해도 충분합니다.</strong> 레퍼런스 없이 뛰어들면 방향을 잃기 쉬어요. 좋아하는 영상 10개를 저장하는 것부터 시작하세요.
+  </div>
+</div>
+
+<!-- ===== 슬라이드 04 — 핵심 도구 ===== -->
+<div class="slide" id="s4">
+  <div class="step-label">Tools</div>
+  <div class="slide-title">지금 당장 쓸 수 있는 <span class="accent">핵심 도구</span></div>
+  <div class="slide-subtitle">처음엔 무료로 시작하고, 마음에 들면 구독하세요.</div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22" style="border-color:var(--purple);">
+      <div class="card22-icon">🎨</div>
+      <div class="card22-name">Midjourney — 이미지 생성</div>
+      <div class="card22-desc">가장 강력한 이미지 품질. 감성적·영화적 분위기 표현에 탁월. Discord에서 실행. 프롬프트 → 4장 중 선택 방식.</div>
+      <div class="card22-badge">Basic $10/월 · 25장/일</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">⚡</div>
+      <div class="card22-name">Flux (Freepik) — 이미지 생성</div>
+      <div class="card22-desc">무료로 시작 가능. 사실적 인물 표현에 강점. 웹 브라우저에서 바로 사용. 처음 시작하기 가장 쉬운 선택.</div>
+      <div class="card22-badge">무료 플랜 있음</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🎬</div>
+      <div class="card22-name">Kling — 이미지 → 영상</div>
+      <div class="card22-desc">이미지를 입력하면 5~10초 영상으로 만들어 줌. 사실적인 움직임이 강점. 쿠앙수아이 개발사의 영상 AI.</div>
+      <div class="card22-badge">무료 66크레딧/일</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🎵</div>
+      <div class="card22-name">Suno — 배경음악 생성</div>
+      <div class="card22-desc">장르·분위기를 텍스트로 입력하면 실제 음악처럼 만들어 줌. 완성된 영상에 BGM을 입힐 때 사용.</div>
+      <div class="card22-badge">무료 50크레딧/일</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 05 — 프롬프트 공식 ===== -->
+<div class="slide" id="s5">
+  <div class="step-label">Prompt</div>
+  <div class="slide-title">프롬프트 쓰는 법 — <span class="accent">이 공식만</span></div>
+  <div class="slide-subtitle">복잡하게 생각하지 마세요. 딱 이 순서로 써보세요.</div>
+  <div class="divider"></div>
+  <div class="formula-box">
+    <div class="formula-row">
+      <div class="formula-part">피사체</div>
+      <div class="formula-plus">+</div>
+      <div class="formula-part">배경 / 환경</div>
+      <div class="formula-plus">+</div>
+      <div class="formula-part">분위기 / 감정</div>
+      <div class="formula-plus">+</div>
+      <div class="formula-part">스타일 / 화질</div>
+    </div>
+    <div class="formula-examples">
+      <div class="formula-ex">
+        <strong>예시 1 — 인물</strong><br>
+        A young Korean woman in a long white dress,<br>
+        standing in a sunlit wheat field,<br>
+        serene and dreamy mood,<br>
+        cinematic, golden hour, 8K
+      </div>
+      <div class="formula-ex">
+        <strong>예시 2 — 제품</strong><br>
+        A minimal perfume bottle with gold cap,<br>
+        on a white marble surface, soft mist around it,<br>
+        luxury brand aesthetic,<br>
+        studio lighting, ultra-realistic
+      </div>
+      <div class="formula-ex">
+        <strong>예시 3 — 풍경</strong><br>
+        Aerial view of a quiet Korean village,<br>
+        surrounded by misty mountains in autumn,<br>
+        peaceful and nostalgic feeling,<br>
+        drone shot, film grain, Fuji film style
+      </div>
+      <div class="formula-ex">
+        <strong>팁</strong><br>
+        • 한국어로 쓰고 Claude한테 번역 요청해도 OK<br>
+        • 길게 쓴다고 좋은 게 아님 — 핵심 단어 위주로<br>
+        • 맘에 안 들면 단어 하나만 바꿔서 재생성
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 06 — 이미지 생성 실습 ===== -->
+<div class="slide" id="s6">
+  <div class="step-label">Mission 01</div>
+  <div class="slide-title">첫 번째 도전 — <span class="accent">AI 이미지 만들기</span></div>
+  <div class="divider"></div>
+  <div class="two-col">
+    <div class="col-l">
+      <div class="sec-label">Freepik Flux로 시작하기 (무료)</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-content">freepik.com 접속 → 구글 계정으로 무료 가입</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-content"><strong>AI Image Generator</strong> 클릭 → Flux 모델 선택</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-content">공식 그대로 프롬프트 입력 → Generate</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <div class="step-content">맘에 드는 것 저장 / 아니면 키워드만 바꿔서 재생성</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-r">
+      <div class="sec-label">처음 해볼 프롬프트 추천</div>
+      <div class="feat-list" style="gap:10px;">
+        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
+          <div style="font-size:11px;font-weight:800;color:var(--purple);">초급 (인물)</div>
+          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);line-height:1.6;">A Korean woman with short black hair,<br>standing in a cozy café, warm lighting,<br>film photography style, 35mm</div>
+        </div>
+        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
+          <div style="font-size:11px;font-weight:800;color:var(--purple);">초급 (제품)</div>
+          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);line-height:1.6;">A glass skincare bottle with pink serum,<br>minimalist white background,<br>soft studio light, product photo</div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:8px;">한 번에 완성작 나오길 기대하지 마세요. 3~5번 반복하는 게 정상입니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 07 — 영상 생성 실습 ===== -->
+<div class="slide" id="s7">
+  <div class="step-label">Mission 02</div>
+  <div class="slide-title">두 번째 도전 — <span class="accent">이미지를 영상으로</span></div>
+  <div class="slide-subtitle">AI 이미지가 생겼다면, 이제 움직여 봅시다.</div>
+  <div class="divider"></div>
+  <div class="two-col">
+    <div class="col-l">
+      <div class="sec-label">Kling으로 Image-to-Video</div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-content">klingai.com 접속 → 구글 계정으로 가입</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-content"><strong>Image to Video</strong> 탭 선택</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-content">앞에서 만든 이미지 업로드 → 움직임 묘사 프롬프트 입력</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <div class="step-content">5초 / Standard 선택 → Generate (무료 크레딧 사용)</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-r">
+      <div class="sec-label">움직임 프롬프트 예시</div>
+      <div class="feat-list" style="gap:10px;">
+        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
+          <div style="font-size:11px;font-weight:800;color:var(--purple);">바람 효과</div>
+          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);">Her hair gently blows in the wind, camera slowly zooms in</div>
+        </div>
+        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
+          <div style="font-size:11px;font-weight:800;color:var(--purple);">카메라 이동</div>
+          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);">Slow dolly shot moving forward, depth of field blur</div>
+        </div>
+        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
+          <div style="font-size:11px;font-weight:800;color:var(--purple);">제품 회전</div>
+          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);">The bottle slowly rotates, light reflects off the glass surface</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 08 — 자주 하는 실수 ===== -->
+<div class="slide" id="s8">
+  <div class="step-label">Common Mistakes</div>
+  <div class="slide-title">왕초보가 자주 하는 <span class="accent">실수 TOP 5</span></div>
+  <div class="divider"></div>
+  <div class="mistake-list">
+    <div class="mistake-item">
+      <div class="mistake-n">1</div>
+      <div class="mistake-body"><strong>한 번에 완성작 나오길 기대함</strong> — 프롬프트는 3~10번 수정이 기본입니다. <span class="fix">→ 반복을 과정으로 받아들이기</span></div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-n">2</div>
+      <div class="mistake-body"><strong>프롬프트를 너무 길게 씀</strong> — 단어가 많다고 좋아지지 않아요. <span class="fix">→ 핵심 키워드 5~8개로 압축</span></div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-n">3</div>
+      <div class="mistake-body"><strong>레퍼런스 없이 바로 생성</strong> — 목표 이미지 없으면 어떤 결과도 만족스럽지 않음. <span class="fix">→ 참고 영상 먼저 10개 수집</span></div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-n">4</div>
+      <div class="mistake-body"><strong>도구만 여러 개 가입하고 아무것도 안 함</strong> — 하나를 깊게 써야 실력이 늘어요. <span class="fix">→ Flux 하나로 한 달 파기</span></div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-n">5</div>
+      <div class="mistake-body"><strong>첫 결과물이 마음에 안 들어서 포기</strong> — 영상 한 편이 아니라 장면 하나부터. <span class="fix">→ 컷 1개 완성을 목표로</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 09 — 레퍼런스 수집 ===== -->
+<div class="slide" id="s9">
+  <div class="step-label">Reference</div>
+  <div class="slide-title"><span class="accent">레퍼런스 수집</span>이 실력의 80%</div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22">
+      <div class="card22-icon">📌</div>
+      <div class="card22-name">Pinterest</div>
+      <div class="card22-desc">분위기·색감·구도 레퍼런스. 영어로 검색하면 훨씬 많이 나옴. 보드에 저장해서 카테고리 관리.</div>
+      <div class="card22-badge">추천 검색어: cinematic portrait, luxury product shot</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🎬</div>
+      <div class="card22-name">Instagram Reels / TikTok</div>
+      <div class="card22-desc">최신 트렌드 영상 레퍼런스. 마음에 드는 영상 저장 → 어떤 움직임인지 분석.</div>
+      <div class="card22-badge">AI 영상 계정 팔로우 권장</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🔍</div>
+      <div class="card22-name">Civitai / PromptHero</div>
+      <div class="card22-desc">다른 사람들의 AI 이미지 + 프롬프트 공개. 맘에 드는 이미지 클릭하면 프롬프트 바로 확인 가능.</div>
+      <div class="card22-badge">프롬프트 학습에 최고</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">📁</div>
+      <div class="card22-name">나만의 레퍼런스 폴더</div>
+      <div class="card22-desc">분위기별 폴더 3개 이상 만들기. ex) 인물·제품·풍경. 저장한 이미지에서 공통 키워드 뽑기.</div>
+      <div class="card22-badge">매주 10장 이상 수집 목표</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:14px;max-width:1120px;">레퍼런스를 많이 모을수록 "이런 느낌" 을 설명하는 단어가 생깁니다. 그게 곧 프롬프트 실력입니다.</div>
+</div>
+
+<!-- ===== 슬라이드 10 — 엔딩 ===== -->
+<div class="slide centered" id="s10">
+  <div class="ending-main">완벽하게 알고 시작하려 하지 말고<br><span class="accent">일단 만들어 보세요</span></div>
+  <div class="ending-sub">처음 만든 결과물이 별로여도 괜찮습니다.<br>두 번째가 더 낫고, 열 번째는 훨씬 나아집니다.</div>
+  <div class="title-tags">
+    <span class="tag fill">Flux로 이미지 1장</span>
+    <span class="tag">Kling으로 영상 5초</span>
+    <span class="tag">레퍼런스 10개 수집</span>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="page-indicator" id="pageIndicator">1 / 10</div>
+<div class="nav-zone left" onclick="go(-1)"><div class="nav-arrow">‹</div></div>
+<div class="nav-zone right" onclick="go(1)"><div class="nav-arrow">›</div></div>
+
+<script>
+(function(){
+  var TOTAL = 10;
+  var cur = 0;
+  function slide(i){ return document.getElementById('s'+(i+1)); }
+  function go(dir){
+    var next = cur + dir;
+    if(next < 0 || next >= TOTAL) return;
+    var from = slide(cur), to = slide(next);
+    from.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    from.style.opacity = '0';
+    from.style.transform = dir > 0 ? 'translateX(-60px)' : 'translateX(60px)';
+    to.style.transition = 'none';
+    to.style.opacity = '0';
+    to.style.transform = dir > 0 ? 'translateX(60px)' : 'translateX(-60px)';
+    to.style.pointerEvents = 'none';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        to.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        to.style.opacity = '1';
+        to.style.transform = 'translateX(0)';
+        to.style.pointerEvents = 'all';
+      });
+    });
+    setTimeout(function(){
+      from.style.transition = '';
+      from.style.opacity = '';
+      from.style.transform = '';
+      from.classList.remove('active');
+    }, 380);
+    to.classList.add('active');
+    cur = next;
+    updateUI();
+  }
+  function updateUI(){
+    document.getElementById('progressBar').style.width = ((cur+1)/TOTAL*100)+'%';
+    document.getElementById('pageIndicator').textContent = (cur+1)+' / '+TOTAL;
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(-1);
+  });
+  function scale(){
+    var deck = document.getElementById('deck');
+    var s = Math.min(window.innerWidth/1280, window.innerHeight/720);
+    deck.style.transform = 'scale('+s+')';
+  }
+  window.addEventListener('resize', scale);
+  scale();
+  updateUI();
+})();
+</script>
+</body>
+</html>
