@@ -21,10 +21,10 @@ const materialData = [
         category: "week1",
         categoryKo: "4기 입문편",
         title: "AI로 활용할 수 있는 미디어 도구 모음",
-        summary: "쇼츠 한 편을 AI로 만드는 법을 따라가며 yt-dlp·FFmpeg·Whisper·Remotion이 각 단계에서 어떻게 쓰이는지 실제 실행·결과 영상과 함께 보여주는 인터랙티브 슬라이드.",
+        summary: "쇼츠 한 편을 AI로 만드는 법을 따라가며 yt-dlp·FFmpeg·Whisper·Remotion이 각 단계에서 어떻게 쓰이는지 실제 실행·결과 영상과 함께 보여주고, Higgsfield MCP·Premiere Pro MCP로 생성·편집까지 자동화하는 인터랙티브 슬라이드.",
         fileType: "link",
         filePath: "materials/4기-입문편/미디어도구/media-tools-deck.html",
-        readTime: "슬라이드 · 10장",
+        readTime: "슬라이드 · 12장",
         date: "미디어 도구",
         icon: "clapperboard"
     },

@@ -149,6 +149,21 @@
   .nav-zone.left { left:0; }
   .nav-zone.right { right:0; }
   .nav-arrow { font-size:22px; font-weight:700; color:var(--purple); background:var(--purple-light); border:1.5px solid var(--line); border-radius:50%; width:42px; height:42px; display:flex; align-items:center; justify-content:center; }
+
+  /* Higgsfield 섹션 */
+  .higgs-two { display:grid; grid-template-columns:0.95fr 1.05fr; gap:22px; width:100%; max-width:1120px; align-items:start; }
+  .higgs-shot { width:100%; height:250px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#111; box-shadow:0 8px 24px rgba(26,21,48,0.10); }
+  .higgs-shot img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+  .higgs-shot.contain img { object-fit:contain; background:#111; }
+  .higgs-shot.small { height:170px; }
+  .higgs-strip { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; width:100%; max-width:1120px; margin-top:10px; }
+  .higgs-strip .higgs-shot { height:128px; border-radius:10px; }
+  .card22.compact { padding:14px 16px; gap:5px; }
+  .card22.compact .card22-name { font-size:15px; }
+  .card22.compact .card22-desc { font-size:12px; line-height:1.5; }
+  .mini-flow { width:100%; max-width:1120px; display:flex; align-items:center; gap:10px; margin-top:12px; }
+  .mini-flow .tag { border-radius:8px; padding:8px 12px; flex:1; text-align:center; font-size:12px; line-height:1.35; }
+  .note a { color:var(--purple); text-decoration:none; font-weight:700; }
 </style>
 </head>
 <body>
@@ -158,7 +173,7 @@
 <div class="slide centered active" id="s1">
   <div class="title-kicker">AInspire 4기 · 입문 가이드</div>
   <div class="title-main">왕초보도 할 수 있다<br><span class="accent">AI 영상 제작</span> 첫 걸음</div>
-  <div class="title-sub">아무것도 몰라도 괜찮아요 — 순서대로 따라오면 됩니다</div>
+  <div class="title-sub">아무것도 몰라도 괜찮습니다, 순서대로 따라오세요!</div>
   <div class="title-tags">
     <span class="tag fill">완전 입문</span>
     <span class="tag">이미지 생성</span>
@@ -187,7 +202,7 @@
         </div>
         <div class="point-item">
           <div class="point-num">✓</div>
-          <div class="point-text">영어 프롬프트를 어떻게 쓰는지 <strong>감조차 없는 분</strong></div>
+          <div class="point-text">프롬프트를 어떻게 써야할지 <strong>감조차 없는 분</strong></div>
         </div>
         <div class="point-item">
           <div class="point-num">✓</div>
@@ -196,15 +211,14 @@
       </div>
     </div>
     <div class="col-r">
-      <div class="sec-label">이 가이드를 마치면</div>
+      <div class="sec-label">이 가이드를 마치고...</div>
       <div class="feat-list">
-        <div class="feat-item"><div class="feat-dot"></div><div>AI 이미지 1장을 직접 만들어볼 수 있습니다</div></div>
+        <div class="feat-item"><div class="feat-dot"></div><div>AI 이미지를 직접 만드는 법을 알게 됩니다</div></div>
         <div class="feat-item"><div class="feat-dot"></div><div>이미지를 영상으로 바꾸는 워크플로우를 이해합니다</div></div>
-        <div class="feat-item"><div class="feat-dot"></div><div>프롬프트를 이 공식 하나로 쓸 수 있습니다</div></div>
+        <div class="feat-item"><div class="feat-dot"></div><div>프롬프트를 공식에 맞게 쓸 수 있습니다</div></div>
         <div class="feat-item"><div class="feat-dot"></div><div>레퍼런스를 수집하고 분석하는 방법을 압니다</div></div>
         <div class="feat-item"><div class="feat-dot"></div><div>어떤 도구가 나한테 맞는지 고를 수 있습니다</div></div>
       </div>
-      <div class="note" style="margin-top:6px;">전제 조건: 스마트폰·PC 기본 사용 가능, 이메일 계정 보유. 그게 전부입니다.</div>
     </div>
   </div>
 </div>
@@ -220,7 +234,7 @@
       <div class="flow-box">
         <div class="flow-num">STEP 1</div>
         <div class="flow-label">레퍼런스 수집</div>
-        <div class="flow-desc">마음에 드는 영상·이미지를<br>모아서 분위기 파악</div>
+        <div class="flow-desc">마음에 드는 영상 · 이미지를<br>레퍼런스로 사용하기</div>
       </div>
     </div>
     <div class="flow-arrow">→</div>
@@ -228,7 +242,7 @@
       <div class="flow-box" style="border-color:var(--purple);background:#ede8ff;">
         <div class="flow-num">STEP 2</div>
         <div class="flow-label">이미지 생성</div>
-        <div class="flow-desc">프롬프트 → AI가<br>이미지를 만들어 줌</div>
+        <div class="flow-desc">프롬프트를 통한<br>AI 이미지 생성</div>
       </div>
     </div>
     <div class="flow-arrow">→</div>
@@ -236,7 +250,7 @@
       <div class="flow-box">
         <div class="flow-num">STEP 3</div>
         <div class="flow-label">영상 생성</div>
-        <div class="flow-desc">이미지 → AI가<br>움직임을 추가해 줌</div>
+        <div class="flow-desc">I2V<br>(image to video)</div>
       </div>
     </div>
     <div class="flow-arrow">→</div>
@@ -249,42 +263,43 @@
     </div>
   </div>
   <div class="phil-box" style="margin-top:20px;max-width:1120px;">
-    <strong>처음엔 Step 1–2만 잘해도 충분합니다.</strong> 레퍼런스 없이 뛰어들면 방향을 잃기 쉬어요. 좋아하는 영상 10개를 저장하는 것부터 시작하세요.
+    <strong>처음엔 Step 1–2만 잘해도 충분합니다.</strong> 레퍼런스 없이 뛰어들면 방향을 잃기 쉽습니다. 좋아하는 영상 10개를 저장하는 것부터 시작하세요.
   </div>
 </div>
 
-<!-- ===== 슬라이드 04 — 핵심 도구 ===== -->
+<!-- ===== 슬라이드 04 — 이미지 도구 ===== -->
 <div class="slide" id="s4">
   <div class="step-label">Tools</div>
-  <div class="slide-title">지금 당장 쓸 수 있는 <span class="accent">핵심 도구</span></div>
-  <div class="slide-subtitle">처음엔 무료로 시작하고, 마음에 들면 구독하세요.</div>
+  <div class="slide-title">지금 당장 쓸 수 있는 <span class="accent">이미지 도구</span></div>
+  <div class="slide-subtitle">처음엔 웹에서 바로 써보고, 마음에 들면 구독하세요.</div>
   <div class="divider"></div>
   <div class="grid22">
     <div class="card22" style="border-color:var(--purple);">
       <div class="card22-icon">🎨</div>
       <div class="card22-name">Midjourney — 이미지 생성</div>
-      <div class="card22-desc">가장 강력한 이미지 품질. 감성적·영화적 분위기 표현에 탁월. Discord에서 실행. 프롬프트 → 4장 중 선택 방식.</div>
-      <div class="card22-badge">Basic $10/월 · 25장/일</div>
+      <div class="card22-desc">고퀄리티 AI 이미지의 필수툴이었지만, ChatGPT·Gemini 같은 웹 기반 대안이 강해지며 입문자의 첫 선택으로는 예전만큼 절대적이지 않음. 지금은 Discord뿐 아니라 midjourney.com 웹에서도 생성 가능.</div>
+      <div class="card22-badge">웹/Discord 지원 · 유료 구독</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🍌</div>
+      <div class="card22-name">Gemini Image (나노바나나) — 이미지 생성</div>
+      <div class="card22-desc">Gemini 앱 안에서 자연어로 이미지 생성·수정. 인물/반려동물의 일관성을 유지한 편집, 배경 변경, 여러 사진 합성처럼 초보자가 말로 지시하기 좋은 작업에 강점.</div>
+      <div class="card22-badge">Gemini 웹/앱 · 무료/유료</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🖼️</div>
+      <div class="card22-name">GPT Image 2 — 이미지 생성·편집</div>
+      <div class="card22-desc">OpenAI의 최신 이미지 생성 모델. 텍스트와 이미지를 입력으로 받아 고품질 이미지 생성과 편집을 처리하며, ChatGPT에서 대화하듯 수정 지시를 이어가기 좋음.</div>
+      <div class="card22-badge">ChatGPT / OpenAI API</div>
     </div>
     <div class="card22">
       <div class="card22-icon">⚡</div>
-      <div class="card22-name">Flux (Freepik) — 이미지 생성</div>
-      <div class="card22-desc">무료로 시작 가능. 사실적 인물 표현에 강점. 웹 브라우저에서 바로 사용. 처음 시작하기 가장 쉬운 선택.</div>
-      <div class="card22-badge">무료 플랜 있음</div>
-    </div>
-    <div class="card22">
-      <div class="card22-icon">🎬</div>
-      <div class="card22-name">Kling — 이미지 → 영상</div>
-      <div class="card22-desc">이미지를 입력하면 5~10초 영상으로 만들어 줌. 사실적인 움직임이 강점. 쿠앙수아이 개발사의 영상 AI.</div>
-      <div class="card22-badge">무료 66크레딧/일</div>
-    </div>
-    <div class="card22">
-      <div class="card22-icon">🎵</div>
-      <div class="card22-name">Suno — 배경음악 생성</div>
-      <div class="card22-desc">장르·분위기를 텍스트로 입력하면 실제 음악처럼 만들어 줌. 완성된 영상에 BGM을 입힐 때 사용.</div>
-      <div class="card22-badge">무료 50크레딧/일</div>
+      <div class="card22-name">Freepik AI Suite — 이미지 소스·편집</div>
+      <div class="card22-desc">이미지 생성, 업스케일, 배경 제거, 목업 소스 검색을 한곳에서 처리하기 쉬움. 수업에서는 결과물 정리와 추가 소스 확보용으로 활용.</div>
+      <div class="card22-badge">웹 기반 · 무료/유료</div>
     </div>
   </div>
+  <div class="note" style="margin-top:12px;max-width:1120px;">근거: <a href="https://docs.midjourney.com/hc/en-us/articles/33329300781837-Web-vs-Discord">Midjourney Web vs Discord</a>, <a href="https://blog.google/products-and-platforms/products/gemini/updated-image-editing-model/">Google Gemini Nano Banana</a>, <a href="https://developers.openai.com/api/docs/models/gpt-image-2">OpenAI GPT Image 2</a>. Midjourney 사용량 감소는 공식 수치가 아니라 검색량/시장 대안 확산 기준의 해석으로 다룹니다.</div>
 </div>
 
 <!-- ===== 슬라이드 05 — 프롬프트 공식 ===== -->
@@ -342,23 +357,23 @@
   <div class="divider"></div>
   <div class="two-col">
     <div class="col-l">
-      <div class="sec-label">Freepik Flux로 시작하기 (무료)</div>
+      <div class="sec-label">Gemini Image (나노바나나)로 시작하기</div>
       <div class="step-list">
         <div class="step-item">
           <div class="step-circle">1</div>
-          <div class="step-content">freepik.com 접속 → 구글 계정으로 무료 가입</div>
+          <div class="step-content">gemini.google.com 접속 → 구글 계정으로 로그인</div>
         </div>
         <div class="step-item">
           <div class="step-circle">2</div>
-          <div class="step-content"><strong>AI Image Generator</strong> 클릭 → Flux 모델 선택</div>
+          <div class="step-content"><strong>이미지 생성/수정 요청</strong>을 대화창에 입력</div>
         </div>
         <div class="step-item">
           <div class="step-circle">3</div>
-          <div class="step-content">공식 그대로 프롬프트 입력 → Generate</div>
+          <div class="step-content">공식 그대로 프롬프트 입력 → 이미지 생성</div>
         </div>
         <div class="step-item">
           <div class="step-circle">4</div>
-          <div class="step-content">맘에 드는 것 저장 / 아니면 키워드만 바꿔서 재생성</div>
+          <div class="step-content">마음에 드는 이미지 저장 → 다음 단계에서 I2V에 사용</div>
         </div>
       </div>
     </div>
@@ -379,56 +394,78 @@
   </div>
 </div>
 
-<!-- ===== 슬라이드 07 — 영상 생성 실습 ===== -->
+<!-- ===== 슬라이드 07 — 영상 도구 ===== -->
 <div class="slide" id="s7">
-  <div class="step-label">Mission 02</div>
-  <div class="slide-title">두 번째 도전 — <span class="accent">이미지를 영상으로</span></div>
-  <div class="slide-subtitle">AI 이미지가 생겼다면, 이제 움직여 봅시다.</div>
+  <div class="step-label">Video Tools</div>
+  <div class="slide-title">이미지를 영상으로 — <span class="accent">Kling · Seedance</span></div>
+  <div class="slide-subtitle">둘 다 I2V(image to video)에 자주 쓰입니다. 처음엔 한 장면을 짧게 만드는 것부터 시작합니다.</div>
   <div class="divider"></div>
-  <div class="two-col">
-    <div class="col-l">
-      <div class="sec-label">Kling으로 Image-to-Video</div>
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-circle">1</div>
-          <div class="step-content">klingai.com 접속 → 구글 계정으로 가입</div>
-        </div>
-        <div class="step-item">
-          <div class="step-circle">2</div>
-          <div class="step-content"><strong>Image to Video</strong> 탭 선택</div>
-        </div>
-        <div class="step-item">
-          <div class="step-circle">3</div>
-          <div class="step-content">앞에서 만든 이미지 업로드 → 움직임 묘사 프롬프트 입력</div>
-        </div>
-        <div class="step-item">
-          <div class="step-circle">4</div>
-          <div class="step-content">5초 / Standard 선택 → Generate (무료 크레딧 사용)</div>
-        </div>
-      </div>
+  <div class="grid22">
+    <div class="card22" style="border-color:var(--purple);">
+      <div class="card22-icon">🎬</div>
+      <div class="card22-name">Kling — 이미지 → 영상</div>
+      <div class="card22-desc">이미지 한 장에 움직임과 카메라 이동을 붙여 짧은 영상을 만드는 데 사용. 인물, 제품, 풍경 컷을 자연스럽게 움직이는 용도로 입문자가 접근하기 좋음.</div>
+      <div class="card22-badge">Text to Video · Image to Video</div>
     </div>
-    <div class="col-r">
-      <div class="sec-label">움직임 프롬프트 예시</div>
-      <div class="feat-list" style="gap:10px;">
-        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
-          <div style="font-size:11px;font-weight:800;color:var(--purple);">바람 효과</div>
-          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);">Her hair gently blows in the wind, camera slowly zooms in</div>
-        </div>
-        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
-          <div style="font-size:11px;font-weight:800;color:var(--purple);">카메라 이동</div>
-          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);">Slow dolly shot moving forward, depth of field blur</div>
-        </div>
-        <div class="feat-item" style="flex-direction:column;align-items:flex-start;background:var(--purple-light);border-radius:8px;padding:10px 12px;gap:4px;">
-          <div style="font-size:11px;font-weight:800;color:var(--purple);">제품 회전</div>
-          <div style="font-size:12px;font-family:'Courier New',monospace;color:var(--ink);">The bottle slowly rotates, light reflects off the glass surface</div>
-        </div>
-      </div>
+    <div class="card22">
+      <div class="card22-icon">🎞️</div>
+      <div class="card22-name">Seedance — 영상 생성·확장</div>
+      <div class="card22-desc">ByteDance의 영상 모델. 텍스트와 이미지 기반 생성, 멀티샷, 카메라 움직임, 레퍼런스 기반 장면 구성에 강점. 여러 컷을 이어가는 영상 실험에 적합.</div>
+      <div class="card22-badge">Text/Image to Video · 멀티샷</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🧭</div>
+      <div class="card22-name">초보 워크플로</div>
+      <div class="card22-desc">1. Gemini/GPT Image로 기준 이미지 생성 → 2. Kling 또는 Seedance에 업로드 → 3. 움직임 프롬프트 입력 → 4. 5초 클립으로 테스트.</div>
+      <div class="card22-badge">한 번에 긴 영상 만들지 않기</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">✍️</div>
+      <div class="card22-name">움직임 프롬프트 예시</div>
+      <div class="card22-desc">camera slowly pushes in, hair gently moves in the wind, the product rotates slowly, soft light reflection, cinematic motion, stable face.</div>
+      <div class="card22-badge">동작 + 카메라 + 안정성</div>
     </div>
   </div>
+  <div class="note" style="margin-top:12px;max-width:1120px;">근거: <a href="https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-launches-full-beta-testing-kling-ai-global-users-0/">Kuaishou Kling 공식 발표</a>, <a href="https://seed.bytedance.com/en/seedance">ByteDance Seedance 모델 문서</a>, <a href="https://seed.bytedance.com/en/blog/seedance-2-0-official-launch">Seedance 2.0 공식 블로그</a>.</div>
 </div>
 
-<!-- ===== 슬라이드 08 — 자주 하는 실수 ===== -->
+<!-- ===== 슬라이드 08 — 사운드 도구 ===== -->
 <div class="slide" id="s8">
+  <div class="step-label">Sound Tools</div>
+  <div class="slide-title">영상의 분위기를 완성하는 <span class="accent">사운드 도구</span></div>
+  <div class="slide-subtitle">BGM은 Suno, 내레이션과 효과음은 ElevenLabs로 나눠 생각하면 쉽습니다.</div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22" style="border-color:var(--purple);">
+      <div class="card22-icon">🎵</div>
+      <div class="card22-name">Suno — 배경음악·노래 생성</div>
+      <div class="card22-desc">장르, 분위기, 가사 아이디어를 텍스트로 입력해 음악을 생성. 짧은 광고 영상, 릴스, 쇼츠의 BGM 후보를 빠르게 뽑을 때 사용.</div>
+      <div class="card22-badge">Text to Music</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🎙️</div>
+      <div class="card22-name">ElevenLabs — 음성·효과음 생성</div>
+      <div class="card22-desc">텍스트를 자연스러운 음성으로 바꾸거나, 프롬프트로 효과음을 생성. 제품 소개 내레이션, 캐릭터 대사, 장면 전환 효과음에 적합.</div>
+      <div class="card22-badge">Text to Speech · Sound Effects</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🧩</div>
+      <div class="card22-name">초보 조합</div>
+      <div class="card22-desc">Suno로 15~30초 BGM 후보 생성 → ElevenLabs로 1문장 내레이션 생성 → 편집툴에서 영상 길이에 맞춰 볼륨 조절.</div>
+      <div class="card22-badge">BGM 먼저, 목소리는 나중</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">⚠️</div>
+      <div class="card22-name">주의할 점</div>
+      <div class="card22-desc">특정 가수·성우·브랜드 사운드를 그대로 따라 하라고 요청하지 않기. 공개/상업 사용 전에는 각 서비스의 라이선스 조건 확인.</div>
+      <div class="card22-badge">권리 확인 필수</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;max-width:1120px;">근거: <a href="https://suno.com/">Suno 공식 서비스</a>, <a href="https://help.elevenlabs.io/hc/en-us/articles/27583713738257-What-is-ElevenLabs">ElevenLabs 소개</a>, <a href="https://help.elevenlabs.io/hc/en-us/articles/25735182995985-What-is-Sound-Effects">ElevenLabs Sound Effects</a>.</div>
+</div>
+
+<!-- ===== 슬라이드 09 — 자주 하는 실수 ===== -->
+<div class="slide" id="s9">
   <div class="step-label">Common Mistakes</div>
   <div class="slide-title">왕초보가 자주 하는 <span class="accent">실수 TOP 5</span></div>
   <div class="divider"></div>
@@ -447,7 +484,7 @@
     </div>
     <div class="mistake-item">
       <div class="mistake-n">4</div>
-      <div class="mistake-body"><strong>도구만 여러 개 가입하고 아무것도 안 함</strong> — 하나를 깊게 써야 실력이 늘어요. <span class="fix">→ Flux 하나로 한 달 파기</span></div>
+      <div class="mistake-body"><strong>도구만 여러 개 가입하고 아무것도 안 함</strong> — 하나를 깊게 써야 실력이 늘어요. <span class="fix">→ 이미지 도구 하나로 한 달 파기</span></div>
     </div>
     <div class="mistake-item">
       <div class="mistake-n">5</div>
@@ -456,8 +493,8 @@
   </div>
 </div>
 
-<!-- ===== 슬라이드 09 — 레퍼런스 수집 ===== -->
-<div class="slide" id="s9">
+<!-- ===== 슬라이드 10 — 레퍼런스 수집 ===== -->
+<div class="slide" id="s10">
   <div class="step-label">Reference</div>
   <div class="slide-title"><span class="accent">레퍼런스 수집</span>이 실력의 80%</div>
   <div class="divider"></div>
@@ -490,27 +527,213 @@
   <div class="note" style="margin-top:14px;max-width:1120px;">레퍼런스를 많이 모을수록 "이런 느낌" 을 설명하는 단어가 생깁니다. 그게 곧 프롬프트 실력입니다.</div>
 </div>
 
-<!-- ===== 슬라이드 10 — 엔딩 ===== -->
-<div class="slide centered" id="s10">
-  <div class="ending-main">완벽하게 알고 시작하려 하지 말고<br><span class="accent">일단 만들어 보세요</span></div>
-  <div class="ending-sub">처음 만든 결과물이 별로여도 괜찮습니다.<br>두 번째가 더 낫고, 열 번째는 훨씬 나아집니다.</div>
+<!-- ===== 슬라이드 11 — Higgsfield 전환 ===== -->
+<div class="slide centered" id="s11">
+  <div class="title-kicker">Next Section</div>
+  <div class="ending-main">이제 하나의 플랫폼에서<br><span class="accent">전체 제작 흐름</span>을 봅니다</div>
+  <div class="ending-sub">이미지, 영상, 오디오, 편집, 자동화까지 한곳에서 묶어 쓰는 Higgsfield 완벽 가이드입니다.</div>
   <div class="title-tags">
-    <span class="tag fill">Flux로 이미지 1장</span>
-    <span class="tag">Kling으로 영상 5초</span>
-    <span class="tag">레퍼런스 10개 수집</span>
+    <span class="tag fill">Higgsfield</span>
+    <span class="tag">Image</span>
+    <span class="tag">Video</span>
+    <span class="tag">Audio</span>
+    <span class="tag">Studio</span>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 12 — Higgsfield 한눈에 보기 ===== -->
+<div class="slide" id="s12">
+  <div class="step-label">Higgsfield Guide</div>
+  <div class="slide-title">Higgsfield는 <span class="accent">올인원 AI 제작 스튜디오</span></div>
+  <div class="slide-subtitle">한 줄 프롬프트에서 광고·영화·인플루언서 영상까지 이어지는 통합 작업 공간입니다.</div>
+  <div class="divider"></div>
+  <div class="higgs-two">
+    <div class="col-l">
+      <div class="point-list">
+        <div class="point-item"><div class="point-num">1</div><div class="point-text"><strong>상단 모드</strong>: Image · Video · Audio 중 먼저 고릅니다.</div></div>
+        <div class="point-item"><div class="point-num">2</div><div class="point-text"><strong>메뉴바</strong>: Marketing Studio, Cinema Studio, Canvas, Apps, Pricing 등으로 이동합니다.</div></div>
+        <div class="point-item"><div class="point-num">3</div><div class="point-text"><strong>작업 영역</strong>: 프롬프트, 모델, 비율, 해상도, 길이, 프리셋을 조정합니다.</div></div>
+        <div class="point-item"><div class="point-num">4</div><div class="point-text"><strong>History / Community</strong>: 내 생성 이력과 다른 사람의 결과물을 참고합니다.</div></div>
+      </div>
+    </div>
+    <div class="col-r">
+      <div class="higgs-shot"><img src="higgsfield/screenshots/00-home.png" alt="Higgsfield home screen"></div>
+      <div class="note" style="margin-top:10px;">캡처 기준: 2026-05-28 · 원자료: <a href="higgsfield/Higgsfield-메뉴-강의안.md">Higgsfield-메뉴-강의안.md</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 13 — 메뉴를 6갈래로 보기 ===== -->
+<div class="slide" id="s13">
+  <div class="step-label">Menu Map</div>
+  <div class="slide-title">메뉴는 <span class="accent">6갈래</span>로 묶으면 쉽습니다</div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22 compact" style="border-color:var(--purple);"><div class="card22-icon">🧱</div><div class="card22-name">① 생성 코어</div><div class="card22-desc">Image · Video · Audio · Edit · Soul · Characters. 텍스트와 사진으로 기본 결과물을 만듭니다.</div></div>
+    <div class="card22 compact"><div class="card22-icon">🎬</div><div class="card22-name">② 영상·모션 특화</div><div class="card22-desc">Lipsync Studio · Animate · Upscale. 말하게 하고, 움직이게 하고, 화질을 올립니다.</div></div>
+    <div class="card22 compact"><div class="card22-icon">🗺️</div><div class="card22-name">③ 워크플로 스튜디오</div><div class="card22-desc">Canvas · Cinema Studio · Storyboard. 여러 장면을 일관되게 기획하고 연결합니다.</div></div>
+    <div class="card22 compact"><div class="card22-icon">💼</div><div class="card22-name">④ 비즈니스 스튜디오</div><div class="card22-desc">Marketing Studio · AI Influencer · Fashion Factory · Photodump. 광고와 SNS 산출물을 빠르게 만듭니다.</div></div>
+    <div class="card22 compact"><div class="card22-icon">⚙️</div><div class="card22-name">⑤ 자동화·확장</div><div class="card22-desc">Supercomputer · MCP & CLI · Plugins. 에이전트와 외부 툴에서 Higgsfield를 호출합니다.</div></div>
+    <div class="card22 compact"><div class="card22-icon">🧰</div><div class="card22-name">⑥ 부가 메뉴</div><div class="card22-desc">Apps · Chat · Community · Pricing. 미니 도구, 창작 보조, 레퍼런스, 요금제를 확인합니다.</div></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 14 — 생성 코어 ===== -->
+<div class="slide" id="s14">
+  <div class="step-label">Generation Core</div>
+  <div class="slide-title">생성 코어 — <span class="accent">Image · Video · Audio</span></div>
+  <div class="slide-subtitle">처음에는 이미지 한 장을 만들고, 그 이미지를 영상으로 움직이는 흐름이 가장 안정적입니다.</div>
+  <div class="divider"></div>
+  <div class="higgs-two">
+    <div class="grid22" style="gap:10px;">
+      <div class="card22 compact"><div class="card22-name">Image</div><div class="card22-desc">Nano Banana, Soul, Seedream, Flux Kontext, GPT Image 등 모델을 바꿔 이미지 생성.</div><div class="card22-badge">출발점</div></div>
+      <div class="card22 compact"><div class="card22-name">Video</div><div class="card22-desc">Seedance, Kling, Veo, Sora 등으로 텍스트/이미지 기반 짧은 영상 생성.</div><div class="card22-badge">I2V 핵심</div></div>
+      <div class="card22 compact"><div class="card22-name">Audio</div><div class="card22-desc">TTS, 효과음, 배경음 생성. Lipsync와 묶어 대사 영상으로 연결.</div><div class="card22-badge">소리 추가</div></div>
+      <div class="card22 compact"><div class="card22-name">Edit</div><div class="card22-desc">잘 나온 컷에서 배경, 객체, 얼굴, 작은 오류만 다시 수정하는 편집기.</div><div class="card22-badge">다시 만들지 않기</div></div>
+    </div>
+    <div class="col-r">
+      <div class="higgs-shot small"><img src="higgsfield/screenshots/01-ai-image.png" alt="Higgsfield image generator"></div>
+      <div class="higgs-shot small" style="margin-top:10px;"><img src="higgsfield/screenshots/02-ai-video.png" alt="Higgsfield video generator"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 15 — 인물과 일관성 ===== -->
+<div class="slide" id="s15">
+  <div class="step-label">People & Identity</div>
+  <div class="slide-title">인물 콘텐츠는 <span class="accent">Soul · Characters</span>가 중심</div>
+  <div class="divider"></div>
+  <div class="higgs-two">
+    <div class="col-l">
+      <div class="point-list">
+        <div class="point-item"><div class="point-num">S</div><div class="point-text"><strong>Soul</strong>: 패션 화보급 초실사 인물 이미지 모델. AI 인플루언서와 광고 인물 이미지의 엔진입니다.</div></div>
+        <div class="point-item"><div class="point-num">C</div><div class="point-text"><strong>Characters</strong>: 같은 얼굴을 여러 장면에서 반복 등장시킵니다. 시리즈물·마스코트·브랜드 모델에 중요합니다.</div></div>
+        <div class="point-item"><div class="point-num">L</div><div class="point-text"><strong>Lipsync</strong>: 이미지나 영상 속 인물이 음성에 맞춰 말하게 만듭니다.</div></div>
+      </div>
+      <div class="note" style="margin-top:10px;">강의 포인트: “같은 사람이 계속 나와야 하는 작업”은 이미지 생성보다 캐릭터 일관성이 더 중요합니다.</div>
+    </div>
+    <div class="col-r">
+      <div class="higgs-shot"><img src="higgsfield/screenshots/05-soul.png" alt="Higgsfield Soul screen"></div>
+      <div class="higgs-strip">
+        <div class="higgs-shot"><img src="higgsfield/screenshots/04-character.png" alt="Characters"></div>
+        <div class="higgs-shot"><img src="higgsfield/screenshots/07-lipsync-studio.png" alt="Lipsync Studio"></div>
+        <div class="higgs-shot"><img src="higgsfield/screenshots/16-photodump-studio.png" alt="Photodump Studio"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 16 — 영상·모션 특화 ===== -->
+<div class="slide" id="s16">
+  <div class="step-label">Motion Tools</div>
+  <div class="slide-title">영상·모션 특화 — <span class="accent">Animate · Lipsync · Upscale</span></div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22 compact" style="border-color:var(--purple);"><div class="card22-icon">🪄</div><div class="card22-name">Animate</div><div class="card22-desc">정지 이미지를 움직이는 장면으로 바꿉니다. “내가 가진 이미지에 생명을 불어넣는” 도구로 설명하면 쉽습니다.</div><div class="card22-badge">이미지 → 움직임</div></div>
+    <div class="card22 compact"><div class="card22-icon">🗣️</div><div class="card22-name">Lipsync Studio</div><div class="card22-desc">대사 입력 → 음성 생성 → 입모양 싱크. 가상 인물이 직접 말하는 UGC 광고에 유용합니다.</div><div class="card22-badge">말하는 아바타</div></div>
+    <div class="card22 compact"><div class="card22-icon">🔎</div><div class="card22-name">Upscale</div><div class="card22-desc">생성 결과의 해상도를 올리고 영상 떨림을 줄이는 마감 단계. 납품 전 마지막 보정으로 둡니다.</div><div class="card22-badge">후처리</div></div>
+    <div class="card22 compact"><div class="card22-icon">🎯</div><div class="card22-name">초보 기준</div><div class="card22-desc">한 번에 긴 영상을 만들기보다 5~8초 컷을 만들고, 마음에 드는 컷만 업스케일합니다.</div><div class="card22-badge">크레딧 절약</div></div>
+  </div>
+  <div class="higgs-strip">
+    <div class="higgs-shot"><img src="higgsfield/screenshots/08-animate.png" alt="Animate"></div>
+    <div class="higgs-shot"><img src="higgsfield/screenshots/07-lipsync-studio.png" alt="Lipsync"></div>
+    <div class="higgs-shot"><img src="higgsfield/screenshots/06-upscale.png" alt="Upscale"></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 17 — 워크플로 스튜디오 ===== -->
+<div class="slide" id="s17">
+  <div class="step-label">Workflow Studios</div>
+  <div class="slide-title">큰 프로젝트는 <span class="accent">Canvas · Cinema · Storyboard</span></div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22 compact" style="border-color:var(--purple);"><div class="card22-icon">🧩</div><div class="card22-name">Canvas</div><div class="card22-desc">무드보드, 생성 노드, 모델 블록을 한 화면에서 연결하는 노드형 작업 공간입니다.</div><div class="card22-badge">기획→생성→수정</div></div>
+    <div class="card22 compact"><div class="card22-icon">🎥</div><div class="card22-name">Cinema Studio</div><div class="card22-desc">캐릭터, 무드, 장면, 객체를 통합 관리하는 영화 제작용 스튜디오입니다.</div><div class="card22-badge">한 컷이 아니라 한 편</div></div>
+    <div class="card22 compact"><div class="card22-icon">📋</div><div class="card22-name">Storyboard / Popcorn</div><div class="card22-desc">일관된 장면 묶음과 다각도 샷을 뽑아 영상화 전 콘티를 잡습니다.</div><div class="card22-badge">그림 콘티</div></div>
+    <div class="card22 compact"><div class="card22-icon">👥</div><div class="card22-name">협업·고급 작업</div><div class="card22-desc">일부 스튜디오는 로그인 후 내부 작업창에서 세부 기능을 확인합니다. 수업에서는 위치와 쓰임새 중심으로 소개합니다.</div><div class="card22-badge">로그인 필요</div></div>
+  </div>
+  <div class="higgs-strip">
+    <div class="higgs-shot"><img src="higgsfield/screenshots/10-canvas-intro.png" alt="Canvas intro"></div>
+    <div class="higgs-shot"><img src="higgsfield/screenshots/12-cinema-studio.png" alt="Cinema Studio"></div>
+    <div class="higgs-shot"><img src="higgsfield/screenshots/17-storyboard-popcorn.png" alt="Storyboard Popcorn"></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 18 — 비즈니스 스튜디오 ===== -->
+<div class="slide" id="s18">
+  <div class="step-label">Business Studios</div>
+  <div class="slide-title">광고·SNS 산출물은 <span class="accent">비즈니스 스튜디오</span></div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22 compact" style="border-color:var(--purple);"><div class="card22-icon">📣</div><div class="card22-name">Marketing Studio</div><div class="card22-desc">제품 URL이나 이미지 하나로 광고 소재를 만듭니다. Product, App, UGC, Hook, Setting 유형을 고릅니다.</div><div class="card22-badge">URL → 광고</div></div>
+    <div class="card22 compact"><div class="card22-icon">⭐</div><div class="card22-name">AI Influencer</div><div class="card22-desc">가상 인플루언서를 만들고 움직이게 하며, 콘텐츠를 대량 생성하는 종합 워크플로입니다.</div><div class="card22-badge">버추얼 스타</div></div>
+    <div class="card22 compact"><div class="card22-icon">👗</div><div class="card22-name">Fashion Factory</div><div class="card22-desc">의류·패션 셀러용 화보 이미지. 모델 섭외 없이 룩북과 상세페이지 컷을 만듭니다.</div><div class="card22-badge">AI Photoshoot</div></div>
+    <div class="card22 compact"><div class="card22-icon">📸</div><div class="card22-name">Photodump Studio</div><div class="card22-desc">같은 인물을 다양한 상황과 장소로 대량 생성합니다. AI Influencer 피드를 채우는 데 적합합니다.</div><div class="card22-badge">Same Star</div></div>
+  </div>
+  <div class="higgs-strip">
+    <div class="higgs-shot"><img src="higgsfield/screenshots/11-marketing-studio.png" alt="Marketing Studio"></div>
+    <div class="higgs-shot"><img src="higgsfield/screenshots/13-ai-influencer.png" alt="AI Influencer"></div>
+    <div class="higgs-shot"><img src="higgsfield/screenshots/15-fashion-factory.png" alt="Fashion Factory"></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 19 — 자동화·확장 ===== -->
+<div class="slide" id="s19">
+  <div class="step-label">Automation & Extensions</div>
+  <div class="slide-title">파워유저는 <span class="accent">Supercomputer · MCP · Plugins</span></div>
+  <div class="divider"></div>
+  <div class="higgs-two">
+    <div class="grid22" style="gap:10px;">
+      <div class="card22 compact" style="border-color:var(--purple);"><div class="card22-name">Supercomputer</div><div class="card22-desc">리서치, 문서, 웹사이트, 마케팅 변형, 영화 제작을 에이전트에게 맡기는 자동화 레이어.</div></div>
+      <div class="card22 compact"><div class="card22-name">MCP & CLI</div><div class="card22-desc">Claude, Cursor 같은 AI 에이전트 안에서 Higgsfield 생성 기능을 호출합니다.</div></div>
+      <div class="card22 compact"><div class="card22-name">Plugins</div><div class="card22-desc">Premiere Pro와 After Effects 안에서 이미지·영상 생성, 리프레임, 배경 제거, 업스케일.</div></div>
+      <div class="card22 compact"><div class="card22-name">Apps</div><div class="card22-desc">Virality Predictor, Expand Image, Skin Enhancer, Face Swap 등 한 작업에 특화된 미니 도구.</div></div>
+    </div>
+    <div class="col-r">
+      <div class="higgs-shot small"><img src="higgsfield/screenshots/14-supercomputer.png" alt="Supercomputer"></div>
+      <div class="higgs-shot small" style="margin-top:10px;"><img src="higgsfield/screenshots/19-mcp-cli.png" alt="MCP and CLI"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 20 — 수업 진행 순서 ===== -->
+<div class="slide" id="s20">
+  <div class="step-label">Teaching Flow</div>
+  <div class="slide-title">Higgsfield는 <span class="accent">이 순서</span>로 가르치면 됩니다</div>
+  <div class="divider"></div>
+  <div class="point-list">
+    <div class="point-item"><div class="point-num">1</div><div class="point-text"><strong>개요 + 화면 구조</strong> — Image/Video/Audio 탭, 메뉴바, 크레딧 개념.</div></div>
+    <div class="point-item"><div class="point-num">2</div><div class="point-text"><strong>이미지부터</strong> — Image → Soul → Edit. 직접 1장 생성하고 작은 부분만 수정.</div></div>
+    <div class="point-item"><div class="point-num">3</div><div class="point-text"><strong>영상으로</strong> — Video, Animate, Lipsync, Upscale. 이미지를 먼저 만들고 짧은 영상으로 변환.</div></div>
+    <div class="point-item"><div class="point-num">4</div><div class="point-text"><strong>일관성·시리즈</strong> — Characters → Photodump → Storyboard. 같은 인물과 세계관 유지.</div></div>
+    <div class="point-item"><div class="point-num">5</div><div class="point-text"><strong>비즈니스 활용</strong> — Marketing Studio, AI Influencer, Fashion Factory. 광고·SNS 결과물로 연결.</div></div>
+    <div class="point-item"><div class="point-num">6</div><div class="point-text"><strong>확장·마무리</strong> — Canvas, Supercomputer, MCP, Plugins, Apps의 Virality Predictor 소개.</div></div>
+  </div>
+  <div class="note" style="margin-top:14px;max-width:1120px;">주의: 화면과 모델 라인업은 자주 바뀝니다. 생성은 크레딧 차감제라 고해상도·장시간 영상은 마지막에만 사용하도록 안내하세요.</div>
+</div>
+
+<!-- ===== 슬라이드 21 — 최종 엔딩 ===== -->
+<div class="slide centered" id="s21">
+  <div class="ending-main">완벽하게 알고 시작하려 하지 말고<br><span class="accent">일단 한 컷부터 만드세요</span></div>
+  <div class="ending-sub">처음 만든 결과물이 별로여도 괜찮습니다.<br>이미지 한 장, 영상 5초, 사운드 한 줄부터 반복하면 됩니다.</div>
+  <div class="title-tags">
+    <span class="tag fill">이미지 1장</span>
+    <span class="tag">영상 5초</span>
+    <span class="tag">사운드 1개</span>
+    <span class="tag">레퍼런스 10개</span>
   </div>
 </div>
 
 </div><!-- /deck -->
 
 <div class="progress-bar" id="progressBar"></div>
-<div class="page-indicator" id="pageIndicator">1 / 10</div>
+<div class="page-indicator" id="pageIndicator">1 / 21</div>
 <div class="nav-zone left" onclick="go(-1)"><div class="nav-arrow">‹</div></div>
 <div class="nav-zone right" onclick="go(1)"><div class="nav-arrow">›</div></div>
 
 <script>
 (function(){
-  var TOTAL = 10;
+  var TOTAL = 21;
   var cur = 0;
   function slide(i){ return document.getElementById('s'+(i+1)); }
   function go(dir){
@@ -560,5 +783,6 @@
   updateUI();
 })();
 </script>
+<script src="../../../debug-annotate.js"></script>
 </body>
 </html>
