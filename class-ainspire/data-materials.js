@@ -78,18 +78,6 @@ const materialData = [
         date: "왕초보 가이드",
         icon: "map"
     },
-    {
-        id: "week1-lecture",
-        category: "week1",
-        categoryKo: "4기 입문편",
-        title: "1주차 강의안 — AI 이미지 생성의 모든 것",
-        summary: "프롬프트 4요소 구조, 스타일 키워드 완전 정복, 레퍼런스 분석 → 프롬프트 변환 실습, 이미지→영상 워크플로우, 일관성 유지 3가지 기법까지. 도구 비교표와 이번 주 과제 포함.",
-        fileType: "link",
-        filePath: "materials/4기-입문편/1주차-강의안/1주차-강의안-deck.html",
-        readTime: "슬라이드 · 10장",
-        date: "1주차 강의안",
-        icon: "book-open"
-    },
 
     // === 3기 자료 ===
     {
@@ -156,23 +144,12 @@ const materialData = [
     },
 
     // === CineGuide 연동 ===
-    {
-        id: "cineguide-main",
-        category: "cineguide",
-        categoryKo: "CineGuide",
-        title: "CineGuide 촬영 & 연출 가이드 v1",
-        summary: "23가지 샷 프레이밍, 카메라 무브먼트, 구도 원칙까지 영상 촬영·연출의 핵심을 인터랙티브 가이드로 정리한 레퍼런스.",
-        fileType: "link",
-        filePath: "cineguide/cinematography_guide.html",
-        readTime: "바로가기",
-        date: "서브 서비스",
-        icon: "film"
-    },
+    // v1(cinematography_guide.html) 카드 제외 — 파일은 보존, 카드만 미노출
     {
         id: "cineguide-v2",
         category: "cineguide",
         categoryKo: "CineGuide",
-        title: "CineGuide 촬영 & 연출 가이드 v2",
+        title: "CineGuide 촬영 & 연출 가이드",
         summary: "v1 전체 + 카메라 무브먼트 16가지(돌리/아크/드론/롤/돌리줌 등) AI 프롬프트 복사 기능, 180도 법칙 인터랙티브 시뮬레이터, 23개 샷 카드 AI 프롬프트 탭 추가.",
         fileType: "link",
         filePath: "cineguide/cinematography_guide_v2.html",

@@ -787,6 +787,170 @@
   .slide:not(.centered) .divider {
     flex-shrink: 0;
   }
+
+  /* ── Higgsfield Adobe 확장 섹션 (이식) ───────────────── */
+  /* 포인트 목록 */
+  .point-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 1100px; }
+  .point-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 20px; background: #fff;
+  }
+  .point-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 13px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .point-text { font-size: 15px; color: var(--ink); line-height: 1.6; }
+  .point-text strong { font-weight: 800; color: var(--purple); }
+
+  /* 실습 순서 */
+  .step-list { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 1000px; }
+  .step-item { display: flex; align-items: flex-start; gap: 18px; }
+  .step-circle {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 16px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content { font-size: 15px; color: var(--ink); line-height: 1.55; padding-top: 6px; }
+  .step-content strong { font-weight: 800; color: var(--purple); }
+  .step-content code {
+    background: var(--purple-light); color: var(--purple);
+    padding: 2px 7px; border-radius: 5px;
+    font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+  }
+
+  /* 설치 박스 */
+  .install-box {
+    background: #1a1530; color: #e8e0ff;
+    border-radius: 12px; padding: 14px 20px;
+    font-size: 13px; line-height: 1.85;
+    width: 100%; max-width: 1120px; margin-top: 10px;
+    flex-shrink: 0;
+  }
+  .install-box .cmd { color: #b39dff; font-weight: 700; font-family: 'Courier New', monospace; font-size: 12px; }
+  .install-box .label { color: #8a80aa; font-size: 11px; margin-right: 6px; font-weight: 700; }
+  .install-box .line { display: block; padding: 2px 0; }
+
+  /* 캡처 이미지 / 플레이스홀더 */
+  .cap-wrap { position: relative; width: 100%; overflow: hidden; }
+  .cap-img {
+    width: 100%; height: 100%; border-radius: 10px;
+    border: 1px solid var(--line); display: block;
+    object-fit: contain; background: #faf8ff;
+  }
+  .cap-placeholder {
+    width: 100%; height: 100%;
+    border-radius: 10px; border: 1.5px dashed var(--purple);
+    background: var(--purple-light);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--purple); text-align: center;
+    padding: 20px; gap: 6px;
+  }
+  .cap-placeholder strong { font-size: 14px; font-weight: 800; }
+  .cap-placeholder .ph-path { font-family: 'Courier New', monospace; font-size: 11px; color: #5a5070; background: #fff; padding: 4px 10px; border-radius: 5px; }
+
+  /* UI 어노테이션 그리드 */
+  .ann-n {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 9px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ann-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6px 28px; width: 100%; max-width: 1120px; flex-shrink: 0;
+  }
+  .ann-grid-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12px; color: var(--ink); line-height: 1.45;
+  }
+  .ann-grid-item strong { font-weight: 800; }
+
+  /* 가능/불가능 박스 */
+  .can-cannot {
+    width: 100%; max-width: 1120px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .can-box {
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px; background: #fff;
+  }
+  .can-box.ok { border-color: var(--purple); background: var(--purple-light); }
+  .can-box.no { border-color: #e0d8e8; background: #faf8ff; }
+  .can-title {
+    font-size: 14px; font-weight: 800;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .can-box.ok .can-title { color: var(--purple); }
+  .can-box.no .can-title { color: #8a8099; }
+  .can-mark {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #fff;
+  }
+  .can-box.ok .can-mark { background: var(--purple); }
+  .can-box.no .can-mark { background: #b0a8c8; }
+  .can-list { display: flex; flex-direction: column; gap: 7px; }
+  .can-row {
+    font-size: 13px; color: var(--ink); line-height: 1.5;
+    padding-left: 14px; position: relative;
+  }
+  .can-row::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple);
+  }
+  .can-box.no .can-row::before { background: #b0a8c8; }
+
+  /* 워크플로 그리드 */
+  .workflow-table {
+    width: 100%; max-width: 1120px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+  }
+  .workflow-col {
+    border: 1px solid var(--line); border-radius: 12px;
+    background: #fff; overflow: hidden;
+  }
+  .workflow-col.primary { border-color: var(--purple); box-shadow: 0 0 0 2px var(--purple-light); }
+  .workflow-head {
+    padding: 14px 16px;
+    background: var(--purple-light); border-bottom: 1px solid var(--line);
+  }
+  .workflow-col.primary .workflow-head { background: var(--purple); color: #fff; }
+  .workflow-name { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+  .workflow-tagline { font-size: 11px; line-height: 1.45; color: #5a5070; }
+  .workflow-col.primary .workflow-tagline { color: #eee8ff; }
+  .workflow-body { padding: 13px 15px 14px; display: flex; flex-direction: column; gap: 9px; }
+  .workflow-row { border-bottom: 1px solid #f0ebf7; padding-bottom: 8px; }
+  .workflow-row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .workflow-label { font-size: 10px; font-weight: 800; color: var(--purple); margin-bottom: 3px; }
+  .workflow-text { font-size: 11px; color: #4f465f; line-height: 1.5; }
+  .workflow-text strong { color: var(--ink); font-weight: 800; }
+  .workflow-text code {
+    background: var(--purple-light); color: var(--purple);
+    padding: 1px 5px; border-radius: 4px;
+    font-family: 'Courier New', monospace; font-size: 10px;
+  }
+
+  /* 다크 노트 박스 */
+  .dark-box {
+    background: #1a1530; border-radius: 12px; padding: 14px 20px;
+    color: #e8e0ff; font-size: 13px; line-height: 1.7;
+    max-width: 1120px; width: 100%;
+  }
+  .dark-box strong { color: #b39dff; font-weight: 800; }
+  .dark-box code {
+    background: #2a2540; color: #b39dff;
+    padding: 1px 6px; border-radius: 4px;
+    font-family: 'Courier New', monospace; font-size: 11px;
+  }
 </style>
 </head>
 <body>
@@ -923,7 +1087,7 @@
           </div>
           <div class="demo-pair">
             <div class="demo-pair-label">2. 결과물 — 내려받은 원본 영상</div>
-            <video class="demo-clip result" src="demo-assets/sample.mp4" autoplay loop muted playsinline></video>
+            <video class="demo-clip result" src="demo-assets/sample_compressed.mp4" autoplay loop muted playsinline></video>
             <div class="demo-credit">예시 영상: Big Buck Bunny (c) 2008 Blender Foundation — CC BY 3.0 / bigbuckbunny.org</div>
           </div>
         </div>
@@ -1385,6 +1549,11 @@
       </div>
 
       <div class="tool-right">
+        <div class="demo-pair" style="margin-bottom:12px;">
+          <div class="demo-pair-label">실제 자동 조립 — MCP가 직접 임포트 + 시퀀스 생성 + 타임라인 배치</div>
+          <video class="demo-clip" src="demo-assets/rec-premiere-mcp-10s-2x.mp4" autoplay loop muted playsinline></video>
+        </div>
+
         <div class="mcp-flow">
           <div class="mcp-node hi">
             <div class="mcp-node-name">임포트</div>
@@ -1431,10 +1600,192 @@
     </div>
   </div>
 
+  <!-- ═════════════════════════════════════════
+       Higgsfield Adobe 확장 (원본 2~8페이지 이식)
+  ═════════════════════════════════════════ -->
+
+  <!-- 이식 02 — Higgsfield 패널이 뭔가요? -->
+  <div class="slide" data-index="11">
+    <div class="step-label">패널이란?</div>
+    <div class="slide-title"><span class="accent">Higgsfield 패널</span>이 뭔가요?</div>
+    <div class="slide-subtitle">Premiere Pro / After Effects 안에 Higgsfield 영상 생성 UI를 패널로 띄우는 공식 확장</div>
+    <div class="divider"></div>
+    <div class="point-list">
+      <div class="point-item">
+        <div class="point-num">1</div>
+        <div class="point-text">편집 작업 중 <strong>앱을 빠져나가지 않고</strong> Higgsfield 영상 생성 — 브라우저 왔다 갔다 할 필요 없음</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">2</div>
+        <div class="point-text">현재 선택한 클립 정보(Live Link)를 패널이 자동으로 받아옴 — 그 클립을 ref로 쓰는 흐름이 자연스러움</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">3</div>
+        <div class="point-text">생성된 영상은 <strong>프로젝트 패널에 자동 임포트</strong> — 사용자가 직접 타임라인으로 드래그</div>
+      </div>
+      <div class="point-item">
+        <div class="point-num">4</div>
+        <div class="point-text">설치 파일은 <strong>.zxp</strong> 형식 — Adobe 표준 확장 패키지. Windows·Mac 공통</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 이식 03 — 다운로드 -->
+  <div class="slide" data-index="12">
+    <div class="step-label">Step 1 · Download</div>
+    <div class="slide-title">먼저 <span class="accent">.zxp 파일</span>을 받습니다</div>
+    <div class="divider"></div>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-circle">1</div>
+        <div class="step-content">
+          <strong>higgsfield.ai</strong> 접속 → 계정 로그인 (이미 MCP 쓰고 있다면 같은 계정)
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">2</div>
+        <div class="step-content">
+          상단/사이드 메뉴에서 <strong>Adobe / Extension</strong> 항목 찾기
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-content">
+          <code>ai.higgsfield.cep.zxp</code> 다운로드 → 원하는 폴더에 저장
+        </div>
+      </div>
+    </div>
+    <div class="install-box" style="margin-top:24px;">
+      <span class="line"><span class="label">사전 조건</span><span style="color:#d0c8f0;">Premiere Pro CC 2019 이상 또는 After Effects CC 2019 이상 (CEP 9.0+)</span></span>
+      <span class="line"><span class="label">대상 앱</span><span style="color:#d0c8f0;">Premiere Pro (PPRO) / After Effects (AEFT) — Photoshop·Illustrator는 미지원</span></span>
+      <span class="line"><span class="label">OS</span><span style="color:#d0c8f0;">Windows / Mac 공통</span></span>
+    </div>
+  </div>
+
+  <!-- 이식 04 — Windows 설치 -->
+  <div class="slide" data-index="13">
+    <div class="step-label">Step 2 · Install (Windows)</div>
+    <div class="slide-title">Windows 설치 — <span class="accent">zip으로 풀어서</span> 폴더 복사</div>
+    <div class="slide-subtitle">.zxp는 사실 .zip — 별도 도구 없이 직접 설치 가능</div>
+    <div class="divider"></div>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-circle">1</div>
+        <div class="step-content">
+          다운받은 <code>ai.higgsfield.cep.zxp</code>의 <strong>확장자를 <code>.zip</code></strong>으로 변경 후 압축 풀기
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">2</div>
+        <div class="step-content">
+          풀린 폴더(안에 <code>CSXS</code>, <code>main</code> 등이 있어야 함)를 통째로<br>
+          <code>%APPDATA%\Adobe\CEP\extensions\ai.higgsfield.cep\</code> 안에 복사
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">3</div>
+        <div class="step-content">
+          <strong>PlayerDebugMode 켜기</strong> — 아래 PowerShell 한 줄 실행<br>
+          <span style="color:#5a5070;font-size:13px;">(zip으로 풀면 서명이 끊겨서 Adobe가 거부 → 디버그 모드 필수)</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-circle">4</div>
+        <div class="step-content">
+          실행 중인 <strong>Premiere Pro 완전 종료 후 재실행</strong>
+        </div>
+      </div>
+    </div>
+    <div class="install-box" style="margin-top:18px;">
+      <span class="line"><span class="label">PowerShell (관리자 불필요)</span></span>
+      <span class="line"><span class="cmd">foreach ($v in 11,12) { New-ItemProperty -Path "HKCU:\Software\Adobe\CSXS.$v" -Name "PlayerDebugMode" -Value "1" -PropertyType String -Force }</span></span>
+      <span class="line" style="font-size:11px;color:#8a80aa;margin-top:6px;">CSXS.11 = Premiere 2021~2023 / CSXS.12 = Premiere 2024~ · 둘 다 켜두면 버전 상관없이 안전</span>
+    </div>
+  </div>
+
+  <!-- 이식 05 — 패널 열기 (창 → 확장) -->
+  <div class="slide" data-index="14">
+    <div class="step-label">Step 3 · First Launch</div>
+    <div class="slide-title">패널 열기 — <span class="accent">창 → 확장</span></div>
+    <div class="divider"></div>
+    <div class="cap-wrap" style="width:820px;height:380px;margin:0 auto;flex-shrink:0;">
+      <img class="cap-img" src="img/cap_premiere_menu.png" alt="Premiere 창 메뉴"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="cap-placeholder" style="display:none;">
+        <strong>여기에 Premiere 메뉴 캡쳐 들어갈 자리</strong>
+        <span>창(Window) → 확장(Extensions) 메뉴 펼친 상태</span>
+        <span>"Higgsfield"와 "Draw to edit" 두 항목이 보여야 함</span>
+        <span class="ph-path">img/cap_premiere_menu.png</span>
+      </div>
+    </div>
+    <div class="ann-grid" style="margin-top:18px;">
+      <div class="ann-grid-item"><div class="ann-n">1</div><div><strong>창 → 확장 → Higgsfield</strong> — 메인 영상 생성 패널</div></div>
+      <div class="ann-grid-item"><div class="ann-n">2</div><div><strong>창 → 확장 → Draw to edit</strong> — 그림 기반 편집 패널 (보조)</div></div>
+      <div class="ann-grid-item"><div class="ann-n">3</div><div>메뉴에 항목이 안 보임 → 설치 위치 확인 + Premiere 완전 재시작</div></div>
+      <div class="ann-grid-item"><div class="ann-n">4</div><div>패널이 열려도 흰 화면 → 인터넷 연결 / 로그인 / 디버그 모드 확인</div></div>
+    </div>
+  </div>
+
+  <!-- 이식 06 — 패널 UI -->
+  <div class="slide" data-index="15">
+    <div class="step-label">Step 4 · Panel UI</div>
+    <div class="slide-title"><span class="accent">Higgsfield 패널</span> 둘러보기</div>
+    <div class="divider"></div>
+    <div class="cap-wrap" style="width:560px;height:420px;margin:0 auto;flex-shrink:0;">
+      <img class="cap-img" src="img/cap_panel.png" alt="Higgsfield 패널"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="cap-placeholder" style="display:none;">
+        <strong>여기에 Higgsfield 패널 캡쳐 들어갈 자리</strong>
+        <span>패널이 열린 상태 — 로그인 완료 후 메인 화면</span>
+        <span>모델 선택 / 프롬프트 / 생성 버튼이 보이게</span>
+        <span class="ph-path">img/cap_panel.png</span>
+      </div>
+    </div>
+    <div class="ann-grid" style="margin-top:18px;">
+      <div class="ann-grid-item"><div class="ann-n">①</div><div><strong>모델 선택</strong> — Seedance 2.0, Veo3, Kling 등 영상 모델 / 이미지 모델 선택</div></div>
+      <div class="ann-grid-item"><div class="ann-n">②</div><div><strong>프롬프트 입력</strong> — 영상으로 만들 장면 묘사</div></div>
+      <div class="ann-grid-item"><div class="ann-n">③</div><div><strong>레퍼런스</strong> — 현재 선택 클립이 자동으로 ref 후보로 들어옴 (Live Link)</div></div>
+      <div class="ann-grid-item"><div class="ann-n">④</div><div><strong>Generate</strong> — 클릭 시 Higgsfield 서버로 작업 전송 → 진행 상황 표시</div></div>
+    </div>
+  </div>
+
+  <!-- 이식 07 — 할 수 있는 것 / 없는 것 -->
+  <div class="slide" data-index="16">
+    <div class="step-label">Capabilities</div>
+    <div class="slide-title">패널이 <span class="accent">할 수 있는 것 / 없는 것</span></div>
+    <div class="slide-subtitle">미리 알고 쓰면 헤매지 않습니다 — 코드 분석으로 확인한 사실</div>
+    <div class="divider"></div>
+    <div class="can-cannot">
+      <div class="can-box ok">
+        <div class="can-title"><div class="can-mark">O</div>패널이 직접 하는 것</div>
+        <div class="can-list">
+          <div class="can-row">Premiere에서 현재 선택한 클립 정보 읽기 (Live Link)</div>
+          <div class="can-row">Higgsfield 서버로 영상·이미지 생성 요청</div>
+          <div class="can-row">생성 진행 상황 표시 / 결과 미리보기</div>
+          <div class="can-row"><strong>완성된 영상을 프로젝트 패널에 자동 임포트</strong></div>
+          <div class="can-row">Draw to edit — 그림 기반 편집 지시</div>
+        </div>
+      </div>
+      <div class="can-box no">
+        <div class="can-title"><div class="can-mark">X</div>패널이 안 하는 것 (사용자가 직접)</div>
+        <div class="can-list">
+          <div class="can-row"><strong>타임라인 위 클립을 자동 교체</strong> — 임포트만 됨, 드래그는 직접</div>
+          <div class="can-row">시퀀스에 자동 삽입 / overwrite</div>
+          <div class="can-row">렌더링·익스포트 자동 실행</div>
+          <div class="can-row">마커·인아웃 자동 설정</div>
+        </div>
+      </div>
+    </div>
+    <div class="dark-box" style="margin-top:18px;">
+      💡 <strong>요약</strong>: 패널은 "<strong>생성 → 프로젝트 패널 임포트</strong>"까지. 타임라인에 어떻게 넣을지는 사용자가 결정.
+      이 분리가 일부러 의도된 디자인입니다 — 영상 자동 교체는 위험할 수 있으니 사람이 판단.
+    </div>
+  </div>
+
   <!-- ─────────────────────────────────────────
-       슬라이드 12: 마무리  (data-index="11")
+       슬라이드 마무리  (data-index="17")
   ───────────────────────────────────────── -->
-  <div class="slide centered" data-index="11">
+  <div class="slide centered" data-index="17">
     <div class="ending-main">
       AI는 <span class="accent">도구</span>,<br>
       당신은 <span class="accent">감독</span>입니다
@@ -1468,7 +1819,7 @@
 <div class="progress-bar" id="progressBar"></div>
 
 <!-- 페이지 인디케이터 -->
-<div class="page-indicator" id="pageIndicator">1 / 12</div>
+<div class="page-indicator" id="pageIndicator">1 / 18</div>
 
 <!-- 좌우 클릭 영역 -->
 <div class="nav-zone left" id="navLeft">
@@ -1501,7 +1852,7 @@
   window.addEventListener('resize', scaleDeck);
 
   // ── 슬라이드 전환 ─────────────────────────────────────
-  const TOTAL = 12;
+  const TOTAL = 18;
   let current = 0;
 
   const slides = document.querySelectorAll('.slide');
