@@ -7,17 +7,17 @@
 <style>
   @font-face {
     font-family: 'Paperlogy';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    src: url('../../../assets/fonts/Paperlogy-4Regular.woff2') format('woff2');
     font-weight: 400; font-display: swap;
   }
   @font-face {
     font-family: 'Paperlogy';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    src: url('../../../assets/fonts/Paperlogy-7Bold.woff2') format('woff2');
     font-weight: 700; font-display: swap;
   }
   @font-face {
     font-family: 'Paperlogy';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    src: url('../../../assets/fonts/Paperlogy-8ExtraBold.woff2') format('woff2');
     font-weight: 800; font-display: swap;
   }
   :root { --ink:#1a1530; --purple:#6020ff; --line:#e5dff0; --bg:#ffffff; --purple-light:#f7f3ff; }
@@ -41,8 +41,11 @@
     padding:44px 80px;
     opacity:0; transform:translateX(60px);
     pointer-events:none; background:#fff;
+    visibility:hidden;
+    will-change:opacity, transform;
+    contain:layout paint;
   }
-  .slide.active { opacity:1; transform:translateX(0); pointer-events:all; }
+  .slide.active { opacity:1; transform:translateX(0); pointer-events:all; visibility:visible; }
   .slide.centered { justify-content:center; align-items:center; text-align:center; }
 
   .step-label { font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple); margin-bottom:14px; }
@@ -542,7 +545,7 @@
   <div class="slide-title">한 줄짜리 <span class="accent">상단 헤더</span>가 메뉴 전부</div>
   <div class="divider"></div>
   <div class="cap-wrap" style="width:800px;height:500px;margin:0 auto;flex-shrink:0;">
-    <img class="cap-img" src="higgsfield/screenshots/00-home.png" alt="Higgsfield 메인 화면" onerror="this.style.display='none'">
+    <img class="cap-img" src="higgsfield/screenshots/00-home.png" alt="Higgsfield 메인 화면" loading="lazy" decoding="async" onerror="this.style.display='none'">
     <svg class="ann-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
       <line x1="13" y1="3.5" x2="13" y2="11" stroke="#6020ff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
       <line x1="21" y1="3.5" x2="21" y2="17" stroke="#6020ff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
@@ -581,7 +584,7 @@
   <div class="slide-subtitle">2026년 4월부터 Freepik의 AI 이미지·영상·오디오 스택이 Magnific으로 통합. 메뉴는 좌측 세로 사이드바에 모여 있습니다.</div>
   <div class="divider"></div>
   <div class="cap-wrap" style="width:800px;height:450px;margin:0 auto;flex-shrink:0;">
-    <img class="cap-img" src="magnific/screenshots/image.jpg" alt="Magnific 작업 화면" onerror="this.style.display='none'">
+    <img class="cap-img" src="magnific/screenshots/image.jpg" alt="Magnific 작업 화면" loading="lazy" decoding="async" onerror="this.style.display='none'">
     <svg class="ann-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
       <line x1="6" y1="8" x2="14" y2="8" stroke="#6020ff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
       <line x1="6" y1="13" x2="14" y2="13" stroke="#6020ff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>

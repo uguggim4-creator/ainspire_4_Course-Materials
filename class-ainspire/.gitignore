@@ -13,3 +13,9 @@ node_modules/
 
 # 녹화 원본
 *.mkv
+
+# 강사용 캡처 자료 — 사이트(HTML)에서 직접 참조하지 않음, 강의 노트(.md)에서만 사용
+# 로컬 디스크에는 남기고 Vercel 배포에는 제외
+materials/4기-입문편/왕초보가이드/higgsfield/screenshots/*.png
+!materials/4기-입문편/왕초보가이드/higgsfield/screenshots/00-home.png
+materials/4기-입문편/왕초보가이드/magnific/screenshots/*.png
