@@ -1,0 +1,793 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[Part 1] 기술의 복제 시대, 기획의 본질</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cf3970b-b5e1-80c2-9013-eaf79d8139d4" class="page sans"><header><h1 class="page-title" dir="auto">[<strong>Part 1</strong>] 기술의 복제 시대, 기획의 본질</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="2cf3970b-b5e1-80bb-a6ea-e164f503838a" class="">AI 비전 디렉팅: 8-Day 마스터 커리큘럼</h1></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8074-b97f-ce2e95e9030e" class="">이 과정은 수강생을 단순 조작자(Operator)에서 감독(Auteur)으로 변화시키는 것을 목표</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8065-93e3-eee07aa662fd" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-806b-8258-ecdec0068e48" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8063-b9d6-c75f2b946bb0"><td id="prHB" class=""><strong>주차</strong></td><td id="Fo]T" class=""><strong>Day</strong></td><td id="oCGV" class=""><strong>주제</strong></td><td id="pbfB" class=""><strong>핵심 인문학/이론</strong></td><td id="R}pm" class=""><strong>학습 목표</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8088-80fe-e89dd2a0d8fa"><td id="prHB" class=""><strong>2주</strong></td><td id="Fo]T" class=""><strong>Part 1</strong></td><td id="oCGV" class=""><strong>시간과 프레임</strong></td><td id="pbfB" class="">발터 벤야민, 베르그송, 롤랑 바르트</td><td id="R}pm" class="">시간의 지속(Duration)과 <strong>푼크툼(Punctum)</strong> 찾기</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80bc-a4f6-dbc518bbed7f"><td id="prHB" class=""></td><td id="Fo]T" class=""><strong>Part 2</strong></td><td id="oCGV" class=""><strong>렌즈와 시선</strong></td><td id="pbfB" class="">앙드레 바쟁, 로라 멀비, 지가 베르토프</td><td id="R}pm" class="">렌즈의 왜곡과 심도가 만드는 <strong>권력 관계</strong> 이해</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8020-a4e8-f6b8fda4fff0"><td id="prHB" class=""></td><td id="Fo]T" class=""><strong>Part 3</strong></td><td id="oCGV" class=""><strong>빛과 색채 심리</strong></td><td id="pbfB" class="">요한 괴테, 에드워드 호퍼, 렘브란트</td><td id="R}pm" class="">빛의 방향과 색온도로 <strong>감정(Mood)</strong> 설계하기</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8092-acc2-f1d211c9dc9a"><td id="prHB" class=""></td><td id="Fo]T" class=""><strong>Part 4</strong></td><td id="oCGV" class=""><strong>미장센과 구도</strong></td><td id="pbfB" class="">웨스 앤더슨, 게슈탈트 심리학</td><td id="R}pm" class="">화면 내 요소 배치와 <strong>시각적 질서</strong> 만들기</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80b0-a621-ee17ad4bc498"><td id="prHB" class=""><strong>3주</strong></td><td id="Fo]T" class=""><strong>Part 5</strong></td><td id="oCGV" class=""><strong>움직임의 미학</strong></td><td id="pbfB" class="">질 들뢰즈(운동-이미지), 루반</td><td id="R}pm" class="">카메라 워킹과 피사체 <strong>움직임의 조화</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8085-88d8-f177ca942888"><td id="prHB" class=""></td><td id="Fo]T" class=""><strong>Part 6</strong></td><td id="oCGV" class=""><strong>소리와 비가시성</strong></td><td id="pbfB" class="">미셸 시옹, 존 케이지</td><td id="R}pm" class="">청각적 시각화와 **침묵(Silence)**의 활용</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8091-b651-f783bad62ea3"><td id="prHB" class=""></td><td id="Fo]T" class=""><strong>Part 7</strong></td><td id="oCGV" class=""><strong>편집과 몽타주</strong></td><td id="pbfB" class="">에이젠슈타인, 쿨레쇼프 효과</td><td id="R}pm" class="">컷과 컷 사이의 <strong>충돌</strong>을 통한 의미 생성</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-803c-ab5e-feda481cc96a"><td id="prHB" class=""></td><td id="Fo]T" class=""><strong>Part 8</strong></td><td id="oCGV" class=""><strong>시뮬라크르와 작가</strong></td><td id="pbfB" class="">장 보드리야르, 앤디 워홀</td><td id="R}pm" class="">AI 시대의 원본성, 윤리, <strong>나만의 스타일</strong> 구축</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h1 id="2cf3970b-b5e1-806a-b6b5-f83d17d0cc99" class="">[<strong>Part 1</strong>] 기술의 복제 시대, 기획의 본질</h1></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8011-b804-c697191f7d68" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-8034-a206-e666e3655dd0" class="">📝 Course Overview<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8013-8f3c-ce4279a6f1e9" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> AI 기술 너머, 인간의 인문학적 기획과 직관</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80aa-8916-cf511d65f658" class="bulleted-list"><li style="list-style-type:disc"><strong>목표:</strong> &#x27;프롬프트 엔지니어&#x27;가 아닌, &#x27;비전 디렉터(Vision Director)&#x27;로의 도약</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80b8-be50-f00d03588350" class="bulleted-list"><li style="list-style-type:disc"><strong>필독 철학:</strong> &quot;AI는 확률로 계산하고, 인간은 <strong>결핍</strong>으로 상상한다.&quot;</li></ul></div></blockquote></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-8040-9329-f70f2849a0ff"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80f9-ad04-f8fda85220e0" class="">0. Opening: 기계의 속도 vs 인간의 방향</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80aa-a10e-efc444c8c24e" class="">&quot;저자는 생산자다&quot; (발터 벤야민)</h3></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8079-bc27-c4160801ff04" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image.png"><img style="width:709.984375px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8081-a6d6-e1d2269d4eed" class="">AI 시대, 누구나 영상을 만들 수 있습니다. 벤야민은 &lt;생산자로서의 작가&gt;에서 기술을 소비하는 것에 그치지 않고, 기술을 통해 <strong>새로운 관계를 생산해내는 것</strong>이 예술가의 의무라고 했습니다.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ec-adce-e92f69fad8cf" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80ee-8c6e-c30ead740513" class="bulleted-list"><li style="list-style-type:disc"><strong>핵심 질문:</strong> AI가 10초 만에 만들어준 영상에 당신의 &#x27;의도&#x27;가 없다면, 당신은 감독인가요, 아니면 <strong>AI의 첫 번째 관객</strong>인가요?</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8010-a75c-e822e6e095dd" class="bulleted-list"><li style="list-style-type:disc"><strong>우리의 목표:</strong> AI라는 거대한 엔진에 ‘핸들(방향키)&#x27;을 다는 것입니다. 그 핸들은 인문학적 질문에서 나옵니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-802e-9a9f-f254b25cfaf0" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-80c2-bc6d-debfcae8fbc1"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-802d-a208-d5d7771f50e7" class="">1. 시간의 조각 (Sculpting in Time)</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-806f-977c-c377ecb1090f" class="">1-1. 시간의 압력 (안드레이 타르코프스키)</h3></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8036-9503-dd75c28ac33a" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image%201.png"><img style="width:495.9821472167969px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-800c-92f1-c786e2601e37" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 영화 거장 타르코프스키는 저서 &lt;봉인된 시간&gt;에서 영화란 &#x27;시간을 조각하는 예술&#x27;이라고 했습니다. 컷의 길이는 물리적 시간(초)이 아니라, 그 안에 담긴 &#x27;시간의 압력(Time Pressure)&#x27;으로 결정됩니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-809b-a1c9-e69f60d2cad0" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 단순히 &quot;슬로우 모션&quot;을 쓰는 게 아닙니다. 영상 속 인물이 느끼는 시간이 얼마나 무거운지, 가벼운지를 기획해야 합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a9-80fa-ccb9f2f0193b" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80bd-a2b1-c36e54c961fc"><div class="source"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-60fps-__54968.mp4">attachment:b2c0cf88-c7fe-4765-a1f6-a05da292af5e:freepik__-60fps-__54968.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-8069-8d36-e6ae77906cbd" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80d7-9899-d791acc2384f"><td id="S^R=" class=""><strong>구분</strong></td><td id="`c~&lt;" class="" style="width:601px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8009-9aa0-c0fe134baef8"><td id="S^R=" class=""><strong>Bad Example</strong><br/>(단순 슬로우)</td><td id="`c~&lt;" class="" style="width:601px"><strong>설명:</strong> 그냥 천천히 달리는 사람. 왜 느린지 이유가 없음.<br/><strong>이미지 컨셉:</strong> 운동장에서 뛰는 사람의 단순한 60fps 영상.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-803a-b605-d52be9b5f696"><td id="S^R=" class=""><strong>Good Example</strong><br/>(시간의 압력)</td><td id="`c~&lt;" class="" style="width:601px"><strong>설명:</strong> 물방울이 떨어지는 찰나의 순간이 영원처럼 느껴짐. 긴장감으로 인해 시간이 늘어진 상태.<br/><strong>Prompt:</strong> <code>Macro shot, a water droplet falling from a cracked wine glass, extreme tension, frozen in time, high speed photography aesthetic, dramatic lighting, time pressure, tarkovsky style atmosphere --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8031-9bfc-d3fca9786004"><div class="source"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__super-slow-motion__54967.mp4">attachment:659bd318-3542-4102-893b-ac22271b20c8:freepik__super-slow-motion__54967.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d8-b267-e2e17e298513" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80a5-a5df-c150b2194df9"><div class="source"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__a-mesmerizing-macro-shot-reveals-a-crystalclear-dr__54969.mp4">attachment:d8e31e6c-22ff-462a-9687-6ae8f5bce08b:freepik__a-mesmerizing-macro-shot-reveals-a-crystalclear-dr__54969.mp4</a></div></figure></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-802d-9b25-fc42a1433592" class="">1-2. 지속 (Durée)과 직관 (앙리 베르그송)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8037-a9bf-c7f4b96aaa15" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 베르그송은 시간을 수치(Clock-time)가 아닌 지속(Duration)으로 정의했습니다. 우리의 의식은 끊어지지 않고 흐릅니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-805c-a23c-ce435c199cf0" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 기획 포인트:</strong> AI 영상은 컷 편집이 잦습니다. 하지만 감독은 이 컷들이 정서적으로 &#x27;지속&#x27;되도록 연결해야 합니다. 컷이 바뀌어도 감정선(Mood)은 유지되어야 합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8067-bed0-f07288b48a21" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-808e-b632-eabfe3deea28"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80a0-8c81-eeda4451a2ac" class="">2. 공간의 권력과 심리 (Space &amp; Psychology)</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-805d-aaa7-d14ec4c95cd3" class="">2-1. 프레임은 감옥이다 (루돌프 아른하임)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8049-91cb-eb3c5ce4f0e9" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 예술심리학자 아른하임은 프레임의 가장자리가 만들어내는 힘을 강조했습니다. 피사체를 어디에 두느냐가 곧 <strong>권력 관계</strong>입니다.<div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8012-b1ae-f340b108e6a1" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__54970.jpeg"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__54970.jpeg"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8096-85d9-f46790ba5159" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8004-b410-d19e6b021347" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 피사체를 항상 중앙에 두지 마십시오(<strong>Center Bias 탈피</strong>). 구석에 몰아넣어 무력감을 주거나, 아래에 배치해 억압감을 표현하십시오.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8022-bea4-f431f9edeb8d" class="">🖼️ 시각 자료 예시: 권력의 배치</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a9-a399-e5b8c29eb3f6" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80f4-ba96-f4acc7364d1a" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__54972.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__54972.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8024-bde8-c043792abfd4" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__extreme-high-angle-shot-massive-brutalist-concrete__54971.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__extreme-high-angle-shot-massive-brutalist-concrete__54971.png"/></a></figure></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-80dc-98b8-da98f4a3738f" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80ac-8ccf-ee911fc0f1a9"><td id="mEQh" class=""><strong>구분</strong></td><td id="tf|F" class="" style="width:592px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80d4-a1b3-f236d6b23d3b"><td id="mEQh" class=""><strong>Bad Example</strong><br/>(중앙 구도)</td><td id="tf|F" class="" style="width:592px"><strong>설명:</strong> 주인공이 화면 정중앙에 서 있음. 안정적이지만 지루하고 서사가 없음.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-805f-b7dc-c88f13f107f6"><td id="mEQh" class=""><strong>Good Example</strong><br/>(억압적 구도)</td><td id="tf|F" class="" style="width:592px"><strong>설명:</strong> 거대한 건물이 화면의 90%를 차지하고, 주인공은 화면 하단 구석에 작게 배치됨. 사회나 환경에 짓눌린 개인.<br/><strong>Prompt:</strong> <code>Extreme high angle shot, massive brutalist concrete wall occupying 90% of frame, a tiny person standing at the bottom corner, feeling of oppression, dominance of architecture over human, desaturated grey tones --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-803a-9b94-df5861c6a0b4"/></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8029-944b-e5525e481362" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80ce-9481-cfab3b39131f" class="">2-2. 쿨레쇼프 효과와 몽타주 (세르게이 에이젠슈타인)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ac-a62f-d224ef4415a9" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80e1-b50f-eda71afb1ac7" class="">몽타주(Montage)와 분위기(Atmosphere)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8004-b435-cee2b99efbfe" class="">영상 제작에 있어 몽타주는 뼈대(논리)를 구축하는 기술이며, Atmosphere는 그 뼈대 위에 흐르는 피(정서)를 의미합니다. AI 비전 디렉터는 이 두 가지를 통해 단순한 이미지를 살아있는 영상으로 전환합니다.</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80d7-9910-e99a238afd04" class="">정의 (Definition)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8061-80d1-d3067ab056fe" class="">프랑스어 monter(조립하다)에서 유래한 용어로, 단순히 필름을 이어 붙이는 편집(Editing) 기술을 넘어섭니다. 서로 다른 두 개의 숏(Shot)이 결합할 때, 물리적인 합(A+B)이 아닌 완전히 새로운 제3의 의미(C)가 생성된다는 영상 미학의 핵심 원리입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80b0-9ba2-f8c9534ed080" class="">인문학적 관점 (Humanities Insight)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8078-8be0-fb850b62eb1d" class="">세르게이 에이젠슈타인은 이를 변증법적 유물론에 비유했습니다. 정(Thesis)과 반(Antithesis)이 충돌하여 합(Synthesis)을 이루듯, 앞 장면과 뒷 장면의 충돌이 관객의 뇌 속에서 폭발적인 개념을 만들어냅니다.</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80cd-86bc-dc55308f34ed" class="bulleted-list"><li style="list-style-type:disc">쿨레쇼프 효과: 무표정한 남자의 얼굴 뒤에 스프 그릇을 보여주면 배고픔으로, 관 속에 있는 여자를 보여주면 슬픔으로 해석되는 현상. 즉, 의미는 이미지 자체가 아니라 배치(Context)에서 발생합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8089-b7f0-c73dacb02278" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80b1-ab2d-d7f8867bc58d" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image%202.png"><img style="width:2080px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image%202.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a7-9be9-f0bf3edc4882" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8025-9eed-d3b62eacc598" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 소련의 영화감독 에이젠슈타인과 쿨레쇼프는 [A장면 + B장면 = C(새로운 의미)]가 된다는 몽타주 이론을 정립했습니다. &quot;무표정 + 스프 = 배고픔&quot;, &quot;무표정 + 관 = 슬픔&quot;.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8014-a062-c779a1579354" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8003-bcb1-e620b800ce0c" class="">무표정 + 스프 = 배고픔</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-800a-b193-f6e20e720284" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-unretouched-visible-pores-documentary-style-raw-b__54974.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-unretouched-visible-pores-documentary-style-raw-b__54974.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80ef-957b-df18c51c371d" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image%203.png"><img style="width:595.982177734375px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/image%203.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8047-9771-ffa5ebcf4b20" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8025-9342-e7b2df513f15" class="">무표정 + 관 = 슬픔</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-808b-ac55-c12ceaae506f" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-unretouched-visible-pores-documentary-style-raw-b__54974%201.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-unretouched-visible-pores-documentary-style-raw-b__54974%201.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8064-a697-eef52ebff1ad" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-documentary-style__1684.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-documentary-style__1684.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8022-8327-d9d8dafdb288" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80b2-b5c3-dd6de65fafe4" class="">Atmosphere (분위기/공기감): 보이지 않는 것을 찍는 기술</h3></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8025-a1c1-dce819fa999e" class="">정의 (Definition)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8003-9904-c3c1c94d0c5c" class="">영상의 시각적 정보(피사체, 배경)를 넘어, 그 공간을 채우고 있는 정서적 공기, 온도, 습도, 압력을 총칭합니다. 미장센(Mise-en-Scène)의 궁극적인 목표이자, 관객이 서사가 아닌 감각으로 영상을 기억하게 만드는 요소입니다</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8016-b9d8-deb06008131a" class="">인문학적 관점 (Humanities Insight)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b6-b78c-e003c363e613" class="">벨라 발라즈는 사물의 관상학(Physiognomy)이라고 표현했습니다. 안드레이 타르코프스키는 이를 기압 혹은 시간의 압력이라고 불렀습니다. 대사나 사건이 없어도, 화면 안에 흐르는 팽팽한 긴장감이나 나른한 권태가 관객의 피부에 닿게 만드는 힘입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80c8-893f-e1d5e347024d" class="">프롬프트 엔지니어링 단계에서 가장 간과하기 쉬운 영역입니다. 단순히 객체(Object)를 나열하는 것은 묘사일 뿐입니다.</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-802f-9315-cf21097800ed" class="bulleted-list"><li style="list-style-type:disc">전략: What(무엇이 있는가)이 아니라 How(어떤 느낌인가)를 지시해야 합니다. AI에게 비 오는 거리(Object)가 아니라, 비에 젖은 아스팔트의 차가운 질감과 고독한 공기(Atmosphere)를 요청하십시오. 이것이 기술자가 아닌 예술가의 프롬프트입니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80b7-9d04-d09077833e34" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 기획 포인트:</strong> 개별 영상의 퀄리티보다 중요한 것은 &#x27;배치&#x27;입니다. AI로 생성한 영상 A와 B를 붙였을 때 어떤 의미가 생길지 기획 단계에서 계산해야 합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-804f-945f-fe5ce2368030" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80c6-bc28-dafeb6a1ad07" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-atmosphere-documentary-style-raw-beauty-documenta__54314.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-atmosphere-documentary-style-raw-beauty-documenta__54314.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80f2-bbaa-eda69e58e54a" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-atmosphere-documentary-style-raw-beauty-documenta__54313.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-atmosphere-documentary-style-raw-beauty-documenta__54313.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-805a-9258-f50086c1550e" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80b0-8992-d1afe68b1332" class="">많은 생성형 AI 크리에이터들이 개별 컷의 퀄리티(화질, 디테일)에 집착합니다. 하지만 진정한 디렉터는 컷과 컷 사이의 관계를 설계합니다.</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-805b-86c2-ed2a9c6e5633" class="bulleted-list"><li style="list-style-type:disc">전략: AI로 생성한 A영상(평화로운 마을)과 B영상(다가오는 폭풍)을 어떻게 붙이느냐에 따라 다가올 위기라는 서사가 완성됩니다. 컷의 배치를 통해 관객의 심리를 조종하는 기획력이 필요합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8021-ae4e-d1d9bdf05475" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-80c2-b76c-f2fecc712034"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80b0-a7ac-d12619a219fb" class="">3. 보이지 않는 세계와 소리 (Invisible &amp; Sound)</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80ae-b669-d88e3c0b9eef" class="">3-1. 화면 밖 공간 (노엘 버치)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80f8-b225-fceaa0fa8b0a" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 노엘 버치는 &lt;영상의 실천&gt;에서 화면 밖 공간(Off-Screen Space)을 6가지로 분류했습니다. 보이지 않는 공간은 호기심과 <strong>서스펜스</strong>의 영역입니다.<div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80df-b105-ce29a7a3ba52" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__54977.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__54977.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8047-a452-d95bb81e215d" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-803b-b4c1-d9056e3e8bcb" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> AI는 화면 밖을 그리지 못하지만, 프롬프트로 &#x27;화면 밖을 의식하는 행동&#x27;을 만들 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ab-a240-d0e4b6dcf49f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8076-872d-d7ec54d4cce5" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80fe-8544-c1324a19f16c" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__a-grotesque-poorly-rendered-ai-monster-centered-in__1686.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__a-grotesque-poorly-rendered-ai-monster-centered-in__1686.jpeg"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80d3-9e09-eccbfd472ad4" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-ai-__1687.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-ai-__1687.png"/></a></figure></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-8004-8746-e01b7f23ff03" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-804d-b7b6-ffabaa5592ea"><td id="rUpB" class=""><strong>구분</strong></td><td id="taxh" class="" style="width:588px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80ad-bd2c-d56155b086d5"><td id="rUpB" class="">Direct Show (직접 보여줌)</td><td id="taxh" class="" style="width:588px">설명: 괴물을 화면 중앙에 보여줌. 조잡한 AI 괴물은 오히려 공포감을 떨어뜨림.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80c7-8076-c82970a5153e"><td id="rUpB" class="">Off-Screen (간접 암시)</td><td id="taxh" class="" style="width:588px">설명: 운전 중인 남자가 백미러(화면 밖 뒤쪽)를 보며 식은땀을 흘림. 뒤에 누가 따라오는지 보여주지 않음으로써 긴장감 극대화.<br/>Prompt: Cinematic close-up, a man driving at night, looking nervously into the rearview mirror, sweating, neon lights reflecting on face, fear of being followed, hitchcock suspense, intense eyes focus --ar 16:9</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80df-ba78-f9c453cf86a0" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__cinematic-closeup-a-man-driving-at-night-looking-n__1688.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__cinematic-closeup-a-man-driving-at-night-looking-n__1688.png"/></a></figure></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-80df-9f5b-dc810793983b"/></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801d-9671-eea475ccdfbd" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8030-8e8a-e8af0b8cb0ce" class="">4. 푼크툼 (Punctum)과 디테일</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80fb-b581-cc925468138b" class="">4-1. 상처 입은 디테일 (롤랑 바르트)</h3></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80cf-9ab1-dfefae0a7b8b" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__1689.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__-__1689.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8083-b361-e31a916723fc" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80c3-8054-d0eaf469ecf8" class="bulleted-list"><li style="list-style-type:disc">이론: 바르트는 &lt;카메라 루시다&gt;에서 사진의 매력은 정보(Studium)가 아니라, 나를 찌르는 우연한 디테일인 푼크툼(Punctum)에 있다고 했습니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b8-ab6e-f7c85a8a4192" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-806a-b000-c6d24fc1c405" class="bulleted-list"><li style="list-style-type:disc">AI 적용: &#x27;완벽한 미남/미녀&#x27;는 지루합니다. 상처, 주름, 얼룩, 비대칭 등 결핍을 생성하십시오.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-803f-8572-d09cf27b2489" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8038-90db-ebfa10c4a083" class="">1. 푼크툼(Punctum)의 정의</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8043-bdec-efc97907f0d0" class="">푼크툼은 라틴어로 &#x27;찌르다(to prick)&#x27;, &#x27;상처 입히다&#x27;, &#x27;점(point)&#x27;이라는 뜻에서 유래했습니다. 바르트는 이를 사진을 볼 때 작가의 의도와 상관없이 <strong>보는 이의 가슴을 찌르고 들어오는 강렬하고 지극히 개인적인 자극</strong>이라고 정의했습니다.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8012-a65c-eacc529ffe22" class="">이는 우리가 사진이나 영상을 볼 때 &quot;와, 잘 찍었네&quot;라고 분석하는 것이 아니라, &quot;아...&quot; 하고 말문이 막히거나 가슴 한구석이 아려오는 경험을 의미합니다.</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-802a-956b-f3f2dd46ec64" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__73314.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__73314.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8025-ac23-d9527c67ff5f" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8052-ad1e-c7e31cf0342a" class="">2. 대조 개념: 스투디움(Studium)과의 비교</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-809c-9455-c85401e9139c" class="">푼크툼을 이해하기 위해서는 반드시 롤랑 바르트가 제시한 대조 개념인 스투디움(Studium)과 비교해야 명확해집니다.</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8047-9269-ec9e46f55f61" class="">스투디움 (Studium)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8072-94b1-dfbdddd06f27" class="bulleted-list"><li style="list-style-type:disc">의미: 일반적인 관심, 교양, 문화적 코드.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80d7-b41b-dd754f8482a7" class="bulleted-list"><li style="list-style-type:disc">반응: &quot;이 사진은 구도가 좋군&quot;, &quot;1950년대의 의복 양식을 잘 보여주는군.&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-807f-bf67-d9c8a9e81182" class="bulleted-list"><li style="list-style-type:disc">특징: 정보 전달적이고 교육적입니다. 작가의 의도를 우리가 이해하고 공감하는 &#x27;약속된 언어&#x27;입니다. 우리가 AI에게 프롬프트로 &quot;완벽한 조명, 아름다운 풍경&quot;을 요청해서 나오는 결과물은 대부분 스투디움에 해당합니다.<div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80bd-86a8-d997fc5ef206" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__73313.jpeg"><img style="width:682px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__73313.jpeg"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8079-bfd6-ddd5413a162c" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80de-8361-e40df27a37b1" class="">푼크툼 (Punctum)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8028-be43-e5e9ac6034f5" class="bulleted-list"><li style="list-style-type:disc">의미: 찌르는 상처, 우연한 디테일, 개인적 통증.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8037-8196-df6339e29c94" class="bulleted-list"><li style="list-style-type:disc">반응: (이유를 말하기 힘들지만) 시선이 계속 머물거나, 눈물이 나거나, 마음이 동요됨.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80ab-98c2-cfbf0d33350c" class="bulleted-list"><li style="list-style-type:disc">특징: 작가가 의도하지 않은 경우가 많습니다. 사진 속 인물의 떼 묻은 손톱, 낡은 신발 끈, 묘하게 슬픈 눈빛 같은 &#x27;아주 사소한 디테일&#x27;에서 발생합니다.<div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8091-9fbc-c0ec8cfcf16f" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54318.jpeg"><img style="width:682px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54318.jpeg"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801d-98fb-f33d29f0ad07" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80f5-a8d5-c97beebe97f0" class="">3. 푼크툼의 두 가지 핵심 속성</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8018-9975-c6cf9bedc914" class="">1) 디테일의 힘 (부분적 특징)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-806d-9dc5-fa1cb5cea1d3" class="">푼크툼은 전체가 아닌 <strong>부분</strong>에서 옵니다. 화려한 궁전 사진에서 푼크툼은 웅장한 건물이 아니라, 그 앞을 지나가는 아이의 낡은 운동화 한 짝일 수 있습니다. 이 사소한 디테일이 사진 전체의 맥락을 깨뜨리고 보는 이의 상상력을 자극합니다.</p></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-8016-a05b-dd413d33996f" class="">AI 비전 디렉팅 <br/>AI가 생성한 &#x27;완벽한 미남&#x27;은 지루합니다. 하지만 그 미남의 눈가에 있는 작은 흉터나, 넥타이가 삐뚤어진 디테일은 그에게 &#x27;사연&#x27;을 부여합니다. 이것이 바로 푼크툼을 만드는 기획입니다.</blockquote></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-805c-9b94-e0dcd70e9984" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80af-8dd7-f982358f1560" class="">시각 자료 예시: 결핍의 미학</h3></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80a1-b01b-d65522d8079a" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__35mm-film-photography-a-medium-shot-of-a-flawlesss__1690.png"><img style="width:709.9921875px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__35mm-film-photography-a-medium-shot-of-a-flawlesss__1690.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80aa-84f3-dabb10e1a80b" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/ainspire_kr______.______AI_._____.______._--ar_169_--stylize__276a77f3-fa72-404a-9a59-b1e490163d32_3.png"><img style="width:709.984375px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/ainspire_kr______.______AI_._____.______._--ar_169_--stylize__276a77f3-fa72-404a-9a59-b1e490163d32_3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b1-92b4-f6e8bde2a3cf" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-806c-8c9b-ca5000895965" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8003-974d-e64c4abeab17"><td id="ZyFE" class=""><strong>구분</strong></td><td id="TeGS" class="" style="width:588px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80c6-bf81-fbd2af7c3972"><td id="ZyFE" class="">Studium (일반적 정보)</td><td id="TeGS" class="" style="width:588px">설명: 잡티 하나 없는 피부, 완벽한 조명. 감정이 느껴지지 않는 마네킹 같은 AI 미남.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80e4-bda1-e839ab9846d9"><td id="ZyFE" class="">Punctum (찌르는 디테일)</td><td id="TeGS" class="" style="width:588px">설명: 비를 맞아 젖은 머리카락, 안경 한쪽 알에 금이 간 상태. 굳게 다문 입술. 그가 겪은 사건을 상상하게 함.<br/>Prompt: Portrait of a survivor, rain-soaked hair, cracked glasses lens, determined look, gritty texture, cinematic lighting, storytelling details, punctum element, 35mm film photograph style,</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80e4-851a-c3ebb47a924d"><td id="ZyFE" class="">사실적 표현, 피부표현을 극대화 하는 프롬프</td><td id="TeGS" class="" style="width:588px">unretouched (무보정), visible pores (모공 표현), 라이카 카메라, documentary style, raw beauty documentation</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8038-bc16-c78ceff9bc55" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__prompt-portrait-of-a-survivor-rainsoaked-hair-crac__54311.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__prompt-portrait-of-a-survivor-rainsoaked-hair-crac__54311.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-807d-9b81-dfe61e260002" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__prompt-portrait-of-a-survivor-rainsoaked-hair-crac__54312.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__prompt-portrait-of-a-survivor-rainsoaked-hair-crac__54312.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e9-90ee-d557f28a3c5c" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80b2-af65-dd3601c49122" class="">2) 시간의 압력 (존재의 증명)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8021-b0b7-ca7d4bfbfd50" class="">바르트는 책의 후반부에서 푼크툼의 본질을 <strong>시간</strong>으로 확장합니다. 사진 속 인물은 웃고 있지만, 보는 우리는 &quot;이 사람은 언젠가 죽는다(혹은 이미 죽었다)&quot;는 사실을 깨닫습니다.<br/>&quot;그것이 거기 있었다(That-has-been)&quot;는 존재의 증명과, 돌이킬 수 없는 시간의 상실감이 결합될 때 가장 강력한 푼크툼이 발생합니다. 이는 죽음과 상실을 내포한 멜랑콜리입니다.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8018-b48b-e8e28d52da3d" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-808c-a8ec-eca66bb50517" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__95479.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__95479.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d1-9f53-c290068059c0" class="">A smiling child in a vintage photo aesthetic, soft focus edges, faded tones, a small light leak and a corner crease, background includes a barely readable calendar date, calm domestic setting, sense of time pressing forward, “That-has-been” mood, minimalistic composition, emotional but quiet.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-808c-8c8f-d8be54ec24a0" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-806a-ade5-fc33ec7f1fcc" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__95481.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__95481.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80c6-8908-ca2b39701ac6" class="">An old faded family photograph of a person smiling warmly, subtle film grain, light scratches, slight vignette, soft afternoon window light with dust particles, a tiny fingerprint on the corner and a faint handwritten date visible, calm ordinary scene yet overwhelming sense of irreversible time (That-has-been), quiet melancholic mood, realistic, understated, no drama.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8089-af08-d2a0abf2d737" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8029-839f-c929c56b004f" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__an-old-faded-family-photograph-of-a-person-smiling__95480.png"><img style="width:2752px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__an-old-faded-family-photograph-of-a-person-smiling__95480.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8000-b0c6-f1a280d61dc7" class="">An old faded family photograph of a person smiling warmly, subtle film grain, light scratches, slight vignette, soft afternoon window light with dust particles, a tiny fingerprint on the corner and a faint handwritten date visible, calm ordinary scene yet overwhelming sense of irreversible time (That-has-been), quiet melancholic mood, realistic, understated, no drama.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-803b-97da-c388c9058de3" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80d7-b562-eb65dad7a493" class="">4. 창작자(비전 디렉터)에게 푼크툼이 중요한 이유</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-800f-b8ba-e8364c0303af" class="">AI 기술은 기본적으로 스투디움(Studium)을 학습합니다. AI는 수만 장의 데이터를 평균 내어 가장 보편적으로 &#x27;좋아 보이는&#x27; 이미지를 만듭니다. 그래서 AI 그림은 화려하지만, 어딘가 영혼이 없고 금방 질리는 것입니다. 매끈하고 결점이 없기 때문입니다.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8062-b979-f58466bb78a3" class="">진정한 비전 디렉터는 이 매끄러운 AI의 세계에 의도적으로 균열(Punctum)을 내는 사람입니다.</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8052-b35a-e552542d5d87" class="bulleted-list"><li style="list-style-type:disc">완벽한 대칭을 깨뜨리는 것.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8009-84df-e2f87246f27d" class="bulleted-list"><li style="list-style-type:disc">설명되지 않는 기묘한 오브제를 배치하는 것.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80b5-963f-eb13e6db8707" class="bulleted-list"><li style="list-style-type:disc">정보(Info)가 아닌 정서(Affect)를 담는 것.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-807b-93a2-e535b86274b8" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80ff-8da2-dd4d4cac46ac" class="">5. 요약 </h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-804e-9fce-fe17889853eb" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-8088-a2a7-d8747d742785" class="">&quot;여러분이 만든 AI 이미지가 사람들의 눈(Eye)을 즐겁게 한다면 그것은 스투디움에 머문 것입니다. 하지만 그 이미지가 사람들의 가슴(Heart)을 찌르고 기억에 박힌다면, 여러분은 푼크툼을 만들어낸 것입니다. 완벽함을 버리고, 결핍과 상처를 기획하십시오.&quot;</blockquote></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e4-90ce-ed6908d2e250" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-805b-bac7-e1c2ac95e3dd"/></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80c1-9698-fcaeb13d60d0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a8-b59d-eec648749014" class="">프롬프트 </p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80c4-a80b-c3dbd2800f56" class="">낡은 가족사진이 놓인 조용한 방, 창문 틈으로 들어오는 오후의 먼지 빛줄기. 사진 속 인물들은 평범하게 미소 짓고 있지만, 사진의 한 모서리에만 남아있는 아주 작은 지문 자국이 유난히 선명하다. 지문 자국은 마치 누군가가 마지막으로 사진을 잡았던 순간의 체온을 남긴 듯, 보는 이의 시선을 붙잡아 놓는다. 전체는 따뜻하고 고요하지만, 그 지문 하나가 기억의 통증을 깨운다.<br/>연출: 미니멀한 정물, 낮은 대비의 자연광, 얕은 심도, 필름 그레인, 고요한 분위기.<br/>핵심: “의미”는 설명되지 않는데, 사소한 흔적 하나가 감정을 찌르는 장면. (푼크툼).(Atmosphere), documentary style, raw beauty documentation</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8040-be13-c86eeca6f757" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54318%201.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54318%201.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-807e-afb4-f74e09c561dc" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e6-906f-f8052e41a41b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8065-9b2a-d6a22eb680a5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80fb-b6d4-c8729a623e2e" class="">비 오는 밤, 네온사인이 번지는 도시의 횡단보도. 사람들은 검은 우산을 들고 무표정하게 걷고, 모든 것이 영화처럼 아름답게 정돈되어 있다. 그런데 프레임 한가운데도 아닌, 화면 가장자리 가까운 곳에 한 짝만 남은 어린이용 장화가 물웅덩이 위에 뒤집혀 있다. 장화 안쪽은 젖어 있고, 빗방울이 그 안에 고이면서 작은 파문이 반복된다. 그 장화는 아무 설명도 없이 “무슨 일이 있었나”를 관객의 마음속에서만 폭발시킨다.<br/>연출: 야간 시네마틱, 네온 반사, 롱렌즈, 슬로우 셔터 느낌, 잔잔한 비의 질감, 군중은 배경으로 흐릿하게.<br/>핵심: 장면의 서사를 “알려주지” 않고, 단 하나의 물건이 관객을 찌르는 순간. (푼크툼).(Atmosphere), documentary style, raw beauty documentation</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-800e-87a8-df35ebc2f0a6" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54315.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54315.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8002-a570-cedbe8f3ed3a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a8-a1b1-e368db943bea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801b-a222-e2bc05268d95" class="">햇살 좋은 주말 오후, 공원에서 피크닉을 즐기는 사람들. 체크무늬 돗자리, 과일, 웃음, 바람에 흔들리는 나뭇잎—모든 것이 평화롭다. 그때 돗자리 위 ‘투명한 물컵’ 옆에 작은 보청기 배터리(혹은 약통 뚜껑)가 아주 작게 놓여 있다. 아무도 그것을 설명하지 않고, 누구도 그것을 바라보지 않지만, 관객은 그 작은 물건을 보는 순간 “그 사람이 여기 있었다” 혹은 “시간이 흐른다”는 감각에 찔린다. 전체는 행복하지만, 그 디테일이 감정을 다른 층으로 떨어뜨린다.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8001-b481-c3a5f2acc741" class=""><strong>연출: </strong>밝고 부드러운 톤, 생활광, 자연스러운 인물 포즈, 다큐멘터리 스냅 감성, 디테일은 ‘우연히’ 프레임 안에 들어온 것처럼.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8037-adca-e5783efacb8d" class=""><strong>핵심: </strong>기쁜 장면 속 “작은 이물감”이 <strong>감정의 급소를 찌르는 푼크툼</strong></p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801a-ad4f-e3f3b6ef3634" class="">documentary style, raw beauty documentation</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80fc-9ba3-d48a4a85fd13" class="image"><a href="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54317.jpeg"><img style="width:710px" src="%5BPart%201%5D%20%EA%B8%B0%EC%88%A0%EC%9D%98%20%EB%B3%B5%EC%A0%9C%20%EC%8B%9C%EB%8C%80,%20%EA%B8%B0%ED%9A%8D%EC%9D%98%20%EB%B3%B8%EC%A7%88/freepik__the-style-is-candid-image-photography-with-natural__54317.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80c2-a782-e67d83de6a60" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-8013-ba42-c82a1604f64c"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-808b-9625-c1e55be1603b" class="">[실습 과제] Day 1: AI 감독의 시나리오</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d6-be83-f422c58d35b0" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801e-a143-fbdcacbc9700" class="">Mission 1. 쿨레쇼프 실험 (Montage)</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8032-a4f9-f6a728adecd5" class="bulleted-list"><li style="list-style-type:disc">서로 관련 없는 두 개의 이미지를 생성하여 이어 붙였을 때, 새로운 이야기가 만들어지도록 기획하시오.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80ca-a623-d1d99cad7de4" class="bulleted-list"><li style="list-style-type:disc">Image A: 무표정한 AI 모델의 얼굴.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8091-a34c-e92201d97650" class="bulleted-list"><li style="list-style-type:disc">Image B: (자유 선택 - 예: 불타는 집, 맛있는 케이크, 총)</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8077-b1fb-d34526bdbdfe" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8086-8196-f29c2eaf8a56" class="">Mission 2. 타르코프스키의 시간 (Atmosphere)</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80a3-a69a-c53db05eacdc" class="bulleted-list"><li style="list-style-type:disc">&quot;기다림&quot;이라는 주제로 영상을 만들되, 인물의 얼굴을 보여주지 말고 사물이나 풍경의 움직임(Time Pressure)만으로 &quot;지루하고 고통스러운 기다림&quot;을 표현하시오.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8057-9e2e-e8c0d478de79" class="bulleted-list"><li style="list-style-type:disc">Hint: 녹아내리는 얼음, 시들가는 꽃, 뚝뚝 떨어지는 수돗물 등.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e3-b8e7-d03dab12f780" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-8095-9fd1-f25d1ecf330c" class="">Insight Note<div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-806c-8b97-e4e2c46bccce" class="">&quot;영화는 단순히 보여주는 것이 아니다. 관객이 보지 못한 것을 보게 하는 것이다.&quot; — 로베르 브레송</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8055-aa5d-e3037169ea1c" class="">기술은 &#x27;어떻게(How)&#x27;를 해결해주지만, &#x27;무엇을(What)&#x27;과 &#x27;왜(Why)&#x27;는 여전히 인간의 몫입니다. AI는 캔버스를 채우려 하고, 감독은 캔버스를 비우려(Negative Space) 해야 합니다.</p></div></blockquote></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ea-bfa4-c4195703074b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d7-a893-c5b1381af2c6" class="">&quot;몽타주는 관객을 설득하고, Atmosphere(분위기)는 관객을 매혹합니다.&quot;</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8081-a684-ffeeeb14f219" class="">AI 시대를 살아가는 비전 디렉터인 당신은, 화려한 그래픽을 뽐내는 기술자가 아닙니다.</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80c9-b148-c1c42e98242a" class="bulleted-list"><li style="list-style-type:disc">몽타주로 이야기의 맥락을 설계하고,</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80aa-ab31-ff1374aaf20d" class="bulleted-list"><li style="list-style-type:disc">Atmosphere로 그 이야기 속에 관객을 가두십시오.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80bd-b247-c989a7cab7dd" class="">AI는 확률로 계산하지만, 당신은 인문학적 결핍과 직관으로 이 두 가지를 통제해야 합니다. 그것이 기계를 넘어선 인간 감독의 영역입니다.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

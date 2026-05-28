@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수강생 자료실 | CineGuide</title>
+    <meta name="description" content="AInspire 4기 수강생들을 위한 영상 제작 핵심 개념 정리, 입문 가이드, 레퍼런스 사이트 모음 등 실무 자료실.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        
+:root {
+    /* CineGuide 원본 블루/시안/에메랄드/글라스모피즘 스타일 적용 */
+    --bg-primary: #080C14;
+    --bg-secondary: #0F172A;
+    --bg-card: rgba(30, 41, 59, 0.45);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    
+    --accent-cyan: #06B6D4;
+    --accent-emerald: #10B981;
+    --accent-pink: #EC4899;
+    --accent-gold: #F59E0B;
+    
+    --gradient-accent: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+    --gradient-card-hover: linear-gradient(180deg, rgba(6, 182, 212, 0.15) 0%, rgba(30, 41, 59, 0) 100%);
+    --glow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+    
+    --brand-grad: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+    --glow-purple: 0 0 30px rgba(6, 182, 212, 0.25);
+    --yellow: #F59E0B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .brand-font {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.glass {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+}
+
+/* Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+header.scrolled {
+    background: rgba(8, 12, 20, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+}
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-primary);
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+.mobile-menu-btn:hover {
+    color: var(--accent-cyan);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 10rem 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+.hero-bg-art {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(8, 12, 20, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+.hero-bg-art-2 {
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(8, 12, 20, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+.session-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+}
+.hero-content h1 {
+    font-size: 3.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #FFF 30%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+}
+.hero-content p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+/* Main Container */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 8rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Category Filters */
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+.filter-btn:hover {
+    color: var(--text-primary);
+    border-color: rgba(6, 182, 212, 0.35);
+    background: rgba(6, 182, 212, 0.1);
+}
+.filter-btn.active {
+    color: #080C14;
+    background: var(--brand-grad);
+    border-color: transparent;
+    box-shadow: var(--glow-cyan);
+}
+
+/* Resources Grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+.resource-card {
+    border-radius: 20px;
+    padding: 2.25rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+}
+.resource-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-card-hover);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+.resource-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(6, 182, 212, 0.45);
+    box-shadow: var(--glow-cyan);
+}
+.resource-card:hover::before {
+    opacity: 1;
+}
+.resource-card * {
+    position: relative;
+    z-index: 1;
+}
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+.card-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-cyan);
+    transition: all 0.3s ease;
+}
+.resource-card:hover .card-icon-box {
+    background: var(--accent-cyan);
+    color: #080C14;
+    box-shadow: var(--glow-cyan);
+}
+.card-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.85rem;
+    border-radius: 99px;
+    background: rgba(255, 230, 0, 0.1);
+    border: 1px solid rgba(255, 230, 0, 0.25);
+    color: var(--accent-gold);
+}
+.card-body h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+}
+.card-body p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.25rem;
+    margin-top: auto;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+.read-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    transition: gap 0.2s ease;
+}
+.resource-card:hover .read-more-btn {
+    gap: 0.6rem;
+}
+
+/* Modal Overlay & Details Viewer */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 12, 20, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-wrapper {
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+}
+.modal-overlay.active .modal-wrapper {
+    transform: translateY(0) scale(1);
+}
+.modal-header {
+    padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.modal-title-area {
+    max-width: 85%;
+}
+.modal-category {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+.modal-title-area h2 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+.modal-close-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+.modal-body {
+    padding: 2.5rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* ==========================================================================
+   SHARABLE & EXTENDABLE VIEWER CONTENT MARKUP STYLE
+   (수강생들이 나중에 직접 HTML 워싱 자료를 붙여넣기 편리하도록 통일된 스타일 제공)
+   ========================================================================== */
+.viewer-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+.viewer-content p {
+    margin-bottom: 1.5rem;
+}
+.viewer-content h3 {
+    font-size: 1.5rem;
+    margin: 2.5rem 0 1.25rem;
+    color: var(--accent-cyan);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+    padding-bottom: 0.5rem;
+}
+.viewer-content h4 {
+    font-size: 1.2rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+}
+.viewer-content ul, .viewer-content ol {
+    margin-bottom: 1.75rem;
+    padding-left: 1.5rem;
+}
+.viewer-content li {
+    margin-bottom: 0.65rem;
+}
+.viewer-content strong {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+.viewer-content blockquote {
+    background: rgba(6, 182, 212, 0.1);
+    border-left: 4px solid var(--accent-pink);
+    padding: 1.25rem 1.75rem;
+    border-radius: 0 16px 16px 0;
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+.viewer-content .highlight-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+}
+.viewer-content .highlight-box h5 {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+}
+.viewer-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+}
+.viewer-content th, .viewer-content td {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+.viewer-content th {
+    background: rgba(6, 182, 212, 0.2);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+.viewer-content tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+/* Footer Section */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 12, 20, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links a {
+        padding: 0.5rem 0;
+        font-size: 1.05rem;
+        width: 100%;
+        display: block;
+    }
+    .mobile-menu-btn { display: flex; }
+    .modal-wrapper {
+        width: 95%;
+        max-height: 90vh;
+    }
+    .modal-header {
+        padding: 1.5rem;
+    }
+    .modal-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2.1rem; }
+    .resources-grid { grid-template-columns: 1fr; }
+    .filter-btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-group" style="display:flex;align-items:center;gap:8px;">
+                <a href="../index.html" class="logo-parent" style="display:flex;align-items:center;text-decoration:none;" title="AInspire 홈으로">
+                    <svg viewBox="0 0 232.75 44.99" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="height:20px;width:auto;display:block" aria-label="AInspire">
+                        <path d="M22.69,4.43C13.91,16.47,0,10.06,0,22.49s10.57,22.5,23.61,22.5c6.22,0,6.79-2.81,8.11-6.84.06-.17.11-.35.17-.52-1.61.65-3.38,1.01-5.23,1.01-4.79,0-8.99-2.39-11.37-5.99-1.2-2-1.89-4.35-1.89-6.85,0-2.18.52-4.23,1.45-6.04,2.2-4.32,6.69-7.29,11.88-7.29,6.47,0,11.87,4.62,13.08,10.74.19.85.29,1.73.29,2.64,0,.25-.04.5-.06.74,1.89-1.38,3.29-.81,4.4-3.72,3.7-9.75-11.56-32.38-21.73-18.43Z"/>
+                        <path d="M39.79,28.44c.13-.61.22-1.23.26-1.86,0,0-.01,0-.02.01-5.33,3.89-7.05,7.81-8.14,11.03,4-1.62,7-5.03,7.9-9.18Z"/>
+                        <polygon points="72.06 5.45 65.07 5.45 51.42 36.05 58.68 36.05 61.42 29.49 63.65 24.12 66.91 16.28 68.53 12.38 73.38 24.12 66.25 24.12 64.02 29.49 75.61 29.49 78.33 36.05 85.76 36.05 72.06 5.45"/>
+                        <path d="M88.25,36.09V5.47h7.09v30.61h-7.09Z"/>
+                        <path d="M99.13,36.05V12.52h6.52v6.52l-1.23-1.97c.84-1.57,2.06-2.78,3.63-3.63,1.58-.84,3.37-1.27,5.38-1.27,1.87,0,3.54.37,5.01,1.12,1.47.74,2.63,1.88,3.48,3.41.84,1.53,1.27,3.49,1.27,5.88v13.47h-6.82v-12.42c0-1.9-.41-3.3-1.24-4.2-.83-.9-2.01-1.35-3.52-1.35-1.08,0-2.05.22-2.91.68-.86.45-1.53,1.15-2.01,2.08-.48.93-.72,2.13-.72,3.59v11.63h-6.82Z"/>
+                        <path d="M136.96,36.4c-2.01,0-3.94-.24-5.8-.72-1.85-.48-3.32-1.09-4.4-1.82l2.27-4.9c1.08.67,2.36,1.22,3.83,1.64,1.47.42,2.92.64,4.35.64,1.58,0,2.69-.19,3.35-.57.66-.38.99-.9.99-1.57,0-.55-.25-.97-.76-1.25-.51-.28-1.19-.49-2.04-.63-.84-.15-1.77-.29-2.78-.44-1-.14-2.02-.34-3.04-.59-1.02-.25-1.95-.62-2.8-1.12-.84-.49-1.52-1.17-2.03-2.01s-.76-1.94-.76-3.28c0-1.49.43-2.8,1.29-3.94.86-1.14,2.11-2.04,3.74-2.69,1.63-.66,3.59-.98,5.86-.98,1.6,0,3.24.17,4.9.52,1.66.35,3.05.86,4.16,1.53l-2.28,4.85c-1.14-.67-2.28-1.13-3.43-1.38-1.15-.25-2.27-.37-3.35-.37-1.52,0-2.63.2-3.33.61-.7.41-1.05.93-1.05,1.58,0,.58.25,1.02.76,1.31.51.29,1.19.53,2.03.7.84.18,1.77.33,2.78.46,1.01.13,2.02.33,3.04.59,1.02.26,1.95.64,2.78,1.12.83.48,1.51,1.14,2.04,1.97.52.83.79,1.92.79,3.26,0,1.46-.44,2.75-1.31,3.87-.87,1.12-2.14,2.01-3.78,2.65-1.65.64-3.65.96-6.01.96Z"/>
+                        <path d="M151.64,44.54V12.52h6.52v4.81l-.13,7,.44,6.95v13.25h-6.82ZM165.55,36.4c-1.98,0-3.72-.44-5.2-1.31-1.49-.88-2.65-2.21-3.48-4-.83-1.79-1.25-4.06-1.25-6.8s.39-5.04,1.18-6.82c.79-1.78,1.93-3.11,3.41-3.98,1.49-.88,3.27-1.31,5.34-1.31,2.21,0,4.21.5,5.97,1.51,1.76,1,3.16,2.41,4.2,4.22,1.04,1.81,1.55,3.94,1.55,6.39s-.52,4.62-1.55,6.43c-1.04,1.81-2.43,3.21-4.2,4.2-1.77.99-3.76,1.49-5.97,1.49ZM164.37,30.8c1.14,0,2.15-.26,3.04-.79.89-.53,1.6-1.27,2.14-2.25.54-.98.81-2.14.81-3.48s-.27-2.54-.81-3.5c-.54-.96-1.25-1.71-2.14-2.23s-1.9-.79-3.04-.79-2.16.26-3.06.79-1.62,1.27-2.14,2.23c-.53.96-.79,2.13-.79,3.5s.26,2.5.79,3.48,1.24,1.73,2.14,2.25c.9.53,1.92.79,3.06.79Z"/>
+                        <path d="M184.46,9.56c-1.25,0-2.28-.37-3.06-1.09-.79-.73-1.18-1.63-1.18-2.71s.39-1.98,1.18-2.71,1.81-1.09,3.06-1.09,2.27.34,3.06,1.03c.79.69,1.18,1.57,1.18,2.65,0,1.14-.39,2.08-1.16,2.82-.77.74-1.8,1.12-3.08,1.12Z"/>
+                        <rect x="181.05" y="12.52" width="6.82" height="23.53"/>
+                        <path d="M191.65,36.05V12.52h6.52v6.65l-.92-1.93c.7-1.66,1.82-2.92,3.37-3.78s3.43-1.29,5.64-1.29v6.3c-.29-.03-.56-.05-.79-.07-.24-.01-.48-.02-.74-.02-1.87,0-3.38.53-4.53,1.6-1.15,1.07-1.73,2.72-1.73,4.96v11.11h-6.82Z"/>
+                        <path d="M221.38,36.4c-2.68,0-5.04-.53-7.06-1.58-2.03-1.05-3.59-2.49-4.7-4.31-1.11-1.82-1.66-3.9-1.66-6.23s.55-4.45,1.64-6.28c1.09-1.82,2.59-3.25,4.48-4.29,1.9-1.04,4.04-1.55,6.43-1.55s4.38.49,6.23,1.46c1.85.98,3.32,2.38,4.4,4.2,1.08,1.82,1.62,4,1.62,6.54,0,.26-.02.56-.04.9-.03.33-.06.65-.09.94h-19.11v-3.98h15.53l-2.63,1.18c0-1.23-.25-2.29-.74-3.19-.49-.9-1.18-1.61-2.06-2.12s-1.9-.76-3.06-.76-2.19.25-3.08.76c-.89.51-1.58,1.23-2.08,2.14s-.74,2-.74,3.26v1.05c0,1.28.29,2.41.85,3.39.57.98,1.37,1.72,2.41,2.23s2.25.76,3.65.76c1.25,0,2.35-.19,3.3-.57.95-.38,1.82-.95,2.6-1.71l3.63,3.94c-1.08,1.23-2.44,2.17-4.07,2.82-1.63.66-3.51.99-5.64.99Z"/>
+                    </svg>
+                </a>
+                <span style="color: var(--border-color); font-weight: 300; font-size: 1.1rem;">|</span>
+                <a href="index.html" class="logo-sub" style="display:flex;align-items:center;text-decoration:none;" title="CineGuide 홈으로">
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.05em; padding: 3px 8px; background: rgba(6, 182, 212, 0.25); border: 1px solid rgba(6, 182, 212, 0.4); border-radius: 6px; color: #00F2FE; text-transform: uppercase; white-space: nowrap;">CineGuide</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="메뉴 열기">
+                <i data-lucide="menu"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">촬영 연출 가이드</a></li>
+                <li><a href="glossary.html">용어 사전</a></li>
+                <li><a href="resources.html" class="active">수강생 자료실</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg-art"></div>
+        <div class="hero-bg-art-2"></div>
+        <div class="hero-content">
+            <div class="session-tag">AInspire 4th Reference</div>
+            <h1>수강생 자료실</h1>
+            <p>AI 영상 제작 9주 OS 이식 과정의 핵심 요약자료 및 레퍼런스 가이드입니다.<br>각 카드를 클릭하여 상세 웹북 내용을 바로 학습할 수 있습니다.</p>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <!-- Category Filters -->
+        <div class="filters-container">
+            <button class="filter-btn active" onclick="filterCategory('all')">전체</button>
+            <button class="filter-btn" onclick="filterCategory('concept')">기본 개념</button>
+            <button class="filter-btn" onclick="filterCategory('guide')">입문 가이드</button>
+            <button class="filter-btn" onclick="filterCategory('reference')">레퍼런스</button>
+        </div>
+
+        <!-- Resources Grid -->
+        <div class="resources-grid" id="resources-grid">
+            <!-- Cards will be dynamically rendered via JS -->
+        </div>
+    </div>
+
+    <!-- Modal details viewer -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-wrapper glass">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <div class="modal-category" id="modal-category">CATEGORY</div>
+                    <h2 id="modal-title">Resource Title</h2>
+                </div>
+                <button class="modal-close-btn" onclick="closeModal(force=true)" aria-label="닫기">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- HTML content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 AInspire. All Rights Reserved.</p>
+        <p>본 강좌 자료실의 마크업 템플릿은 향후 수강생 워싱 데이터를 직접 적용할 수 있는 확장형 구조로 개발되었습니다.</p>
+    </footer>
+
+    <!-- 자료 데이터 선언 (상세 본문을 포함한 JSON 데이터셋) 외부 분리 -->
+    <script src="resource-data.js"></script>
+    <script>
+        // Render card grid dynamically
+        function renderCards(data) {
+            const grid = document.getElementById('resources-grid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-secondary);">
+                        <i data-lucide="folder-open" style="width: 48px; height: 48px; margin-bottom: 1rem; color: var(--text-muted);"></i>
+                        <p>해당 카테고리의 자료가 아직 없습니다.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('article');
+                card.className = 'resource-card glass';
+                card.setAttribute('onclick', `openModal('${item.id}')`);
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="card-icon-box">
+                            <i data-lucide="${item.icon}"></i>
+                        </div>
+                        <span class="card-badge">${item.categoryKo}</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>${item.title}</h3>
+                        <p>${item.summary}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span>${item.date} · ${item.readTime}</span>
+                        <span class="read-more-btn">
+                            자세히 보기 <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                        </span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Category filtering logic
+        function filterCategory(category) {
+            // Update active state on buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const eventTarget = event.currentTarget;
+            eventTarget.classList.add('active');
+
+            if (category === 'all') {
+                renderCards(resourceData);
+            } else {
+                const filtered = resourceData.filter(item => item.category === category);
+                renderCards(filtered);
+            }
+        }
+
+        // Modal Open/Close logic
+        function openModal(id) {
+            const item = resourceData.find(d => d.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-category').textContent = item.categoryKo;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-body').innerHTML = item.content;
+
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+            
+            lucide.createIcons();
+        }
+
+        function closeModal(e, force = false) {
+            const overlay = document.getElementById('modal-overlay');
+            
+            // Close only if clicked on background or close button
+            if (force || e.target === overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // restore scrolling
+            }
+        }
+
+        // Init onload
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCards(resourceData);
+
+            // Header shrink effect
+            window.addEventListener('scroll', function() {
+                var h = document.getElementById('header');
+                if (window.scrollY > 50) h.classList.add('scrolled');
+                else h.classList.remove('scrolled');
+            });
+
+            // Mobile menu toggle
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

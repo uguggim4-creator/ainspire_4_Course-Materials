@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI · 영상 · 마케팅 핵심 용어 사전 | Sputlab</title>
+    <meta name="description" content="생성형 AI, 이미지·영상 AI, 영상 제작, 마케팅 기획 핵심 실무 용어를 초보자도 한눈에 이해하기 쉽게 정리한 카드뉴스 사전.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+
+:root {
+    --bg-primary: #080C14;
+    --bg-secondary: #0F172A;
+    --bg-card: rgba(30, 41, 59, 0.45);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-cyan: #06B6D4;
+    --accent-emerald: #10B981;
+    --accent-pink: #EC4899;
+    --accent-gold: #F59E0B;
+    --gradient-accent: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+    --gradient-card-hover: linear-gradient(180deg, rgba(6, 182, 212, 0.15) 0%, rgba(30, 41, 59, 0) 100%);
+    --glow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+.glass {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+}
+header {
+    position: fixed; top: 0; left: 0; width: 100%;
+    z-index: 1000; transition: all 0.3s ease;
+}
+header.scrolled {
+    background: rgba(8, 12, 20, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+.nav-container {
+    max-width: 1400px; margin: 0 auto; padding: 1.25rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 1.25rem; font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    cursor: pointer;
+}
+.logo i { -webkit-text-fill-color: initial; color: var(--accent-cyan); }
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a {
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 0.95rem; font-weight: 500; transition: color 0.3s ease;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    z-index: 1001;
+}
+.mobile-menu-btn:hover {
+    color: var(--accent-cyan);
+}
+
+.hero {
+    position: relative; padding: 10rem 2rem 5rem;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; overflow: hidden;
+}
+.hero-bg-art {
+    position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, rgba(8, 12, 20, 0) 70%);
+    z-index: 0; pointer-events: none;
+}
+.hero-bg-art-2 {
+    position: absolute; top: 20%; right: -15%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.05) 0%, rgba(8, 12, 20, 0) 70%);
+    z-index: 0; pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.session-tag {
+    display: inline-block; padding: 0.5rem 1.25rem;
+    background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+    color: var(--accent-cyan); margin-bottom: 1.5rem;
+    text-transform: uppercase; letter-spacing: 0.05em; box-shadow: var(--glow-cyan);
+}
+.hero-content h1 {
+    font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #FFF 0%, #94A3B8 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-content p { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7; }
+
+.main-container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 6rem; }
+
+.mode-switcher { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+.btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600;
+    font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;
+    text-decoration: none; font-family: 'Inter', sans-serif;
+}
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.04); color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover, .btn-secondary.mode-active {
+    background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.tabs-container {
+    display: flex; justify-content: center; gap: 0.75rem;
+    margin-bottom: 2.5rem; flex-wrap: wrap;
+}
+.tab-btn {
+    padding: 0.6rem 1.25rem; font-size: 0.9rem; font-weight: 600;
+    border-radius: 8px; cursor: pointer; transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.04); color: var(--text-secondary);
+    border: 1px solid var(--border-color); font-family: 'Inter', sans-serif;
+}
+.tab-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.2); }
+.tab-btn.tab-active { color: #080C14; border-color: transparent; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+.search-container { max-width: 500px; margin: 0 auto 3rem; position: relative; }
+.search-input {
+    width: 100%; padding: 0.9rem 1.25rem 0.9rem 3.25rem;
+    background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color);
+    border-radius: 99px; color: var(--text-primary); font-size: 0.95rem;
+    transition: all 0.3s ease; font-family: 'Inter', sans-serif;
+}
+.search-input::placeholder { color: var(--text-muted); }
+.search-input:focus {
+    outline: none; border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+    background: rgba(15, 23, 42, 0.85);
+}
+.search-icon {
+    position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); pointer-events: none; width: 18px; height: 18px;
+}
+
+.deck-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.card-news-wrapper {
+    position: relative; width: 100%; max-width: 580px;
+    aspect-ratio: 4 / 5; perspective: 1200px;
+}
+.card-news-slide {
+    position: absolute; width: 100%; height: 100%;
+    border-radius: 22px; padding: 2.75rem 2.5rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    opacity: 0; pointer-events: none;
+    transform: translateX(40px) scale(0.97);
+}
+.card-news-slide.active {
+    opacity: 1; pointer-events: auto; transform: translateX(0) scale(1); z-index: 10;
+}
+.card-news-slide.slide-out-left {
+    opacity: 0; transform: translateX(-40px) scale(0.97); z-index: 5;
+}
+.card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 1.1rem;
+    margin-bottom: 0;
+}
+.card-badge {
+    padding: 0.3rem 0.85rem; border-radius: 99px;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.card-index { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+.card-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1.75rem 0; gap: 1.5rem; }
+.term-title-wrapper { display: flex; align-items: center; gap: 1rem; }
+.term-icon-box {
+    width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+}
+.term-title { font-size: 2.1rem; color: var(--text-primary); line-height: 1.2; }
+.term-desc-container {
+    border-left: 4px solid; padding: 1.2rem 1.4rem;
+    border-radius: 0 12px 12px 0;
+    background: rgba(8, 12, 20, 0.5);
+}
+.term-desc { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); line-height: 1.6; }
+.term-point-container {
+    background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.09);
+    padding: 1.1rem 1.25rem; border-radius: 12px;
+}
+.term-point-label {
+    font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted);
+    font-weight: 700; letter-spacing: 0.06em; margin-bottom: 0.45rem;
+    display: flex; align-items: center; gap: 0.35rem;
+}
+.term-point { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.55; }
+
+.controls-panel {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.25rem; margin-top: 2rem; width: 100%; max-width: 580px;
+}
+.control-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease;
+    font-family: inherit;
+}
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary); transform: scale(1.08);
+}
+.progress-dots { display: flex; gap: 0.5rem; align-items: center; }
+.dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); transition: all 0.3s ease; cursor: pointer;
+}
+.dot.dot-active { width: 20px; border-radius: 3px; }
+
+.grid-container {
+    display: none; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem; width: 100%;
+}
+.grid-card {
+    border-radius: 16px; padding: 1.75rem; cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 180px;
+}
+.grid-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+.grid-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.grid-icon-box {
+    width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+}
+.grid-card-cat {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem; border-radius: 99px; background: rgba(255,255,255,0.05);
+}
+.grid-card h4 { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.5rem; }
+.grid-card-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex: 1; }
+.grid-card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.75rem;
+    margin-top: 1rem; font-size: 0.75rem; color: var(--text-muted);
+}
+.grid-card-point { flex: 1; padding-right: 0.5rem; }
+
+footer { border-top: 1px solid var(--border-color); padding: 3rem 2rem; text-align: center; margin-top: 6rem; }
+footer p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.grid-card { animation: fadeSlideIn 0.35s ease both; }
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .mobile-menu-btn { display: flex; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 12, 20, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links a {
+        padding: 0.5rem 0;
+        font-size: 1.05rem;
+        width: 100%;
+        display: block;
+    }
+    .card-news-wrapper { aspect-ratio: 3 / 4; }
+    .term-title { font-size: 1.75rem; }
+    .grid-container { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+}
+@media (max-width: 480px) {
+    .term-title { font-size: 1.5rem; }
+    .term-desc { font-size: 1rem; }
+    .card-news-slide { padding: 2rem 1.5rem; }
+}
+
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+                <i data-lucide="camera"></i> CineGuide
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="메뉴 열기">
+                <i data-lucide="menu"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">촬영 연출 가이드</a></li>
+                <li><a href="#" class="active">용어 사전</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg-art"></div>
+        <div class="hero-bg-art-2"></div>
+        <div class="hero-content">
+            <div class="session-tag">Sputlab Reference Book</div>
+            <h1>AI · 영상 · 마케팅<br>핵심 용어 사전</h1>
+            <p>기업 대상 생성형 AI·영상 마케팅 강의에서 바로 활용할 수 있도록,<br>핵심 용어를 초보자도 이해하기 쉽게 카드뉴스 형태로 정리한 실무 사전입니다.</p>
+        </div>
+    </section>
+
+    <div class="main-container">
+
+        <div class="mode-switcher">
+            <button class="btn btn-secondary mode-active" id="btn-slide-mode" onclick="setMode('slide')">
+                <i data-lucide="layers" style="width:16px;height:16px;"></i> 슬라이드 보기
+            </button>
+            <button class="btn btn-secondary" id="btn-grid-mode" onclick="setMode('grid')">
+                <i data-lucide="grid-3x3" style="width:16px;height:16px;"></i> 전체 그리드 보기
+            </button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input"
+                placeholder="용어를 검색해 보세요... (예: 프롬프트, Seed)"
+                oninput="handleSearch(this.value)">
+            <i data-lucide="search" class="search-icon"></i>
+        </div>
+
+        <div class="tabs-container" id="tabs-container"></div>
+
+        <div class="deck-container" id="deck-view">
+            <div class="card-news-wrapper" id="card-news-wrapper"></div>
+            <div class="controls-panel">
+                <button class="control-btn" onclick="prevSlide()" title="이전 (←)">
+                    <i data-lucide="chevron-left" style="width:20px;height:20px;"></i>
+                </button>
+                <button class="control-btn" id="play-btn" onclick="togglePlay()" title="자동재생 (Space)">
+                    <i data-lucide="play" style="width:18px;height:18px;"></i>
+                </button>
+                <div class="progress-dots" id="progress-dots"></div>
+                <button class="control-btn" onclick="nextSlide()" title="다음 (→)">
+                    <i data-lucide="chevron-right" style="width:20px;height:20px;"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid-container" id="grid-view"></div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Sputlab. All Rights Reserved.</p>
+        <p>본 콘텐츠의 예시 이미지 및 영상은 생성형 AI를 활용해 제작되었습니다.</p>
+    </footer>
+
+    <script>
+        const glossaryData = [
+    {
+        "category_id": "ai_basic",
+        "category_title": "AI 기본 용어",
+        "color": "#06B6D4",
+        "terms": [
+            {
+                "term": "생성형 AI",
+                "desc": "새로운 텍스트, 이미지, 영상, 음악 등을 만들어내는 AI",
+                "point": "결과물을 '검색'하는 것이 아니라 '생성'하는 도구",
+                "icon": "sparkles"
+            },
+            {
+                "term": "LLM",
+                "desc": "글을 이해하고 생성하는 대형 언어 모델",
+                "point": "카피, 기획안, 요약, 아이디어 초안 작성에 강함",
+                "icon": "message-square"
+            },
+            {
+                "term": "프롬프트",
+                "desc": "AI에게 내리는 작업 지시문",
+                "point": "결과물 품질을 좌우하는 작업 요청서",
+                "icon": "terminal"
+            },
+            {
+                "term": "멀티모달",
+                "desc": "텍스트, 이미지, 음성, 영상을 함께 이해하는 방식",
+                "point": "한 번에 여러 형식의 정보를 다루는 AI",
+                "icon": "combine"
+            },
+            {
+                "term": "모델",
+                "desc": "AI의 두뇌 역할을 하는 시스템",
+                "point": "같은 작업도 모델마다 결과 성향이 다름",
+                "icon": "cpu"
+            },
+            {
+                "term": "학습 데이터",
+                "desc": "AI가 패턴을 배우는 자료",
+                "point": "어떤 데이터를 배웠는지에 따라 결과 특성이 달라짐",
+                "icon": "database"
+            },
+            {
+                "term": "토큰",
+                "desc": "AI가 텍스트를 처리하는 작은 단위",
+                "point": "입력 길이, 비용, 출력량과 연결되는 개념",
+                "icon": "hash"
+            },
+            {
+                "term": "할루시네이션",
+                "desc": "AI가 사실처럼 틀린 내용을 말하는 현상",
+                "point": "초안은 빨라도 검수는 반드시 필요함",
+                "icon": "alert-triangle"
+            },
+            {
+                "term": "레퍼런스",
+                "desc": "원하는 스타일이나 방향을 보여주는 참고 자료",
+                "point": "결과물 톤을 맞추기 위한 기준점",
+                "icon": "bookmark"
+            },
+            {
+                "term": "파인튜닝",
+                "desc": "특정 목적에 맞게 모델을 추가 학습시키는 것",
+                "point": "회사 업무나 브랜드 문법에 맞춰 성능을 다듬는 방식",
+                "icon": "sliders"
+            },
+            {
+                "term": "워크플로우",
+                "desc": "여러 AI 도구와 작업 단계를 연결한 흐름",
+                "point": "기획→생성→수정→배포 같은 전체 제작 구조",
+                "icon": "git-merge"
+            }
+        ]
+    },
+    {
+        "category_id": "image_video_ai",
+        "category_title": "이미지·영상 AI 용어",
+        "color": "#10B981",
+        "terms": [
+            {
+                "term": "Text to Image",
+                "desc": "텍스트로 이미지를 생성",
+                "point": "콘셉트 이미지, 광고 비주얼 초안 제작에 적합",
+                "icon": "image"
+            },
+            {
+                "term": "Image to Image",
+                "desc": "이미지를 참고해 다른 이미지 생성",
+                "point": "기존 시안을 다른 스타일로 변형할 때 유용",
+                "icon": "images"
+            },
+            {
+                "term": "Text to Video",
+                "desc": "텍스트로 영상을 생성",
+                "point": "짧은 콘셉트 영상이나 무드 테스트에 적합",
+                "icon": "film"
+            },
+            {
+                "term": "Image to Video",
+                "desc": "이미지를 기반으로 움직임 생성",
+                "point": "정지 이미지를 간단한 영상으로 확장할 때 사용",
+                "icon": "video"
+            },
+            {
+                "term": "Motion Prompt",
+                "desc": "영상의 움직임을 지시하는 문장",
+                "point": "카메라 이동, 피사체 동작, 속도감 표현에 중요",
+                "icon": "move"
+            },
+            {
+                "term": "Style Reference",
+                "desc": "비주얼 스타일 참고 이미지",
+                "point": "브랜드 톤이나 원하는 무드를 맞출 때 필요",
+                "icon": "palette"
+            },
+            {
+                "term": "Seed",
+                "desc": "비슷한 결과를 재현하기 위한 값",
+                "point": "결과 재현성과 버전 관리를 도와줌",
+                "icon": "key"
+            },
+            {
+                "term": "Upscale",
+                "desc": "이미지나 영상 해상도 향상",
+                "point": "최종 납품 전 품질 보정 단계로 자주 사용",
+                "icon": "maximize-2"
+            },
+            {
+                "term": "Inpainting",
+                "desc": "이미지 일부를 수정하거나 채우는 기능",
+                "point": "배경 제거, 제품 수정, 인물 디테일 보완에 유용",
+                "icon": "brush"
+            },
+            {
+                "term": "Extend",
+                "desc": "영상 길이나 프레임을 확장하는 기능",
+                "point": "컷 연결이나 화면 확장에 활용 가능",
+                "icon": "expand"
+            }
+        ]
+    },
+    {
+        "category_id": "video_basic",
+        "category_title": "영상 제작 기본 용어",
+        "color": "#EC4899",
+        "terms": [
+            {
+                "term": "컷",
+                "desc": "하나의 연속된 영상 조각",
+                "point": "편집의 가장 작은 기본 단위",
+                "icon": "scissors"
+            },
+            {
+                "term": "씬",
+                "desc": "같은 장소나 상황에서 벌어지는 장면",
+                "point": "이야기 흐름을 나누는 단위",
+                "icon": "clapperboard"
+            },
+            {
+                "term": "시퀀스",
+                "desc": "여러 씬이 모여 만든 하나의 흐름",
+                "point": "광고나 브랜드 영상의 큰 장면 묶음",
+                "icon": "layers"
+            },
+            {
+                "term": "스토리보드",
+                "desc": "장면을 그림이나 텍스트로 미리 설계한 것",
+                "point": "촬영이나 생성 전에 방향을 맞추는 설계도",
+                "icon": "layout"
+            },
+            {
+                "term": "샷",
+                "desc": "카메라가 바라보는 하나의 화면 구성",
+                "point": "무엇을 어떻게 보여줄지 결정하는 단위",
+                "icon": "camera"
+            },
+            {
+                "term": "클로즈업",
+                "desc": "인물이나 제품을 가까이 보여주는 화면",
+                "point": "감정, 디테일, 제품 포인트 강조에 적합",
+                "icon": "zoom-in"
+            },
+            {
+                "term": "와이드샷",
+                "desc": "공간 전체를 넓게 보여주는 화면",
+                "point": "분위기, 장소감, 상황 설명에 유리",
+                "icon": "expand"
+            },
+            {
+                "term": "B-roll",
+                "desc": "보조 장면, 분위기 장면",
+                "point": "메인 설명 장면을 보완하고 리듬을 살림",
+                "icon": "library"
+            },
+            {
+                "term": "내레이션",
+                "desc": "화면 위에 얹는 설명 음성",
+                "point": "정보 전달과 맥락 보충에 효과적",
+                "icon": "mic"
+            },
+            {
+                "term": "CTA",
+                "desc": "Call To Action, 행동 유도 문구",
+                "point": "구매, 신청, 클릭, 문의를 유도하는 핵심 문장",
+                "icon": "mouse-pointer-click"
+            },
+            {
+                "term": "후킹",
+                "desc": "시청자의 관심을 붙잡는 첫 장치",
+                "point": "첫 3초 체류를 결정하는 요소",
+                "icon": "zap"
+            },
+            {
+                "term": "썸네일",
+                "desc": "영상을 클릭하게 만드는 대표 이미지",
+                "point": "조회와 클릭률에 큰 영향을 주는 첫 인상",
+                "icon": "picture-in-picture"
+            },
+            {
+                "term": "화면비",
+                "desc": "16:9, 9:16, 1:1 같은 영상 비율",
+                "point": "플랫폼에 맞게 포맷을 정할 때 중요",
+                "icon": "scaling"
+            },
+            {
+                "term": "180도 법칙",
+                "desc": "두 대화 피사체 사이의 가상 선 한쪽에서만 촬영해 공간적 방향성을 유지하는 규칙",
+                "point": "선을 넘으면 화면 속 인물의 좌우 위치가 바뀌어 관객이 혼란스러워함",
+                "icon": "compass"
+            },
+            {
+                "term": "피사계 심도",
+                "desc": "렌즈 조리개 수치(F값)에 따라 화면에서 초점이 맞는 공간의 깊이 범위",
+                "point": "아웃포커싱(얕은 심도)과 팬포커싱(깊은 심도)을 결정하는 광학 조건",
+                "icon": "aperture"
+            },
+            {
+                "term": "3점 조명",
+                "desc": "주광(Key), 보조광(Fill), 역광(Back)을 배치해 입체감을 살리는 기본 배치법",
+                "point": "얼굴의 그림자를 부드럽게 채우고 배경과 피사체를 입체적으로 분리함",
+                "icon": "lightbulb"
+            },
+            {
+                "term": "프레임 레이트",
+                "desc": "영상이 초당 보여주는 정지 화면의 개수(FPS 단위)",
+                "point": "시네마틱 느낌의 24fps와 부드러운 방송 질감의 30/60fps를 구별해 활용",
+                "icon": "activity"
+            },
+            {
+                "term": "셔터 스피드",
+                "desc": "빛이 이미지 센서에 도달하도록 셔터가 열려 있는 시간의 길이",
+                "point": "스피드가 빠르면 선명하게 정지되고, 느리면 자연스러운 잔상(모션 블러)이 남음",
+                "icon": "timer"
+            }
+        ]
+    },
+    {
+        "category_id": "marketing_planning",
+        "category_title": "마케팅 기획 용어",
+        "color": "#F59E0B",
+        "terms": [
+            {
+                "term": "타깃",
+                "desc": "콘텐츠를 보여줄 대상",
+                "point": "누구에게 말하는지 정하는 출발점",
+                "icon": "target"
+            },
+            {
+                "term": "페르소나",
+                "desc": "대표 고객을 구체화한 가상의 인물",
+                "point": "타깃을 더 구체적으로 상상하게 해줌",
+                "icon": "user-check"
+            },
+            {
+                "term": "USP",
+                "desc": "제품이나 브랜드의 차별적 강점",
+                "point": "경쟁사와 다른 한 가지 이유를 정리하는 개념",
+                "icon": "award"
+            },
+            {
+                "term": "KPI",
+                "desc": "성과를 판단하는 지표",
+                "point": "조회수, 클릭률, 전환율처럼 측정 가능한 기준",
+                "icon": "trending-up"
+            },
+            {
+                "term": "전환",
+                "desc": "구매, 신청, 문의 등 목표 행동",
+                "point": "콘텐츠가 실제 행동으로 이어졌는지 보는 기준",
+                "icon": "refresh-cw"
+            },
+            {
+                "term": "퍼널",
+                "desc": "고객이 브랜드를 알고 구매하기까지의 단계",
+                "point": "인지도→관심→고려→전환→유지 흐름으로 이해 가능",
+                "icon": "filter"
+            },
+            {
+                "term": "인사이트",
+                "desc": "고객 행동 뒤에 숨어 있는 진짜 이유",
+                "point": "표면적 반응이 아니라 실제 동기를 읽는 것",
+                "icon": "lightbulb"
+            },
+            {
+                "term": "메시지",
+                "desc": "브랜드가 고객에게 전달하려는 핵심 주장",
+                "point": "영상 한 편에서 하나로 좁힐수록 강해짐",
+                "icon": "send"
+            },
+            {
+                "term": "톤앤매너",
+                "desc": "브랜드가 말하고 보이는 방식",
+                "point": "문장 어투, 색감, 분위기, 연출 방향까지 포함",
+                "icon": "fingerprint"
+            },
+            {
+                "term": "크리에이티브",
+                "desc": "광고나 콘텐츠의 표현 아이디어",
+                "point": "같은 메시지도 어떻게 보여줄지 정하는 영역",
+                "icon": "wand-2"
+            }
+        ]
+    }
+];
+
+        let catIdx = 0;
+        let slideIdx = 0;
+        let playTimer = null;
+        let isPlaying = false;
+        let viewMode = 'slide';
+
+        // Flat index for search
+        const flatTerms = [];
+        glossaryData.forEach(function(cat, ci) {
+            cat.terms.forEach(function(term, ti) {
+                flatTerms.push({ term: term.term, desc: term.desc, point: term.point,
+                    icon: term.icon, color: cat.color, catTitle: cat.category_title,
+                    catIdx: ci, termIdx: ti });
+            });
+        });
+
+        // Hex color to rgba helper
+        function hexToRgba(hex, alpha) {
+            var r = parseInt(hex.slice(1,3),16);
+            var g = parseInt(hex.slice(3,5),16);
+            var b = parseInt(hex.slice(5,7),16);
+            return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            buildTabs();
+            renderSlides();
+            renderGrid();
+            lucide.createIcons();
+
+            window.addEventListener('scroll', function() {
+                var h = document.getElementById('header');
+                if (window.scrollY > 50) h.classList.add('scrolled');
+                else h.classList.remove('scrolled');
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (viewMode !== 'slide') return;
+                if (e.key === 'ArrowRight') nextSlide();
+                else if (e.key === 'ArrowLeft') prevSlide();
+                else if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+            });
+        });
+
+        function setMode(mode) {
+            viewMode = mode;
+            var deckView = document.getElementById('deck-view');
+            var gridView = document.getElementById('grid-view');
+            var slideBtn = document.getElementById('btn-slide-mode');
+            var gridBtn = document.getElementById('btn-grid-mode');
+            var tabsCont = document.getElementById('tabs-container');
+
+            stopPlay();
+            if (mode === 'slide') {
+                slideBtn.classList.add('mode-active');
+                gridBtn.classList.remove('mode-active');
+                deckView.style.display = 'flex';
+                gridView.style.display = 'none';
+                tabsCont.style.display = 'flex';
+                renderSlides();
+                lucide.createIcons();
+            } else {
+                gridBtn.classList.add('mode-active');
+                slideBtn.classList.remove('mode-active');
+                deckView.style.display = 'none';
+                gridView.style.display = 'grid';
+                tabsCont.style.display = 'none';
+                renderGrid();
+                lucide.createIcons();
+            }
+        }
+
+        function buildTabs() {
+            var cont = document.getElementById('tabs-container');
+            cont.innerHTML = '';
+            glossaryData.forEach(function(cat, i) {
+                var btn = document.createElement('button');
+                btn.className = 'tab-btn' + (i === catIdx ? ' tab-active' : '');
+                btn.textContent = cat.category_title;
+                if (i === catIdx) {
+                    btn.style.backgroundColor = cat.color;
+                }
+                btn.addEventListener('click', function() { selectCategory(i); });
+                cont.appendChild(btn);
+            });
+        }
+
+        function selectCategory(i) {
+            catIdx = i;
+            slideIdx = 0;
+            stopPlay();
+            buildTabs();
+            renderSlides();
+            lucide.createIcons();
+        }
+
+        function renderSlides() {
+            var wrapper = document.getElementById('card-news-wrapper');
+            wrapper.innerHTML = '';
+            var cat = glossaryData[catIdx];
+            var color = cat.color;
+
+            cat.terms.forEach(function(term, i) {
+                var slide = document.createElement('div');
+                slide.className = 'card-news-slide glass' + (i === slideIdx ? ' active' : '');
+                slide.id = 'slide-' + i;
+                slide.style.borderColor = hexToRgba(color, 0.15);
+
+                var labelText = (cat.category_id === 'ai_basic') ? '실무 활용 및 이해' : '실무 포인트';
+
+                slide.innerHTML = '<div class="card-header">'
+                    + '<div class="card-badge" style="background:' + hexToRgba(color, 0.12) + ';color:' + color + ';border:1px solid ' + hexToRgba(color, 0.3) + ';">' + cat.category_title + '</div>'
+                    + '<div class="card-index">' + (i+1) + ' / ' + cat.terms.length + '</div>'
+                    + '</div>'
+                    + '<div class="card-body">'
+                    + '<div class="term-title-wrapper">'
+                    + '<div class="term-icon-box" style="color:' + color + ';border-color:' + hexToRgba(color, 0.2) + ';">'
+                    + '<i data-lucide="' + term.icon + '" style="width:22px;height:22px;"></i>'
+                    + '</div>'
+                    + '<h3 class="term-title">' + term.term + '</h3>'
+                    + '</div>'
+                    + '<div class="term-desc-container" style="border-left-color:' + color + ';background:' + hexToRgba(color, 0.04) + ';">'
+                    + '<div class="term-desc">' + term.desc + '</div>'
+                    + '</div>'
+                    + '<div class="term-point-container">'
+                    + '<div class="term-point-label">'
+                    + '<i data-lucide="check-circle" style="width:11px;height:11px;color:' + color + ';"></i>'
+                    + ' ' + labelText
+                    + '</div>'
+                    + '<div class="term-point">' + term.point + '</div>'
+                    + '</div>'
+                    + '</div>';
+
+                wrapper.appendChild(slide);
+            });
+            renderDots();
+        }
+
+        function renderDots() {
+            var cont = document.getElementById('progress-dots');
+            cont.innerHTML = '';
+            var cat = glossaryData[catIdx];
+            var color = cat.color;
+            cat.terms.forEach(function(_, i) {
+                var dot = document.createElement('div');
+                dot.className = 'dot' + (i === slideIdx ? ' dot-active' : '');
+                dot.style.background = (i === slideIdx) ? color : 'rgba(255,255,255,0.15)';
+                dot.addEventListener('click', function() { jumpToSlide(i); });
+                cont.appendChild(dot);
+            });
+        }
+
+        function jumpToSlide(idx) {
+            var prev = slideIdx;
+            slideIdx = idx;
+            var slides = document.querySelectorAll('.card-news-slide');
+            slides.forEach(function(s, i) {
+                s.classList.remove('active', 'slide-out-left');
+                if (i === prev && i !== idx) s.classList.add('slide-out-left');
+                if (i === idx) s.classList.add('active');
+            });
+            var color = glossaryData[catIdx].color;
+            var dots = document.querySelectorAll('.dot');
+            dots.forEach(function(d, i) {
+                d.classList.toggle('dot-active', i === idx);
+                d.style.background = (i === idx) ? color : 'rgba(255,255,255,0.15)';
+            });
+            lucide.createIcons();
+        }
+
+        function nextSlide() {
+            var count = glossaryData[catIdx].terms.length;
+            jumpToSlide((slideIdx + 1) % count);
+        }
+
+        function prevSlide() {
+            var count = glossaryData[catIdx].terms.length;
+            jumpToSlide((slideIdx - 1 + count) % count);
+        }
+
+        function renderGrid() {
+            var grid = document.getElementById('grid-view');
+            grid.innerHTML = '';
+            var query = document.getElementById('search-input').value.trim().toLowerCase();
+
+            flatTerms.forEach(function(item, index) {
+                var visible = !query
+                    || item.term.toLowerCase().includes(query)
+                    || item.desc.toLowerCase().includes(query)
+                    || item.point.toLowerCase().includes(query)
+                    || item.catTitle.toLowerCase().includes(query);
+
+                if (!visible) return;
+
+                var card = document.createElement('div');
+                card.className = 'grid-card glass';
+                card.style.animationDelay = (index * 0.03) + 's';
+                card.style.setProperty('--theme-color', item.color);
+                card.style.borderColor = hexToRgba(item.color, 0.1);
+                card.addEventListener('click', function() {
+                    catIdx = item.catIdx;
+                    slideIdx = item.termIdx;
+                    setMode('slide');
+                    buildTabs();
+                    lucide.createIcons();
+                });
+
+                var shortPoint = item.point.length > 28 ? item.point.slice(0,27) + '…' : item.point;
+
+                card.innerHTML = '<div>'
+                    + '<div class="grid-card-top">'
+                    + '<div class="grid-icon-box" style="color:' + item.color + ';border-color:' + hexToRgba(item.color, 0.25) + ';">'
+                    + '<i data-lucide="' + item.icon + '" style="width:16px;height:16px;"></i>'
+                    + '</div>'
+                    + '<span class="grid-card-cat" style="color:' + item.color + ';">' + item.catTitle + '</span>'
+                    + '</div>'
+                    + '<h4>' + item.term + '</h4>'
+                    + '<p class="grid-card-desc">' + item.desc + '</p>'
+                    + '</div>'
+                    + '<div class="grid-card-footer">'
+                    + '<span class="grid-card-point">' + shortPoint + '</span>'
+                    + '<i data-lucide="arrow-right" style="width:12px;height:12px;flex-shrink:0;"></i>'
+                    + '</div>';
+
+                grid.appendChild(card);
+            });
+        }
+
+        function handleSearch(query) {
+            if (viewMode === 'grid') {
+                renderGrid();
+                lucide.createIcons();
+            } else {
+                var q = query.trim().toLowerCase();
+                if (!q) return;
+                var match = flatTerms.find(function(item) {
+                    return item.term.toLowerCase().includes(q)
+                        || item.desc.toLowerCase().includes(q)
+                        || item.point.toLowerCase().includes(q);
+                });
+                if (match) {
+                    catIdx = match.catIdx;
+                    slideIdx = match.termIdx;
+                    buildTabs();
+                    renderSlides();
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        function togglePlay() {
+            if (isPlaying) stopPlay(); else startPlay();
+        }
+
+        function startPlay() {
+            isPlaying = true;
+            document.getElementById('play-btn').innerHTML = '<i data-lucide="pause" style="width:18px;height:18px;"></i>';
+            lucide.createIcons();
+            playTimer = setInterval(nextSlide, 3500);
+        }
+
+        function stopPlay() {
+            isPlaying = false;
+            document.getElementById('play-btn').innerHTML = '<i data-lucide="play" style="width:18px;height:18px;"></i>';
+            lucide.createIcons();
+            clearInterval(playTimer);
+        }
+
+        // 모바일 햄버거 토글 동작
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinksContainer = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        if (mobileMenuBtn && navLinksContainer) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinksContainer.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navLinksContainer.classList.contains('active')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            // 메뉴 내부 클릭 시 메뉴 닫기
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksContainer.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+        }
+    </script>
+</body>
+</html>

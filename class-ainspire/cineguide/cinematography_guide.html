@@ -1,0 +1,2245 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 2. 스토리텔링, 연출, 구도, 촬영 문법 | Cinematography Guide</title>
+    <meta name="description" content="영상의 기본 구조(샷, 씬, 시퀀스, 막)부터 23가지 샷 기법, 시선을 이끄는 완벽한 구도 법칙까지 총망라한 모던 가이드북.">
+    <!-- Fonts & Icons (self-hosted) -->
+    <style>
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-500.woff2') format('woff2');font-weight:500;font-display:swap;}
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-600.woff2') format('woff2');font-weight:600;font-display:swap;}
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-600.woff2') format('woff2');font-weight:600;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-800.woff2') format('woff2');font-weight:800;font-display:swap;}
+    </style>
+    <script src="/assets/js/lucide.min.js"></script>
+    <style>
+        
+:root {
+    --bg-primary: #080C14;
+    --bg-secondary: #0F172A;
+    --bg-card: rgba(30, 41, 59, 0.45);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    
+    --accent-cyan: #06B6D4;
+    --accent-emerald: #10B981;
+    --accent-pink: #EC4899;
+    --accent-gold: #F59E0B;
+    
+    --gradient-accent: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+    --gradient-card-hover: linear-gradient(180deg, rgba(6, 182, 212, 0.15) 0%, rgba(30, 41, 59, 0) 100%);
+    --glow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .brand-font {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Glassmorphism utility */
+.glass {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+}
+
+/* Header & Progress Indicator */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+header.scrolled {
+    background: rgba(8, 12, 20, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.35rem;
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.logo i {
+    color: var(--accent-cyan);
+    -webkit-text-fill-color: initial;
+}
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+}
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-primary);
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    width: 0%;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 8rem 2rem 4rem;
+    background: radial-gradient(circle at 50% 30%, rgba(6, 182, 212, 0.08) 0%, rgba(8, 12, 20, 0) 70%);
+}
+.hero-bg-art {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border: 1px dashed rgba(6, 182, 212, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: rotate 60s linear infinite;
+}
+.hero-bg-art::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    border: 1px dashed rgba(236, 72, 153, 0.1);
+    border-radius: 50%;
+}
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.hero-content {
+    max-width: 900px;
+    text-align: center;
+    z-index: 1;
+}
+.session-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.05);
+}
+.hero h1 {
+    font-size: 3.8rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #FFF 40%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
+}
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--gradient-accent);
+    color: #080C14;
+    border: none;
+}
+.btn-primary:hover {
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Sections Configuration */
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+.section-title-area {
+    margin-bottom: 4rem;
+    position: relative;
+}
+.section-number {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-pink);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+}
+.section-title {
+    font-size: 2.25rem;
+    color: var(--text-primary);
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-accent);
+    margin-top: 1rem;
+    border-radius: 2px;
+}
+
+/* Chapter 1: Structure (영상의 구성) */
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+@media (max-width: 1024px) {
+    .timeline-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+    .timeline-grid { grid-template-columns: 1fr; }
+}
+.struct-card {
+    padding: 2.25rem 1.75rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.struct-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-card-hover);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+.struct-card:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 10px 30px rgba(8, 12, 20, 0.5);
+    transform: translateY(-5px);
+}
+.struct-card:hover::before {
+    opacity: 1;
+}
+.struct-card * {
+    position: relative;
+    z-index: 1;
+}
+.struct-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-cyan);
+}
+.struct-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.struct-card h3 span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.struct-card p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+/* Timeline Interactive Example */
+.example-section {
+    margin-top: 5rem;
+    padding: 3rem;
+    border-radius: 16px;
+    position: relative;
+}
+.example-title-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.example-badge {
+    padding: 0.4rem 1rem;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 100px;
+}
+.example-flow {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 3rem;
+}
+.example-flow::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 0;
+}
+.flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    width: 100px;
+}
+.flow-node {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+}
+.flow-step.active .flow-node {
+    background: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    color: #080C14;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+}
+.flow-label {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+    transition: color 0.3s ease;
+}
+.flow-step.active .flow-label {
+    color: var(--text-primary);
+}
+.example-content-box {
+    background: rgba(8, 12, 20, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    min-height: 180px;
+    transition: all 0.3s ease;
+}
+.example-card-detail {
+    display: none;
+}
+.example-card-detail.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 180 Rule & Match Cut layout */
+.cinematic-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+@media (max-width: 768px) {
+    .cinematic-rules { grid-template-columns: 1fr; }
+}
+.rule-card {
+    padding: 2rem;
+    border-radius: 12px;
+}
+.rule-visual {
+    background: rgba(8, 12, 20, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    height: 180px;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 180 Degree Interactive Graphic */
+.axis-180 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.axis-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: dashed var(--accent-pink);
+    z-index: 0;
+}
+.character {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    z-index: 2;
+}
+.char-a {
+    background: var(--accent-cyan);
+    color: #080C14;
+    left: 30%;
+    top: calc(50% - 16px);
+}
+.char-b {
+    background: var(--accent-emerald);
+    color: #080C14;
+    right: 30%;
+    top: calc(50% - 16px);
+}
+.camera-node {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: var(--bg-secondary);
+    border: 1.5px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+.camera-node.active {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
+.cam-1 { left: 40%; bottom: 15%; }
+.cam-2 { right: 40%; bottom: 15%; }
+.cam-wrong { left: 50%; top: 10%; border-color: rgba(236, 72, 153, 0.5); }
+.cam-wrong::after {
+    content: '❌';
+    font-size: 0.6rem;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+}
+
+/* Match Cut visualizer */
+.match-cut-vis {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.match-frame {
+    width: 120px;
+    height: 80px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.match-frame::after {
+    content: 'Frame A';
+    position: absolute;
+    bottom: -20px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+.match-frame.frame-b::after {
+    content: 'Frame B';
+}
+.match-arrow {
+    font-size: 1.5rem;
+    color: var(--accent-cyan);
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Chapter 2: Shot Directory (샷의 종류) */
+.controls-area {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+.search-wrapper i {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+.search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: rgba(8, 12, 20, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.search-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+}
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+.filter-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+}
+.filter-btn.active {
+    background: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    color: #080C14;
+    font-weight: 600;
+}
+
+/* Shots Grid */
+.shots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+@media (max-width: 1024px) {
+    .shots-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .shots-grid { grid-template-columns: 1fr; }
+}
+
+.shot-card {
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+.shot-card:hover {
+    border-color: rgba(6, 182, 212, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(8, 12, 20, 0.6), 0 0 15px rgba(6, 182, 212, 0.1);
+}
+.shot-preview {
+    height: 180px;
+    background: #04060A;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+.shot-preview svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    z-index: 2;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+.shot-card:hover .shot-preview svg {
+    color: var(--text-primary);
+}
+.shot-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    z-index: 1;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+.shot-card:hover .shot-media {
+    opacity: 1;
+    transform: scale(1.05);
+}
+.viewfinder-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    z-index: 2;
+}
+.shot-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 100px;
+    background: rgba(8, 12, 20, 0.8);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.badge-framing { color: var(--accent-cyan); }
+.badge-movement { color: var(--accent-emerald); }
+.badge-angles { color: var(--accent-pink); }
+.badge-special { color: var(--accent-gold); }
+
+.shot-info {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.shot-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+.shot-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+}
+.shot-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.25rem;
+}
+.shot-tab-btn {
+    flex: 1;
+    padding: 0.5rem 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.shot-tab-btn.active {
+    color: var(--accent-cyan);
+    border-bottom-color: var(--accent-cyan);
+}
+.tab-content {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    min-height: 120px;
+}
+.tab-panel {
+    display: none;
+}
+.tab-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+.tab-panel ul {
+    list-style: none;
+    padding-left: 0;
+}
+.tab-panel li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.45;
+}
+.tab-panel li::before {
+    content: '•';
+    color: var(--accent-cyan);
+    position: absolute;
+    left: 0.25rem;
+    font-weight: bold;
+}
+
+/* Chapter 3: Composition (구도) */
+.comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+@media (max-width: 1024px) {
+    .comp-grid { grid-template-columns: 1fr; }
+}
+
+.comp-card {
+    padding: 2.5rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.comp-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.comp-card h3 i {
+    color: var(--accent-pink);
+}
+.comp-text {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+}
+.comp-interactive-area {
+    background: rgba(8, 12, 20, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Golden Ratio grid overlay */
+.golden-ratio-mock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: radial-gradient(circle at 70% 40%, rgba(6, 182, 212, 0.2) 0%, rgba(8, 12, 20, 0.4) 60%);
+}
+.comp-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.comp-grid-overlay.active {
+    opacity: 1;
+}
+.grid-line-h {
+    grid-column: 1 / span 3;
+    border-bottom: 1.5px dashed rgba(255, 255, 255, 0.3);
+}
+.grid-line-v {
+    grid-row: 1 / span 3;
+    border-right: 1.5px dashed rgba(255, 255, 255, 0.3);
+}
+.grid-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-pink);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-pink);
+}
+/* Place grid points at intersection coordinates: (33.3%, 33.3%), (66.6%, 33.3%), (33.3%, 66.6%), (66.6%, 66.6%) */
+.pt-1 { top: 33.33%; left: 33.33%; }
+.pt-2 { top: 33.33%; left: 66.66%; }
+.pt-3 { top: 66.66%; left: 33.33%; }
+.pt-4 { top: 66.66%; left: 66.66%; }
+
+.landscape-element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 2px solid var(--text-muted);
+}
+.sun-element {
+    position: absolute;
+    left: 66.66%;
+    top: 33.33%;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px var(--accent-gold);
+}
+.comp-toggle-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    z-index: 10;
+}
+
+/* Lines and Vanishing Points */
+.vanishing-point-mock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #05070B;
+}
+.vp-line {
+    position: absolute;
+    background: var(--accent-cyan);
+    height: 1.5px;
+    transform-origin: left center;
+    opacity: 0.5;
+}
+/* Converging lines to center (125, 130) */
+.vp-line-1 { top: 0; left: 0; width: 280px; transform: rotate(46deg); }
+.vp-line-2 { top: 0; right: 0; width: 280px; transform-origin: right center; transform: rotate(-46deg); }
+.vp-line-3 { bottom: 0; left: 0; width: 280px; transform: rotate(-46deg); }
+.vp-line-4 { bottom: 0; right: 0; width: 280px; transform-origin: right center; transform: rotate(46deg); }
+.vp-point {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-pink);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-pink);
+}
+.vp-center-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    height: 30px;
+    border: 1px solid var(--text-muted);
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+}
+
+/* Contrast and Silhouette simulator */
+.contrast-mock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, #1E293B 0%, #0F172A 100%);
+    transition: all 0.5s ease;
+}
+.contrast-mock.silhouette-mode {
+    background: radial-gradient(circle at 50% 50%, #FFF 0%, #0F172A 100%);
+}
+.contrast-mock video {
+    transition: filter 0.5s ease;
+}
+.contrast-mock.silhouette-mode video {
+    filter: contrast(300%) brightness(30%) grayscale(100%);
+}
+
+/* Symmetry comparison cards */
+.symmetry-mock {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.sym-half {
+    flex: 1;
+    height: 100%;
+    border-right: 1px dashed rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+.sym-half-right {
+    border-right: none;
+}
+.sym-element {
+    position: absolute;
+    bottom: 30px;
+    width: 40px;
+    height: 100px;
+    background: var(--accent-cyan);
+    opacity: 0.6;
+}
+.sym-half-left .sym-element { right: 20px; border-radius: 10px 0 0 0; }
+.sym-half-right .sym-element { left: 20px; border-radius: 0 10px 0 0; }
+
+.asym-mock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.asym-element-large {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 160px;
+    background: var(--accent-pink);
+    opacity: 0.7;
+    border-radius: 8px;
+}
+.asym-element-small {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    width: 30px;
+    height: 60px;
+    background: var(--accent-cyan);
+    opacity: 0.6;
+    border-radius: 4px;
+}
+
+/* Footer Section */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    text-align: center;
+    background: #05070B;
+}
+footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+footer a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i data-lucide="camera"></i> CineGuide
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#structure">영상의 구성</a></li>
+                <li><a href="#shot-directory">샷 디렉토리</a></li>
+                <li><a href="#composition">구도 & 시선</a></li>
+            </ul>
+        </div>
+        <div class="progress-bar" id="progress-bar"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-art"></div>
+        <div class="hero-content">
+            <div class="session-tag">스토리텔링, 연출, 구도, 촬영 문법</div>
+            <h1>시각적 언어의 규칙과 촬영 연출</h1>
+            <p>이야기를 강렬하게 만드는 기초 영상 프레임 규칙부터 시각적 긴장을 만드는 카메라 앵글, 그리고 관객의 시선을 설계하는 구도 법칙까지 완성도 높은 연출을 위한 종합 디자인 북.</p>
+            <div class="hero-cta">
+                <a href="#structure" class="btn btn-primary">시작하기 <i data-lucide="arrow-right"></i></a>
+                <a href="#shot-directory" class="btn btn-secondary">샷 종류 전체보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 1: 영상의 구성 -->
+    <section class="main-container" id="structure">
+        <div class="section-title-area">
+            <div class="section-number">Chapter 01</div>
+            <h2 class="section-title">영상의 구성 단위</h2>
+        </div>
+
+        <div class="timeline-grid">
+            <div class="struct-card glass">
+                <div class="struct-icon"><i data-lucide="film"></i></div>
+                <h3>샷 <span>Shot</span></h3>
+                <p>영상의 가장 작은 시각적 단위. 녹화 시작 버튼을 누르고 멈출 때까지 촬영된 하나의 연속적인 클립.</p>
+            </div>
+            <div class="struct-card glass">
+                <div class="struct-icon"><i data-lucide="scissors"></i></div>
+                <h3>컷 <span>Cut</span></h3>
+                <p>샷과 샷을 물리적으로 혹은 심리적으로 연결하는 경계점. 영상에 리듬과 편집 템포를 부여.</p>
+            </div>
+            <div class="struct-card glass">
+                <div class="struct-icon"><i data-lucide="clapperboard"></i></div>
+                <h3>씬 <span>Scene</span></h3>
+                <p>동일한 시간과 장소에서 진행되는 완결된 에피소드. 여러 개의 샷이 모여 완성되며 '목표, 갈등, 결과'의 핵심 요소를 가짐.</p>
+            </div>
+            <div class="struct-card glass">
+                <div class="struct-icon"><i data-lucide="layers"></i></div>
+                <h3>시퀀스 <span>Sequence</span></h3>
+                <p>여러 씬들이 모여 하나의 온전한 사건이나 서사의 블록을 이룬 상태. '설정, 전개, 결말' 구조로 진행.</p>
+            </div>
+            <div class="struct-card glass">
+                <div class="struct-icon"><i data-lucide="book-open"></i></div>
+                <h3>막 <span>Act</span></h3>
+                <p>시퀀스들의 집합으로 영화나 연극 등 전체 서사 구조를 나누는 가장 거대한 뼈대. 일반적으로 3막 구조(도입, 전개, 결말)가 활용.</p>
+            </div>
+        </div>
+
+        <!-- Timeline Interactive Example -->
+        <div class="example-section glass">
+            <div class="example-title-area">
+                <span class="example-badge">실생활 예시 시뮬레이션</span>
+                <h3>소개팅 하는 날로 이해하는 구성 단계</h3>
+            </div>
+            
+            <div class="example-flow">
+                <div class="flow-step active" onclick="showStep(0)">
+                    <div class="flow-node">01</div>
+                    <div class="flow-label">샷 (Shot)</div>
+                </div>
+                <div class="flow-step" onclick="showStep(1)">
+                    <div class="flow-node">02</div>
+                    <div class="flow-label">씬 (Scene)</div>
+                </div>
+                <div class="flow-step" onclick="showStep(2)">
+                    <div class="flow-node">03</div>
+                    <div class="flow-label">시퀀스 (Seq)</div>
+                </div>
+                <div class="flow-step" onclick="showStep(3)">
+                    <div class="flow-node">04</div>
+                    <div class="flow-label">막 (Act)</div>
+                </div>
+            </div>
+
+            <div class="example-content-box">
+                <div class="example-card-detail active" id="step-detail-0">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--accent-cyan);">두근거리는 클로즈업 & 카페 전경 와이드 샷</h4>
+                    <p style="color: var(--text-secondary);">
+                        - <strong>클로즈업:</strong> 긴장해서 테이블 위 커피잔을 만지작거리는 손가락, 자꾸 확인하는 손목시계 샷.<br>
+                        - <strong>와이드 샷:</strong> 은은한 노란 조명 아래, 클래식 음악이 흐르는 조용한 약속 장소(카페)의 전경.
+                    </p>
+                </div>
+                <div class="example-card-detail" id="step-detail-1">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--accent-cyan);">시간과 장소 기반 에피소드의 결합</h4>
+                    <p style="color: var(--text-secondary);">
+                        - 카페에서 긴장하며 상대를 기다리는 씬 ➔ 문이 열리고 상대가 들어와 첫인사를 나누는 씬 ➔ 마주 앉아 조심스럽게 공통 취향을 물으며 대화하는 씬.<br>
+                        - 각 씬은 동일한 인물들과 카페라는 공간 속에서 하나의 완결된 상황과 사건을 형성합니다.
+                    </p>
+                </div>
+                <div class="example-card-detail" id="step-detail-2">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--accent-cyan);">스토리의 큰 흐름 (서사 블록)</h4>
+                    <p style="color: var(--text-secondary);">
+                        - 소개팅 대기 단계(준비와 초조함) 시퀀스 ➔ 첫 대면 및 어색한 탐색전 시퀀스 ➔ 친밀도가 쌓이는 대화 시퀀스 ➔ 카페를 나와 식당으로 자리를 옮기는 새로운 시작 시퀀스.
+                    </p>
+                </div>
+                <div class="example-card-detail" id="step-detail-3">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--accent-cyan);">도입-갈등/전개-결말의 3막 구조 완성</h4>
+                    <p style="color: var(--text-secondary);">
+                        - <strong>1막(도입):</strong> 설렘 반 긴장 반으로 상대방을 기다리고 첫 마주침이 성사되기까지의 기대감 유발 단계.<br>
+                        - <strong>2막(전개):</strong> 대화 중 대화 소재 고갈로 겪는 어색한 정적(위기/갈등)과 이를 공통 관심사 발견으로 극복해 나가는 감정 조율 단계.<br>
+                        - <strong>3막(결말):</strong> 자연스러운 대화 성공 후, 기분 좋은 애프터 약속을 확정 지으며 미소 띤 하루를 매듭짓는 행복한 마무리 단계.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Chapter 2: 샷 디렉토리 -->
+    <section class="main-container" id="shot-directory" style="border-top: 1px solid var(--border-color);">
+        <div class="section-title-area">
+            <div class="section-number">Chapter 02</div>
+            <h2 class="section-title">카메라 샷 가이드북 (23가지 기법)</h2>
+        </div>
+
+        <!-- Search and Filter Controls -->
+        <div class="controls-area">
+            <div class="search-wrapper">
+                <i data-lucide="search"></i>
+                <input type="text" class="search-input" id="search-input" placeholder="원하는 샷 종류나 효과, 키워드를 검색해보세요... (예: 클로즈업, 자연, 긴장감)">
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="framing">프레이밍 (Framing)</button>
+                <button class="filter-btn" data-filter="movement">카메라 무브먼트 (Movement)</button>
+                <button class="filter-btn" data-filter="angles">앵글 (Angles)</button>
+                <button class="filter-btn" data-filter="special">특수 기법 (Special)</button>
+            </div>
+        </div>
+
+        <!-- Shots Grid Container -->
+        <div class="shots-grid" id="shots-grid">
+            <!-- Shot cards will be injected here by python or handled in template -->
+
+            <div class="shot-card glass" data-category="framing" id="shot-card-1">
+                <div class="shot-preview">
+                    
+                    <img src="img/1_long_wide_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>1. 롱 샷 (Long Shot) & 와이드 샷 (Wide Shot)</h3>
+                    <p class="shot-description">인물 또는 사물과 그 주변 환경을 넓게 보여주는 샷으로, 공간의 전체적인 분위기, 규모, 그리고 인물과 환경의 관계를 설명하는 데 효과적.</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 1)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 1)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-1">
+                            <ul>
+                                <li>공간감, 스케일, 상황 전체 파악</li><li>주변 환경과 인물의 관계 강조</li><li>분위기 및 배경 설명</li><li>인물의 고립감 또는 자유로움 표현</li><li>공간의 웅장함 전달</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-1">
+                            <ul>
+                                <li>영상 도입부 및 장소 전환 시</li><li>광활한 자연, 도시, 우주 등 웅장한 풍경 묘사 (예: 〈반지의 제왕〉의 광활한 풍경)</li><li>전체적인 상황과 분위기 전달 (예: 운동회 시작 전, 운동장 전체, 가족 모임)</li><li>인물의 고립감이나 자유로움을 시각적으로 표현</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="framing" id="shot-card-2">
+                <div class="shot-preview">
+                    
+                    <img src="img/2_medium_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>2. 미디엄 샷 (Medium Shot)</h3>
+                    <p class="shot-description">인물의 허리 위 또는 무릎 위까지 보여주어, 인물의 표정과 몸짓을 중심으로 대화를 자연스럽게 전달하며 인물과 환경의 균형을 맞추는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 2)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 2)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-2">
+                            <ul>
+                                <li>인물의 표정과 몸짓 세부 전달</li><li>자연스러운 대화와 상호작용 표현</li><li>인물 간의 관계성 강조</li><li>이야기에 대한 몰입감 유지</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-2">
+                            <ul>
+                                <li>친구와의 대화, 회의, 가족 식사 등 일상적인 상황</li><li>인터뷰, 리액션 장면</li><li>드라마틱한 감정 교류 장면</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="framing" id="shot-card-3">
+                <div class="shot-preview">
+                    
+                    <img src="img/3_close_up.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>3. 클로즈업 (Close-Up) & 익스트림 클로즈업 (Extreme Close-Up)</h3>
+                    <p class="shot-description">인물 또는 사물의 특정 부분을 확대하여 보여주는 샷으로, 디테일을 강조하고 감정을 전달하는 데 사용. 익스트림 클로즈업은 그중에서도 극도로 특정 부위를 확대하여 더욱 강력한 효과.</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 3)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 3)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-3">
+                            <ul>
+                                <li>감정의 미묘한 변화 및 심리적 긴장감 강조</li><li>디테일, 질감, 상징적 의미 극대화</li><li>이야기에 대한 몰입감 상승</li><li>중요한 단서 또는 핵심 정보 전달</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-3">
+                            <ul>
+                                <li>인물의 감정 변화를 포착하는 극적인 순간 (예: 시험 결과 확인하는 얼굴, 눈물)</li><li>이야기에서 중요한 사물이나 단서 제시 (예: 반지, 고백 편지를 받는 손, 케이크 촛불)</li><li>제품의 질감이나 특징을 강조하는 광고</li><li>스릴러나 공포 영화에서 특정 부위로 긴장감 조성 (예: 스릴러의 눈동자)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="angles" id="shot-card-4">
+                <div class="shot-preview">
+                    
+                    <video src="img/4_pov.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-angles">앵글</span>
+                </div>
+                <div class="shot-info">
+                    <h3>4. POV (시점 샷, Point of View)</h3>
+                    <p class="shot-description">카메라가 인물의 시점에서 촬영하여, 관객이 마치 주인공의 눈으로 직접 보는 듯한 느낌을 받도록 하는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 4)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 4)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-4">
+                            <ul>
+                                <li>강력한 몰입감 및 주인공과의 동화 유발</li><li>주관적인 감정과 심리 상태 직접 전달</li><li>체험, 공감, 긴장감 극대화</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-4">
+                            <ul>
+                                <li>공포/스릴러 영화에서 위협적인 상황을 관객에게 직접 경험하게 할 때 (예: 어둠 속을 걷는 주인공 시점)</li><li>액션, 스포츠, 게임 영상에서 역동적인 현장감을 전달할 때 (예: 롤러코스터, 1인칭 액션)</li><li>브이로그나 심리 드라마에서 인물의 내면을 깊이 있게 보여줄 때</li><li>로맨스에서 상대방을 바라보는 시점, 스포츠에서 공이 날아오는 시점</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="framing" id="shot-card-5">
+                <div class="shot-preview">
+                    
+                    <img src="img/5_over_shoulder_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>5. 오버숄더 샷 (Over the Shoulder)</h3>
+                    <p class="shot-description">한 인물의 어깨 너머로 다른 인물 또는 대상에게 초점을 맞춰 촬영하는 구도</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 5)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 5)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-5">
+                            <ul>
+                                <li>대화의 자연스러운 흐름과 역동성 표현</li><li>인물 간의 관계, 심리적 거리감 암시</li><li>관객이 대화에 참여하는 듯한 느낌 제공</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-5">
+                            <ul>
+                                <li>두 인물 간의 대화, 인터뷰, 상담, 협상 장면</li><li>갈등이나 심리전이 벌어지는 상황</li><li>인물 간의 미묘한 관계 변화를 시각적으로 보여줄 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="framing" id="shot-card-6">
+                <div class="shot-preview">
+                    
+                    <img src="img/6_two_group_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>6. 투샷/그룹샷 (Two Shot / Group Shot)</h3>
+                    <p class="shot-description">두 명 이상의 인물을 한 프레임 안에 담아내어, 인물들 간의 관계와 집단의 분위기를 보여주는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 6)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 6)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-6">
+                            <ul>
+                                <li>인물 간의 관계, 친밀도, 유대감 표현</li><li>팀워크나 집단의 역동성 강조</li><li>인물들이 처한 상황이나 갈등 시각화</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-6">
+                            <ul>
+                                <li>커플, 가족, 친구 등 관계를 강조하는 장면 (예: 셀카, 가족 사진, 커플)</li><li>스포츠 팀의 작전 회의나 단체 활동 (예: 스포츠 팀 작전)</li><li>집단의 협력, 갈등, 혹은 특정 분위기를 전달할 때 (예: 〈어벤져스〉)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="angles" id="shot-card-7">
+                <div class="shot-preview">
+                    
+                    <img src="img/7_top_view.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-angles">앵글</span>
+                </div>
+                <div class="shot-info">
+                    <h3>7. 탑 뷰/드론 샷 (Top View / Drone Shot)</h3>
+                    <p class="shot-description">카메라를 높은 위치에서 아래로 내려다보며 촬영하는 구도로, 넓은 공간과 전체적인 풍경을 보여주는 데 효과적.</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 7)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 7)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-7">
+                            <ul>
+                                <li>광활한 공간감과 스케일 전달</li><li>전체적인 구조, 패턴, 질서 파악</li><li>시각적 임팩트와 드라마틱한 분위기 연출</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-7">
+                            <ul>
+                                <li>영상 도입부, 장소 전환, 또는 특정 공간의 전경을 보여줄 때 (예: 마을 전경)</li><li>자연 풍경, 도시 야경, 군중의 움직임 등을 웅장하게 담을 때 (예: 자연, 군중, 자동차 도로)</li><li>길, 도로, 건축물의 패턴이나 전체적인 규모를 강조할 때 (예: 웨딩 꽃길)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="special" id="shot-card-8">
+                <div class="shot-preview">
+                    
+                    <video src="img/8_slow_motion.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-special">특수 기법</span>
+                </div>
+                <div class="shot-info">
+                    <h3>8. 슬로모션 (Slow Motion)</h3>
+                    <p class="shot-description">실제보다 느린 속도로 영상을 재생하여, 특정 순간을 강조하고 감각적인 효과를 더하는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 8)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 8)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-8">
+                            <ul>
+                                <li>감정의 극대화 및 드라마틱한 분위기 연출</li><li>놓치기 쉬운 순간의 디테일 포착</li><li>아름다움, 긴장감, 감동 등 시각적/감정적 임팩트 강화</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-8">
+                            <ul>
+                                <li>액션 장면의 중요한 순간, 스포츠 하이라이트 (예: 운동선수 골, 액션의 총알)</li><li>감동적이거나 아름다운 장면 (예: 웨딩 꽃잎)</li><li>제품 광고에서 시각적인 매력을 높일 때 (예: 광고의 음료)</li><li>심리적 긴장감을 조성하는 극적인 순간</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="special" id="shot-card-9">
+                <div class="shot-preview">
+                    
+                    <video src="img/9_time_lapse.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-special">특수 기법</span>
+                </div>
+                <div class="shot-info">
+                    <h3>9. 타임랩스 (Timelapse)</h3>
+                    <p class="shot-description">긴 시간 동안 촬영된 장면을 실제보다 빠르게 재생하여, 시간의 흐름과 변화를 압축적으로 보여주는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 9)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 9)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-9">
+                            <ul>
+                                <li>시간의 흐름, 변화, 성장 과정 압축 전달</li><li>반복적인 움직임이나 패턴 강조</li><li>역동적인 에너지와 리듬감 부여</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-9">
+                            <ul>
+                                <li>해 뜨고 지는 풍경, 도시의 낮과 밤 변화</li><li>식물의 성장, 건설 과정 등 장시간의 변화를 보여줄 때</li><li>브이로그나 다큐멘터리에서 특정 구간의 시간 압축 및 전환 시</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="special" id="shot-card-10">
+                <div class="shot-preview">
+                    
+                    <img src="img/10_reaction_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-special">특수 기법</span>
+                </div>
+                <div class="shot-info">
+                    <h3>10. 리액션 샷 (Reaction Shot)</h3>
+                    <p class="shot-description">특정 사건이나 상황에 대한 인물의 즉각적인 감정적 반응을 포착하는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 10)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 10)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-10">
+                            <ul>
+                                <li>인물의 감정 상태 명확히 전달 및 관객 공감 유발</li><li>장면의 긴장감, 유머, 놀라움 등 감정적 파급력 확장</li><li>이야기의 리듬과 템포 조절</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-10">
+                            <ul>
+                                <li>극적인 사건 발생 직후 인물의 표정 변화를 보여줄 때 (예: 시험 결과 놀람, 선물 기쁨)</li><li>코미디에서 유머러스한 반응을 강조하거나, 서스펜스에서 긴장감을 높일 때 (예: 공포영화 놀람)</li><li>관중의 환호나 놀람 등 집단적인 반응을 담을 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="framing" id="shot-card-11">
+                <div class="shot-preview">
+                    
+                    <img src="img/11_insert_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>11. 인서트 샷 (Insert Shot)</h3>
+                    <p class="shot-description">주요 장면의 흐름을 끊지 않으면서, 특정 사물이나 인물의 디테일, 또는 배경의 일부를 클로즈업하여 보여주는 보조 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 11)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 11)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-11">
+                            <ul>
+                                <li>이야기의 핵심 정보, 단서, 메시지 명확히 전달</li><li>인물의 감정, 동작, 또는 사건의 임팩트 강조</li><li>장면의 분위기, 정서, 시간적 흐름 표현</li><li>편집의 리듬 조절 및 장면 간의 부드러운 연결</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-11">
+                            <ul>
+                                <li>정보 전달: 시험 점수, 문자 메시지, 시간, 지도, 중요한 문서 등 스토리 핵심 단서 제시</li><li>강조: 인물의 떨리는 손, 특정 사물에 대한 시선, 결정적인 동작 (예: 농구공을 던지는 손) 등을 부각</li><li>분위기/정서: 창밖의 비, 흔들리는 나뭇잎, 케이크 촛불 등으로 장면의 정서적 깊이 더하기</li><li>다큐멘터리에서 정보 보충, 광고에서 제품 디테일 강조</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="framing" id="shot-card-12">
+                <div class="shot-preview">
+                    
+                    <img src="img/12_cutaway_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-framing">프레이밍</span>
+                </div>
+                <div class="shot-info">
+                    <h3>12. 컷어웨이 (Cutaway)</h3>
+                    <p class="shot-description">주요 피사체나 대화에서 잠시 벗어나 주변 환경, 다른 인물, 소품 등을 보여주며 장면을 전환하거나 보충하는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 12)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 12)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-12">
+                            <ul>
+                                <li>장면의 분위기 환기 및 시각적 다양성 제공</li><li>주변 상황, 정보 보충, 또는 시간의 흐름 암시</li><li>편집의 리듬 조절 및 지루함 방지</li><li>감정의 완급 조절 및 시점 전환</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-12">
+                            <ul>
+                                <li>대화 중 지루함을 덜거나 분위기를 전환할 때 (예: 창밖 풍경, 반려동물)</li><li>사건이 진행되는 동안 주변의 반응이나 변화를 보여줄 때 (예: 관중, 시계 초침)</li><li>다큐멘터리, 브이로그, 광고 등에서 정보 보충이나 배경 설명 시</li><li>영상 전환 시 자연스러운 연결 고리 역할</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-13">
+                <div class="shot-preview">
+                    
+                    <video src="img/13_steadicam_shot.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>13. 스테디캠 샷 (Steadicam Shot)</h3>
+                    <p class="shot-description">스테디캠 장비를 사용하여 카메라의 흔들림을 최소화하고, 부드럽고 유려하게 움직이며 촬영하는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 13)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 13)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-13">
+                            <ul>
+                                <li>높은 몰입감과 현장감 제공</li><li>인물의 감정이나 시선 흐름을 자연스럽게 따라가며 긴장감 조성</li><li>공간감을 살리면서 부드러운 시각적 이동 연출</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-13">
+                            <ul>
+                                <li>추격, 액션 장면 등 역동적이면서 안정적인 움직임이 필요한 순간</li><li>롱테이크 기법을 활용하여 특정 공간이나 상황을 끊김 없이 보여줄 때 (예: 〈샤이닝〉 호텔 복도, 〈좋은 친구들〉 레스토랑 입장)</li><li>콘서트나 스포츠 중계에서 생생한 현장감을 전달할 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-14">
+                <div class="shot-preview">
+                    
+                    <img src="img/14_handheld_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>14. 핸드헬드 샷 (Handheld Shot)</h3>
+                    <p class="shot-description">카메라를 손에 들고 직접 촬영하여 의도적인 흔들림을 주거나, 있는 그대로의 현장감을 담는 샷</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 14)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 14)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-14">
+                            <ul>
+                                <li>강렬한 현장감과 리얼리티 전달</li><li>불안, 혼란, 긴장감 등 날것의 감정 표현</li><li>다큐멘터리적인 사실감과 몰입감 증대</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-14">
+                            <ul>
+                                <li>전쟁 영화, 공포 영화, 추격 장면 등 강렬한 긴장감을 조성할 때</li><li>뉴스, 다큐멘터리, 브이로그 등 현실적이고 생생한 분위기를 연출할 때</li><li>액션 장면에서 관객을 상황 속으로 더 깊이 끌어들이고자 할 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-15">
+                <div class="shot-preview">
+                    
+                    <video src="img/15_zoom_in_out.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>15. 줌인/줌아웃 (Zoom In/Out)</h3>
+                    <p class="shot-description">카메라 렌즈의 초점 거리를 조절하여 피사체를 확대(줌인)하거나 축소(줌아웃)하는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 15)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 15)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-15">
+                            <ul>
+                                <li>특정 피사체나 디테일에 대한 집중 및 강조</li><li>관객과의 심리적 거리감 변화 유도</li><li>감정의 점진적 변화 또는 정보 전달</li><li>공간감의 확장 또는 축소</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-15">
+                            <ul>
+                                <li>줌인: 인물의 표정 변화나 중요한 사물에 초점을 맞춰 감정이나 정보를 강조할 때</li><li>줌아웃: 특정 상황에서 벗어나 전체적인 공간감이나 배경을 보여주며 심리적 전환을 유도할 때</li><li>광고에서 제품의 특정 디테일을 부각하거나, 전환 효과를 줄 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-16">
+                <div class="shot-preview">
+                    
+                    <video src="img/16_panning.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>16. 패닝 (Panning)</h3>
+                    <p class="shot-description">카메라를 한 축에 고정하고 좌우로 수평 이동하며 촬영하는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 16)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 16)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-16">
+                            <ul>
+                                <li>넓은 공간을 시각적으로 확장하여 보여줌</li><li>움직이는 피사체를 자연스럽게 추적</li><li>장면 간의 부드러운 연결 및 리듬감 부여</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-16">
+                            <ul>
+                                <li>자동차 경주, 스포츠 경기 등 움직이는 피사체를 따라갈 때</li><li>광활한 풍경의 파노라마를 담거나 무대 전체를 조망할 때</li><li>이야기 전환 시 공간적 설명을 추가하거나 움직임을 강조할 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-17">
+                <div class="shot-preview">
+                    
+                    <video src="img/17_tilt.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>17. 틸트 (Tilt)</h3>
+                    <p class="shot-description">카메라를 한 축에 고정하고 위아래로 수직 이동하며 촬영하는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 17)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 17)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-17">
+                            <ul>
+                                <li>피사체의 높이, 크기, 위엄 등 강조</li><li>관객의 시선을 특정 방향으로 유도</li><li>공간감 또는 인물의 심리적 위압감 표현</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-17">
+                            <ul>
+                                <li>거대한 빌딩이나 나무를 아래에서 위로/위에서 아래로 훑으며 그 크기를 강조할 때</li><li>인물이 하늘을 올려다보는 시선을 따라가며 몽환적이거나 고독한 분위기를 연출할 때</li><li>권위적이거나 위압적인 존재감을 부각할 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="special" id="shot-card-18">
+                <div class="shot-preview">
+                    
+                    <video src="img/18_jump_cut.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-special">특수 기법</span>
+                </div>
+                <div class="shot-info">
+                    <h3>18. 점프컷 (Jump Cut)</h3>
+                    <p class="shot-description">시간의 흐름이나 동작의 일부를 과감하게 생략하여, 장면의 리듬을 빠르게 만들거나 시간 압축, 긴장감, 스타일을 강조하는 편집 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 18)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 18)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-18">
+                            <ul>
+                                <li>시간의 효율적인 압축 및 전달</li><li>장면의 리듬감, 속도감, 역동성 부여</li><li>특정 스타일, 긴장감, 유머러스한 분위기 연출</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-18">
+                            <ul>
+                                <li>요리 과정, 준비 과정, 여행 이동 등 긴 시간을 짧게 보여줄 때 (예: 요리 과정 압축)</li><li>유튜브, 숏폼, 뮤직비디오 등 빠르고 스타일리시한 편집이 필요할 때 (지루함을 방지하고 시선을 계속 붙잡아야 하는 순간)</li><li>액션이나 코미디에서 특정 순간을 강조하며 재미를 더할 때 <Little Shop of Horrors> (1986)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="angles" id="shot-card-19">
+                <div class="shot-preview">
+                    
+                    <video src="img/19_high_low_angle.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-angles">앵글</span>
+                </div>
+                <div class="shot-info">
+                    <h3>19. 하이 앵글 (High Angle) & 로우 앵글 (Low Angle)</h3>
+                    <p class="shot-description">카메라를 피사체의 위(하이 앵글) 또는 아래(로우 앵글)에 위치시켜 촬영하는 기법으로, 피사체의 힘과 감정을 시각적으로 표현</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 19)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 19)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-19">
+                            <ul>
+                                <li>하이 앵글: 피사체를 작고 연약하며 수동적으로 보이게 함; 두려움, 무력감, 보호받아야 할 존재감 강조</li><li>로우 앵글: 피사체를 크고 강하며 위압적이고 권위적으로 보이게 함; 힘, 자신감, 영웅성 강조</li><li>인물 간의 힘의 관계 또는 심리적 우위/열위 표현</li><li>감정의 역전, 위기와 극복, 성장과 변화의 순간을 시각적으로 강조</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-19">
+                            <ul>
+                                <li>하이 앵글: 피해자의 무력감, 작은 제품의 강조, 인물의 귀여움이나 보호 본능 자극 (예: 아이를 위에서 찍을 때, 범죄 영화 피해자)</li><li>로우 앵글: 영웅의 위풍당당함, 권위적인 인물의 위압감, 도전과 목표의 웅장함 표현 (예: 선생님을 아래에서 올려다볼 때, 히어로 영화 주인공)</li><li>스토리텔링에서 캐릭터의 심리적 상태나 파워 역학을 시각적으로 암시할 때</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="angles" id="shot-card-20">
+                <div class="shot-preview">
+                    
+                    <video src="img/20_camera_positions.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-angles">앵글</span>
+                </div>
+                <div class="shot-info">
+                    <h3>20. 카메라 포지션 앵글: 정면, 측면, 뒷모습 (Front, Side, Back Angles)</h3>
+                    <p class="shot-description">카메라가 피사체와 어떤 관계(정면, 측면, 뒷면)를 맺는지에 따라 인물과의 심리적 거리를 조절하고 다양한 감정을 전달하는 앵글</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 20)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 20)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-20">
+                            <ul>
+                                <li>정면 (Front): 관객과의 직접적인 소통, 인물의 진정성, 공감, 몰입, 친근함 강조.</li><li>측면 (Side): 객관적인 관찰자 시점, 거리감, 상황 설명, 인물 간의 대등한 관계 또는 단절 표현.</li><li>뒷모습 (Back): 인물의 고독, 상실감, 비밀스러움 암시, 관객의 상상력 자극, 인물과 함께 공간을 탐험하는 느낌.</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-20">
+                            <ul>
+                                <li>정면: 고백, 인터뷰, 연설 등 진정성과 감정 전달이 중요한 순간.</li><li>측면: 친구와 싸운 후 멀어지는 뒷모습 (거리감), 대화 장면에서 두 인물의 관계를 보여줄 때.</li><li>뒷모습: 이별 장면, 혼자 걷는 인물, 여행 브이로그에서 넓은 풍경과 함께 인물의 여정을 보여줄 때.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="angles" id="shot-card-21">
+                <div class="shot-preview">
+                    
+                    <img src="img/21_dutch_tilt_shot.png" alt="preview" class="shot-media">
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-angles">앵글</span>
+                </div>
+                <div class="shot-info">
+                    <h3>21. 더치 틸트 (Dutch Tilt / Canted Angle)</h3>
+                    <p class="shot-description">카메라를 수평 축을 기준으로 한쪽으로 기울여 촬영하는 앵글로, 화면이 비스듬하게 기울어짐</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 21)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 21)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-21">
+                            <ul>
+                                <li>불안감, 혼란, 비정상적인 심리 상태 표현</li><li>긴장감, 위협적인 분위기 조성</li><li>시각적 역동성 및 개성 있는 스타일 연출</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-21">
+                            <ul>
+                                <li>공포 영화나 심리 스릴러에서 인물의 정신적 불안정함이나 혼란을 시각화할 때.</li><li>액션 영화에서 위급하거나 폭발적인 상황을 강조할 때.</li><li>뮤직비디오나 광고에서 독특하고 감각적인 분위기를 연출할 때.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-22">
+                <div class="shot-preview">
+                    
+                    <video src="img/22_tracking_shot.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>22. 트래킹 샷 (Tracking Shot / Dolly Shot)</h3>
+                    <p class="shot-description">카메라를 레일 위나 이동 장비(돌리)에 고정하여 피사체를 따라 수평 또는 수직으로 부드럽게 이동하며 촬영하는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 22)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 22)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-22">
+                            <ul>
+                                <li>피사체의 움직임을 자연스럽고 안정적으로 따라가며 몰입감 증대</li><li>인물의 여정, 특정 공간 탐험, 시간의 흐름을 동적으로 표현</li><li>장면의 연속성과 인물과의 심리적 연결 강조</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-22">
+                            <ul>
+                                <li>복도를 걷는 인물을 따라가며 긴장감을 조성하거나 공간을 탐색할 때.</li><li>새로운 환경을 소개하거나 특정 오브젝트로 시선을 유도할 때.</li><li>대화 장면에서 인물 간의 관계 변화를 부드러운 움직임으로 보여줄 때.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="shot-card glass" data-category="movement" id="shot-card-23">
+                <div class="shot-preview">
+                    
+                    <video src="img/23_crane_shot.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+        
+                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
+                </div>
+                <div class="shot-info">
+                    <h3>23. 크레인 샷 (Crane Shot / Jib Shot)</h3>
+                    <p class="shot-description">카메라를 크레인이나 지브(Jib) 암에 장착하여 수직, 수평, 대각선 등 복합적인 움직임을 통해 넓은 범위의 촬영을 하는 기법</p>
+                    
+                    <div class="shot-tabs">
+                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 23)">핵심 효과</button>
+                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 23)">활용 방법</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="tab-effects-23">
+                            <ul>
+                                <li>웅장하고 드라마틱한 스케일 표현</li><li>장면 전환 시 부드러운 이동과 시각적 정보 확장</li><li>관객에게 압도적인 시각적 경험 제공, 감정적 고조</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-usages-23">
+                            <ul>
+                                <li>영화의 오프닝/클로징에서 장소나 인물들을 한 번에 보여주며 분위기를 압도할 때.</li><li>군중이나 대규모 전투 장면에서 전체적인 상황을 조망할 때.</li><li>특정 인물에게서 시작하여 넓은 환경으로 시선을 이동시키며 이야기를 확장할 때.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- Chapter 3: 구도, 시선을 이끄는 방법 -->
+    <section class="main-container" id="composition" style="border-top: 1px solid var(--border-color);">
+        <div class="section-title-area">
+            <div class="section-number">Chapter 03</div>
+            <h2 class="section-title">구도, 시선을 이끄는 법칙</h2>
+        </div>
+
+        <div class="comp-grid">
+            <!-- 1. 황금 비율 -->
+            <div class="comp-card glass">
+                <h3><i data-lucide="grid-3x3"></i> 황금비율 & Rule of Thirds</h3>
+                <p class="comp-text">3x3 그리드를 기준으로 주요 피사체의 핵심 부위(눈, 손, 중요한 아이템 등)를 교차점에 위치시켜 시각적 안정감과 최상의 집중도를 부여합니다. 풍경 촬영 시 지평선을 상단 또는 하단 1/3 축에 맞추는 것도 포함됩니다.</p>
+                <div class="comp-interactive-area">
+                    <div class="golden-ratio-mock" style="position: relative; overflow: hidden;">
+                        <img src="img/chapter_3-1_golden_ratio.png" alt="황금비율" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;">
+                        <div class="comp-grid-overlay active" id="rule-grid" style="z-index:2;">
+                            <div class="grid-line-h" style="top:33.33%;"></div>
+                            <div class="grid-line-h" style="top:66.66%;"></div>
+                            <div class="grid-line-v" style="left:33.33%;"></div>
+                            <div class="grid-line-v" style="left:66.66%;"></div>
+                            <div class="grid-point pt-1"></div>
+                            <div class="grid-point pt-2"></div>
+                            <div class="grid-point pt-3"></div>
+                            <div class="grid-point pt-4"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary comp-toggle-btn" onclick="toggleGridOverlay()">가이드 라인 토글</button>
+                </div>
+            </div>
+
+            <!-- 2. 라인과 소실점 -->
+            <div class="comp-card glass">
+                <h3><i data-lucide="merge"></i> 라인과 소실점 (Perspective)</h3>
+                <p class="comp-text">수평선(평온함), 수직선(위엄), 대각선(긴장감), 곡선(긴장 완화) 등 사물이 형성하는 라인을 활용해 시선을 배치하고 소실점(Vanishing Point)을 향하게 유도하여 압도적인 깊이감과 압박감을 부여합니다.</p>
+                <div class="comp-interactive-area">
+                    <div class="vanishing-point-mock" style="position: relative; overflow: hidden;">
+                        <video src="img/chapter_3-2_vanishing_point.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;"></video>
+                        <div class="vp-line vp-line-1" style="z-index:2;"></div>
+                        <div class="vp-line vp-line-2" style="z-index:2;"></div>
+                        <div class="vp-line vp-line-3" style="z-index:2;"></div>
+                        <div class="vp-line vp-line-4" style="z-index:2;"></div>
+                        <div class="vp-center-box" style="z-index:2;"></div>
+                        <div class="vp-point" style="z-index:2;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 등장인물의 시선 활용 -->
+            <div class="comp-card glass">
+                <h3><i data-lucide="eye"></i> 등장인물의 시선 활용</h3>
+                <p class="comp-text">카메라를 바라보는 직시(관객과의 직접적인 대화), 옆면 배치(신비감과 거리감 유발), 상하 시선 배치(권력과 힘의 수직적 관계 묘사) 등을 통해 인물의 내면 심리를 묘사하고 화면 속 몰입도를 높입니다.</p>
+                <div class="comp-interactive-area" style="flex-direction: column; gap: 1rem; padding: 1.5rem; height: auto; min-height: 260px;">
+                    <div class="gaze-mock-preview" style="width: 100%; aspect-ratio: 16 / 9; position: relative; overflow: hidden; border-radius: 8px; background:#04060A; display:flex; align-items:center; justify-content:center;">
+                        <video src="img/chapter_3-3_gaze_line.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:contain; position:absolute; top:0; left:0; z-index:1; opacity:0.85;"></video>
+                    </div>
+                    <div style="display: flex; gap: 1rem; width: 100%; z-index:2;">
+                        <div class="btn btn-secondary" style="flex: 1; text-align: center; justify-content: center; font-size: 0.85rem;" onclick="changeGaze('front')">직시 (소통)</div>
+                        <div class="btn btn-secondary" style="flex: 1; text-align: center; justify-content: center; font-size: 0.85rem;" onclick="changeGaze('side')">옆면 (거리감)</div>
+                        <div class="btn btn-secondary" style="flex: 1; text-align: center; justify-content: center; font-size: 0.85rem;" onclick="changeGaze('height')">위/아래 (위압감)</div>
+                    </div>
+                    <div id="gaze-mock-box" style="color:var(--accent-cyan); font-weight: 600; text-align: center; font-size: 0.95rem; z-index:2;">
+                        [직시] 인물이 렌즈를 마주할 때 관객은 다이렉트 소통을 체감합니다.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 콘트라스트와 실루엣 -->
+            <div class="comp-card glass">
+                <h3><i data-lucide="sparkles"></i> 콘트라스트 & 실루엣</h3>
+                <p class="comp-text">어두운 배경 속에 밝은 피사체를 배치하여 강조하는 명암 대비, 보색 매칭을 사용하는 색상 대비, 그리고 역광 촬영을 통해 대상의 세부를 숨기고 신비감을 연출하는 실루엣 서사적 기능을 적용합니다.</p>
+                <div class="comp-interactive-area">
+                    <div class="contrast-mock" id="contrast-mock" style="position: relative; overflow: hidden;">
+                        <video src="img/chapter_3-4_contrast_silhouette.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;" id="contrast-video"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Sputlab. All Rights Reserved.</p>
+        <p>본 콘텐츠의 예시 이미지 및 영상은 생성형 AI를 활용해 제작되었습니다.</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Sticky Header scroll styling
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Scroll Progress Bar
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+
+            // Active Navigation Links based on Scroll Position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSectionId = 'hero';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Step Accordion for Blind Date Timeline
+        function showStep(index) {
+            const steps = document.querySelectorAll('.flow-step');
+            const details = document.querySelectorAll('.example-card-detail');
+            
+            steps.forEach((step, idx) => {
+                if (idx === index) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            details.forEach((detail, idx) => {
+                if (idx === index) {
+                    detail.classList.add('active');
+                } else {
+                    detail.classList.remove('active');
+                }
+            });
+        }
+
+
+
+        // Switch tabs on shot cards
+        function switchShotTab(button, tabName, shotId) {
+            const card = document.getElementById('shot-card-' + shotId);
+            const tabButtons = card.querySelectorAll('.shot-tab-btn');
+            const panels = card.querySelectorAll('.tab-panel');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            panels.forEach(panel => panel.classList.remove('active'));
+            card.querySelector('#tab-' + tabName + '-' + shotId).classList.add('active');
+        }
+
+        // Rule of Thirds grid toggle
+        function toggleGridOverlay() {
+            const grid = document.getElementById('rule-grid');
+            grid.classList.toggle('active');
+        }
+
+
+
+        // Change Gaze description mock
+        function changeGaze(mode) {
+            const desc = document.getElementById('gaze-mock-box');
+            if (mode === 'front') {
+                desc.textContent = "[직시] 인물이 렌즈를 마주할 때 관객은 다이렉트 소통과 진정성을 체감합니다.";
+            } else if (mode === 'side') {
+                desc.textContent = "[옆면] 카메라가 인물을 객관적으로 관찰하여 심리적 거리감과 신비감을 부여합니다.";
+            } else {
+                desc.textContent = "[위/아래] 앵글 상하 차이를 통해 파워의 역학(권위와 무력함)을 명확하게 표현합니다.";
+            }
+        }
+
+        // Filtering Logic for Shot Directory
+        const searchInput = document.getElementById('search-input');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const shotCards = document.querySelectorAll('.shot-card');
+
+        function filterShots() {
+            const searchQuery = searchInput.value.toLowerCase().trim();
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+            shotCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                const cardDesc = card.querySelector('.shot-description').textContent.toLowerCase();
+                
+                // Extract text inside list items for full search capabilities
+                let listText = "";
+                card.querySelectorAll('.tab-panel li').forEach(li => {
+                    listText += li.textContent.toLowerCase() + " ";
+                });
+
+                const matchesSearch = cardTitle.includes(searchQuery) || cardDesc.includes(searchQuery) || listText.includes(searchQuery);
+                const matchesFilter = activeFilter === 'all' || cardCategory === activeFilter;
+
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterShots);
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterShots();
+            });
+        });
+
+    </script>
+</body>
+</html>

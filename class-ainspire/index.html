@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AInspire 4기 — 수강생 전용 교안 자료집</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Lucide Icons (self-hosted) -->
+    <script src="/assets/js/lucide.min.js" defer></script>
+    
+    <style>
+        /* Paperlogy — 슬라이드 덱과 폰트 통일 */
+        @font-face{font-family:'Paperlogy';src:url('/assets/fonts/Paperlogy-4Regular.woff2') format('woff2');font-weight:400;font-display:swap;}
+        @font-face{font-family:'Paperlogy';src:url('/assets/fonts/Paperlogy-7Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+        @font-face{font-family:'Paperlogy';src:url('/assets/fonts/Paperlogy-8ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap;}
+
+        :root {
+            /* AInspire 프리미엄 다크 퍼플 & 글라스모피즘 스타일 정의 */
+            --bg-primary: #05020c;
+            --bg-secondary: #0c0618;
+            --bg-card: rgba(22, 11, 38, 0.45);
+            --border-color: rgba(255, 255, 255, 0.08);
+            
+            --text-primary: #f5f3f7;
+            --text-secondary: #aba1bd;
+            --text-muted: #74688b;
+            
+            --accent-purple: #8f55ff;
+            --accent-cyan: #bba4ff;
+            --accent-yellow: #ffe600;
+            --accent-emerald: #00e676;
+            --accent-pdf: #ff4a5a;
+
+            --brand-grad: linear-gradient(135deg, #6020ff 0%, #8f55ff 100%);
+            --brand-grad-soft: linear-gradient(135deg, rgba(96, 32, 255, 0.15), rgba(143, 85, 255, 0.15));
+            --gradient-card-hover: linear-gradient(180deg, rgba(96, 32, 255, 0.12) 0%, rgba(12, 6, 24, 0) 100%);
+            --glow-purple: 0 0 25px rgba(96, 32, 255, 0.35);
+            --glow-cyan: 0 0 25px rgba(143, 85, 255, 0.3);
+            
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            
+            --content-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Paperlogy', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        /* Glassmorphism Util */
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Background Blobs */
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.45;
+        }
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(96, 32, 255, 0.4) 0%, transparent 70%);
+        }
+        .blob-2 {
+            top: 25%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(96, 32, 255, 0.3) 0%, transparent 70%);
+        }
+        .blob-3 {
+            bottom: -5%;
+            left: 20%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(96, 32, 255, 0.25) 0%, transparent 70%);
+        }
+
+        /* Header Navigation */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        #header.scrolled {
+            background: rgba(5, 2, 12, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-main {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--brand-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo-main span.badge-num {
+            background: rgba(96, 32, 255, 0.15);
+            border: 1px solid rgba(143, 85, 255, 0.3);
+            color: var(--accent-cyan);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 5px;
+            -webkit-text-fill-color: initial;
+        }
+        .logo-separator {
+            color: var(--border-color);
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+        .logo-sub-badge {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            padding: 3px 8px;
+            background: rgba(143, 85, 255, 0.1);
+            border: 1px solid rgba(143, 85, 255, 0.25);
+            border-radius: 6px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .logo-sub-badge:hover {
+            background: rgba(143, 85, 255, 0.2);
+            box-shadow: var(--glow-cyan);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a.active {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+        .btn-header-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            background: var(--brand-grad);
+            border: none;
+            border-radius: 99px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(96, 32, 255, 0.35);
+            transition: all 0.3s ease;
+        }
+        .btn-header-action:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(96, 32, 255, 0.5), var(--glow-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 9.5rem 2rem 4rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            background: rgba(143, 85, 255, 0.1);
+            border: 1px solid rgba(143, 85, 255, 0.25);
+            color: var(--accent-purple);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(143, 85, 255, 0.05);
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        .hero-stats {
+            display: inline-flex;
+            gap: 1.5rem;
+            padding: 8px 24px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .hero-stats span strong {
+            color: var(--accent-yellow);
+        }
+
+        /* Catalog Layout (Search & Filter) */
+        .catalog-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 2rem 8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-filter-bar {
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            width: 100%;
+        }
+
+        /* 1안: Tab List (Skilljar Style) */
+        .tabs-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+        .tab-btn {
+            display: inline-flex;
+            align-items: center;
+            background: none;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+        .tab-btn.active {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -9px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--brand-grad);
+            border-radius: 10px;
+        }
+
+        .search-control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-grow: 1;
+            max-width: 480px;
+        }
+        @media (max-width: 768px) {
+            .search-control-group {
+                max-width: 100%;
+            }
+        }
+        .search-wrapper {
+            position: relative;
+            flex-grow: 1;
+        }
+        .search-wrapper i.search-icon {
+            position: absolute;
+            left: 1.4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            width: 18px;
+            height: 18px;
+            pointer-events: none;
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3.2rem;
+            background: rgba(12, 6, 24, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 99px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            border-color: var(--accent-purple);
+            box-shadow: var(--glow-purple);
+            background: rgba(22, 11, 38, 0.6);
+        }
+        .search-wrapper button.clear-btn {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        .search-wrapper button.clear-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .reset-search-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .reset-search-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            border-color: var(--text-muted);
+        }
+
+        /* Material / Course Listing Grid */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            min-height: 250px;
+        }
+        @media (max-width: 1024px) {
+            .materials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 680px) {
+            .materials-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Materials Card */
+        .material-card {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        .material-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-card-hover);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        .material-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(143, 85, 255, 0.35);
+            box-shadow: var(--glow-purple), 0 12px 30px rgba(5, 2, 12, 0.6);
+        }
+        .material-card:hover::before {
+            opacity: 1;
+        }
+        .material-card * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-top {
+            padding: 1.5rem 1.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-icon-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(143, 85, 255, 0.1);
+            border: 1px solid rgba(143, 85, 255, 0.2);
+            color: var(--accent-purple);
+            transition: all 0.3s ease;
+        }
+        .material-card:hover .card-icon-wrapper {
+            background: rgba(143, 85, 255, 0.1);
+            border-color: rgba(143, 85, 255, 0.3);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(143, 85, 255, 0.15);
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 0.4rem;
+        }
+        .badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .badge-category {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        .badge-format {
+            font-weight: 800;
+        }
+        .badge-format.pdf {
+            background: rgba(255, 74, 90, 0.12);
+            border: 1px solid rgba(255, 74, 90, 0.3);
+            color: var(--accent-pdf);
+        }
+        .badge-format.excel {
+            background: rgba(0, 230, 118, 0.12);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: var(--accent-emerald);
+        }
+        .badge-format.link {
+            background: rgba(143, 85, 255, 0.12);
+            border: 1px solid rgba(143, 85, 255, 0.3);
+            color: var(--accent-cyan);
+        }
+        .badge-format.article {
+            background: rgba(143, 85, 255, 0.12);
+            border: 1px solid rgba(143, 85, 255, 0.3);
+            color: var(--accent-purple);
+        }
+        .badge-format.coming-soon {
+            background: rgba(150, 150, 150, 0.1);
+            border: 1px solid rgba(150, 150, 150, 0.3);
+            color: #999;
+        }
+
+        .card-body {
+            padding: 0 1.5rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-body h3 {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+        .material-card:hover .card-body h3 {
+            color: #fff;
+        }
+        .card-body p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-footer {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .card-footer .left-meta {
+            font-weight: 500;
+        }
+        .card-footer .action-text {
+            font-weight: 700;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s ease;
+        }
+        .material-card:hover .action-text {
+            color: var(--accent-cyan);
+        }
+        .card-footer .footer-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .card-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .card-download:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-purple);
+            background: rgba(143, 85, 255, 0.12);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #030108;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        footer p.warning-txt {
+            color: var(--text-muted);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* ===== 자료 미리보기 모달 ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5vh 2.5vw;
+            background: rgba(3, 1, 8, 0.78);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-window {
+            position: relative;
+            /* 화면을 최대한 채우되 본문(iframe)이 16:9가 되도록.
+               가용 폭(96vw)과 가용 높이(96vh-헤더)로 산출한 16:9 폭 중 작은 쪽 = 화면에 꽉 참 */
+            --modal-head-h: 64px;
+            --avail-h: calc(96vh - var(--modal-head-h));
+            width: min(96vw, calc(var(--avail-h) * 16 / 9));
+            max-height: 96vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), var(--glow-purple);
+            overflow: hidden;
+            transform: translateY(12px) scale(0.99);
+            transition: transform 0.25s ease;
+        }
+        .modal-overlay.open .modal-window {
+            transform: translateY(0) scale(1);
+        }
+        .modal-head {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+            flex-shrink: 0;
+        }
+        .modal-head .m-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            background: var(--brand-grad-soft);
+            color: var(--accent-cyan);
+        }
+        .modal-head .m-icon i { width: 20px; height: 20px; }
+        .modal-head .m-text { flex: 1; min-width: 0; }
+        .modal-head .m-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .modal-head .m-meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .modal-head .m-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+        .modal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            text-decoration: none;
+        }
+        .modal-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-purple);
+            background: rgba(143, 85, 255, 0.12);
+        }
+        .modal-btn i { width: 15px; height: 15px; }
+        .modal-close {
+            width: 38px;
+            padding: 0;
+            justify-content: center;
+        }
+        .modal-body {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #0a0612;
+            overflow: hidden;
+        }
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+        /* 모달 내부 회색 스크롤바 */
+        .modal-window ::-webkit-scrollbar { width: 12px; height: 12px; }
+        .modal-window ::-webkit-scrollbar-track { background: #2a2a2e; }
+        .modal-window ::-webkit-scrollbar-thumb {
+            background: #6e6e76;
+            border-radius: 6px;
+            border: 2px solid #2a2a2e;
+        }
+        .modal-window ::-webkit-scrollbar-thumb:hover { background: #8a8a92; }
+        .modal-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            gap: 0.6rem;
+        }
+        .modal-loading .spin {
+            width: 18px; height: 18px;
+            border: 2px solid var(--border-color);
+            border-top-color: var(--accent-purple);
+            border-radius: 50%;
+            animation: m-spin 0.8s linear infinite;
+        }
+        @keyframes m-spin { to { transform: rotate(360deg); } }
+        @media (max-width: 640px) {
+            .modal-overlay { padding: 0; }
+            .modal-window { width: 100vw; max-height: 100vh; border-radius: 0; }
+            .modal-head .m-meta { display: none; }
+            .modal-btn span { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-group">
+                <a href="index.html" class="logo-main" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <svg viewBox="0 0 232.75 44.99" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="height: 19px; width: auto; display: block;" aria-label="AInspire">
+                        <path d="M22.69,4.43C13.91,16.47,0,10.06,0,22.49s10.57,22.5,23.61,22.5c6.22,0,6.79-2.81,8.11-6.84.06-.17.11-.35.17-.52-1.61.65-3.38,1.01-5.23,1.01-4.79,0-8.99-2.39-11.37-5.99-1.2-2-1.89-4.35-1.89-6.85,0-2.18.52-4.23,1.45-6.04,2.2-4.32,6.69-7.29,11.88-7.29,6.47,0,11.87,4.62,13.08,10.74.19.85.29,1.73.29,2.64,0,.25-.04.5-.06.74,1.89-1.38,3.29-.81,4.4-3.72,3.7-9.75-11.56-32.38-21.73-18.43Z"/>
+                        <path d="M39.79,28.44c.13-.61.22-1.23.26-1.86,0,0-.01,0-.02.01-5.33,3.89-7.05,7.81-8.14,11.03,4-1.62,7-5.03,7.9-9.18Z"/>
+                        <polygon points="72.06 5.45 65.07 5.45 51.42 36.05 58.68 36.05 61.42 29.49 63.65 24.12 66.91 16.28 68.53 12.38 73.38 24.12 66.25 24.12 64.02 29.49 75.61 29.49 78.33 36.05 85.76 36.05 72.06 5.45"/>
+                        <path d="M88.25,36.09V5.47h7.09v30.61h-7.09Z"/>
+                        <path d="M99.13,36.05V12.52h6.52v6.52l-1.23-1.97c.84-1.57,2.06-2.78,3.63-3.63,1.58-.84,3.37-1.27,5.38-1.27,1.87,0,3.54.37,5.01,1.12,1.47.74,2.63,1.88,3.48,3.41.84,1.53,1.27,3.49,1.27,5.88v13.47h-6.82v-12.42c0-1.9-.41-3.3-1.24-4.2-.83-.9-2.01-1.35-3.52-1.35-1.08,0-2.05.22-2.91.68-.86.45-1.53,1.15-2.01,2.08-.48.93-.72,2.13-.72,3.59v11.63h-6.82Z"/>
+                        <path d="M136.96,36.4c-2.01,0-3.94-.24-5.8-.72-1.85-.48-3.32-1.09-4.4-1.82l2.27-4.9c1.08.67,2.36,1.22,3.83,1.64,1.47.42,2.92.64,4.35.64,1.58,0,2.69-.19,3.35-.57.66-.38.99-.9.99-1.57,0-.55-.25-.97-.76-1.25-.51-.28-1.19-.49-2.04-.63-.84-.15-1.77-.29-2.78-.44-1-.14-2.02-.34-3.04-.59-1.02-.25-1.95-.62-2.8-1.12-.84-.49-1.52-1.17-2.03-2.01s-.76-1.94-.76-3.28c0-1.49.43-2.8,1.29-3.94.86-1.14,2.11-2.04,3.74-2.69,1.63-.66,3.59-.98,5.86-.98,1.6,0,3.24.17,4.9.52,1.66.35,3.05.86,4.16,1.53l-2.28,4.85c-1.14-.67-2.28-1.13-3.43-1.38-1.15-.25-2.27-.37-3.35-.37-1.52,0-2.63.2-3.33.61-.7.41-1.05.93-1.05,1.58,0,.58.25,1.02.76,1.31.51.29,1.19.53,2.03.7.84.18,1.77.33,2.78.46,1.01.13,2.02.33,3.04.59,1.02.26,1.95.64,2.78,1.12.83.48,1.51,1.14,2.04,1.97.52.83.79,1.92.79,3.26,0,1.46-.44,2.75-1.31,3.87-.87,1.12-2.14,2.01-3.78,2.65-1.65.64-3.65.96-6.01.96Z"/>
+                        <path d="M151.64,44.54V12.52h6.52v4.81l-.13,7,.44,6.95v13.25h-6.82ZM165.55,36.4c-1.98,0-3.72-.44-5.2-1.31-1.49-.88-2.65-2.21-3.48-4-.83-1.79-1.25-4.06-1.25-6.8s.39-5.04,1.18-6.82c.79-1.78,1.93-3.11,3.41-3.98,1.49-.88,3.27-1.31,5.34-1.31,2.21,0,4.21.5,5.97,1.51,1.76,1,3.16,2.41,4.2,4.22,1.04,1.81,1.55,3.94,1.55,6.39s-.52,4.62-1.55,6.43c-1.04,1.81-2.43,3.21-4.2,4.2-1.77.99-3.76,1.49-5.97,1.49ZM164.37,30.8c1.14,0,2.15-.26,3.04-.79.89-.53,1.6-1.27,2.14-2.25.54-.98.81-2.14.81-3.48s-.27-2.54-.81-3.5c-.54-.96-1.25-1.71-2.14-2.23s-1.9-.79-3.04-.79-2.16.26-3.06.79-1.62,1.27-2.14,2.23c-.53.96-.79,2.13-.79,3.5s.26,2.5.79,3.48,1.24,1.73,2.14,2.25c.9.53,1.92.79,3.06.79Z"/>
+                        <path d="M184.46,9.56c-1.25,0-2.28-.37-3.06-1.09-.79-.73-1.18-1.63-1.18-2.71s.39-1.98,1.18-2.71,1.81-1.09,3.06-1.09,2.27.34,3.06,1.03c.79.69,1.18,1.57,1.18,2.65,0,1.14-.39,2.08-1.16,2.82-.77.74-1.8,1.12-3.08,1.12Z"/>
+                        <rect x="181.05" y="12.52" width="6.82" height="23.53"/>
+                        <path d="M191.65,36.05V12.52h6.52v6.65l-.92-1.93c.7-1.66,1.82-2.92,3.37-3.78s3.43-1.29,5.64-1.29v6.3c-.29-.03-.56-.05-.79-.07-.24-.01-.48-.02-.74-.02-1.87,0-3.38.53-4.53,1.6-1.15,1.07-1.73,2.72-1.73,4.96v11.11h-6.82Z"/>
+                        <path d="M221.38,36.4c-2.68,0-5.04-.53-7.06-1.58-2.03-1.05-3.59-2.49-4.7-4.31-1.11-1.82-1.66-3.9-1.66-6.23s.55-4.45,1.64-6.28c1.09-1.82,2.59-3.25,4.48-4.29,1.9-1.04,4.04-1.55,6.43-1.55s4.38.49,6.23,1.46c1.85.98,3.32,2.38,4.4,4.2,1.08,1.82,1.62,4,1.62,6.54,0,.26-.02.56-.04.9-.03.33-.06.65-.09.94h-19.11v-3.98h15.53l-2.63,1.18c0-1.23-.25-2.29-.74-3.19-.49-.9-1.18-1.61-2.06-2.12s-1.9-.76-3.06-.76-2.19.25-3.08.76c-.89.51-1.58,1.23-2.08,2.14s-.74,2-.74,3.26v1.05c0,1.28.29,2.41.85,3.39.57.98,1.37,1.72,2.41,2.23s2.25.76,3.65.76c1.25,0,2.35-.19,3.3-.57.95-.38,1.82-.95,2.6-1.71l3.63,3.94c-1.08,1.23-2.44,2.17-4.07,2.82-1.63.66-3.51.99-5.64.99Z"/>
+                    </svg>
+                    <span class="badge-num" style="background: rgba(96, 32, 255, 0.15); border: 1px solid rgba(143, 85, 255, 0.3); color: var(--accent-cyan); font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 5px; margin-left: 2px;">4기</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">교안 자료실</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-tag">
+                <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i> 4기 수강생 전용 공간
+            </div>
+            <h1>4기 수강생용 교안 모음</h1>
+            <p>AInspire 4기 강좌의 핵심 교안부터<br>실무용 Excel 프롬프트 사전, 플랫폼 리스트,<br>촬영·용어 시각 가이드북까지 한곳에서 탐색하세요.</p>
+            <div class="hero-stats">
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Main Area -->
+    <main class="catalog-container">
+        
+        <!-- Search & Category Filters (1안: Skilljar/Tab Row) -->
+        <div class="search-filter-bar">
+            <div class="tabs-row">
+                <ul class="filter-tabs">
+                    <li><button class="tab-btn active" onclick="filterCategory('all', event)">전체 자료</button></li>
+                    <li><button class="tab-btn" onclick="filterCategory('week1', event)">4기 입문편</button></li>
+                    <li><button class="tab-btn" onclick="filterCategory('week4', event)">4기 자료</button></li>
+                    <li><button class="tab-btn" onclick="filterCategory('week2', event)">2기 자료</button></li>
+                    <li><button class="tab-btn" onclick="filterCategory('week3', event)">3기 자료</button></li>
+                    <li><button class="tab-btn" onclick="filterCategory('cineguide', event)">CineGuide</button></li>
+                </ul>
+
+                <div class="search-control-group">
+                    <div class="search-wrapper">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" id="search-input" class="search-input" placeholder="자료 이름 또는 요약 검색..." oninput="handleSearch()">
+                        <button id="clear-btn" class="clear-btn" style="display: none;" onclick="clearSearch()" aria-label="검색어 지우기">
+                            <i data-lucide="x" style="width:14px; height:14px;"></i>
+                        </button>
+                    </div>
+                    <button class="reset-search-btn" onclick="resetAllFilters()">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Materials Card Grid -->
+        <section class="materials-grid" id="materials-grid">
+            <!-- Dynamically populated via javascript -->
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 0.8rem; font-weight: 700; color: var(--text-primary);">© 2026 AInspire. All Rights Reserved.</p>
+        <p class="warning-txt">본 자료집의 교안 및 시트 데이터는 AInspire 4기 정규 수강생 전용 자료입니다. 허가되지 않은 무단 배포 및 공유를 엄격히 금지합니다.</p>
+    </footer>
+
+    <!-- 자료 미리보기 모달 -->
+    <div class="modal-overlay" id="material-modal" onclick="if(event.target===this)closeModal()">
+        <div class="modal-window">
+            <div class="modal-head">
+                <div class="m-icon"><i data-lucide="file-text" id="modal-icon"></i></div>
+                <div class="m-text">
+                    <div class="m-title" id="modal-title">자료</div>
+                    <div class="m-meta" id="modal-meta"></div>
+                </div>
+                <div class="m-actions">
+                    <a class="modal-btn" id="modal-open-new" href="#" target="_blank" rel="noopener">
+                        <i data-lucide="external-link"></i><span>새 창</span>
+                    </a>
+                    <button class="modal-btn modal-close" onclick="closeModal()" aria-label="닫기">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-loading" id="modal-loading"><span class="spin"></span> 불러오는 중…</div>
+                <iframe id="modal-frame" src="about:blank" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- 자료 데이터 로드 및 렌더링 스크립트 -->
+    <script src="data-materials.js"></script>
+    <script>
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        // 카드 렌더링 함수
+        function renderMaterials(data) {
+            const grid = document.getElementById('materials-grid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 5rem 2rem; color: var(--text-secondary);">
+                        <i data-lucide="search-code" style="width: 48px; height: 48px; margin-bottom: 1.25rem; color: var(--text-muted); opacity: 0.6;"></i>
+                        <p style="font-size: 1.05rem; font-weight: 600;">검색 결과와 일치하는 자료가 없습니다.</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">다른 검색어를 입력하시거나 필터를 리셋해 보세요.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('article');
+                card.className = 'material-card glass';
+                
+                // 클릭 시 모달 미리보기
+                if (item.fileType === 'coming-soon') {
+                    card.style.opacity = '0.5';
+                    card.style.cursor = 'default';
+                    card.setAttribute('onclick', '');
+                } else {
+                    card.setAttribute('onclick', `openMaterial('${item.id}')`);
+                }
+
+                // 파일 포맷 아이콘 매핑
+                let formatBadgeColor = '';
+                if (item.fileType === 'pdf') formatBadgeColor = 'pdf';
+                else if (item.fileType === 'excel') formatBadgeColor = 'excel';
+                else if (item.fileType === 'article') formatBadgeColor = 'article';
+                else if (item.fileType === 'coming-soon') formatBadgeColor = 'coming-soon';
+                else formatBadgeColor = 'link';
+
+                // 액션 텍스트 정의 (전부 모달 미리보기)
+                let actionText = '미리보기';
+                let actionIcon = 'eye';
+                if (item.fileType === 'link') {
+                    actionText = '열기';
+                    actionIcon = 'arrow-right';
+                } else if (item.fileType === 'notion') {
+                    actionText = 'Notion 열기';
+                    actionIcon = 'external-link';
+                } else if (item.fileType === 'article') {
+                    actionText = '읽기';
+                    actionIcon = 'book-open';
+                } else if (item.fileType === 'folder') {
+                    actionText = '폴더 열기';
+                    actionIcon = 'folder-open';
+                } else if (item.fileType === 'coming-soon') {
+                    actionText = '준비 중';
+                    actionIcon = 'clock';
+                }
+
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="${item.icon}"></i>
+                        </div>
+                        <div class="badge-group">
+                            <span class="badge badge-category">${item.categoryKo}</span>
+                            <span class="badge badge-format ${formatBadgeColor}">${item.fileType === 'coming-soon' ? '준비 중' : item.fileType}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>${item.title}</h3>
+                        <p>${item.summary}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="left-meta">${item.date}</span>
+                        <span class="footer-actions">
+                            ${(item.fileType === 'pdf' || item.fileType === 'excel') ? `
+                            <button class="card-download" title="다운로드" onclick="event.stopPropagation(); downloadMaterial('${item.id}')">
+                                <i data-lucide="download" style="width: 15px; height: 15px;"></i>
+                            </button>` : ''}
+                            <span class="action-text">
+                                ${actionText} <i data-lucide="${actionIcon}" style="width: 14px; height: 14px;"></i>
+                            </span>
+                        </span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        // PDF·Excel 다운로드 (Drive 직접 다운로드 링크)
+        function downloadMaterial(id) {
+            const item = materialData.find(m => m.id === id);
+            if (!item) return;
+            const url = item.driveId
+                ? `https://drive.google.com/uc?export=download&id=${item.driveId}`
+                : item.filePath;
+            window.open(url, '_blank', 'noopener');
+        }
+
+        // 자료 유형별 모달 미리보기
+        function openMaterial(id) {
+            const item = materialData.find(m => m.id === id);
+            if (!item) return;
+
+            let frameSrc = '';
+            let openNewHref = '';
+
+            if (item.fileType === 'article') {
+                // 로컬 HTML 아티클: 뷰어를 임베드 모드로 띄움
+                frameSrc = `viewer.html?id=${id}&embed=1&_=${Date.now()}`;
+                openNewHref = `viewer.html?id=${id}`;
+            } else if (item.fileType === 'pdf' || item.fileType === 'excel') {
+                // Google Drive 미리보기
+                if (item.driveId) {
+                    frameSrc = `https://drive.google.com/file/d/${item.driveId}/preview`;
+                    openNewHref = `https://drive.google.com/file/d/${item.driveId}/view`;
+                } else {
+                    // driveId 없으면 로컬 파일 폴백
+                    frameSrc = item.filePath;
+                    openNewHref = item.filePath;
+                }
+            } else if (item.fileType === 'folder') {
+                // Google Drive 폴더: 모달에 폴더 그리드 미리보기, 새 탭은 폴더 열기
+                frameSrc = `https://drive.google.com/embeddedfolderview?id=${item.driveId}#grid`;
+                openNewHref = `https://drive.google.com/drive/folders/${item.driveId}`;
+            } else if (item.fileType === 'notion') {
+                // Notion 페이지: iframe 차단으로 새 탭 직접 열기
+                window.open(item.notionUrl, '_blank', 'noopener');
+                return;
+            } else {
+                // link: 로컬 HTML 페이지(슬라이드/CineGuide) 임베드
+                const sep = item.filePath.includes('?') ? '&' : '?';
+                frameSrc = `${item.filePath}${sep}embed=1&_=${Date.now()}`;
+                openNewHref = item.filePath;
+            }
+
+            // 부모(포털)가 ?debug=1 이면 로컬 HTML iframe에도 debug 전달
+            // (Drive 미리보기 같은 외부 URL에는 붙이지 않음)
+            if (new URLSearchParams(location.search).get('debug') === '1'
+                && (item.fileType === 'article' || item.fileType === 'link')) {
+                frameSrc += '&debug=1';
+            }
+
+            // 모달 채우기
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-meta').textContent = `${item.categoryKo} · ${item.readTime}`;
+            document.getElementById('modal-open-new').href = openNewHref;
+
+            const iconEl = document.getElementById('modal-icon');
+            iconEl.setAttribute('data-lucide', item.icon || 'file-text');
+
+            const loading = document.getElementById('modal-loading');
+            const frame = document.getElementById('modal-frame');
+            loading.style.display = 'flex';
+            frame.onload = () => { loading.style.display = 'none'; };
+            frame.src = frameSrc;
+
+            const overlay = document.getElementById('material-modal');
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('material-modal');
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+            // iframe 정지(영상/소리 멈춤)
+            const frame = document.getElementById('modal-frame');
+            setTimeout(() => { if (!overlay.classList.contains('open')) frame.src = 'about:blank'; }, 250);
+        }
+
+        // ESC로 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // 검색 처리 함수
+        function handleSearch() {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-btn');
+            searchQuery = input.value.trim().toLowerCase();
+
+            if (searchQuery.length > 0) {
+                clearBtn.style.display = 'flex';
+            } else {
+                clearBtn.style.display = 'none';
+            }
+
+            applyFilters();
+        }
+
+        // 검색어 삭제 함수
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            searchQuery = '';
+            document.getElementById('clear-btn').style.display = 'none';
+            applyFilters();
+            input.focus();
+        }
+
+        // 카테고리 필터링 함수
+        function filterCategory(category, event) {
+            currentFilter = category;
+            
+            // 모든 탭의 active 클래스 제거 및 클릭된 탭 추가
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            if (event) {
+                event.currentTarget.classList.add('active');
+            }
+
+            applyFilters();
+        }
+
+        // 필터 및 검색 적용 통합 함수
+        function applyFilters() {
+            let filtered = materialData;
+
+            // 1. 카테고리 필터
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(item => item.category === currentFilter);
+            }
+
+            // 2. 검색어 필터
+            if (searchQuery.length > 0) {
+                filtered = filtered.filter(item => {
+                    return item.title.toLowerCase().includes(searchQuery) || 
+                           item.summary.toLowerCase().includes(searchQuery);
+                });
+            }
+
+            renderMaterials(filtered);
+        }
+
+        // 전체 초기화 (Reset 버튼 클릭)
+        function resetAllFilters() {
+            // 검색어 지우기
+            const input = document.getElementById('search-input');
+            input.value = '';
+            searchQuery = '';
+            document.getElementById('clear-btn').style.display = 'none';
+
+            // 카테고리 '전체'로 복구
+            currentFilter = 'all';
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach((tab, index) => {
+                if (index === 0) tab.classList.add('active');
+                else tab.classList.remove('active');
+            });
+
+            renderMaterials(materialData);
+        }
+
+        // 초기 로딩
+        window.addEventListener('DOMContentLoaded', () => {
+            // 총 자료 수 노출 (hero-stats에서 제거됨)
+
+            // 전체 자료 카드 렌더링
+            renderMaterials(materialData);
+
+            // 헤더 스크롤 이펙트
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+    <!-- 디테일 편집용 주석 모드 (?debug=1 일 때만 활성) -->
+    <script src="debug-annotate.js"></script>
+</body>
+</html>

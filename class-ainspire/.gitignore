@@ -1,0 +1,15 @@
+# OS / 에디터
+.DS_Store
+Thumbs.db
+*.swp
+
+# 의존성
+node_modules/
+
+# 제작 부산물 (영상 생성 스크립트·중간 산출물)
+*.mjs
+*.wav
+*.srt
+
+# 녹화 원본
+*.mkv

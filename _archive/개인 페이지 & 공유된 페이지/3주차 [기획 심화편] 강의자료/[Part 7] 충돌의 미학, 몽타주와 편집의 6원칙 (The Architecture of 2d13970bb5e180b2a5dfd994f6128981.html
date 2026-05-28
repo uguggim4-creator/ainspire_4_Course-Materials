@@ -1,0 +1,771 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of Time)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d13970b-b5e1-80b2-a5df-d994f6128981" class="page sans"><header><h1 class="page-title" dir="auto">[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of Time)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="2d13970b-b5e1-8065-b24c-cee2502d94be" class="">Overview</h1></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80dd-a71b-d2bac4dcbfed" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> 샷과 샷의 <strong>충돌</strong>이 제3의 의미를 만든다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-805e-ae74-cad34fa299d6" class="bulleted-list"><li style="list-style-type:disc"><strong>목표:</strong> 히치콕의 서스펜스 이론과 몽타주 기법으로 서사를 설계하고, 월터 머치의 6원칙을 통해 편집의 우선순위를 정한다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8053-ad93-dab0467b2656" class="bulleted-list"><li style="list-style-type:disc"><strong>필독 철학:</strong> &quot;영화는 촬영되는 것이 아니라, 조립되는 것이다.&quot; — <em>세르게이 에이젠슈타인</em></li></ul></div><div style="display:contents" dir="auto"><hr id="2d13970b-b5e1-804d-aa00-e633cda9901e"/></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8008-a862-c72ee77e8cab" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d13970b-b5e1-80c2-ba1f-f05bee46a1db" class="">0. Opening: 1+1=3 (제3의 의미)</h2></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80d3-9793-f290006b3073" class="">프랑켄슈타인의 괴물과 영화</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80ea-bfe8-f18f80d71cd5" class="">영화는 시체(죽어있는 필름 조각)를 이어 붙여 생명을 불어넣는 프랑켄슈타인의 작업과 같습니다. AI로 멋진 컷 하나를 뽑는 것은 쉽습니다. 하지만 그것은 단어 하나를 아는 것과 같습니다. 단어를 연결해 문장을 만드는 힘, 그것이 바로 편집(Editing)입니다.</p></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8097-a168-e3e424a0bc63" class="">훌륭한 감독은 &#x27;A컷 다음에 왜 반드시 B컷이 와야 하는가&#x27;를 설계합니다. 개별 이미지의 아름다움보다 중요한 것은 이미지 사이의 화학 반응(Chemistry)입니다.</p></div><div style="display:contents" dir="ltr"><figure id="2d13970b-b5e1-80e8-bac6-ffa104fc152a"><div class="source"><a href="https://youtu.be/KdyfyU7iks0?si=RFnXvdl2VqT5uCes">https://youtu.be/KdyfyU7iks0?si=RFnXvdl2VqT5uCes</a></div></figure></div><div style="display:contents" dir="auto"><hr id="2d13970b-b5e1-80bd-9eb9-dbbc4eabe890"/></div><div style="display:contents" dir="auto"><h2 id="2d13970b-b5e1-8035-9d1a-d61b355e182c" class="">1. 히치콕의 법칙: 서프라이즈 vs 서스펜스 (The Bomb Theory)</h2></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80d7-8433-fc82ce849a88" class="">지난 시간에 배운 쿨레쇼프 효과가 &#x27;의미의 생성&#x27;이라면, 알프레드 히치콕의 이론은 &#x27;정보의 통제&#x27;를 통한 시간의 지배입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80da-a7f5-c937a95e95ad" class="">1-1. 폭탄 이론 (The Bomb Theory)</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-802d-aafc-dd31f8aeca02" class="">히치콕은 탁자 밑의 폭탄을 예로 들어 놀라움(Surprise)과 서스펜스(Suspense)의 차이를 설명했습니다.</p></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80d5-8f08-e2278805107d" class="bulleted-list"><li style="list-style-type:disc"><strong>상황 A (Surprise):</strong> 두 사람이 탁자에서 커피를 마시며 대화합니다. 갑자기 쾅! 폭탄이 터집니다.<div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-801f-aba4-e842ab4ab655" class="bulleted-list"><li style="list-style-type:circle"><strong>관객의 반응:</strong> 15초 동안 깜짝 놀랍니다. 그게 전부입니다.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8081-a978-febcabe6cc18" class="bulleted-list"><li style="list-style-type:disc"><strong>상황 B (Suspense):</strong> 두 사람이 대화하기 <strong>전</strong>, 탁자 밑에 시한폭탄이 장착되는 것을 관객에게만 보여줍니다(<strong>Insert Shot</strong>). 시계는 1시를 가리키고 있고, 폭탄은 1시 5분에 터집니다. 두 사람은 아무것도 모른 채 잡담을 나눕니다.<div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-800e-93ef-f00ae1f53ac3" class="bulleted-list"><li style="list-style-type:circle"><strong>관객의 반응:</strong> 1시 5분이 다가올수록 관객은 미치도록 불안해합니다. &quot;바보들아, 커피 마시지 말고 도망가!&quot;라고 마음속으로 외칩니다. 이것이 <strong>서스펜스</strong>입니다.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-802f-bb10-c1a705815dba" class="">1-2. AI 실무 적용: 인서트 샷(Insert Shot)의 배치</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-808a-8226-e53be061f494" class="">AI 영상 기획에서 서스펜스를 만들려면, 메인 사건 사이에 &#x27;위험을 알리는 사물(Insert)&#x27;을 끼워 넣어야 합니다. 주인공은 모르지만 관객은 아는 정보를 시각화하십시오.</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80dd-b951-ee74ddfda197"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video____________1984_0.mp4">attachment:e64722f3-58b3-4dd6-885d-608f7def4254:kling_20251223_Text_to_Video____________1984_0.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8005-a5bb-ced92b0da08e" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8007-ab5c-d37bae9298f4"><td id="&gt;fnG" class=""><strong>기법</strong></td><td id="vWqz" class="" style="width:584px"><strong>심리적 효과 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80fc-b403-ca84b53a09f1"><td id="&gt;fnG" class=""><strong>Narrative Only</strong><br/>(평범한 전개)</td><td id="vWqz" class="" style="width:584px"><strong>설명:</strong> 주인공이 어두운 복도를 걷는다 -&gt; 갑자기 괴물이 튀어나온다. (단순 깜놀)<br/><strong>Prompt:</strong> <code>Man walking in dark hallway, jump scare monster appearing suddenly, shock moment</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80ff-a692-eba0ed22248b"><td id="&gt;fnG" class=""><strong>Suspense Editing</strong><br/>(정보의 통제)</td><td id="vWqz" class="" style="width:584px"><strong>설명:</strong> (Shot 1) 천장 환풍구 속에 숨어 침을 흘리는 괴물(Insert).<br/>(Shot 2) 아무것도 모른 채 그 아래를 지나가는 주인공.<br/>(Shot 3) 괴물의 시점으로 내려다본 주인공(POV).<br/><strong>Prompt (Shot 1):</strong> <code>Macro shot, alien creature hiding inside air vent, dripping saliva, glowing eyes in darkness, cinematic horror, claustrophobic atmosphere --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8098-a746-efaa7e06a211" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8049-8fbd-eaacd2078cdb"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/777.mp4">attachment:203a03ab-4d2d-46a3-8a4e-f4c68611ab22:777.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-805b-88ff-e5da7575951b"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/77777.mp4">attachment:f434745a-a577-4261-b8cb-900baca1d313:77777.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8061-adde-dbc45f4b9f1d" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5539.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5539.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80a1-80b6-f57dc2a332d4" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5548.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5548.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8080-a51e-cab0153ccd83" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5550.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5550.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8074-8c5a-f231ac6a08d3" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__top-view-__5546.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__top-view-__5546.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8037-8e52-ea17c9b7aadf" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34352.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34352.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8068-946b-d72495f5f4c0" class="">프롬프트 : 풀샷. 천장 환풍구 속에 숨어 침을 흘리는 에얼리언. 아무것도 모른 채 그 아래를 지나가는 주인공.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80b2-97a2-ebbf072e4e9c" class="">단순한 프롬프트로 풀샷을 먼저 만든 후 나노바나나 프로로 씬을 확장해갔다.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e9-a0b8-cde7909aa268" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d13970b-b5e1-80cc-b75d-e6cc12359ab4" class="">2. 에이젠슈타인의 지적 몽타주: 충돌의 미학 (Intellectual Montage)</h2></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80d8-a74d-d2e2a4bd58c9" class="">세르게이 에이젠슈타인은 &quot;몽타주는 벽돌 쌓기가 아니라, 충돌(Conflict)이다&quot;라고 했습니다. 서로 이질적인 두 샷이 부딪힐 때 강렬한 스파크(관념)가 튑니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80a3-be17-d148547327aa" class="">2-1. 영화적 예시: 프란시스 포드 코폴라의 &lt;대부 (The Godfather)&gt;</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-809e-bbb7-fb5adf581010" class="">영화 후반부, 마이클 꼴레오네가 조카의 세례식에 참석해 &quot;사탄을 거부합니까?&quot;라는 질문에 &quot;네&quot;라고 대답하는 성스러운 장면이 나옵니다. 하지만 그 사이사이에 마이클의 부하들이 적들을 잔혹하게 기관총으로 학살하는 장면이 교차 편집됩니다.</p></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8003-8bdc-fdab93461b94" class="bulleted-list"><li style="list-style-type:disc"><strong>[성스러운 세례식] vs [잔혹한 학살]</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8040-ab63-f2f9a413fa4f" class="bulleted-list"><li style="list-style-type:disc"><strong>의미:</strong> 마이클의 위선과 냉혹한 마피아 대부로서의 탄생을 대사 한마디 없이 <strong>충돌</strong>로 보여줍니다.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-802f-8265-d52250a1e915"><div class="source"><a href="https://youtu.be/1YLAenWCVRM?si=Noz8oxm2Sx7aF2rk">https://youtu.be/1YLAenWCVRM?si=Noz8oxm2Sx7aF2rk</a></div></figure></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80cc-a8ff-fe3445dbd803" class="">2-2. AI 실무 적용: 은유(Metaphor)의 시각화</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-800a-b090-fe8df5a0a8c0" class="">직설적인 서사보다 강력한 것이 은유입니다. 인물의 분노를 표현하기 위해 소리 지르는 장면만 쓰지 말고, 자연 현상이나 사물을 충돌시키십시오.</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8067-899d-c564fea0c0b1"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video____________1993_1.mp4">attachment:916ca963-9cc0-4b4b-a742-0b8fcf1a4987:kling_20251223_Text_to_Video____________1993_1.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-806c-b88c-d9f6c9d17c8b" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-808d-a891-f5bbdb5e0190"><td id="gr}b" class=""><strong>몽타주 종류</strong></td><td id="ZOxc" class="" style="width:578px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8058-8b4a-e328d17a17fe"><td id="gr}b" class=""><strong>Narrative</strong><br/>(하수: 직설법)</td><td id="ZOxc" class="" style="width:578px"><strong>설명:</strong> 남자가 화를 낸다 -&gt; 남자가 책상을 친다. (평범하고 지루한 진행)<br/><strong>Prompt:</strong> <code>Angry man hitting a desk, shouting, aggressive motion --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8038-96f8-c4c8d89cbed7"><td id="gr}b" class=""><strong>Intellectual</strong><br/>(고수: 은유법)</td><td id="ZOxc" class="" style="width:578px"><strong>설명:</strong> 남자가 분노하는 얼굴 클로즈업(A) 뒤에, <strong>폭발하는 화산(B)</strong> 혹은 **댐이 무너지는 장면(C)**을 붙임.<br/><strong>Prompt (B):</strong> <code>Volcano eruption, lava exploding, destruction, extreme power, visual metaphor for anger, nature&#x27;s fury, high contrast --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80c9-a203-e99cc9819e85"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/777777777.mp4">attachment:57d6d59c-1f97-4361-82eb-d6bf4d29f99b:777777777.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8045-a093-dfb456e71bf5" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d13970b-b5e1-8002-b523-ea39c2f31c95" class="">3. 매치 컷: 시공간을 넘는 연결고리 (The Match Cut)</h2></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80e6-8c57-f1c44c41e77c" class="">매치 컷은 서로 다른 두 개의 샷을 <strong>시각적, 청각적 유사성</strong>을 이용해 자연스럽게 연결하는 기법입니다. 이는 단순한 장면 전환이 아니라, &quot;A와 B는 본질적으로 같다&quot;는 감독의 철학적 선언입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-8082-b839-f343c46d6693" class="">3-1. 그래픽 매치 (Graphic Match): 형태의 유사성</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80eb-905d-fa3661d679ac" class="">가장 직관적이고 강력한 기법입니다. A샷의 피사체와 B샷의 피사체가 비슷한 모양(Shape)과 구도(Composition)를 가질 때 성립합니다.</p></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-800b-afd1-d090323ad713" class="bulleted-list"><li style="list-style-type:disc"><strong>영화적 명장면: 스탠리 큐브릭의 &lt;2001 스페이스 오디세이&gt;</strong><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8022-bbc2-ddc1edf8eab5" class="bulleted-list"><li style="list-style-type:circle"><strong>Shot A:</strong> 원시인이 하늘로 던진 하얀 뼈다귀(무기)가 공중에서 회전합니다. (직사각형 형태)</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8086-973e-d1af6e8da388" class="bulleted-list"><li style="list-style-type:circle"><strong>Shot B:</strong> 400만 년 후의 우주 공간에 떠 있는 하얀 인공위성(핵무기)으로 전환됩니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8054-b40b-f855cd65c2b0" class="bulleted-list"><li style="list-style-type:circle"><strong>의미:</strong> 인류는 여전히 &#x27;도구(무기)&#x27;에 의존한다는 문명사적 비판을 압축했습니다.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80f7-9077-d904c8a5bf76"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/Create_a_graphic_202512230903_9kv29.mp4">attachment:d6cd29a1-ec93-417a-a176-aa5850160c05:Create_a_graphic_202512230903_9kv29.mp4</a></div></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-805e-bd69-f975a1bd7303" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8020-9023-da5f3f972d37" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80d1-9854-caa9886d0e02" class="bulleted-list"><li style="list-style-type:disc"><strong>영화적 명장면: 알프레드 히치콕의 &lt;사이코&gt;</strong><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80e8-9b20-e58e9d44a7a7" class="bulleted-list"><li style="list-style-type:circle"><strong>Shot A:</strong> 피가 섞여 빨려 들어가는 욕조의 배수구 (원형 회전).</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80af-9e8c-cd13591a6166" class="bulleted-list"><li style="list-style-type:circle"><strong>Shot B:</strong> 죽은 주인공의 생기 없는 눈동자 (원형).</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-801a-a493-cbef6a6ba1ac" class="bulleted-list"><li style="list-style-type:circle"><strong>의미:</strong> 생명이 하수구처럼 허무하게 빠져나갔음을 시각화합니다.<div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8075-a973-df20562a73f7"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/Create_a_graphic_202512230903_bppgo.mp4">attachment:c2e6eb70-51ab-4a33-905d-5b42cb3ef2c3:Create_a_graphic_202512230903_bppgo.mp4</a></div></figure></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80bf-a251-f7f673f0f2f5" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-804f-bd7e-c343e11dc35a" class="">🛠️ AI 실무 프롬프트 전략</h3></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8053-b1ed-d2eb0e118105" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8010-85d0-d45bb5c62948"><td id="RdAv" class=""><strong>샷 구분</strong></td><td id="qB?t" class="" style="width:572px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8048-bda5-ff5e6ba06716"><td id="RdAv" class=""><strong>Shot A</strong><br/>(과거)</td><td id="qB?t" class="" style="width:572px"><strong>내용:</strong> 눈을 감고 있는 사람의 눈동자 클로즈업.<br/><strong>Prompt:</strong> <code>Extreme close-up of a human eye, iris detail, center framed, circular shape, blue color, cinematic lighting --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8077-9c4c-cd853f2b0631"><td id="RdAv" class=""><strong>Shot B</strong><br/>(미래)</td><td id="qB?t" class="" style="width:572px"><strong>내용:</strong> 밤하늘에 떠 있는 둥근 달.<br/><strong>Prompt:</strong> <code>Full moon in the night sky, center framed, circular shape, blue moonlight tone, crater details, cinematic composition --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80be-9c3a-ef07ce54d626"><div class="source"><a href="https://youtu.be/V5RPVnDvN7M?si=A1fwpFCgsSm9L5dQ">https://youtu.be/V5RPVnDvN7M?si=A1fwpFCgsSm9L5dQ</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-808a-9df2-f609c5ca17b1" class="">2번째 장면, 레스토랑 홍보영상 기획파트 7연속 매치컷 참고</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-808a-884e-eb4c86a2be76" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80bd-aefd-c3b9cbefb8c8" class="">3-2. 액션 매치 (Match on Action): 운동 에너지의 연결</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80b2-8102-c64636f0a827" class="">움직임의 방향(Direction)과 속도(Speed)를 연결합니다. 시공간은 달라지지만 운동 에너지는 보존됩니다.</p></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-807b-a29d-f34265a2269b" class="bulleted-list"><li style="list-style-type:disc"><strong>영화적 예시:</strong> 액션 영화에서 주인공이 문을 박차고 나가는 순간(A), 다음 컷에서 완전히 다른 장소로 들어오는 장면(B)으로 연결.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-8080-97d2-e60ccababf10" class="">🛠️ AI 실무 프롬프트 전략</h3></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8047-9a6f-fb952c4089c7" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80d8-ab86-f9e012b793f6"><td id="hvMy" class=""><strong>샷 구분</strong></td><td id="m@:S" class="" style="width:574px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80ff-9718-e87918042235"><td id="hvMy" class=""><strong>Shot A</strong><br/>(과거의 싸움)</td><td id="m@:S" class="" style="width:574px"><strong>내용:</strong> 사무라이가 검을 왼쪽에서 오른쪽으로 휘두른다.<br/><strong>Prompt:</strong> <code>Samurai swinging a katana sword from left to right, dynamic motion blur, intense action, ancient japan background --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-802c-859e-ceda1e3d3a78"><td id="hvMy" class=""><strong>Shot B</strong><br/>(현재의 경기)</td><td id="m@:S" class="" style="width:574px"><strong>내용:</strong> 야구 타자가 배트를 왼쪽에서 오른쪽으로 휘두른다.<br/><strong>Prompt:</strong> <code>Modern baseball batter swinging a bat from left to right, hitting a ball, stadium lights background, dynamic motion blur --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80fc-ad97-d9c23656fc41"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video____________1989_1.mp4">attachment:cb18bf96-58ed-4f77-9562-c12e998bf37d:kling_20251223_Text_to_Video____________1989_1.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8023-b701-fd7313d13f31"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video____________1991_0.mp4">attachment:d435d18a-7209-4fd6-bf06-b71756ccc90e:kling_20251223_Text_to_Video____________1991_0.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-806c-973a-e3897a799699"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/777777777777777.mp4">attachment:5c938888-7c7f-4a5a-aaf1-48251c29e214:777777777777777.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8094-8fef-cc77f6825b1f" class="">액션매치 수작업 편집본 </p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8047-a2e0-c881082b01bd" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-801c-835f-d0ddd2b0f857" class="">3-3. 컬러 매치 (Color Match): 색채의 전이</h3></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8095-911e-f4fc5c36dd02" class="">특정한 지배적인 색상(Dominant Color)을 통해 장면을 연결합니다.</p></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-808f-bc9b-f1f6cc4f3b4f" class="bulleted-list"><li style="list-style-type:disc"><strong>영화적 예시: 스티븐 스필버그의 &lt;쉰들러 리스트&gt;</strong><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80f8-881e-eaf28fde7646" class="bulleted-list"><li style="list-style-type:circle">흑백 영화 속 유일한 &#x27;빨간 코트&#x27;를 입은 소녀. 나중에 시체 더미 속의 &#x27;빨간 코트&#x27;로 컷이 연결되며 죽음을 확인사살합니다.</li></ul></div></li></ul></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8036-bc0b-c2e19781c1c0"><div class="source"><a href="https://youtu.be/j1VL-y9JHuI?si=N_x3njU89I9tvmVw">https://youtu.be/j1VL-y9JHuI?si=N_x3njU89I9tvmVw</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80fb-864b-de054221307d"><div class="source"><a href="https://youtu.be/4uV22bzuTEk?si=3pVHiQSyJHEpG8nY">https://youtu.be/4uV22bzuTEk?si=3pVHiQSyJHEpG8nY</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80fd-a4e7-c88924b4d7b8" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-807c-803f-fc4260766edb" class="">🛠️ AI 실무 프롬프트 전략</h3></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-80f6-8aed-c17abbb0bfb6" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-804d-a0f6-e62456c44438"><td id="kwNg" class=""><strong>샷 구분</strong></td><td id="gYqq" class="" style="width:580px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-800c-9804-f139a165a1aa"><td id="kwNg" class=""><strong>Shot A</strong><br/>(순수)</td><td id="gYqq" class="" style="width:580px"><strong>내용:</strong> 하늘로 날아가는 빨간 풍선.<br/><strong>Prompt:</strong> <code>A single red balloon floating into the blue sky, center framed, vibrant red color, sunlight, peaceful atmosphere --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80a3-91ec-d46e27980cd0"><td id="kwNg" class=""><strong>Shot B</strong><br/>(공포)</td><td id="gYqq" class="" style="width:580px"><strong>내용:</strong> 어둠 속에서 빛나는 빨간 신호등.<br/><strong>Prompt:</strong> <code>Traffic light turning red in dark rainy street, glowing red light, center framed, danger, noir atmosphere --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8001-b450-f046dc38ebb8"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video____________1993_0.mp4">attachment:162d1f39-cda8-4a86-a7e9-56fb8374ccd5:kling_20251223_Text_to_Video____________1993_0.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80e1-9045-c6ad4fe25b19"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video____________1994_1.mp4">attachment:76212b1e-e93f-45cb-b341-4249b25359cf:kling_20251223_Text_to_Video____________1994_1.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8088-9adc-f621163ba99a" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80b0-9300-e274cc41b4b1"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/7777777777.mp4">attachment:b824ff3d-1662-487e-9bd9-6541145f944f:7777777777.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8089-9fb5-c25aa4cb9d2b" class="">컬러매치 수작업 편집본 </p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80f6-b0f2-fd0fe04e41f2" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d13970b-b5e1-804e-8e8b-d031688b6b1e" class="">4. 월터 머치의 6가지 법칙 (The Rule of Six)</h2></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8031-a6d4-d23c6208849f" class="">영화 &lt;지옥의 묵시록&gt;, &lt;잉글리쉬 페이션트&gt;의 전설적인 편집자 월터 머치(Walter Murch)는 그의 저서 &lt;눈의 깜박임 (In the Blink of an Eye)&gt;에서 좋은 편집을 위한 6가지 우선순위를 정했습니다.</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80c9-a154-e92e30b0a367" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/image.png"><img style="width:644.9912719726562px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8020-b606-e6709350754c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-804e-a84b-ca715fe965a6" class="">AI 영상 제작자들은 종종 &quot;손가락이 이상해요&quot;, &quot;배경이 조금 일그러졌어요&quot;라며 기술적 결함에 집착합니다. 하지만 월터 머치는 &quot;감정이 맞다면 기술적 오류는 무시하라&quot;고 조언합니다. 다음은 그가 제시한 중요도 순서입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-8040-9941-de12a23c7c79" class="">Rule 1. 감정 (Emotion) - 51%</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-807d-b599-e42ced6afece" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 편집의 최우선 순위는 &#x27;이 컷이 관객의 감정을 움직이는가&#x27;입니다. 연속성이 틀려도, 초점이 살짝 나가도, 그 샷이 주는 감동이 있다면 무조건 써야 합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8091-b816-e2a6f1aba27f" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 전략:</strong> 완벽한 해부학적 구조(손가락 5개)보다, &#x27;눈빛&#x27;과 &#x27;분위기&#x27;에 집중하십시오.</li></ul></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8005-a151-f75fb42b9d46" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80c7-bdd8-df4513784405"><td id="yY~X" class=""><strong>Rule 1</strong></td><td id="^[EO" class="" style="width:589px"><strong>AI 프롬프트 예시</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8010-8fc4-f66a1980ae33"><td id="yY~X" class=""><strong>Emotion First</strong></td><td id="^[EO" class="" style="width:589px"><strong>Prompt:</strong> <code>Extreme close-up on teary eyes, intense sorrow, emotional authenticity, blurry background, imperfect focus, raw feeling --ar 16:9</code> (손이나 배경의 디테일은 무시하고 눈빛의 감정에 몰빵)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8066-ae84-d67f66a051ed"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video_Prompt__Ex_1996_1.mp4">attachment:bac0a387-ddc0-4fb4-9d55-540c43dddeda:kling_20251223_Text_to_Video_Prompt__Ex_1996_1.mp4</a></div></figure></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80a2-a79e-e57367c07e80" class="">Rule 2. 스토리 (Story) - 23%</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8094-957c-f78180902019" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 이 컷이 이야기를 앞으로 전진시키는가? 예쁜 쓰레기(아무 의미 없는 고퀄리티 컷)를 과감히 버릴 줄 알아야 합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-803b-a88c-f7df032c0819" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 전략:</strong> 단순 묘사가 아니라 &#x27;행동(Action)&#x27;과 &#x27;사건(Event)&#x27;을 생성하십시오.</li></ul></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-80ea-be83-c81b02007d93" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8058-9609-f73e4dc884b6"><td id="kKFH" class=""><strong>Rule 2</strong></td><td id="JNiE" class="" style="width:589px"><strong>AI 프롬프트 예시</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80fa-92a3-f1e161d0e919"><td id="kKFH" class=""><strong>Storytelling</strong></td><td id="JNiE" class="" style="width:589px"><strong>Prompt:</strong> <code>A hand passing a secret note to another hand, cinematic suspense, narrative keyframe, focus on the paper note, espionage atmosphere</code> (단순히 서 있는 사람이 아니라, 사건이 일어나는 순간)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80a1-a9ac-d0fbf3cacaee"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video_Prompt__A__1998_1.mp4">attachment:99c271f1-5d7c-41fb-aee4-bb53418a80b0:kling_20251223_Text_to_Video_Prompt__A__1998_1.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8073-a0b6-f0b13365b441" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80fe-8788-f46837eef1c1" class="">Rule 3. 리듬 (Rhythm) - 10%</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-807f-84ee-df8797a47302" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 컷이 음악적인 박자감을 가지고 있는가? 편집은 춤과 같습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80b7-8b22-cea0184c7c5f" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 전략:</strong> &#x27;내부 움직임의 속도&#x27;를 조절하십시오. 빠른 컷을 원한다면 피사체가 빠르게 움직여야 합니다.</li></ul></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8029-976d-eba765cce206" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8003-b54d-c9967c17904d"><td id="VcgX" class=""><strong>Rule 3</strong></td><td id="WB^s" class="" style="width:587px"><strong>AI 프롬프트 예시</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80e8-a0c8-c76be7fa9b20"><td id="VcgX" class=""><strong>Visual Rhythm</strong></td><td id="WB^s" class="" style="width:587px"><strong>Prompt:</strong> <code>Fast motion blur, sprinter running at full speed, dynamic angle, high energy, speed lines, high bpm visual</code> (빠른 편집점에 넣을 컷)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8031-bc4f-cda732e2572b"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video_Prompt__Fa_1984_0.mp4">attachment:76c702c1-fdc4-4069-a4ed-793efb4b21a3:kling_20251223_Text_to_Video_Prompt__Fa_1984_0.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8025-bed2-d91a550a8d21" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-805c-ad28-c4bd51f5e9da" class="">Rule 4. 시선 (Eye-trace) - 7%</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80a7-8941-d4cbdec64761" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 관객의 눈은 화면의 가장 밝은 곳이나 움직이는 곳을 봅니다. A컷에서 관객이 화면 왼쪽을 보고 있었다면, B컷의 중요 정보도 왼쪽(혹은 시선이 이동하는 경로)에 있어야 합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8062-8d19-d1e668a88f01" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 전략:</strong> &#x27;구도(Composition)&#x27;와 &#x27;조명(Lighting)&#x27;으로 시선을 유도하십시오.</li></ul></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8098-8570-e9ad0c034604" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8027-a5af-ed585bd51de6"><td id="Ewjs" class=""><strong>Rule 4</strong></td><td id="&gt;]B|" class="" style="width:582px"><strong>AI 프롬프트 예시</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80e1-8f04-e31f5f779512"><td id="Ewjs" class=""><strong>Leading Eye</strong></td><td id="&gt;]B|" class="" style="width:582px"><strong>Prompt:</strong> <code>Subject standing on the left side, looking right, bright spotlight on the subject, dark background on the right, rule of thirds, negative space on right</code> (다음 컷에서 오른쪽에서 무언가 등장할 것을 암시)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8010-9d6e-d64d58004218"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video_Prompt__Su_1986_0.mp4">attachment:44542ad4-7a79-4fb8-b2be-73deacdecf35:kling_20251223_Text_to_Video_Prompt__Su_1986_0.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8061-924b-f4337f3a5114" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34355.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34355.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80ff-8483-f20bccc9132f" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34356.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34356.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8085-be1d-f369e35fe320" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__subject-standing-on-the-left-side-looking-right-br__34354.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__subject-standing-on-the-left-side-looking-right-br__34354.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8061-9a4e-d5be6b904cf8" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__text-to-image__34358.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__text-to-image__34358.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8015-9ef9-deb3d0b727c9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80af-ae8f-d217060a7d5c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80b2-9d8c-d73cd5855406" class=""><strong>시청자의 눈을 편안하게, &#x27;180도 법칙&#x27;과 공간의 연속성</strong></p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-805a-8fc2-c3a30c194dbb" class="bulleted-list"><li style="list-style-type:disc"><strong>180도 법칙의 정의:</strong> 두 인물 사이를 잇는 가상의 선(Action Line)을 이해하고, 카메라가 그 선을 넘지 않아야 하는 이유.<div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80c7-b109-fcbf914d5948" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__180-action-line-__5551.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__180-action-line-__5551.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80eb-a6d8-da2314d93b0f" class="">180도 법칙 기본 개념</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8088-87c7-c16e78875e56" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-800c-81f4-f03187233d46" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5553.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5553.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-806d-9072-f860220a2a06" class="">정면 풀샷</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80c6-ad98-f36751000813" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80c3-a5fe-f05d4bc10181" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__b__34362.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__b__34362.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8061-a24e-f42192b94730" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__a__34363.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__a__34363.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80f4-9857-c1567f5790c2" class="">A,B 클로즈업 샷</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ae-a382-f96060457537" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8020-beaa-f850e3c0b8a1" class="">180도 법칙을 어기게 되면??</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8062-8ea9-ef85dc51f962" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5554.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__5554.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8095-b10a-cc6d956fedc4" class="">촬영 스탭이 보이게 되고 양쪽의 위치가 바뀌어 혼란스럽게 된다.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8072-a3e4-f7c52d4ebec4" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80d5-b43e-cec6a76a66fd" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 영상에서의 잦은 실수:</strong> 프롬프트 입력 시 카메라 위치를 고려하지 않아 발생하는 &#x27;튀는 컷(Jump Cut)&#x27;과 시선 불일치</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8038-85f6-d8027387e042" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-800a-92ec-cb269701195d" class=""><strong>왜 AI 영상에서 이 문제가 심각할까요?</strong><br/>우리가 촬영을 할 때는 카메라가 그 자리에 고정되어 있지만, AI는 매 컷을 새로 그려내기 때문입니다. 미드저니나 런웨이(Runway) 같은 툴은 이전 컷의 공간 정보를 완벽히 기억하지 못합니다. 그래서 여러분이 프롬프트로 통제해 주지 않으면, AI는 제멋대로 카메라를 선 너머로 보내버립니다.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-803a-9c70-eeadd365b9c2" class=""><strong>해결 방법은 두 가지입니다.</strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="2d23970b-b5e1-8019-a9c4-d8d1b05ad6c3" class="numbered-list" start="1"><li><strong>프롬프트 제어:</strong> 대화 씬을 만들 때, A는 <code>View from left side</code>, B는 <code>View from right side</code> 혹은 <code>Over the shoulder shot</code> 같은 키워드로 카메라 위치를 명확히 고정해 주세요.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2d23970b-b5e1-8044-a90d-d8d430886a81" class="numbered-list" start="2"><li><strong>편집의 마법:</strong> 만약 이미 생성된 영상의 시선이 맞지 않는다면? 다시 생성하느라 크레딧 낭비하지 마시고, 편집 프로그램에서 해당 클립을 <strong>&#x27;좌우 반전(Horizontal Flip)&#x27;</strong> 하세요. 아주 간단하게 180도 법칙을 지킬 수 있습니다.</li></ol></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80fe-bd8d-cdb403103cce" class="">이 법칙만 잘 지켜도 여러분의 AI 영상은 아마추어 티를 벗고 훨씬 더 프로페셔널하고 안정적으로 보일 겁니다.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ef-af1d-df6d2d344c0b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80cc-a5f6-e37b44d78784" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-8007-bd46-c5f78390d50b" class="">Rule 5. 2차원 평면 (2D Plane of Screen) - 5%</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8017-a0f6-ca68651c33ea" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 벡터 라인(이동 방향)의 일치입니다. A컷에서 주인공이 왼쪽에서 오른쪽으로 뛰었다면, B컷에서도 왼쪽에서 오른쪽으로 뛰어야 합니다. 갑자기 반대로 뛰면 관객은 그가 되돌아간다고 착각합니다. (180도 법칙)</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8068-ae76-f253c90ba86a" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 전략:</strong> &#x27;이동 방향&#x27;을 명시하십시오.</li></ul></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-8031-9055-f2f1686cd2cc" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-8066-b8a7-c9100e4c4a26"><td id="EbjD" class=""><strong>Rule 5</strong></td><td id="StA?" class="" style="width:577px"><strong>AI 프롬프트 예시</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80a7-8331-d66fbffae6f4"><td id="EbjD" class=""><strong>Vector Line</strong></td><td id="StA?" class="" style="width:577px"><strong>Prompt:</strong> <code>Side profile shot, a car driving from left to right, motion blur background, cinematic chase scene</code> (다음 컷도 Left to Right로 맞춰야 연결됨)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80de-9114-c0164de28149"><div class="source"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/kling_20251223_Text_to_Video_Prompt__Si_1990_0.mp4">attachment:f4bd3963-4356-4ec3-af17-db97310c4c9e:kling_20251223_Text_to_Video_Prompt__Si_1990_0.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8042-be7a-cf2560619f9b" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-8025-b27c-dd22d629b354" class="">Rule 6. 3차원 공간 (3D Space of Action) - 4%</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-801e-8b21-d9c962b90629" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 공간의 지리적 연결성입니다. A가 문을 열고 나갔을 때, B는 복도여야 한다는 논리입니다. 월터 머치는 이것을 가장 하위(4%)에 두었습니다. <strong>감정만 연결된다면 공간이 좀 튀어도 관객은 눈치채지 못합니다.</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8060-b71f-d39629c05537" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 전략:</strong> 배경의 &#x27;연속성(Consistency)&#x27;을 유지하는 시드(Seed)나 캐릭터 참조(Cref) 기능을 활용하십시오.</li></ul></div><div style="display:contents" dir="ltr"><table id="2d13970b-b5e1-80c3-9867-d0554bc585ee" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-804f-b51e-c8ace916024b"><td id="m;Im" class=""><strong>Rule 6</strong></td><td id="?^{i" class="" style="width:585px"><strong>AI 프롬프트 예시</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d13970b-b5e1-80fb-b950-e83d446acda7"><td id="m;Im" class=""><strong>Spatial Continuity</strong></td><td id="?^{i" class="" style="width:585px"><strong>Prompt:</strong> <code>... --cref [Character URL] --sref [Background URL]</code> (캐릭터와 배경의 일관성을 유지하여 공간감을 확보)</td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8042-ac02-e61ec2ada922" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34359.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34359.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-804a-97c0-de7cad5f0d74" class="image"><a href="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34360.png"><img style="width:2752px" src="%5BPart%207%5D%20%EC%B6%A9%EB%8F%8C%EC%9D%98%20%EB%AF%B8%ED%95%99,%20%EB%AA%BD%ED%83%80%EC%A3%BC%EC%99%80%20%ED%8E%B8%EC%A7%91%EC%9D%98%206%EC%9B%90%EC%B9%99%20(The%20Architecture%20of/freepik__-__34360.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-8034-83be-de9aa52690d0" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d13970b-b5e1-80be-b5e9-f36ab86ede96" class="">[실습 과제] Part 7: 몽타주 설계자</h2></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-80e4-95fe-dbcab747f1e8" class="">Mission 1. 히치콕의 서스펜스 (The Bomb)</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8086-95f2-ed4df7640086" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> &quot;알면서도 당한다&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8028-98a8-e2d289263792" class="bulleted-list"><li style="list-style-type:disc"><strong>내용:</strong> 두 사람이 평화롭게 대화하는 컷(A) 사이에, 관객에게만 보여주는 <strong>&#x27;위험 요소(Insert Shot)&#x27;</strong> 컷(B)을 기획하고 생성하시오.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8025-b910-e3e032810b02" class="bulleted-list"><li style="list-style-type:disc"><strong>예시:</strong><div style="display:contents" dir="auto"><ol type="1" id="2d13970b-b5e1-80b5-88ef-ec270c4cdecb" class="numbered-list" start="1"><li>탁자 밑에서 카운트다운 중인 시계</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2d13970b-b5e1-8032-bd6d-ebbecb516065" class="numbered-list" start="2"><li>서서히 풀리고 있는 나사</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2d13970b-b5e1-8031-b2ec-ff3de44c2eb7" class="numbered-list" start="3"><li>천장에서 흔들리는 무거운 샹들리에</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2d13970b-b5e1-8095-b3d1-cdfac1496cf5" class="">Mission 2. 그래픽 매치 (Shape Transition)</h3></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8075-b0b9-cc9da79be8b6" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> &quot;인생의 순환&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80a5-bb34-ea631b63e98a" class="bulleted-list"><li style="list-style-type:disc"><strong>내용:</strong> [원형(Circle)]이라는 공통된 형태를 가진 3가지 시공간의 사물을 생성하여, 2001 스페이스 오디세이처럼 자연스럽게 이어지도록 편집하시오.<div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-806d-99ed-e464cbb378c3" class="bulleted-list"><li style="list-style-type:circle"><strong>샷 1:</strong> 태아의 눈동자 (The Beginning)</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-8073-9619-c4662c77b162" class="bulleted-list"><li style="list-style-type:circle"><strong>샷 2:</strong> 굴러가는 자전거 바퀴 (The Journey)</li></ul></div><div style="display:contents" dir="auto"><ul id="2d13970b-b5e1-80e1-858f-edc0f099f27e" class="bulleted-list"><li style="list-style-type:circle"><strong>샷 3:</strong> 어두운 터널의 끝 빛 (The End)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80fe-9e6a-d480ad7b2e4a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80e9-a540-d2e1d7689363" class="">
+</p></div><div style="display:contents" dir="auto"><h1 id="2d13970b-b5e1-809c-b502-faf503c8d015" class="">&quot;편집은 더하는 것이 아니라, 빼는 것이다.”</h1></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80a9-97ed-f6a539ae6c39" class="">관객의 감정을 위해, 스토리를 위해, 더 좋은 것을 위해 &#x27;덜 좋은 것&#x27;을 버리는 용기. 그리고 전혀 상관없어 보이는 두 샷을 과감하게 충돌시켜 제3의 의미를 만들어내는 창조성.</p></div><div style="display:contents" dir="auto"><p id="2d13970b-b5e1-80a2-8140-e236d8ffc705" class="">감독(Auteur)&#x27;의 자격</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,810 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[Part 8] 시뮬라크르와 작가주의, 비전 디렉터의 탄생</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d23970b-b5e1-80fd-b64f-e0ca371e6454" class="page sans"><header><h1 class="page-title" dir="auto">[Part 8] 시뮬라크르와 작가주의, 비전 디렉터의 탄생</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="2d23970b-b5e1-80b3-933b-d48cf16e4b79" class="">Overview</h1></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80fe-a02c-e0b8244410c9" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> 무한 복제 시대, 어떻게 대체 불가능한 작가(Auteur)가 될 것인가?</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-803d-bce9-ebdce6adb712" class="bulleted-list"><li style="list-style-type:disc"><strong>목표:</strong> 시뮬라크르 철학을 이해하고, 캐릭터 일관성(Consistency)과 장르 리믹스(Remix), 그리고 큐레이션(Curation) 능력을 갖춘 <strong>비전 디렉터</strong>로 거듭난다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-806b-a1a0-eb183f81b46d" class="bulleted-list"><li style="list-style-type:disc"><strong>필독 철학:</strong> &quot;창조성은 단지 사물들을 연결하는 것이다.&quot; — <em>스티브 잡스</em></li></ul></div><div style="display:contents" dir="auto"><hr id="2d23970b-b5e1-80d9-bbff-c67ea979cf8e"/></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-80cb-8428-e31af94fcea7" class="">0. Opening: 붓이 그림을 그리는가, 화가가 그리는가?</h2></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8081-919b-ed45eb752fe3" class="">뒤샹의 샘 (Fountain)과 AI</h3></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8002-8d41-d30d7e5a7660" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/image.png"><img style="width:709.96875px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8017-9d9c-e99824b63ba2" class="">1917년, 마르셀 뒤샹은 공장에서 대량 생산된 변기 하나를 미술관에 가져다 놓고 &lt;샘&gt;이라고 이름 붙였습니다. 그는 &#x27;만드느냐(Making)&#x27;보다 &#x27;선택하느냐(Selecting)&#x27;가 예술의 본질임을 선언했습니다.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80a3-9f52-f69455386c10" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-802c-aa19-e5a65107d9eb" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/image%201.png"><img style="width:710px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80c5-aab8-ff18929d4acc" class="">AI 시대는 &#x27;제2의 뒤샹&#x27;의 시대입니다. 미드저니와 런웨이는 1분에도 수백 개의 이미지(변기)를 생산합니다. 감독의 역할은 그중에서 자신의 철학에 맞는 단 하나를 골라내어 맥락(Context)을 부여하는 큐레이터(Curator)가 되는 것입니다.</p></div><div style="display:contents" dir="auto"><hr id="2d23970b-b5e1-8019-b98a-d8ba65a9f2dc"/></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-803e-b3f5-ead035cf072f" class="">1. 시뮬라크르: 원본보다 더 완벽한 가짜 (The Hyper-real)</h2></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80dd-8d61-f60a25e3256b" class="">장 보드리야르는 &quot;지도가 영토를 선행한다&quot;고 했습니다. AI 영상은 현실(영토)을 찍는 것이 아니라, 데이터라는 지도(Map)를 통해 현실을 재구성합니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8051-9ded-c05ab9b6ce90" class="">1-1. 플라스틱 리얼리티 (Plastic Reality)</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8017-8d62-d6af4396ae38" class="">AI가 가장 잘하는 것은 &#x27;지나치게 완벽한 현실&#x27;입니다. 잡티 하나 없는 피부, 물리적으로 불가능할 정도로 투명한 물, 이상적인 조명. 이것은 현실이 아니지만, 우리가 광고나 SNS에서 욕망하는 &#x27;보정된 현실(Hyper-reality)&#x27;입니다.</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8042-8675-c6f9f78e3d44" class="bulleted-list"><li style="list-style-type:disc"><strong>전략:</strong> 리얼리즘의 불완전함을 흉내 내기보다, 이 &#x27;인공적인 매끄러움(Artificial Smoothness)&#x27;을 스타일로 채택하십시오. 바비 인형이나 명품 광고처럼, 소름 끼치도록 완벽한 세상을 만드십시오.</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80fd-b5eb-db8d2d64a6f3" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80de-8754-d883b0e26285" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38622.png"><img style="width:912px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38622.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ce-a365-ed2ddf314dad" class="">ultra-close-up beauty skincare advertisement, porcelain-smooth skin with zero pores, hyper-retouched glossy finish, &quot;too perfect to be real&quot; aesthetic, soft high-key studio lighting, clean specular highlights on cheekbones, pastel luxury palette (ivory, blush, pearl), perfectly styled hair strands, minimal background, premium cosmetic campaign, macro lens detail on lip gloss and eyelashes, immaculate symmetry, artificial smoothness as a deliberate style, high-end editorial, 8k, crisp focus</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80d4-8b73-fe9ec9428580" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80f1-8ef5-ff8d356c59ff" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38623.png"><img style="width:1056px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38623.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-804c-8cdf-d78308cda1de" class="">hyper-perfect lifestyle scene like a luxury brand campaign, plastic-reality suburb interior, everything too clean and symmetrical, pastel furniture, spotless surfaces, model with doll-like perfection, glossy skin, pristine outfit with zero wrinkles, soft cinematic high-key lighting, no clutter, curated props, artificial smoothness embraced, uncanny perfection, editorial framing, 35mm clean look, 8k</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-806a-a724-e09c8656dfa8" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-80cb-aeb6-e210eed32d21" class="">1-2. 꿈의 논리 (Dream Logic)</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8041-a52d-d5bb56676a0d" class="">시뮬라크르의 세계에서는 물리 법칙이 적용되지 않습니다.</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8028-848b-d567786ce4a7" class="bulleted-list"><li style="list-style-type:disc"><strong>전략:</strong> &#x27;비논리적 병치(Juxtaposition)&#x27;를 두려워하지 마십시오. AI의 환각(Hallucination)은 오류가 아니라 &#x27;초현실적 창의성&#x27;입니다.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8019-a53d-d03aac53f779" class="">🖼️ 시각 자료 예시: 시뮬라크르 구현 프롬프트</h3></div><div style="display:contents" dir="ltr"><table id="2d23970b-b5e1-807d-9013-f86ae284f00b" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80ab-8812-ccb32ca2dd37"><td id="IS?j" class=""><strong>스타일 (Style)</strong></td><td id="bLSn" class="" style="width:580px"><strong>설명 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-809b-9f77-e9b306c04ce2"><td id="IS?j" class=""><strong>Commercial Hyper-real</strong><br/>(광고적 초현실)</td><td id="bLSn" class="" style="width:580px"><strong>설명:</strong> 햄버거 광고처럼 현실보다 더 먹음직스럽고, 윤기가 흐르며, 완벽한 조명을 받은 음식. (플라스틱 질감)<br/><strong>Prompt:</strong> <code>Macro shot of a melting cheeseburger, hyper-glossy texture, advertising photography, studio lighting, perfect symmetry, saturation 100, plastic realism, mouth-watering --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80a4-a041-d16b99dc6b9b"><td id="IS?j" class=""><strong>Dreamcore</strong><br/>(꿈의 논리)</td><td id="bLSn" class="" style="width:580px"><strong>설명:</strong> 구름 위를 떠다니는 거대한 침대. 파스텔 톤의 하늘과 비현실적인 편안함.<br/><strong>Prompt:</strong> <code>A giant bed floating on pink fluffy clouds, surreal dreamscape, dreamcore aesthetic, soft pastel gradient sky, defying gravity, magical realism, ethereal glow --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8046-951d-de352fc8ad75"><td id="IS?j" class=""><strong>Vaporwave</strong><br/>(디지털 환상)</td><td id="bLSn" class="" style="width:580px"><strong>설명:</strong> 고대 조각상과 90년대 컴퓨터 그래픽, 네온 야자수가 섞인 인공적인 공간.<br/><strong>Prompt:</strong> <code>Vaporwave aesthetic, greek marble statue wearing VR headset, neon grid background, palm trees, glitches, pink and cyan lighting, retro-futuristic nostalgia --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8053-a673-d98e1cf5e6d4" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Macro_shot_of_a_melting_cheeseburger_hyper-glossy_0c9b956b-75c6-43c7-aedd-6912cc397bc1_1.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Macro_shot_of_a_melting_cheeseburger_hyper-glossy_0c9b956b-75c6-43c7-aedd-6912cc397bc1_1.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8021-8b90-cea4a7bb7eab" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_A_giant_bed_floating_on_pink_fluffy_clouds_surrea_986b7f78-fd02-4b8f-ba43-a91345a374d4_1.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_A_giant_bed_floating_on_pink_fluffy_clouds_surrea_986b7f78-fd02-4b8f-ba43-a91345a374d4_1.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80eb-b958-f6f51c42316d" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Vaporwave_aesthetic_greek_marble_statue_wearing_V_e9b21396-552f-4d13-91d2-517a5622665a_3.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Vaporwave_aesthetic_greek_marble_statue_wearing_V_e9b21396-552f-4d13-91d2-517a5622665a_3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-806d-8137-f439c1e132ea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-809f-9e40-d79ae65a9a77" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-803b-b6ef-c1e8370906f8" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-808a-a37e-cbdfd31e42b5" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8026-a79f-d6ab9e3d6123" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_surreal_dream_logic_a_city_fits_inside_a_coffee_c_d57c87cc-e09f-4b91-8ebd-c1caa411e363_0.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_surreal_dream_logic_a_city_fits_inside_a_coffee_c_d57c87cc-e09f-4b91-8ebd-c1caa411e363_0.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-808c-aa13-f96c270a2702" class="">surreal dream logic, a city fits inside a coffee cup on a café table, steam becomes morning fog over skyscrapers, a spoon stirs the skyline like liquid, macro-to-wide continuous shot, impossible scale shifts that feel natural, elegant editorial composition, smooth camera movement, emotional calm, polished commercial-grade look</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80c6-b338-e0b6a712201a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e1-8d98-ce9cf077721e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-803d-8828-eb40fb45821e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ef-9735-c4dd655c2290" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80bf-96d7-e67d3d10b452" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_dream_logic_world_an_apartment_hallway_opens_into_874027a4-7263-4c9a-9028-58be76d91e2d_3.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_dream_logic_world_an_apartment_hallway_opens_into_874027a4-7263-4c9a-9028-58be76d91e2d_3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-808f-a313-e0180f7c5037" class="">dream logic world, an apartment hallway opens into a beach at night, the doorframe is a perfect portal, waves roll across the floor without getting anything wet, moonlight behaves like a spotlight, impossible geometry but clean visual continuity, surreal juxtaposition, cinematic high contrast, slow steadicam, minimal dialogue</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80d5-9894-f9fd198382f6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8040-86cb-c30f9178969b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8060-93b5-ecfa357b2eb2" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8037-a524-cd09cd45b8f9" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8021-8d08-cd133eb27dd3" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_dream_logic_surreal_juxtaposition_symbolic_causal_612a6a62-2add-4547-b99c-00c7b086456f_1.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_dream_logic_surreal_juxtaposition_symbolic_causal_612a6a62-2add-4547-b99c-00c7b086456f_1.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-800a-9322-f8b213c5c34a" class="">dream logic, surreal juxtaposition, symbolic causality, seamless metamorphosis, impossible physics but visually believable, coherent emotional truth, elegant cinematic composition, smooth camera movement, no explanation</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-806d-a343-d66af0422ab6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80f8-8188-fce22b53b61f" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80d6-9fd4-d0f212b14532" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_luxury_commercial_in_dream_logic_product_is_the_o_a0fed9b5-41dc-4299-8cd2-beb6feb789a4_3.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_luxury_commercial_in_dream_logic_product_is_the_o_a0fed9b5-41dc-4299-8cd2-beb6feb789a4_3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8010-a86b-f53fe2267be1" class="">luxury commercial in dream logic, product is the only stable rule of the world, everything else morphs irrationally: water flows upward, shadows detach and dance, objects float with elegant purpose, surreal juxtaposition treated as design language, high-end studio lighting, glossy perfection, seamless transitions, 8-10 seconds, no text</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-802b-9e21-e7250d86e40a" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80bc-9536-cabb3a62a756" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_dream_logic_short_film_a_person_opens_an_umbrella_67e34bce-6347-44bf-9a59-13e71ee6b395_0.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_dream_logic_short_film_a_person_opens_an_umbrella_67e34bce-6347-44bf-9a59-13e71ee6b395_0.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8078-9dc6-f360e3a08c4c" class="">dream logic short film, a person opens an umbrella indoors and it starts raining inside their memories, raindrops turn into tiny handwritten letters, the letters become a flock of birds exiting through the person’s eyes, symbolic causality instead of physics, seamless surreal transitions, hyper-real cinematic lighting, slow dolly, poetic atmosphere, 8k, no explanation, just inevitability</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-805b-a526-fb034754625b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e1-bef3-d9fa12c1ce94" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-8016-85a5-dc9ca86a344d" class="">2. 작가주의 (Auteurism): 감독은 스타일이다</h2></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8073-a45d-da9bf4099568" class="">1950년대 프랑스 평론가들은 &quot;영화는 감독의 개성을 표현하는 수단이어야 한다&quot;며 <strong>작가주의</strong>를 주창했습니다. AI 프롬프트에서 작가주의는 &#x27;반복되는 시각적 패턴&#x27;으로 증명됩니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-80c0-8eb5-e5a7057db7b2" class="">Case Study: 거장들의 스타일 분석과 AI 적용</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e2-a7f3-c226c39bcc09" class="">거장들은 자신만의 &#x27;고정된 프롬프트 값(Suffix)&#x27;을 가지고 있습니다. 이를 벤치마킹하여 나만의 스타일을 찾으십시오.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-805b-8cbe-fc549e99a881" class="">A. 팀 버튼 (Tim Burton): 고딕 동화의 세계</h3></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80f5-80cf-fd8650963f8f" class="bulleted-list"><li style="list-style-type:disc"><strong>특징:</strong> 독일 표현주의, 기괴하고 비틀린 형태(Twisted), 창백한 피부와 퀭한 눈, 흑백과 원색의 대비.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80ec-9623-f3d8c5c8dc52" class="bulleted-list"><li style="list-style-type:disc"><strong>철학:</strong> 아웃사이더들의 슬픈 동화, 어둠 속의 유머.<div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80a1-be88-e8e4230f869d" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_gothic_fairytale_world_german_expressionism-inspi_dc820a88-7a42-4e68-9d01-b70070372dda_1.png"><img style="width:681.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_gothic_fairytale_world_german_expressionism-inspi_dc820a88-7a42-4e68-9d01-b70070372dda_1.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8022-938d-eed082fd3822" class="">gothic fairytale world, german expressionism-inspired sets, twisted silhouettes, exaggerated angles, crooked rooftops, tall narrow windows, pale characters with hollow eyes, high-contrast lighting, black-and-white base with selective primary color accents (red/blue/yellow), melancholic yet humorous tone, storybook cinematography, handcrafted texture, whimsical darkness, clean composition, premium detail</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e3-8682-f3a8e76bab22" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2d23970b-b5e1-8050-b015-e7d9f4ad4b5c" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80f9-91d1-f1bc3f642d57"><td id="{&gt;QG" class=""><strong>스타일 요소</strong></td><td id="]Hpj" class="" style="width:573px"><strong>프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-806c-a67e-eec06df89010"><td id="{&gt;QG" class=""><strong>Visual Style</strong></td><td id="]Hpj" class="" style="width:573px"><code>German Expressionism</code>, <code>Gothic fantasy</code>, <code>Twisted shapes</code>, <code>Spirals</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-802b-b7e9-cab75b5f3b9d"><td id="{&gt;QG" class=""><strong>Character</strong></td><td id="]Hpj" class="" style="width:573px"><code>Pale skin</code>, <code>Sunken eyes</code>, <code>Exaggerated limbs</code>, <code>Stop motion aesthetic</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-802d-8430-cdeb2d3590fb"><td id="{&gt;QG" class=""><strong>Mood</strong></td><td id="]Hpj" class="" style="width:573px"><code>Dark whimsical</code>, <code>Eerie but cute</code>, <code>Burtonesque atmosphere</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8009-b162-faea9d29dcc3" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_gothic_romantic_scene_under_a_crooked_clock_tower_815e782d-b675-4cee-abff-db2c482ec643_0.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_gothic_romantic_scene_under_a_crooked_clock_tower_815e782d-b675-4cee-abff-db2c482ec643_0.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-802a-9c4c-f7d4a5c20ed4" class="">gothic romantic scene under a crooked clock tower, two pale lovers with gentle awkward posture, thin elongated silhouettes, wind pulling their clothes like paper, monochrome moonlit night with one vivid red rose, soft mist, bittersweet fairytale mood, elegant high contrast, storybook cinematic close-medium shot</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-807a-99b3-dddc8278e327" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8046-a4c1-fb5b7b3d5ec8" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8006-8e6e-ff64aa28fb4e" class="">B. 드니 빌뇌브 (Denis Villeneuve): 압도적인 스케일과 침묵</h3></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80fc-bd11-f32403047b7e" class="bulleted-list"><li style="list-style-type:disc"><strong>특징:</strong> 거대한 건축물(Brutalism)과 아주 작은 인간, 자욱한 안개와 실루엣, 틸 앤 오렌지 혹은 모노톤.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8079-9aff-de19ac7313f2" class="bulleted-list"><li style="list-style-type:disc"><strong>철학:</strong> 인간의 나약함, 거대한 운명, 미지의 공포.</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80fd-ada9-c4f3edd0151c" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-807a-834a-dc14c69548e2" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_monumental_brutalist_megastructure_tiny_human_sil_71eced9d-2635-482f-bd56-4af926e99c33_2.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_monumental_brutalist_megastructure_tiny_human_sil_71eced9d-2635-482f-bd56-4af926e99c33_2.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-802e-b841-defde8bfb199" class="">monumental brutalist megastructure, tiny human silhouette, heavy fog/haze, minimalism, negative space, slow contemplative pacing, ominous quiet, unknown presence implied (not shown), muted teal-orange grade or monochrome, volumetric light beams, long lens compression, distant rumble, cinematic composition, restrained emotion, high realism, no dialogue, no text</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e2-bd24-eb45ef042417" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2d23970b-b5e1-80c3-aa05-e0a1e7c1802f" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80c2-99a9-c942f5b7a9f6"><td id="zZ&lt;p" class=""><strong>스타일 요소</strong></td><td id="_{fT" class="" style="width:574px"><strong>프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-806b-a07d-c3233de6122a"><td id="zZ&lt;p" class=""><strong>Composition</strong></td><td id="_{fT" class="" style="width:574px"><code>Massive scale</code>, <code>Tiny human silhouette</code>, <code>Brutalist architecture</code>, <code>Negative space</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80d5-860a-d2cf0e4f44f3"><td id="zZ&lt;p" class=""><strong>Lighting</strong></td><td id="_{fT" class="" style="width:574px"><code>Volumetric lighting</code>, <code>Foggy atmosphere</code>, <code>Silhouette against light</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8046-81a4-c9f44f9b7d9b"><td id="zZ&lt;p" class=""><strong>Color</strong></td><td id="_{fT" class="" style="width:574px"><code>Desaturated orange and grey</code>, <code>Monochromatic</code>, <code>Dusty texture</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-804a-b51b-e67e1a565873" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80cd-acdb-f11fc738e612" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_cinematic_sci-fi_thriller_brutalist_megastructure_8a085eda-55a0-4ba0-882c-62dee428f2f5_0.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_cinematic_sci-fi_thriller_brutalist_megastructure_8a085eda-55a0-4ba0-882c-62dee428f2f5_0.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80fb-a002-c12e11174d6a" class="">cinematic sci-fi thriller, brutalist megastructure, thick haze, tiny human silhouette, teal shadows and amber practical lights, clean controlled contrast, soft diffusion, long lens, slow push-in, minimalism, quiet dread, premium grade, no text</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80c2-9c45-e39454534a8b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8061-93f6-e1d74632de71" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8013-b327-d00871471bfb" class="">C. 미야자키 하야오 (Hayao Miyazaki): 잃어버린 낙원</h3></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8065-9858-e1c919dd1ae1" class="bulleted-list"><li style="list-style-type:disc"><strong>특징:</strong> 지브리 스타일, 수채화 질감의 배경, 풍성한 자연과 비행 기계, 먹음직스러운 음식.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80f6-bba7-d05e133769d9" class="bulleted-list"><li style="list-style-type:disc"><strong>철학:</strong> 자연과의 조화, 반전(Anti-war), 순수한 동심과 비행의 꿈.</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-807c-884f-e32e12154ebe" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80d8-8f22-ceb413ac9b8d" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_hand-painted_watercolor_background_soft_ink_linew_91971f13-7e42-4d7e-88aa-78d6205da370_3.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_hand-painted_watercolor_background_soft_ink_linew_91971f13-7e42-4d7e-88aa-78d6205da370_3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80bf-88e4-c1936013e82a" class="">hand-painted watercolor background, soft ink linework, warm sunlight, lush nature (tall grass, wildflowers, ancient trees), gentle wind, whimsical flying machine, nostalgic pastoral mood, harmonious with nature, anti-war undertone (no explicit violence), childlike wonder, delicious home-cooked food close-up, subtle film grain-like paper texture, cinematic composition, serene and hopeful</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-809b-8bee-d7585233ca92" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8031-bb28-f8e254e894a1" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2d23970b-b5e1-8090-9dbe-e07cfad37571" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-807b-81ad-eab9e6f41f8b"><td id="hcw`" class=""><strong>스타일 요소</strong></td><td id="g~&lt;r" class="" style="width:569px"><strong>프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80c7-936f-c8b478347229"><td id="hcw`" class=""><strong>Visual Style</strong></td><td id="g~&lt;r" class="" style="width:569px"><code>Studio Ghibli style</code>, <code>Hayao Miyazaki</code>, <code>Watercolor background</code>, <code>Cel shaded</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8025-a6b1-c1f6bb0f6ae0"><td id="hcw`" class=""><strong>Elements</strong></td><td id="g~&lt;r" class="" style="width:569px"><code>Lush green meadow</code>, <code>Cumulus clouds</code>, <code>Flying machine</code>, <code>Steampunk vibes</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8011-9464-fcf86a83b069"><td id="hcw`" class=""><strong>Mood</strong></td><td id="g~&lt;r" class="" style="width:569px"><code>Nostalgic</code>, <code>Peaceful</code>, <code>Whimsical</code>, <code>Magical realism</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80a4-aeee-f3c3b3996d3b" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_original_hand-drawn_animation_look_watercolor_lan_fa0344e4-3ca8-4563-8a51-8930a83fa5dc_2.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_original_hand-drawn_animation_look_watercolor_lan_fa0344e4-3ca8-4563-8a51-8930a83fa5dc_2.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-809c-8e39-f0f2b2c76b34" class="">original hand-drawn animation look, watercolor landscape of endless green meadow, tall grass shimmering, wildflowers, distant mountains, warm afternoon sunlight, soft ink outlines, wind visible as flowing ribbons through the grass, a small child silhouette running with a kite, serene wonder, paper texture, cinematic wide shot</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8058-94d1-c3656f19e680" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-8068-b733-ceca26e0d1af" class="">3. 장르의 융합: 리믹스가 창조다 (The Remix)</h2></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8046-8fa5-c328ba926bae" class="">&quot;창조성은 단지 사물들을 연결하는 것이다.&quot; AI 시대의 독창성은 &#x27;이질적인 것들의 결합&#x27;에서 나옵니다. AI는 세계 최고의 믹서기입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8005-95cd-d98c8c9380cf" class="">3-1. 하이브리드 미학 (Genre Hybridization)</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8016-aaf2-e025baefc80a" class="">단 하나의 장르만 고집하지 마십시오. 서로 어울리지 않는 두 장르를 충돌시켜 제3의 장르(Micro-genre)를 만드십시오. 이것이 당신만의 시그니처가 됩니다.</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8077-a229-ca6bdc1763ff" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-809c-bdde-eae7b7ff808a"><div class="source"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/kling_20251223_Text_to_Video_8_10s_cine_3596_0.mp4">attachment:558b13df-5db3-4829-a9de-96f38bf612dc:kling_20251223_Text_to_Video_8_10s_cine_3596_0.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8056-9cc0-d03c5eb15b3d" class="">8–10s cinematic micro-genre film “Cyberpunk Joseon”, slow drone push-in toward a hanok rooftop in neon rain, Joseon scholar in gat silhouetted against magenta-teal signage, holographic scroll UI unfolds like a traditional paper scroll, calligraphy strokes morph into glowing code streams, lantern light warms his face, mist and rain create volumetric neon beams, premium realism, smooth motion, no dialogue, no on-screen text, no watermark</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ae-b796-f49563317780" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8034-ade2-e828c7ec3c56" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__cyberpunk-joseon-night-a-joseon-scholar-wearing-a-__38627.png"><img style="width:2752px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__cyberpunk-joseon-night-a-joseon-scholar-wearing-a-__38627.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8002-bd8f-d8056610f1da" class="bulleted-list"><li style="list-style-type:disc"><strong>사례:</strong> <strong>사이버펑크 + 조선시대 (Cyberpunk Joseon)</strong><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8039-97bb-d6d7d3298b4e" class="bulleted-list"><li style="list-style-type:circle">갓을 쓴 선비가 네온사인이 번쩍이는 한옥 기와지붕 위에서 해킹을 하는 장면.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8044-89d9-c33f9befe94c" class="">Cyberpunk Joseon night, a Joseon scholar wearing a gat and hanbok sits on the curved tiled roof of a traditional hanok, neon signs reflected on wet black tiles, he is hacking with a translucent holographic scroll interface hovering above an inkstone, brush strokes become flowing code, subtle rain and mist, teal-magenta neon with warm lantern accents, ultra-detailed fabric texture, authentic Joseon silhouette + high-tech overlays, cinematic wide shot, dramatic rim light, high-end commercial look, clean composition, no text, 8k</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80f1-a840-dd927a3c3abb" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-806d-a7d6-c55911e0a599" class="">3-2. 매쉬업 프롬프트 전략 (Mashup Strategy)</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8060-a7e3-d6fdd0667523" class="">프롬프트에 상반된 키워드를 동시에 넣고 AI가 이를 어떻게 해석하는지 지켜보십시오.</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-805a-ad5a-fa8c15cd6eaa" class="bulleted-list"><li style="list-style-type:disc"><strong>공식:</strong> <code>[Genre A] aesthetic mixed with [Genre B] elements</code><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80bf-a9d1-df67be9b12ce" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__16799.jpeg"><img style="width:768px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__16799.jpeg"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-808e-9235-e9d4b3e69dbf" class="">foggy mountain landscape painted like a traditional ink wash, a silent swarm of drones moves like migrating birds, scholar watches calmly, anti-war undertone, minimal palette with tiny neon accents, vast negative space, contemplative pacing</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80b4-ba36-d6ca5bf7a629" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2d23970b-b5e1-80f9-9463-cf96c5009ce5" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80ce-ad25-c9492e06332b"><td id="PHi&gt;" class=""><strong>하이브리드 종류</strong></td><td id="&lt;m|P" class="" style="width:594px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8013-b3e7-d22ee5f2ec22"><td id="PHi&gt;" class=""><strong>Medieval Sci-Fi</strong><br/>(중세 + SF)</td><td id="&lt;m|P" class="" style="width:594px"><strong>설명:</strong> 갑옷을 입은 기사가 레이저 검을 들고 우주선 내부를 걷는 장면.<br/><strong>Prompt:</strong> <code>Knights in shining armor holding lightsabers, inside a futuristic spaceship corridor, medieval sci-fi mashup, metallic texture, cold blue lighting --ar 16:9</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-807a-876f-db25352cd261"><td id="PHi&gt;" class=""><strong>Pastel Noir</strong><br/>(파스텔 + 느와르)</td><td id="&lt;m|P" class="" style="width:594px"><strong>설명:</strong> 범죄 현장이지만 색감은 웨스 앤더슨처럼 파스텔 핑크와 민트색임.<br/><strong>Prompt:</strong> <code>Film noir detective scene, raining street, but color palette is pastel pink and mint green, wes anderson aesthetic, contrast between cute colors and dark theme --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80ba-8a1c-fc66d4368f00" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__38625.jpeg"><img style="width:710px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__38625.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80aa-810d-ef2382b22a13" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8041-bc7c-c8a41492b771" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__38626.jpeg"><img style="width:710px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__38626.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8098-8a78-f6d4e217c9b6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8058-aa4f-d79aef42f72a" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-805f-9658-eaa742e83f50" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__macro-shot-brush-on-hanji-paper-ink-spreads-then-t__16800.png"><img style="width:2752px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__macro-shot-brush-on-hanji-paper-ink-spreads-then-t__16800.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8097-ac9a-ef175d5c6a85" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__16801.jpeg"><img style="width:710px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__the-style-is-candid-image-photography-with-natural__16801.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8084-b5e1-ea6178186a7a" class="">macro shot: brush on hanji paper, ink spreads then turns into luminous circuit pathways, droplets become pixels, tactile paper fibers visible, shallow depth of field, premium commercial macro lighting, poetic tech-mysticism</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8032-9506-ffd1d51eb261" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8038-a6e7-d4ab049346a1" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8006-bd20-ead5472c77d3" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__historical-authenticity-joseon-futuristic-layer-cy__38624.png"><img style="width:2752px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__historical-authenticity-joseon-futuristic-layer-cy__38624.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e4-b962-ebe220a5c8c6" class="">historical authenticity (Joseon) + futuristic layer (cyberpunk) + one unifying rule (material/color/ritual) + cinematic realism + deliberate juxtaposition</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80aa-ae00-fc2140606fe7" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80f8-b90a-c9ce9fa1c70d" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_traditional_seodang_classroom_merged_with_a_cyber_a084d43b-7ac0-48e6-bd21-1dd4b3f44e91_3.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_traditional_seodang_classroom_merged_with_a_cyber_a084d43b-7ac0-48e6-bd21-1dd4b3f44e91_3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ee-a8b4-db60859071e3" class="">traditional seodang classroom merged with a cyberpunk server room, wooden beams wrapped with fiber-optic cables, ink paintings animate into UI dashboards, students in hanbok studying glowing circuit-paper, warm candle light mixed with cold neon, serene but uncanny, high-end production design --chaos 85 --stylize 150 </p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80a0-8205-d50ff3c0d43e" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80ea-8228-eccc023d5dc0" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_traditional_seodang_classroom_merged_with_a_cyber_a084d43b-7ac0-48e6-bd21-1dd4b3f44e91_0.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_traditional_seodang_classroom_merged_with_a_cyber_a084d43b-7ac0-48e6-bd21-1dd4b3f44e91_0.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8011-99ab-da6284737d2c" class="">traditional seodang classroom merged with a cyberpunk server room, wooden beams wrapped with fiber-optic cables, ink paintings animate into UI dashboards, students in hanbok studying glowing circuit-paper, warm candle light mixed with cold neon, serene but uncanny, high-end production design --chaos 85 --stylize 150 </p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8013-b85e-fd3e59f6c4cc" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80a2-a598-fe91302d5450" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80f7-a557-c271c9eb0c2c" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80b8-bb40-f27a3d3fb62e" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Cyberpunk_Joseon_aesthetic_Joseon_scholar_wearing_a932538b-3f47-46ca-94ce-e996ed8fb980_0.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Cyberpunk_Joseon_aesthetic_Joseon_scholar_wearing_a932538b-3f47-46ca-94ce-e996ed8fb980_0.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8063-aee7-fcacace6e687" class="">Cyberpunk Joseon aesthetic, Joseon scholar wearing gat and hanbok on a hanok rooftop, neon rain, holographic scroll interface, calligraphy turns into flowing code, mist, cinematic wide shot, strong silhouette, premium commercial look --chaos 85 --stylize 150 </p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ab-be45-feac130a09df" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80b7-a40c-e6f713274453" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80ad-836a-ce81b3038c86" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8056-a0d2-cdfb8a7d9841" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Cyberpunk_Joseon_aesthetic_Joseon_scholar_wearing_6cf812e1-b9c7-4da6-ab25-03f7c4cf14c5_1.png"><img style="width:709.984375px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/ainspire_kr_Cyberpunk_Joseon_aesthetic_Joseon_scholar_wearing_6cf812e1-b9c7-4da6-ab25-03f7c4cf14c5_1.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80dd-be4e-f1b34b43966e" class="">Cyberpunk Joseon aesthetic, Joseon scholar wearing gat and hanbok on a hanok rooftop, neon rain, holographic scroll interface, calligraphy turns into flowing code, mist, cinematic wide shot, strong silhouette, premium commercial look --chaos 85 --stylize 150 </p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-804b-b81b-ff81cb232479" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-806c-900b-d729bbfdd56d" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-8095-ab75-ced1750d007f" class="">4. 큐레이션: 1%를 위한 선택 (The Art of Selection)</h2></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8038-9c88-d5f4cbe559df" class="">&quot;감독은 만드는(Making) 사람이 아니라 결정하는(Deciding) 사람이다.&quot;<br/>AI는 1분 만에 4개의 시안을 던져줍니다. 이 중에서 단 하나를 고르는 안목(Insight)이 없다면, 당신은 감독이 아니라 &#x27;데이터 쓰레기 수집가&#x27;일 뿐입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8034-b027-d273bb1e3b94" class="">4-1. 1/100의 법칙 (The 1% Rule)</h3></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8055-a1fe-d0c62083524a" class="bulleted-list"><li style="list-style-type:disc"><strong>프로세스:</strong><div style="display:contents" dir="auto"><ol type="1" id="2d23970b-b5e1-803e-a0d7-e260de2ca21a" class="numbered-list" start="1"><li><strong>Diverge (발산):</strong> <code>-chaos</code> 값을 높여 다양한 구도를 무작위로 뽑습니다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2d23970b-b5e1-8025-ab7b-f246b692cab7" class="numbered-list" start="2"><li><strong>Converge (수렴):</strong> 마음에 드는 구도가 나오면 <code>Vary (Subtle)</code>이나 <code>Remix</code>를 통해 디테일만 조금씩 바꿔가며 20장 이상 뽑습니다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2d23970b-b5e1-80e8-936f-f58ac8f32b6b" class="numbered-list" start="3"><li><strong>Select (선택):</strong> 그중 표정, 손가락, 조명이 완벽한 단 하나를 고릅니다. 타협하지 마십시오.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8020-a9ac-e69cc6c1060c" class="">4-2. 디렉터스 컷: 버리는 용기</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8013-bf89-cc31b69436f9" class="">가장 아름다운 컷이라도 서사를 방해한다면 가차 없이 휴지통에 넣으십시오. &quot;Kill your darlings(가장 사랑하는 것을 죽여라)&quot;가 큐레이션의 제1원칙입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8026-93a0-f01c67039177" class="">🛠️ 실무 가이드: 큐레이션 체크리스트</h3></div><div style="display:contents" dir="ltr"><table id="2d23970b-b5e1-80a2-bbaa-fcf144d9f51b" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8049-a731-d4d375687d96"><td id="I{wu" class=""><strong>단계</strong></td><td id="qQiY" class=""><strong>체크리스트 &amp; 행동 요령</strong></td><td id="_b:j" class="" style="width:440px"><strong>프롬프트 활용 (Remix Mode)</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80ee-bc59-c765d8d8d9b5"><td id="I{wu" class=""><strong>1. 구도 확인</strong></td><td id="qQiY" class="">주제가 명확한가?</td><td id="_b:j" class="" style="width:440px"><strong>To fix:</strong> <code>... minimal background, center composition</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-80ab-8c24-f4d576edb267"><td id="I{wu" class=""><strong>2. 디테일 확인</strong></td><td id="qQiY" class="">손가락 개수, 눈동자 초점 확인</td><td id="_b:j" class="" style="width:440px"><strong>To fix:</strong> <code>(Vary Region)</code> -&gt; <code>detailed fingers, five fingers</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8056-a342-ff6c15a0325b"><td id="I{wu" class=""><strong>3. 톤앤매너</strong></td><td id="qQiY" class="">전체 무드와 맞는가?</td><td id="_b:j" class="" style="width:440px"><strong>To fix:</strong> <code>... consistent style with previous shot</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2d23970b-b5e1-8083-976d-d4e9119159cd"><td id="I{wu" class=""><strong>4. 흐름 확인</strong></td><td id="qQiY" class="">앞 장면과 붙였을 때 튀지 않는가?</td><td id="_b:j" class="" style="width:440px"><strong>Tip:</strong> 앞 장면 마지막 프레임을 <code>Image Prompt</code>로 활용</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-806e-9a5b-ddcd5d5035bc" class="bulleted-list"><li style="list-style-type:disc"><strong>[서사 적합성]</strong> 이 컷이 다음 장면으로 넘어가는 다리 역할을 하는가? 아니면 혼자 튀고 있는가?</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80af-a62c-cdb33cd2b0fa" class="bulleted-list"><li style="list-style-type:disc"><strong>[일관성 유지]</strong> 앞 컷의 인물과 지금 이 컷의 인물이 &#x27;동일인&#x27;으로 보이는가? (얼굴, 의상, 톤앤매너)</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80ad-8e6d-e22a83e73d82" class="bulleted-list"><li style="list-style-type:disc"><strong>[기술적 결함]</strong> AI 특유의 오류(뭉개진 손, 이상한 텍스트, 분리된 사지)가 0.1초라도 보이는가?</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8061-9e0d-f4be9eed03e8" class="bulleted-list"><li style="list-style-type:disc"><strong>[조명의 논리]</strong> 씬(Scene)의 시간대와 광원(빛의 방향)이 이전 컷과 일치하는가?</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80fe-a65a-e64ee7949605" class="bulleted-list"><li style="list-style-type:disc"><strong>[감정의 전달]</strong> 이 이미지를 딱 봤을 때, 내가 의도한 감정(공포, 기쁨, 슬픔)이 즉각적으로 느껴지는가?</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8061-b7f0-cc73d496a143" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8008-a800-d8ff827522d9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-806c-b701-ca3772087a8d" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-80be-951b-e7b2c9cbd53c" class="">5. 미세 조정: 인페인팅과 디테일의 통제 (Micro-Directing)</h2></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8046-a28e-fe93396b4c74" class="">진정한 작가는 &#x27;운&#x27;에 맡기지 않습니다. 전체 그림은 좋은데 손가락이 이상하거나, 배경에 원치 않는 사물이 있다면 다시 생성(Reroll)하지 말고 수정(Fix)하십시오. 이것이 반복적 연출(Iterative Directing)입니다.</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-80de-8e44-c42b80835d48" class="">5-1. 부분 수정 (Inpainting / Vary Region)</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80bb-ad14-c006da95b5d7" class="">이미지의 특정 영역만 선택하여 프롬프트를 다시 적용하는 기술입니다.</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-807c-a199-d89e939e38b3" class="bulleted-list"><li style="list-style-type:disc"><strong>배우의 연기 지도:</strong> 주인공의 얼굴만 선택하고 프롬프트를 <code>Smile</code>에서 <code>Angry expression</code>으로 바꾸면, 조명과 구도는 유지한 채 표정만 바뀝니다.<div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-803c-9219-f9077c5e0e68" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38630.png"><img style="width:768px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38630.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8094-9b35-fa4e56e954c6" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-804c-b916-da14c62ecd0e" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38628.png"><img style="width:2752px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38628.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8048-91ec-c6252dcbb021" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8014-bd3c-cb9ca737f9d9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80b5-96b7-e16498482345" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80e6-a08b-f6d94d5a8861" class="bulleted-list"><li style="list-style-type:disc"><strong>소품 교체:</strong> 손에 든 &#x27;스마트폰&#x27;을 &#x27;고대 두루마리&#x27;로 바꿀 수 있습니다.<div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80b3-ac46-c8f453efe297" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__dramatic-closeup-hands-holding-smartphone-thumb-ho__38629.png"><img style="width:2752px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__dramatic-closeup-hands-holding-smartphone-thumb-ho__38629.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-80d2-9a93-d765ef801511" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38633.png"><img style="width:2752px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38633.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80c7-9cb1-d0ed329bf34c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8026-969d-e264023b3231" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80b1-b3a5-ee5a33615543" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-805d-880f-fcd42346f629" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-800c-b150-f3b798071493" class="">5-2. 세계의 확장 (Outpainting / Zoom Out)</h3></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8042-aa7e-e67af353b909" class="">화면 밖의 세상을 만들어내는 기술입니다.</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-808e-a1ac-f1f628922586" class="bulleted-list"><li style="list-style-type:disc"><strong>전략:</strong> 클로즈업 샷이 마음에 들면 <code>Zoom Out 2x</code>를 통해 주변 환경을 생성하십시오. 인물의 디테일은 유지하면서 자연스러운 풀 샷(Full Shot)을 얻을 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8024-a715-fff1f496c62d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80a3-91af-ec985e113102" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-800e-8927-e3e99c492630" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38631.png"><img style="width:912px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38631.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d23970b-b5e1-8059-8db6-e8ffd474f60c" class="image"><a href="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38632.png"><img style="width:912px" src="%5BPart%208%5D%20%EC%8B%9C%EB%AE%AC%EB%9D%BC%ED%81%AC%EB%A5%B4%EC%99%80%20%EC%9E%91%EA%B0%80%EC%A3%BC%EC%9D%98,%20%EB%B9%84%EC%A0%84%20%EB%94%94%EB%A0%89%ED%84%B0%EC%9D%98%20%ED%83%84%EC%83%9D/freepik__-__38632.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-80e2-bb66-fb396aa0616c" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2d23970b-b5e1-800f-8015-d1be2c9bdeaf"/></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8073-8ba2-cdf0dae162c7" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2d23970b-b5e1-8022-99ef-d2bea95459f8" class="">[실습 과제] Day 8: 파이널 프로젝트 (The Vision Director)</h2></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-8012-8d9e-eeb855a1f197" class="">Mission 1. 하이브리드 장르 기획 (Genre Mashup)</h3></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8035-99d5-f1cced595eb2" class="bulleted-list"><li style="list-style-type:disc"><strong>목표:</strong> 세상에 없던 나만의 &#x27;하이브리드 장르&#x27;를 만드시오.<div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80fc-afa4-d5d868dda81c" class="bulleted-list"><li style="list-style-type:circle">예: <strong>[공룡 시대] + [제2차 세계대전]</strong> = 랩터가 탱크 옆에서 달리는 전쟁 영화.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-805d-9934-d7fd60f568c1" class="bulleted-list"><li style="list-style-type:disc"><strong>검증:</strong> 해당 프롬프트를 사용하여 3개의 연속된 장면(Establishing Shot, Medium Shot, Close-up)을 생성하고 일관성을 확인하시오.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2d23970b-b5e1-80a5-9309-e278cc2b6604" class="">Mission 2. 졸업 작품: 15초 시네마틱 (Masterpiece)</h3></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8079-b3bc-f7cb3a453edb" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> 자유 주제 (단, 8개의 파트 배운 이론 중 최소 3가지를 <strong>의도적으로</strong> 적용할 것)<div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-809c-b3e0-de5914e10e5a" class="bulleted-list"><li style="list-style-type:circle">예: <strong>렘브란트 라이팅(Day 3)</strong> + <strong>트래킹 샷(Day 5)</strong> + <strong>장르 리믹스(Day 8)</strong></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8017-be0a-e38720884f94" class="bulleted-list"><li style="list-style-type:disc"><strong>제출:</strong> 15초 분량의 AI 영상 링크와 함께, 사용된 &#x27;연출 의도(Director&#x27;s Note)&#x27;를 작성하시오.</li></ul></div><div style="display:contents" dir="auto"><hr id="2d23970b-b5e1-8038-92c2-c9ccd697fed0"/></div><div style="display:contents" dir="auto"><blockquote id="2d23970b-b5e1-807c-9556-c68bfab44687" class="">🎓 Graduation Insight: 과정 마무리<div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8074-b463-c44b440b0ac1" class=""><strong>&quot;기술은 누구나 살 수 있지만, 안목(Insight)은 살 수 없습니다.&quot;</strong></p></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-8065-af00-d04224167412" class="">지난 4주간(8일간) 우리는 AI 툴 사용법이 아니라, &#x27;어떻게 볼 것인가&#x27;를 배웠습니다.</p></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-8032-8cb6-fb0daab17c86" class="bulleted-list"><li style="list-style-type:disc"><strong>Day 1~2:</strong> 시간, 시선, 렌즈를 이해했습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80ee-ab5d-f94b91e3525c" class="bulleted-list"><li style="list-style-type:disc"><strong>Day 3~4:</strong> 빛, 색채, 미장센으로 공간을 조각했습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80d7-ac40-dbba18802276" class="bulleted-list"><li style="list-style-type:disc"><strong>Day 5~6:</strong> 움직임과 소리를 시각화하여 생명을 불어넣었습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80d8-ae32-ff6fa3162fb4" class="bulleted-list"><li style="list-style-type:disc"><strong>Day 7:</strong> 몽타주로 의미를 연결했습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d23970b-b5e1-80d0-a0e8-c733198450ef" class="bulleted-list"><li style="list-style-type:disc"><strong>Day 8:</strong> 그리고 오늘, 스타일과 큐레이션으로 작가(Auteur)가 되었습니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2d23970b-b5e1-801a-aaca-cbec7dd478f5" class="">이제 여러분은 AI의 오퍼레이터(Operator)가 아닙니다. 여러분의 세계를 지휘하는 비전 디렉터(Vision Director)입니다.<br/><strong>Action!</strong></p></div></blockquote></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

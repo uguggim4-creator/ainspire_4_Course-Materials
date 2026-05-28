@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AInspire 4기 · 0주차 PPT 샘플 — 표지 + 오늘의 목표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --purple-900:#080218; --purple-800:#13063a; --purple-700:#240b65;
+  --purple-600:#3d14a8; --purple-500:#6020ff; --purple-400:#8f55ff;
+  --purple-300:#bba4ff; --purple-100:#ede5ff; --purple-50:#f7f3ff;
+  --cyan:#00b4d8; --cyan-soft:#4dd8ee;
+  --grad:linear-gradient(135deg,#6020ff 0%,#5028f0 40%,#00b4d8 100%);
+  --grad-soft:linear-gradient(135deg,rgba(96,32,255,.12),rgba(0,180,216,.12));
+  --yellow:#ffe600; --yellow-soft:#fff3a6;
+  --ink:#0a0518; --ink-2:#3a2f55; --ink-3:#6b5d8a;
+  --line:#e5dff0; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+html,body{height:100%}
+body{
+  font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo',sans-serif;
+  background:#05010f; color:var(--ink); overflow:hidden;
+}
+
+/* ===== deck / slide framing ===== */
+.deck{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center}
+.stage{
+  position:relative;
+  width:min(96vw, calc(96vh * 16 / 9));
+  height:min(96vh, calc(96vw * 9 / 16));
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 40px 120px rgba(0,0,0,.6);
+}
+.slide{
+  position:absolute; inset:0; opacity:0; pointer-events:none;
+  transition:opacity .45s ease;
+  display:flex; flex-direction:column;
+  padding:6.2% 7%;
+}
+.slide.active{opacity:1; pointer-events:auto}
+
+/* backgrounds */
+.bg-hero{
+  background:
+    radial-gradient(ellipse at 18% 88%,rgba(96,32,255,.5) 0%,transparent 52%),
+    radial-gradient(ellipse at 86% 14%,rgba(0,180,216,.4) 0%,transparent 55%),
+    radial-gradient(ellipse at top,#240b65 0%,#13063a 45%,#080218 100%);
+  color:var(--white);
+}
+.bg-deep{background:linear-gradient(180deg,#1a0a3d 0%,#0d0420 100%);color:var(--white)}
+.bg-dark{background:var(--purple-900);color:var(--white)}
+.bg-light{background:var(--white);color:var(--ink)}
+.bg-tint{background:var(--purple-50);color:var(--ink)}
+
+/* ===== typography ===== */
+.eyebrow{
+  display:inline-block;font-size:.95vw;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:2.2%;
+}
+.bg-light .eyebrow,.bg-tint .eyebrow{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.bg-hero .eyebrow,.bg-deep .eyebrow,.bg-dark .eyebrow{color:var(--yellow)}
+.title{font-size:4.6vw;font-weight:800;line-height:1.12;letter-spacing:-.025em}
+.title.sm{font-size:3.2vw}
+.subtitle{font-size:1.5vw;font-weight:500;line-height:1.55;margin-top:2%;color:rgba(255,255,255,.82)}
+.bg-light .subtitle,.bg-tint .subtitle{color:var(--ink-2)}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.yellow{color:var(--yellow)}
+
+.shead{display:flex;align-items:center;gap:1.4%;margin-bottom:3.5%}
+.shead .knum{
+  width:3.4vw;height:3.4vw;border-radius:.8vw;background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.5vw;
+  box-shadow:0 .6vw 1.6vw rgba(96,32,255,.4);flex-shrink:0;
+}
+.shead h2{font-size:2.7vw;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.shead .ksub{font-size:1.05vw;color:var(--ink-3);font-weight:600;margin-top:.3vw}
+
+.body{flex:1;display:flex;flex-direction:column;justify-content:center}
+
+/* ===== cards / grids ===== */
+.grid{display:grid;gap:1.6vw}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:var(--white);border:1px solid var(--line);border-radius:1.1vw;
+  padding:2.2vw;box-shadow:0 1.2vw 3vw rgba(96,32,255,.08);
+}
+.bg-tint .card{background:#fff}
+.card .cnum{
+  width:2.6vw;height:2.6vw;border-radius:.7vw;background:var(--grad-soft);color:var(--purple-500);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3vw;margin-bottom:1.1vw;
+}
+.card h3{font-size:1.5vw;font-weight:700;letter-spacing:-.01em;margin-bottom:.7vw}
+.card p{font-size:1.12vw;line-height:1.55;color:var(--ink-2)}
+
+/* glass cards on dark */
+.glass{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(12px);border-radius:1.1vw;padding:2.2vw;
+}
+.glass h3{font-size:1.5vw;font-weight:700;margin-bottom:.7vw;color:#fff}
+.glass p{font-size:1.12vw;line-height:1.55;color:rgba(255,255,255,.8)}
+
+/* numbered steps row */
+.flow{display:flex;align-items:stretch;gap:1vw}
+.flow .step{
+  flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+  border-radius:1vw;padding:1.6vw 1.2vw;text-align:center;
+}
+.bg-light .flow .step,.bg-tint .flow .step{background:#fff;border-color:var(--line);box-shadow:0 .8vw 2vw rgba(96,32,255,.07)}
+.flow .step .sn{font-size:1.1vw;font-weight:800;color:var(--purple-400);margin-bottom:.6vw}
+.flow .step .st{font-size:1.18vw;font-weight:700;line-height:1.3}
+.bg-light .flow .step .st,.bg-tint .flow .step .st{color:var(--ink)}
+.flow .arrow{display:flex;align-items:center;color:var(--purple-300);font-size:1.8vw;font-weight:700}
+
+/* check list */
+.checks{display:flex;flex-direction:column;gap:1.1vw}
+.check{display:flex;align-items:center;gap:1vw;font-size:1.35vw;font-weight:600}
+.check .cb{
+  width:2.2vw;height:2.2vw;border-radius:.6vw;background:var(--grad);color:#fff;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.2vw;font-weight:800;
+}
+.bg-light .check,.bg-tint .check{color:var(--ink)}
+
+/* result table */
+.rtable{width:100%;border-collapse:separate;border-spacing:0;font-size:1.2vw}
+.rtable th,.rtable td{padding:1.1vw 1.4vw;text-align:left}
+.rtable thead th{background:var(--grad);color:#fff;font-weight:700}
+.rtable thead th:first-child{border-top-left-radius:.8vw}
+.rtable thead th:last-child{border-top-right-radius:.8vw}
+.rtable tbody td{background:#fff;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.rtable tbody td:first-child{font-weight:700;color:var(--purple-600);font-family:'Pretendard';}
+.rtable tbody tr:last-child td:first-child{border-bottom-left-radius:.8vw}
+.rtable tbody tr:last-child td:last-child{border-bottom-right-radius:.8vw}
+
+/* compare two columns */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1.4vw;align-items:stretch}
+.vs .col{border-radius:1.1vw;padding:2vw}
+.vs .bad{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13)}
+.vs .good{background:var(--grad-soft);border:1px solid rgba(143,85,255,.4)}
+.vs .vmid{display:flex;align-items:center;justify-content:center;font-size:1.6vw;font-weight:800;color:var(--purple-300)}
+.vs .vlabel{font-size:1vw;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1vw}
+.vs .bad .vlabel{color:rgba(255,255,255,.55)}
+.vs .good .vlabel{color:var(--purple-400)}
+.vs h4{font-size:1.5vw;font-weight:700;margin-bottom:.6vw;color:#fff}
+.vs .good h4{color:#fff}
+.vs p{font-size:1.12vw;line-height:1.5;color:rgba(255,255,255,.78)}
+.vs .pillrow{margin-top:1vw;display:flex;flex-wrap:wrap;gap:.5vw}
+.vs .pillrow span{font-size:.95vw;padding:.4vw .9vw;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
+.vs .good .pillrow span{background:rgba(143,85,255,.25);color:#e9defff0}
+
+/* sense icons */
+.senses{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw}
+.sense{background:#fff;border:1px solid var(--line);border-radius:1.2vw;padding:2.4vw 2vw;text-align:center;box-shadow:0 1.2vw 3vw rgba(96,32,255,.08)}
+.sense .ic{font-size:2.8vw;margin-bottom:1vw}
+.sense h3{font-size:1.6vw;font-weight:800;margin-bottom:.8vw}
+.sense p{font-size:1.08vw;line-height:1.5;color:var(--ink-2)}
+
+/* big quote slide */
+.quote{font-size:3vw;font-weight:800;line-height:1.35;letter-spacing:-.02em}
+.quote .grad-text{display:inline}
+
+/* footer chip on cover */
+.cover-tags{display:flex;gap:1vw;margin-top:3.5%}
+.cover-tags span{
+  font-size:1.05vw;font-weight:700;padding:.7vw 1.4vw;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;
+}
+.cover-tags span.hl{background:var(--grad);border:0;box-shadow:0 .8vw 2vw rgba(96,32,255,.45)}
+.brandline{margin-top:auto;display:flex;align-items:center;gap:.8vw;font-size:1.1vw;font-weight:700;color:rgba(255,255,255,.7)}
+.brandline .dot{width:.7vw;height:.7vw;border-radius:50%;background:var(--cyan)}
+
+/* ===== chrome: progress + counter + hint ===== */
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--grad);z-index:50;transition:width .4s}
+.counter{position:fixed;right:18px;bottom:14px;z-index:50;color:rgba(255,255,255,.6);font-size:13px;font-weight:700;letter-spacing:.05em}
+.hint{position:fixed;left:18px;bottom:14px;z-index:50;color:rgba(255,255,255,.32);font-size:12px}
+.nav-btn{position:fixed;top:50%;transform:translateY(-50%);z-index:50;width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.nav-btn:hover{background:rgba(255,255,255,.18)}
+#prev{left:14px}#next{right:14px}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<button class="nav-btn" id="prev">‹</button>
+<button class="nav-btn" id="next">›</button>
+<div class="counter" id="counter">1 / 12</div>
+<div class="hint">← → 또는 스페이스로 이동 · F 전체화면</div>
+
+<div class="deck">
+  <div class="stage" id="stage">
+
+    <!-- 1. COVER -->
+    <section class="slide bg-hero active">
+      <div style="margin-top:4%">
+        <span class="eyebrow">AInspire 4기 · WEEK 0</span>
+        <h1 class="title">AI 작업 환경<br><span class="grad-text" style="background:linear-gradient(135deg,#fff,#bba4ff)">세팅하기</span></h1>
+        <p class="subtitle">설치 · 실행 · 자동화 — AI와 함께 일할 작업실을 만드는 시간</p>
+        <div class="cover-tags">
+          <span class="hl">설치보다 흐름이 먼저</span>
+          <span>비개발자 OK</span>
+          <span>Codex · Claude · VS Code</span>
+        </div>
+      </div>
+      <div class="brandline"><span class="dot"></span>AInspire — AI 영상 제작 OS 이식 9주</div>
+    </section>
+
+    <!-- 2. 이 강의는 누구를 위한가 -->
+    <section class="slide bg-light">
+      <div class="shead">
+        <div class="knum">01</div>
+        <div><h2>이 강의는 누구를 위한가</h2><div class="ksub">강의 대상</div></div>
+      </div>
+      <div class="body">
+        <div class="grid g3">
+          <div class="card"><div class="cnum">①</div><h3>개발 경험이 없어도</h3><p>코드를 한 번도 써본 적 없어도 따라올 수 있게 설계했습니다.</p></div>
+          <div class="card"><div class="cnum">②</div><h3>실무에 쓰고 싶은</h3><p>AI를 업무·콘텐츠·문서·강의 제작에 직접 활용하려는 분.</p></div>
+          <div class="card"><div class="cnum">③</div><h3>어디서 시작할지 모르는</h3><p>도구 이름은 들어봤지만 첫 단추를 못 끼운 분.</p></div>
+        </div>
+        <p class="subtitle" style="margin-top:3%;font-size:1.3vw">“나는 개발자가 아닌데 들을 수 있나요?” → <strong style="color:var(--purple-600)">네, 이 강의는 비개발자를 위해 만들었습니다.</strong></p>
+      </div>
+    </section>
+
+    <!-- 3. 오늘의 목표 -->
+    <section class="slide bg-deep">
+      <div class="shead">
+        <div class="knum">02</div>
+        <div><h2 style="color:#fff">오늘의 목표</h2><div class="ksub" style="color:var(--purple-300)">강의가 끝나면 이걸 할 수 있어야 한다</div></div>
+      </div>
+      <div class="body">
+        <div class="grid g3">
+          <div class="glass"><div style="font-size:2.4vw;margin-bottom:1vw">🚀</div><h3>도구를 직접 실행</h3><p>Codex · Claude 앱 · VS Code를 내 손으로 켜본다.</p></div>
+          <div class="glass"><div style="font-size:2.4vw;margin-bottom:1vw">📁</div><h3>파일을 저장·확인</h3><p>작업 폴더를 만들고 결과물이 어디 생기는지 눈으로 본다.</p></div>
+          <div class="glass"><div style="font-size:2.4vw;margin-bottom:1vw">🔄</div><h3>작업 흐름을 경험</h3><p>AI에게 요청 → 결과 받기의 기본 흐름을 익힌다.</p></div>
+        </div>
+        <p class="subtitle" style="margin-top:3%;font-size:1.35vw"><span class="yellow" style="font-weight:800">설치 완료가 목표가 아닙니다.</span> 실제로 작동시켜 보는 것이 목표입니다.</p>
+      </div>
+    </section>
+
+    <!-- 4. 비유 -->
+    <section class="slide bg-dark" style="justify-content:center;text-align:center;align-items:center">
+      <span class="eyebrow">왜 0주차가 먼저인가</span>
+      <p class="quote">설명서를 외우는 게 아니라,<br><span class="grad-text" style="background:linear-gradient(135deg,#bba4ff,#4dd8ee)">새 주방 도구를 한 번 꺼내 써보는 것</span><br>— 그게 오늘 할 일입니다.</p>
+    </section>
+
+    <!-- 5. 이번 주차 결과물 -->
+    <section class="slide bg-tint">
+      <div class="shead">
+        <div class="knum">03</div>
+        <div><h2>이번 주차 결과물</h2><div class="ksub">강의가 끝나면 손에 쥐어야 할 5가지</div></div>
+      </div>
+      <div class="body">
+        <table class="rtable">
+          <thead><tr><th>결과물</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td>작업 폴더</td><td>강의 전반에서 파일을 저장할 폴더 구조</td></tr>
+            <tr><td>자기소개.md</td><td>Markdown 형식으로 작성한 자기소개 파일</td></tr>
+            <tr><td>intro.html</td><td>HTML로 만든 간단한 자기소개 페이지</td></tr>
+            <tr><td>screenshots</td><td>도구별 첫 실행 화면 캡쳐 모음 폴더</td></tr>
+            <tr><td>자동화_아이디어.md</td><td>내가 자동화하고 싶은 작업을 정리한 메모</td></tr>
+          </tbody>
+        </table>
+        <p class="subtitle" style="margin-top:2.5%;font-size:1.25vw">파일 5개가 <strong style="color:var(--purple-600)">내 컴퓨터에 실제로 있으면</strong> 이번 주차 완료입니다.</p>
+      </div>
+    </section>
+
+    <!-- 6. 강의 전 준비물 -->
+    <section class="slide bg-light">
+      <div class="shead">
+        <div class="knum">04</div>
+        <div><h2>강의 전 준비물</h2><div class="ksub">미리 해두면 강의 중 시간을 아낀다</div></div>
+      </div>
+      <div class="body">
+        <div class="grid g2" style="gap:2.4vw">
+          <div>
+            <div class="eyebrow" style="margin-bottom:1.4vw">계정 3개</div>
+            <div class="checks">
+              <div class="check"><span class="cb">✓</span>Google 계정 (Gmail)</div>
+              <div class="check"><span class="cb">✓</span>OpenAI 계정 — Codex</div>
+              <div class="check"><span class="cb">✓</span>Anthropic 계정 — Claude 앱</div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow" style="margin-bottom:1.4vw">컴퓨터 환경</div>
+            <div class="checks">
+              <div class="check"><span class="cb">✓</span>Windows 10+ / macOS 12+</div>
+              <div class="check"><span class="cb">✓</span>Chrome 또는 Edge 최신 버전</div>
+              <div class="check"><span class="cb">✓</span>캡쳐 저장 폴더 위치 정해두기</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. 대화 vs 결과물 -->
+    <section class="slide bg-deep">
+      <div class="shead">
+        <div class="knum">05</div>
+        <div><h2 style="color:#fff">대화와 결과물은 다르다</h2><div class="ksub" style="color:var(--purple-300)">왜 작업형 AI가 필요한가</div></div>
+      </div>
+      <div class="body">
+        <div class="vs">
+          <div class="col bad">
+            <div class="vlabel">대화창 = 임시</div>
+            <h4>대화형 사용</h4>
+            <p>“블로그 글 써줘” → 화면에 텍스트만 출력. 화면을 닫으면 사라지고, 복사해서 직접 옮겨야 한다.</p>
+            <div class="pillrow"><span>복사 필요</span><span>휘발됨</span></div>
+          </div>
+          <div class="vmid">→</div>
+          <div class="col good">
+            <div class="vlabel">파일 = 영구</div>
+            <h4>작업형 사용</h4>
+            <p>“blog-draft.md로 저장해줘” → 내 작업 폴더에 파일 생성. 언제든 다시 열어 수정할 수 있다.</p>
+            <div class="pillrow"><span>파일 생성</span><span>저장·재사용</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. 작업 폴더 -->
+    <section class="slide bg-tint">
+      <div class="shead">
+        <div class="knum">06</div>
+        <div><h2>작업 폴더가 없으면 파일이 흩어진다</h2><div class="ksub">작업 폴더 · 파일 · 실행 환경</div></div>
+      </div>
+      <div class="body">
+        <div class="grid g2" style="gap:2.4vw;align-items:center">
+          <div class="card">
+            <h3 style="margin-bottom:1.2vw">하나의 흐름으로 연결</h3>
+            <div class="flow">
+              <div class="step"><div class="sn">STEP 1</div><div class="st">작업 폴더</div></div>
+              <div class="arrow">→</div>
+              <div class="step"><div class="sn">STEP 2</div><div class="st">파일 저장</div></div>
+              <div class="arrow">→</div>
+              <div class="step"><div class="sn">STEP 3</div><div class="st">실행 확인</div></div>
+            </div>
+          </div>
+          <div>
+            <p class="subtitle" style="font-size:1.25vw;color:var(--ink-2)">요리를 시작하기 전에 <strong style="color:var(--purple-600)">도마·칼·그릇을 먼저 꺼내는 것</strong>처럼, AI 작업도 시작 전에 작업 공간을 만들어야 합니다.</p>
+            <p class="subtitle" style="font-size:1.1vw;margin-top:1.5vw;color:var(--ink-3)">예) <code style="background:#fff;border:1px solid var(--line);padding:.2vw .6vw;border-radius:.4vw">C:\ainspire\0주차\</code> 를 미리 만들어 두고 AI가 여기 저장하도록 지정.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. 작업 흐름 5단계 -->
+    <section class="slide bg-dark">
+      <div class="shead">
+        <div class="knum">07</div>
+        <div><h2 style="color:#fff">흐름을 이해하면 도구가 바뀌어도 괜찮다</h2><div class="ksub" style="color:var(--purple-300)">도구보다 오래가는 작업 흐름</div></div>
+      </div>
+      <div class="body">
+        <div class="flow">
+          <div class="step"><div class="sn">1</div><div class="st" style="color:#fff">무엇을 만들지 결정</div></div>
+          <div class="arrow">›</div>
+          <div class="step"><div class="sn">2</div><div class="st" style="color:#fff">입력 자료 준비</div></div>
+          <div class="arrow">›</div>
+          <div class="step"><div class="sn">3</div><div class="st" style="color:#fff">AI에게 요청</div></div>
+          <div class="arrow">›</div>
+          <div class="step"><div class="sn">4</div><div class="st" style="color:#fff">확인·수정</div></div>
+          <div class="arrow">›</div>
+          <div class="step"><div class="sn">5</div><div class="st" style="color:#fff">파일로 저장</div></div>
+        </div>
+        <p class="subtitle" style="margin-top:3.5%;font-size:1.3vw">이 흐름은 <span class="yellow" style="font-weight:800">Codex를 쓰든 Claude를 쓰든 동일</span>합니다. 도구가 바뀌어도 흐름은 유지됩니다.</p>
+      </div>
+    </section>
+
+    <!-- 10. 3가지 감각 -->
+    <section class="slide bg-light">
+      <div class="shead">
+        <div class="knum">08</div>
+        <div><h2>비개발자가 먼저 갖출 3가지 감각</h2><div class="ksub">코딩 능력과는 무관한 기본기</div></div>
+      </div>
+      <div class="body">
+        <div class="senses">
+          <div class="sense"><div class="ic">📂</div><h3>파일 관리</h3><p>파일이 어디 저장되는지 알고, 이름을 규칙대로 짓는다.</p></div>
+          <div class="sense"><div class="ic">🔍</div><h3>결과 확인</h3><p>AI 결과물을 그냥 믿지 않고 한 번은 열어서 확인한다.</p></div>
+          <div class="sense"><div class="ic">🔒</div><h3>보안 의식</h3><p>비밀번호·API 키·개인정보는 AI에게 직접 입력하지 않는다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. 좋은 파일명 vs 나쁜 파일명 -->
+    <section class="slide bg-deep">
+      <div class="shead">
+        <div class="knum">08</div>
+        <div><h2 style="color:#fff">작은 습관: 파일 이름</h2><div class="ksub" style="color:var(--purple-300)">날짜 + 내용 + 상태</div></div>
+      </div>
+      <div class="body">
+        <div class="vs">
+          <div class="col bad">
+            <div class="vlabel">나쁜 예</div>
+            <h4 style="font-family:monospace;font-size:1.7vw">제목 없음 (3).docx</h4>
+            <p>나중에 뭐가 뭔지 못 찾는다.</p>
+          </div>
+          <div class="vmid">vs</div>
+          <div class="col good">
+            <div class="vlabel">좋은 예</div>
+            <h4 style="font-family:monospace;font-size:1.7vw">2026-05-강의안-초안.md</h4>
+            <p>한눈에 날짜·내용·상태가 보인다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. 마무리 한 문장 -->
+    <section class="slide bg-hero" style="justify-content:center;text-align:center;align-items:center">
+      <span class="eyebrow">오늘 기억할 한 문장</span>
+      <p class="quote">강의가 끝나면<br><span class="grad-text" style="background:linear-gradient(135deg,#fff,#4dd8ee)">내 컴퓨터에 파일 5개</span>가<br>실제로 있어야 합니다.</p>
+      <div class="brandline" style="margin-top:5%"><span class="dot"></span>다음 — 도구 지도: Codex · Claude · VS Code · Antigravity</div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  let i=0;
+  const counter=document.getElementById('counter');
+  const progress=document.getElementById('progress');
+  function show(n){
+    i=Math.max(0,Math.min(total-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    counter.textContent=(i+1)+' / '+total;
+    progress.style.width=((i+1)/total*100)+'%';
+  }
+  function next(){show(i+1)} function prev(){show(i-1)}
+  document.getElementById('next').onclick=next;
+  document.getElementById('prev').onclick=prev;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+    else if(e.key==='Home')show(0);
+    else if(e.key==='End')show(total-1);
+    else if(e.key.toLowerCase()==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
+  });
+  show(0);
+</script>
+</body>
+</html>

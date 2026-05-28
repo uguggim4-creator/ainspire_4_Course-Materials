@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AInspire 아티클 뷰어</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Fonts & Icons (self-hosted) -->
+    <style>
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-500.woff2') format('woff2');font-weight:500;font-display:swap;}
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-600.woff2') format('woff2');font-weight:600;font-display:swap;}
+        @font-face{font-family:'Inter';src:url('/assets/fonts/Inter-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-600.woff2') format('woff2');font-weight:600;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-800.woff2') format('woff2');font-weight:800;font-display:swap;}
+        @font-face{font-family:'Outfit';src:url('/assets/fonts/Outfit-900.woff2') format('woff2');font-weight:900;font-display:swap;}
+        @font-face{font-family:'Pretendard';src:url('/assets/fonts/PretendardVariable.woff2') format('woff2-variations');font-weight:100 900;font-display:swap;}
+    </style>
+    <script src="/assets/js/lucide.min.js" defer></script>
+    
+    <!-- CSS Links -->
+    <style>
+        :root {
+            --bg-primary: #05020c;
+            --bg-secondary: #0c0618;
+            --bg-card: rgba(22, 11, 38, 0.45);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f5f3f7;
+            --text-secondary: #aba1bd;
+            --text-muted: #74688b;
+            --accent-purple: #8f55ff;
+            --accent-cyan: #00e5ff;
+            --accent-yellow: #ffe600;
+            --accent-emerald: #00e676;
+            --accent-pdf: #ff4a5a;
+            --brand-grad: linear-gradient(135deg, #6020ff 0%, #00b4d8 100%);
+            --glow-purple: 0 0 25px rgba(96, 32, 255, 0.35);
+            --glow-cyan: 0 0 25px rgba(0, 229, 255, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --content-width: 1200px;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Background Blobs */
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(96, 32, 255, 0.3) 0%, transparent 70%);
+        }
+        .blob-2 {
+            top: 40%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.2) 0%, transparent 70%);
+        }
+
+        /* Header Navigation */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+            border-bottom: 1px solid transparent;
+        }
+        #header.scrolled {
+            background: rgba(5, 2, 12, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-main {
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--brand-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo-main span.badge-num {
+            background: rgba(96, 32, 255, 0.15);
+            border: 1px solid rgba(143, 85, 255, 0.3);
+            color: var(--accent-cyan);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 5px;
+            -webkit-text-fill-color: initial;
+            margin-left: 2px;
+        }
+
+        /* Breadcrumb Style */
+        .article-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+        .article-breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .article-breadcrumb a:hover {
+            color: var(--accent-purple);
+        }
+        .article-breadcrumb span.active {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a.active {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #030108;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+        }
+        footer p.warning-txt {
+            color: var(--text-muted);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+            line-height: 1.5;
+        }
+
+        /* 모달 임베드 모드: 본문만 노출 */
+        body.embed-mode #header,
+        body.embed-mode .bg-blob,
+        body.embed-mode .article-top-nav,
+        body.embed-mode .coffeechat-banner,
+        body.embed-mode .recommend-section,
+        body.embed-mode footer {
+            display: none !important;
+        }
+        body.embed-mode .toss-article {
+            padding-top: 2rem !important;
+            margin-top: 0 !important;
+        }
+        body.embed-mode { background: var(--bg-primary); }
+        /* 임베드 모드 회색 스크롤바 */
+        body.embed-mode::-webkit-scrollbar { width: 12px; }
+        body.embed-mode::-webkit-scrollbar-track { background: #2a2a2e; }
+        body.embed-mode::-webkit-scrollbar-thumb {
+            background: #6e6e76;
+            border-radius: 6px;
+            border: 2px solid #2a2a2e;
+        }
+        body.embed-mode::-webkit-scrollbar-thumb:hover { background: #8a8a92; }
+    </style>
+    <link rel="stylesheet" href="article.css">
+</head>
+<body class="viewer-layout">
+
+    <!-- Background Blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-group">
+                <a href="index.html" class="logo-main">
+                    <svg viewBox="0 0 232.75 44.99" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="height: 19px; width: auto; display: block;" aria-label="AInspire">
+                        <path d="M22.69,4.43C13.91,16.47,0,10.06,0,22.49s10.57,22.5,23.61,22.5c6.22,0,6.79-2.81,8.11-6.84.06-.17.11-.35.17-.52-1.61.65-3.38,1.01-5.23,1.01-4.79,0-8.99-2.39-11.37-5.99-1.2-2-1.89-4.35-1.89-6.85,0-2.18.52-4.23,1.45-6.04,2.2-4.32,6.69-7.29,11.88-7.29,6.47,0,11.87,4.62,13.08,10.74.19.85.29,1.73.29,2.64,0,.25-.04.5-.06.74,1.89-1.38,3.29-.81,4.4-3.72,3.7-9.75-11.56-32.38-21.73-18.43Z"/>
+                        <path d="M39.79,28.44c.13-.61.22-1.23.26-1.86,0,0-.01,0-.02.01-5.33,3.89-7.05,7.81-8.14,11.03,4-1.62,7-5.03,7.9-9.18Z"/>
+                        <polygon points="72.06 5.45 65.07 5.45 51.42 36.05 58.68 36.05 61.42 29.49 63.65 24.12 66.91 16.28 68.53 12.38 73.38 24.12 66.25 24.12 64.02 29.49 75.61 29.49 78.33 36.05 85.76 36.05 72.06 5.45"/>
+                        <path d="M88.25,36.09V5.47h7.09v30.61h-7.09Z"/>
+                        <path d="M99.13,36.05V12.52h6.52v6.52l-1.23-1.97c.84-1.57,2.06-2.78,3.63-3.63,1.58-.84,3.37-1.27,5.38-1.27,1.87,0,3.54.37,5.01,1.12,1.47.74,2.63,1.88,3.48,3.41.84,1.53,1.27,3.49,1.27,5.88v13.47h-6.82v-12.42c0-1.9-.41-3.3-1.24-4.2-.83-.9-2.01-1.35-3.52-1.35-1.08,0-2.05.22-2.91.68-.86.45-1.53,1.15-2.01,2.08-.48.93-.72,2.13-.72,3.59v11.63h-6.82Z"/>
+                        <path d="M136.96,36.4c-2.01,0-3.94-.24-5.8-.72-1.85-.48-3.32-1.09-4.4-1.82l2.27-4.9c1.08.67,2.36,1.22,3.83,1.64,1.47.42,2.92.64,4.35.64,1.58,0,2.69-.19,3.35-.57.66-.38.99-.9.99-1.57,0-.55-.25-.97-.76-1.25-.51-.28-1.19-.49-2.04-.63-.84-.15-1.77-.29-2.78-.44-1-.14-2.02-.34-3.04-.59-1.02-.25-1.95-.62-2.8-1.12-.84-.49-1.52-1.17-2.03-2.01s-.76-1.94-.76-3.28c0-1.49.43-2.8,1.29-3.94.86-1.14,2.11-2.04,3.74-2.69,1.63-.66,3.59-.98,5.86-.98,1.6,0,3.24.17,4.9.52,1.66.35,3.05.86,4.16,1.53l-2.28,4.85c-1.14-.67-2.28-1.13-3.43-1.38-1.15-.25-2.27-.37-3.35-.37-1.52,0-2.63.2-3.33.61-.7.41-1.05.93-1.05,1.58,0,.58.25,1.02.76,1.31.51.29,1.19.53,2.03.7.84.18,1.77.33,2.78.46,1.01.13,2.02.33,3.04.59,1.02.26,1.95.64,2.78,1.12.83.48,1.51,1.14,2.04,1.97.52.83.79,1.92.79,3.26,0,1.46-.44,2.75-1.31,3.87-.87,1.12-2.14,2.01-3.78,2.65-1.65.64-3.65.96-6.01.96Z"/>
+                        <path d="M151.64,44.54V12.52h6.52v4.81l-.13,7,.44,6.95v13.25h-6.82ZM165.55,36.4c-1.98,0-3.72-.44-5.2-1.31-1.49-.88-2.65-2.21-3.48-4-.83-1.79-1.25-4.06-1.25-6.8s.39-5.04,1.18-6.82c.79-1.78,1.93-3.11,3.41-3.98,1.49-.88,3.27-1.31,5.34-1.31,2.21,0,4.21.5,5.97,1.51,1.76,1,3.16,2.41,4.2,4.22,1.04,1.81,1.55,3.94,1.55,6.39s-.52,4.62-1.55,6.43c-1.04,1.81-2.43,3.21-4.2,4.2-1.77.99-3.76,1.49-5.97,1.49ZM164.37,30.8c1.14,0,2.15-.26,3.04-.79.89-.53,1.6-1.27,2.14-2.25.54-.98.81-2.14.81-3.48s-.27-2.54-.81-3.5c-.54-.96-1.25-1.71-2.14-2.23s-1.9-.79-3.04-.79-2.16.26-3.06.79-1.62,1.27-2.14,2.23c-.53.96-.79,2.13-.79,3.5s.26,2.5.79,3.48,1.24,1.73,2.14,2.25c.9.53,1.92.79,3.06.79Z"/>
+                        <path d="M184.46,9.56c-1.25,0-2.28-.37-3.06-1.09-.79-.73-1.18-1.63-1.18-2.71s.39-1.98,1.18-2.71,1.81-1.09,3.06-1.09,2.27.34,3.06,1.03c.79.69,1.18,1.57,1.18,2.65,0,1.14-.39,2.08-1.16,2.82-.77.74-1.8,1.12-3.08,1.12Z"/>
+                        <rect x="181.05" y="12.52" width="6.82" height="23.53"/>
+                        <path d="M191.65,36.05V12.52h6.52v6.65l-.92-1.93c.7-1.66,1.82-2.92,3.37-3.78s3.43-1.29,5.64-1.29v6.3c-.29-.03-.56-.05-.79-.07-.24-.01-.48-.02-.74-.02-1.87,0-3.38.53-4.53,1.6-1.15,1.07-1.73,2.72-1.73,4.96v11.11h-6.82Z"/>
+                        <path d="M221.38,36.4c-2.68,0-5.04-.53-7.06-1.58-2.03-1.05-3.59-2.49-4.7-4.31-1.11-1.82-1.66-3.9-1.66-6.23s.55-4.45,1.64-6.28c1.09-1.82,2.59-3.25,4.48-4.29,1.9-1.04,4.04-1.55,6.43-1.55s4.38.49,6.23,1.46c1.85.98,3.32,2.38,4.4,4.2,1.08,1.82,1.62,4,1.62,6.54,0,.26-.02.56-.04.9-.03.33-.06.65-.09.94h-19.11v-3.98h15.53l-2.63,1.18c0-1.23-.25-2.29-.74-3.19-.49-.9-1.18-1.61-2.06-2.12s-1.9-.76-3.06-.76-2.19.25-3.08.76c-.89.51-1.58,1.23-2.08,2.14s-.74,2-.74,3.26v1.05c0,1.28.29,2.41.85,3.39.57.98,1.37,1.72,2.41,2.23s2.25.76,3.65.76c1.25,0,2.35-.19,3.3-.57.95-.38,1.82-.95,2.6-1.71l3.63,3.94c-1.08,1.23-2.44,2.17-4.07,2.82-1.63.66-3.51.99-5.64.99Z"/>
+                    </svg>
+                    <span class="badge-num">4기</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">교안 자료실</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Error/Loading Wrapper -->
+    <div id="status-container" style="display: none; justify-content: center; align-items: center; min-height: 60vh; flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem;">
+        <i id="status-icon" data-lucide="loader-2" class="animate-spin" style="width: 48px; height: 48px; color: var(--accent-purple);"></i>
+        <h2 id="status-title" style="font-size: 1.4rem; font-weight: 700; color: #fff;">아티클을 로드하는 중입니다...</h2>
+        <p id="status-desc" style="color: var(--text-secondary); max-width: 400px; font-size: 0.95rem; line-height: 1.5;">잠시만 기다려 주세요.</p>
+        <a id="status-btn" href="index.html" class="btn-back" style="display: none; margin-top: 1rem;"><i data-lucide="home"></i>교안 자료실로 돌아가기</a>
+    </div>
+
+    <!-- Article Main Layout -->
+    <main class="toss-article" id="main-content">
+        <!-- Top Navigation Row -->
+        <div class="article-top-nav">
+            <a href="index.html" class="btn-back"><i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> 자료실로 돌아가기</a>
+            <div class="article-breadcrumb" id="article-breadcrumb" style="display: none; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+                <a href="index.html" style="color: var(--text-muted); text-decoration: none; transition: color 0.2s ease;">교안 자료실</a>
+                <i data-lucide="chevron-right" style="width: 12px; height: 12px; color: var(--text-muted); opacity: 0.7;"></i>
+                <span class="active" id="breadcrumb-category" style="color: var(--accent-cyan); font-weight: 600;">카테고리</span>
+            </div>
+        </div>
+        
+        <header class="article-header">
+            <h1 class="article-title" id="article-title">로딩 중...</h1>
+            <div class="article-meta-group">
+                <div class="article-date" id="article-date">1강 자료 · 읽기 약 10분</div>
+            </div>
+        </header>
+
+        <!-- Article Body content -->
+        <article class="article-body-content" id="article-body">
+            <!-- Content will be fetched and injected here -->
+        </article>
+
+        <!-- Coffee Chat Banner -->
+        <section class="coffeechat-banner">
+            <div class="coffeechat-left">
+                <div class="coffeechat-icon-wrapper">
+                    <i data-lucide="coffee" style="width: 28px; height: 28px;"></i>
+                </div>
+                <div>
+                    <div class="coffeechat-title" id="coffeechat-title">AInspire 4기 1:1 학습 Q&A</div>
+                    <div class="coffeechat-desc">이 자료를 읽고 궁금한 점이 생겼거나,<br>실무 적용을 위한 조언이 필요하다면 1:1 질문을 신청해 보세요.</div>
+                </div>
+            </div>
+            <a id="coffeechat-link" href="https://toss.im/_m/9fMxPnz3" target="_blank" rel="noopener noreferrer" class="btn-coffeechat">질문 신청하기</a>
+        </section>
+
+        <!-- Recommend Section -->
+        <section class="recommend-section">
+            <div class="recommend-title" id="recommend-section-title">이 강좌의 다른 자료</div>
+            <ul class="recommend-list" id="recommend-list">
+                <!-- Dynamically loaded -->
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 0.8rem; font-weight: 700; color: var(--text-primary);">© 2026 AInspire. All Rights Reserved.</p>
+        <p class="warning-txt">본 자료집의 교안 및 시트 데이터는 AInspire 4기 정규 수강생 전용 자료입니다. 허가되지 않은 무단 배포 및 공유를 엄격히 금지합니다.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="data-materials.js"></script>
+    <script>
+        let currentArticle = null;
+
+        // URL 파라미터 파싱
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // 로드 실패 처리
+        function showStatus(type, title, desc) {
+            const statusContainer = document.getElementById('status-container');
+            const mainContent = document.getElementById('main-content');
+            const icon = document.getElementById('status-icon');
+            const titleEl = document.getElementById('status-title');
+            const descEl = document.getElementById('status-desc');
+            const btn = document.getElementById('status-btn');
+
+            mainContent.style.display = 'none';
+            statusContainer.style.display = 'flex';
+
+            if (type === 'error') {
+                icon.setAttribute('data-lucide', 'alert-circle');
+                icon.style.color = 'var(--accent-pdf)';
+                icon.classList.remove('animate-spin');
+                btn.style.display = 'inline-flex';
+            } else if (type === 'loading') {
+                icon.setAttribute('data-lucide', 'loader-2');
+                icon.style.color = 'var(--accent-purple)';
+                icon.classList.add('animate-spin');
+                btn.style.display = 'none';
+            }
+
+            titleEl.textContent = title;
+            descEl.textContent = desc;
+            
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+
+
+        // 추천 글 리스트 렌더링
+        function renderRecommends() {
+            if (!currentArticle) return;
+            const recommends = materialData.filter(item => 
+                item.category === currentArticle.category && 
+                item.id !== currentArticle.id
+            );
+
+            const listContainer = document.getElementById('recommend-list');
+            const titleEl = document.getElementById('recommend-section-title');
+            listContainer.innerHTML = '';
+
+            // 카테고리 한글명에 따라 다르게 타이틀 노출
+            titleEl.textContent = `${currentArticle.categoryKo}의 다른 자료`;
+
+            if (recommends.length === 0) {
+                // 다른 자료가 없으면 전체 자료 중 2개 추천 (현재 자료 제외)
+                const fallbackRecommends = materialData
+                    .filter(item => item.id !== currentArticle.id)
+                    .slice(0, 2);
+                
+                if (fallbackRecommends.length > 0) {
+                    titleEl.textContent = `AInspire 추천 자료`;
+                    renderRecommendCards(fallbackRecommends, listContainer);
+                } else {
+                    document.querySelector('.recommend-section').style.display = 'none';
+                }
+            } else {
+                renderRecommendCards(recommends.slice(0, 2), listContainer);
+            }
+        }
+
+        function renderRecommendCards(items, container) {
+            items.forEach(item => {
+                const li = document.createElement('li');
+                
+                // 파일 형식에 따른 링크 처리
+                let href = `viewer.html?id=${item.id}`;
+                let target = '_self';
+                if (item.fileType !== 'article') {
+                    href = item.filePath;
+                    target = '_blank';
+                }
+
+                li.innerHTML = `
+                    <a href="${href}" target="${target}" class="recommend-item-link">
+                        <div class="recommend-icon-box">
+                            <i data-lucide="${item.icon || 'file-text'}"></i>
+                        </div>
+                        <div class="recommend-item-body">
+                            <h4 class="recommend-item-title">${item.title}</h4>
+                            <div class="recommend-item-meta">${item.date} · ${item.readTime || '자료'}</div>
+                        </div>
+                        <i data-lucide="chevron-right" style="width: 18px; height: 18px; color: var(--text-muted);"></i>
+                    </a>
+                `;
+                container.appendChild(li);
+            });
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        // 메인 아티클 로딩 로직
+        async function loadArticle() {
+            const articleId = getQueryParam('id');
+            if (!articleId) {
+                showStatus('error', '자료를 찾을 수 없습니다.', '유효한 자료 ID가 존재하지 않습니다. 주소를 다시 확인해 주세요.');
+                return;
+            }
+
+            // data-materials.js가 로드되었는지 체크
+            if (typeof materialData === 'undefined') {
+                showStatus('error', '데이터 연동 실패', '자료 데이터(data-materials.js)를 불러오지 못했습니다.');
+                return;
+            }
+
+            // 1. 데이터 매핑
+            const article = materialData.find(item => item.id === articleId);
+            if (!article) {
+                showStatus('error', '자료가 존재하지 않습니다.', 'AInspire 4기 자료 목록에 해당 ID의 자료가 존재하지 않습니다.');
+                return;
+            }
+
+            if (article.fileType !== 'article') {
+                showStatus('error', '아티클 포맷이 아닙니다.', '해당 자료는 다운로드 전용 포맷(PDF/Excel/Link)입니다. 메인화면에서 바로가기나 다운로드를 실행하세요.');
+                return;
+            }
+
+            currentArticle = article;
+
+            // 브레드크럼 설정
+            const breadcrumb = document.getElementById('article-breadcrumb');
+            const breadcrumbCat = document.getElementById('breadcrumb-category');
+            if (breadcrumb && breadcrumbCat) {
+                if (article.categoryKo) {
+                    breadcrumbCat.textContent = article.categoryKo;
+                    breadcrumb.style.display = 'flex';
+                } else {
+                    breadcrumb.style.display = 'none';
+                }
+            }
+
+            // UI 바인딩
+            document.title = `${article.title} — AInspire 4기 교안`;
+            document.getElementById('article-title').textContent = article.title;
+            
+            // 날짜 및 리드 타임
+            const timeInfo = article.readTime ? ` · ${article.readTime}` : '';
+            document.getElementById('article-date').textContent = `${article.date}${timeInfo}`;
+
+            // 커피챗 링킹 및 텍스트 수정
+            const coffeeLink = document.getElementById('coffeechat-link');
+            document.getElementById('coffeechat-title').innerHTML = `AInspire 4기 1:1 학습 Q&A`;
+
+            // 2. HTML 본문 Fetch
+            showStatus('loading', '아티클 본문을 로드하는 중입니다...', '내용을 동적으로 렌더링하고 있습니다.');
+            
+            try {
+                const response = await fetch(article.filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const htmlText = await response.text();
+                
+                // 본문 주입
+                const bodyContainer = document.getElementById('article-body');
+                bodyContainer.innerHTML = htmlText;
+
+                // 상태 복구
+                document.getElementById('status-container').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+
+                // 추천 글 리스트 렌더링
+                renderRecommends();
+
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
+
+            } catch (err) {
+                console.error("Failed to load article html content:", err);
+                showStatus('error', '본문을 불러오지 못했습니다.', `${article.filePath} 경로의 본문 HTML 파일을 읽는 도중 서버 에러가 발생했습니다.`);
+            }
+        }
+
+        // 초기화 실행
+        window.addEventListener('DOMContentLoaded', () => {
+            // 모달 임베드 모드: 헤더/푸터/추천 숨기고 본문만
+            if (getQueryParam('embed') === '1') {
+                document.body.classList.add('embed-mode');
+            }
+
+            loadArticle();
+
+            // 헤더 스크롤 이펙트
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (header) {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

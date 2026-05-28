@@ -1,0 +1,751 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ainspire_Ai 영상 제작 초보자 완벽 가이드</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2ca3970b-b5e1-80a1-8fcd-ce63d25915f9" class="page sans"><header><h1 class="page-title" dir="auto">Ainspire_Ai 영상 제작 초보자 완벽 가이드</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">들어가며) 생성형 ai 개념</summary><div class="indented"><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-81da-ac2e-e67bfc9a1ad4" class="">1. 생성형 ai란<div class="indented"><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8139-911d-f33e91e3c59c" class="bulleted-list"><li style="list-style-type:disc"><strong>1) 생성형 AI란?</strong><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-819b-bc52-ff59d78b6a40" class="bulleted-list"><li style="list-style-type:circle">생성형 AI는 사람이 입력한 텍스트나 이미지를 바탕으로 새로운 콘텐츠(글, 그림, 영상 등)를 만들어내는 인공지능</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8161-a009-eb8b857e66c8" class="bulleted-list"><li style="list-style-type:circle">단순히 기존 데이터를 조합하는 게 아니라, AI가 배운 패턴과 규칙을 활용해 전혀 새로운 결과물을 창조</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-817d-bd56-c59a20dd2c14" class="toggle"><li><details open=""><summary>참고 이미지</summary><div style="display:contents" dir="ltr"><figure id="2ca3970b-b5e1-8142-8586-cccb30450de0" class="image"><a href="Ainspire_Ai%20%EC%98%81%EC%83%81%20%EC%A0%9C%EC%9E%91%20%EC%B4%88%EB%B3%B4%EC%9E%90%20%EC%99%84%EB%B2%BD%20%EA%B0%80%EC%9D%B4%EB%93%9C/bd5e332b-4eb6-49e0-a3ac-71895b14de49.png"><img style="width:710px" src="Ainspire_Ai%20%EC%98%81%EC%83%81%20%EC%A0%9C%EC%9E%91%20%EC%B4%88%EB%B3%B4%EC%9E%90%20%EC%99%84%EB%B2%BD%20%EA%B0%80%EC%9D%B4%EB%93%9C/bd5e332b-4eb6-49e0-a3ac-71895b14de49.png"/></a></figure></div></details></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8198-a7f0-c321e60dfe9e" class="bulleted-list"><li style="list-style-type:disc"><strong>2) AI 이미지 생성 원리</strong><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81e5-bf11-df8629372086" class="bulleted-list"><li style="list-style-type:circle">AI는 수많은 이미지와 그에 대한 설명(예: “고양이 사진” + “a cute cat”)을 통해 이미지와 텍스트의 연결고리를 학습함</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8194-9034-c06f0f4ea2ba" class="bulleted-list"><li style="list-style-type:circle">사용자가 프롬프트(설명문)를 입력하면, AI가 그에 맞는 이미지를 탄생시킴</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8129-af2c-d4d00952c9bc" class="bulleted-list"><li style="list-style-type:circle">주로 ‘확산 모델(Diffusion Model)’이라는 방식을 사용. </li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81e3-bc04-f3ef08bad640" class="bulleted-list"><li style="list-style-type:circle">확산모델 : 처음엔 노이즈 상태에서 점점 이미지를 복원, “여기엔 어떤 색/모양이 자연스러울까?”를 예측하며 완성도 높은 이미지를 만들어 감<div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8187-8f9a-fc4be722b9c6" class="toggle"><li><details open=""><summary>참고 이미지</summary><div style="display:contents" dir="ltr"><figure id="2ca3970b-b5e1-810f-beb3-e39fc6a03a36" class="image"><a href="Ainspire_Ai%20%EC%98%81%EC%83%81%20%EC%A0%9C%EC%9E%91%20%EC%B4%88%EB%B3%B4%EC%9E%90%20%EC%99%84%EB%B2%BD%20%EA%B0%80%EC%9D%B4%EB%93%9C/a9a799e8-a061-4974-aecc-12204cd74fa7.png"><img style="width:481.17820324005896px" src="Ainspire_Ai%20%EC%98%81%EC%83%81%20%EC%A0%9C%EC%9E%91%20%EC%B4%88%EB%B3%B4%EC%9E%90%20%EC%99%84%EB%B2%BD%20%EA%B0%80%EC%9D%B4%EB%93%9C/a9a799e8-a061-4974-aecc-12204cd74fa7.png"/></a></figure></div></details></li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81bf-8d0b-fd405bef7611" class="bulleted-list"><li style="list-style-type:disc"><strong>3) AI 비디오 생성 원리</strong><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81be-a3d7-f109cd1a9fb9" class="bulleted-list"><li style="list-style-type:circle">비디오는 ‘연속된 이미지’로서, AI는 한 장면의 공간 구성(어디에 뭐가 있는지)과 시간에 따른 변화(움직임, 장면 전환)를 동시에 예측</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-819d-90be-e527f2691649" class="bulleted-list"><li style="list-style-type:circle">기본적으로 첫 장면을 만들고, 그 다음 장면을 예측해서 이어붙이는 식. 움직임, 카메라 워킹, 물체 상호작용까지 AI가 물리적인 예측을 바탕으로 창조함</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-8117-8504-f52609335c5e" class="">
+</p></div></div></p></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81ce-8abd-ffc4d8b26ad7" class="bulleted-list"><li style="list-style-type:disc"><strong>2. AI 생성 플랫폼이란?</strong><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8148-b87a-c7ebebb77f3e" class="bulleted-list"><li style="list-style-type:circle">위와 같은 생성원리의 ai 기능을 서비스로 제공하는 플랫폼</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81a9-b9c9-cb8684a23ecb" class="bulleted-list"><li style="list-style-type:circle">사용자가 텍스트나 이미지만 입력하면, 콘텐츠(이미지/영상)를 자동으로 만들어주는 웹/소프트웨어 서비스</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81f1-b4d8-ce6e50560f22" class="bulleted-list"><li style="list-style-type:circle">보통 편리한 인터페이스, 프리셋, 프롬프트 편집기, 업스케일링 등 다양한 기능을 제공</li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8173-a1f6-c81be30d0d76" class="bulleted-list"><li style="list-style-type:circle">최근에는 이미지와 비디오의 경계가 흐려져, 각 플랫폼에서 이미지, 비디오 동시에 사용 가능한 경우가 다수</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-81f5-b1b6-f8f8fef1860e" class="bulleted-list"><li style="list-style-type:disc"><strong>플랫폼 종류</strong><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-8168-ab24-f73bf9cb1ec9" class="bulleted-list"><li style="list-style-type:circle">이미지 대표 플랫폼<div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-8127-9e1e-d8855b0decef" class=""> :  Midjourney, reve, 드리미나, image fx, chat gpt, gemini 등</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2ca3970b-b5e1-812a-8f68-f44fa876c56c" class="bulleted-list"><li style="list-style-type:circle">비디오 대표 플랫폼 <div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-81f3-9d43-c9b883005948" class="">: Kling, Runway, Luma, Veo2, sora 등</p></div></li></ul></div><div style="display:contents" dir="auto"><p id="2cb3970b-b5e1-80be-aebc-e4744c7d227d" class="">
+</p></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><h2 id="2ca3970b-b5e1-81ce-899a-cf84607a0e11" class="">1. 이미지 생성 실무</h2></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-80ca-aff0-f977d3008ee7" class=""><a href="1%202026%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EC%83%9D%EC%84%B1%20%ED%88%B4%20%EC%86%8C%EA%B0%9C%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EB%B0%A9%EB%B2%95%202ca3970bb5e1807f8116ff82f6391da5.html">1. 2026 이미지 생성 툴 소개 및 사용 방법</a> </p></div><div style="display:contents" dir="auto"><p id="2cb3970b-b5e1-8011-b7b1-fb8ff735fa1e" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2ca3970b-b5e1-81b5-901b-f6adf7979220" class="">2. AI 영상 제작 플랫폼 살펴보기</h2></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-81fe-ac68-f6a1641230a7" class=""><a href="2%20%EC%98%81%EC%83%81%20%EC%A0%9C%EC%9E%91%20%ED%88%B4%20%EC%86%8C%EA%B0%9C%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EB%B0%A9%EB%B2%95%202ca3970bb5e180cd9104d8539c284059.html">2. 영상 제작 툴 소개 및 사용 방법</a> </p></div><div style="display:contents" dir="auto"><p id="2cb3970b-b5e1-801e-9716-da8e13280fe7" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2ca3970b-b5e1-81f1-9c1f-e651e974202f" class="">3. 영상 제작을 위한 Gemini 활용법</h2></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-80fb-be89-f4f70cd46ff4" class=""><a href="3%20%EC%98%81%EC%83%81%EC%A0%9C%EC%9E%91%EC%9D%84%20%EC%9C%84%ED%95%9C%20%EC%A0%9C%EB%AF%B8%EB%82%98%EC%9D%B4%20%ED%99%9C%EC%9A%A9%EB%B2%95%20(%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80%20%EC%82%AC%EC%9A%A9%EC%9D%80%20%EC%9E%8A%EC%96%B4%EB%9D%BC!)%202ca3970bb5e180a5a463e83d7d40b0df.html">3. 영상제작을 위한 제미나이 활용법 (지금까지 사용은 잊어라!)</a> </p></div><div style="display:contents" dir="auto"><p id="2cb3970b-b5e1-8047-9a66-ec9ddb266ab9" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2ca3970b-b5e1-81a8-8818-dce8e1226614" class="">4. AI 플랫폼 구독 전략</h2></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-802d-86e4-e6ea2f61647b" class=""><a href="4%20Ainpsire_AI%20%ED%94%8C%EB%9E%AB%ED%8F%BC%20%EA%B5%AC%EB%8F%85%20%EC%A0%84%EB%9E%B5%202c93970bb5e18043a2dfd877618fca30.html">4. Ainpsire_AI 플랫폼 구독 전략</a> </p></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-81ed-97d0-eb18d038fe38" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="0ef8e065-3d7c-4f0e-9168-6b87c4d10673" class="">5. AI 영상 저작권</h2></div><div style="display:contents" dir="auto"><p id="6fd5edd2-ed41-4abe-b664-456ce65ff7d4" class="">AI 영상 저작권은 기술 발전에 비해 법·제도, 사람들의 인식에서 여전히 해결되지 않은 과제입니다. 따라서 “상업적 활용 가능”에 대해서 제대로 이해할 필요가 있습니다.</p></div><div style="display:contents" dir="auto"><hr id="51a6e9e8-1551-4ff9-930c-be7f6c50d2a7"/></div><div style="display:contents" dir="auto"><h3 id="f7226b69-cecc-4420-8e03-d8625003861d" class="">1) 학습 데이터의 저작권</h3></div><div style="display:contents" dir="auto"><ul id="581bcbbc-408a-4282-b1bf-2fb95f55864e" class="bulleted-list"><li style="list-style-type:disc">AI 모델은 대량의 이미지·영상·텍스트 데이터로 학습하여 결과물을 생성합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="1224a1da-85bc-4c3b-a52e-ef1781cd38fc" class="bulleted-list"><li style="list-style-type:disc">이 과정에서 저작권 보호 대상 데이터가 포함될 수 있어, 학습 데이터의 적법성에 대한 법적·윤리적 논쟁이 지속되고 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="bb4ab558-4a2a-4611-b105-26823b1a97d6" class="bulleted-list"><li style="list-style-type:disc">다만 학습 데이터의 구성과 학습 방식은 주로 플랫폼/모델 제공자가 관리하는 영역이므로, 이용자는 개별 데이터의 사용 여부를 직접 통제하기 어렵습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cb3970b-b5e1-8080-94ea-c7a27144c1bf" class="bulleted-list"><li style="list-style-type:disc">이러한 학습 데이터를 통한 생성물을 내 것으로 사용해도 되느냐?<div style="display:contents" dir="auto"><ul id="d0ea3337-87e1-4e27-9106-feab788c5216" class="bulleted-list"><li style="list-style-type:circle">학습 데이터를 통한 생성물을 내 것으로 사용해도 되느냐는 질문은, 현실적으로 “가능한 경우가 많지만, 무조건 안전하다고 보기는 어렵다”로 정리됩니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="3b93883e-e343-4946-bc6a-bd323f14c446" class="bulleted-list"><li style="list-style-type:circle">이유는 두 가지입니다.<div style="display:contents" dir="auto"><ol type="1" id="e9ceb80b-849d-48fd-bcf2-504fdc2e3a2b" class="numbered-list" start="1"><li><strong>플랫폼 약관(라이선스)</strong>: 대부분의 생성형 AI 플랫폼은 이용 약관에서 결과물의 사용 범위(상업적 이용 가능 여부 포함)를 정하고 있으며, 이용자는 그 조건 안에서 결과물을 활용하게 됩니다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="655cf8a5-5d5d-4b44-8f56-ae9a1de86627" class="numbered-list" start="2"><li><strong>타인 권리 침해 여부</strong>: 약관상 사용이 가능하더라도, 결과물이 특정 작품·캐릭터·로고·인물 등 <strong>타인의 저작권/상표권/초상권을 식별 가능할 정도로 재현</strong>하면 분쟁 가능성이 생길 수 있습니다.</li></ol></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><hr id="7597b9c7-235b-4f53-bb0d-ad1af9f88116"/></div><div style="display:contents" dir="auto"><h3 id="6c4df0c3-6222-44fa-90ec-9c423634ba27" class="">2) 다른 관점 : AI 결과물에 저작권이 생기나?</h3></div><div style="display:contents" dir="auto"><ul id="ff1f4a35-7c88-4d57-8aea-4499482a4b10" class="bulleted-list"><li style="list-style-type:disc">일반적으로 저작권은 ‘사람이 창작한 것’을 기준으로 봅니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="b7c283aa-c59b-4c9b-a9be-44d4c7286baa" class="bulleted-list"><li style="list-style-type:disc">그래서 AI가 다 만들고, 사람은 버튼만 눌렀다면 저작권 인정이 애매해질 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="67a5739f-3acb-4d34-b9b5-e9158d1af041" class="bulleted-list"><li style="list-style-type:disc">반대로 사람이 <strong>기획·연출·선택·편집</strong>을 해서 “작품”으로 완성했다면, 그 과정에서 나온 <strong>사람의 창작 기여</strong>가 중요하게 인정될 수 있습니다.</li></ul></div><div style="display:contents" dir="auto"><hr id="380a1404-3715-414d-9a47-08335406b816"/></div><div style="display:contents" dir="auto"><h3 id="08f438ff-db4e-45f1-947e-d2382413a3c5" class="">3) 플랫폼 별 라이선스(상업적 사용 정책)</h3></div><div style="display:contents" dir="auto"><ul id="6b51459e-1ca8-458f-8bd4-bf9275ddf80e" class="bulleted-list"><li style="list-style-type:disc">AI 저작권 이슈가 아직 명확하지 않기 때문에, 앞에서도 언급했듯 현실에서는 <strong>플랫폼 약관이 매우 중요</strong>합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="6ac82edb-8994-4627-ab31-4916a95c372b" class="bulleted-list"><li style="list-style-type:disc">같은 AI라도 플랫폼/요금제에 따라 <strong>상업적 사용 가능 여부</strong>가 달라질 수 있어요.</li></ul></div><div style="display:contents" dir="auto"><ul id="300e90db-0665-453b-a039-8c1b120ae159" class="bulleted-list"><li style="list-style-type:disc">그래서 광고, 유튜브, 클라이언트 납품 같은 상업 프로젝트에 쓰려면 <strong>반드시 해당 플랫폼의 가이드/약관을 먼저 확인</strong>해야 합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="0953f78e-00ee-4c3e-8c37-61402ba4f92c" class="bulleted-list"><li style="list-style-type:disc">보통 유료 구독 플랜은 상업 이용을 허용하는 경우가 많지만, 항상 그렇진 않아서 확인이 필요합니다.</li></ul></div><div style="display:contents" dir="auto"><hr id="4846cb33-f971-4229-bbe5-d02e6b392267"/></div><div style="display:contents" dir="auto"><h3 id="e58e88d9-286c-4208-81d7-ae16919671a6" class="">4) 상업적으로 쓸 때 자주 문제 되는 포인트</h3></div><div style="display:contents" dir="auto"><p id="67117ede-2b24-4a8e-9ed9-fa2be5c83636" class="">AI 자체보다, 아래에서 사고가 많이 납니다.</p></div><div style="display:contents" dir="auto"><ul id="f8c2dc01-b74c-458c-9c05-06b403fd8700" class="bulleted-list"><li style="list-style-type:disc"><strong>캐릭터/브랜드/로고를 그대로 따라 만들기</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="3dc57ba6-7bda-4043-b1dd-5198c0e67852" class="bulleted-list"><li style="list-style-type:disc">특정 영화/애니/게임을 “재현” 수준으로 요청하기</li></ul></div><div style="display:contents" dir="auto"><ul id="cec9be61-6cea-4008-b461-319b1251be84" class="bulleted-list"><li style="list-style-type:disc">타인의 얼굴, 목소리, 인물 이미지를 허락 없이 쓰는 경우</li></ul></div><div style="display:contents" dir="auto"><hr id="5582b58e-fee6-4cad-968a-3c08883868e0"/></div><div style="display:contents" dir="auto"><h3 id="d5d62ef5-2be3-4e54-8b1b-0a563f461a46" class="">5) 안전하게 운영하는 간단 체크</h3></div><div style="display:contents" dir="auto"><ul id="0d4a2acc-53d0-408d-9685-3d531841b544" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">사용한 플랫폼의 <strong>상업 이용 가능 여부</strong> 먼저 확인</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="f8208fd8-8203-4035-928e-5301dc83c69f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">작업 과정 기록 남기기(프롬프트, 생성 버전, 편집 프로젝트 파일)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="7f6258fc-eab4-4869-a06e-73b70a308045" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">클라이언트 작업이면 “AI 사용 여부/범위”를 간단히라도 문서에 적어두기</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-81ef-8514-c1cfc602bbe0" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2ca3970b-b5e1-8101-9c6e-c2d1f536f015"/></div><div style="display:contents" dir="auto"><p id="2ca3970b-b5e1-813d-afd3-ff371729a477" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

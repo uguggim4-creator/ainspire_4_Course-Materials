@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>0주차 강의안 — AInspire 4기</title>
+<style>
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  :root {
+    --ink:    #1a1530;
+    --purple: #6020ff;
+    --line:   #e5dff0;
+    --bg:     #ffffff;
+    --purple-light: #f7f3ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: 'Paperlogy', sans-serif;
+    background: #000;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .deck {
+    position: relative;
+    width: 1280px; height: 720px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--bg);
+    transform-origin: center center;
+  }
+
+  .slide {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    justify-content: flex-start; align-items: flex-start;
+    padding: 44px 80px;
+    opacity: 0; transform: translateX(60px);
+    transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1),
+                transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
+    background: #fff;
+  }
+  .slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+  .slide.exit-left { opacity: 0; transform: translateX(-60px); }
+  .slide.centered { justify-content: center; align-items: center; text-align: center; }
+
+  /* 상단 스텝 라벨 */
+  .step-label {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 14px;
+  }
+
+  /* 제목 */
+  .slide-title {
+    font-size: 40px; font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.1;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .slide-title .accent { color: var(--purple); }
+
+  .slide-subtitle {
+    font-size: 17px; font-weight: 400;
+    color: #5a5070; line-height: 1.5; margin-bottom: 20px;
+  }
+
+  .divider {
+    width: 48px; height: 3px;
+    background: var(--purple); border-radius: 2px;
+    margin-bottom: 18px; flex-shrink: 0;
+  }
+
+  /* 표지 */
+  .title-kicker {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 18px;
+  }
+  .title-main {
+    font-size: 68px; font-weight: 800;
+    letter-spacing: -0.04em; line-height: 1.05;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  .title-main .accent { color: var(--purple); }
+  .title-sub { font-size: 20px; font-weight: 400; color: #5a5070; margin-bottom: 36px; }
+  .title-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .tag {
+    border: 1.5px solid var(--purple); border-radius: 99px;
+    padding: 6px 18px; font-size: 13px; font-weight: 700; color: var(--purple);
+  }
+  .tag.fill { background: var(--purple); color: #fff; }
+
+  /* 엔딩 */
+  .ending-main {
+    font-size: 50px; font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.2;
+    color: var(--ink); text-align: center; margin-bottom: 20px;
+  }
+  .ending-main .accent { color: var(--purple); }
+  .ending-sub {
+    font-size: 18px; font-weight: 400; color: #5a5070;
+    line-height: 1.7; text-align: center; max-width: 580px; margin-bottom: 32px;
+  }
+
+  /* 포인트 목록 */
+  .point-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 1100px; }
+  .point-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 20px; background: #fff;
+  }
+  .point-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 13px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .point-text { font-size: 15px; color: var(--ink); line-height: 1.6; }
+
+  /* 비교표 */
+  .compare-table { width: 100%; max-width: 1120px; border-collapse: collapse; font-size: 12px; }
+  .compare-table th {
+    background: var(--purple); color: #fff;
+    padding: 8px 10px; font-weight: 700; font-size: 12px;
+    text-align: left; border: 1px solid var(--purple);
+  }
+  .compare-table th:first-child { background: #2a1560; }
+  .compare-table td {
+    padding: 7px 10px; border: 1px solid var(--line);
+    color: var(--ink); vertical-align: middle; line-height: 1.45;
+  }
+  .compare-table tr:nth-child(even) td { background: #faf8ff; }
+  .compare-table td:first-child { font-weight: 700; color: var(--purple); background: var(--purple-light); }
+  .compare-table .hi { color: var(--purple); font-weight: 700; }
+  .table-note { font-size: 11px; color: #8a8099; margin-top: 8px; max-width: 1120px; }
+
+  /* 2x2 카드 그리드 */
+  .grid22 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; width: 100%; max-width: 1120px;
+  }
+  .card22 {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; background: #fff;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .card22-icon { font-size: 22px; margin-bottom: 4px; }
+  .card22-name { font-size: 16px; font-weight: 800; color: var(--ink); }
+  .card22-desc { font-size: 13px; color: #5a5070; line-height: 1.55; }
+  .card22-badge {
+    font-size: 11px; font-weight: 700; color: var(--purple);
+    background: var(--purple-light); border-radius: 6px;
+    padding: 4px 10px; align-self: flex-start; margin-top: 4px;
+  }
+
+  /* 자율도 스펙트럼 바 */
+  .spectrum-wrap {
+    width: 100%; max-width: 1120px; margin-top: 14px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .spectrum-track {
+    position: relative; height: 10px;
+    background: linear-gradient(90deg, #e5dff0, var(--purple));
+    border-radius: 99px;
+  }
+  .spec-dot {
+    position: absolute; top: 50%; transform: translate(-50%, -50%);
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--purple); border: 2px solid #fff;
+  }
+  .spec-dot-label {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    white-space: nowrap; font-size: 9px; font-weight: 700; color: var(--ink);
+  }
+  .spectrum-labels {
+    display: flex; justify-content: space-between;
+    font-size: 11px; font-weight: 700; color: var(--purple);
+  }
+
+  /* 3열 카드 */
+  .grid3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px; width: 100%; max-width: 1120px;
+  }
+  .mode-card {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 16px; background: #fff;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .mode-icon { font-size: 22px; }
+  .mode-name { font-size: 15px; font-weight: 800; color: var(--purple); }
+  .mode-eng { font-size: 12px; font-weight: 700; color: var(--ink); margin-top: -4px; }
+  .mode-desc { font-size: 12px; color: #5a5070; line-height: 1.6; }
+  .mode-note { font-size: 11px; color: var(--purple); font-weight: 700; margin-top: 4px; border-top: 1px solid var(--line); padding-top: 6px; }
+
+  /* 설치 박스 */
+  .install-box {
+    background: #1a1530; color: #e8e0ff;
+    border-radius: 12px; padding: 12px 20px;
+    font-size: 13px; line-height: 1.8;
+    width: 100%; max-width: 1120px; margin-top: 10px;
+    flex-shrink: 0;
+  }
+  .install-box .cmd { color: #b39dff; font-weight: 700; font-family: 'Courier New', monospace; font-size: 11px; }
+  .install-box .label { color: #8a80aa; font-size: 11px; margin-right: 6px; }
+
+  /* 2열 레이아웃 */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 28px; width: 100%; max-width: 1120px; align-items: start;
+  }
+  .col-l, .col-r { display: flex; flex-direction: column; gap: 10px; }
+
+  /* 섹션 라벨 */
+  .sec-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 2px;
+  }
+
+  /* 기능 목록 */
+  .feat-list { display: flex; flex-direction: column; gap: 6px; }
+  .feat-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--ink); line-height: 1.5;
+  }
+  .feat-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple); flex-shrink: 0; margin-top: 6px;
+  }
+
+  /* 철학 강조 박스 */
+  .phil-box {
+    border-left: 3px solid var(--purple);
+    background: var(--purple-light);
+    border-radius: 0 10px 10px 0;
+    padding: 11px 14px;
+    font-size: 13px; color: var(--ink); line-height: 1.6;
+  }
+  .phil-box strong { color: var(--purple); font-weight: 800; }
+
+  /* 배지 */
+  .badge {
+    display: inline-block;
+    background: var(--purple); color: #fff;
+    font-size: 11px; font-weight: 700;
+    padding: 4px 12px; border-radius: 6px; margin-bottom: 4px;
+  }
+
+  /* 캡처 이미지 / 플레이스홀더 */
+  .cap-img {
+    width: 100%; border-radius: 10px;
+    border: 1px solid var(--line); display: block;
+    max-height: 200px; object-fit: cover; object-position: top;
+  }
+  .cap-placeholder {
+    width: 100%; height: 150px;
+    border-radius: 10px; border: 1.5px dashed var(--line);
+    background: var(--purple-light); display: flex; align-items: center;
+    justify-content: center; font-size: 12px; color: #b0a8c8;
+  }
+
+  /* 노트 */
+  .note {
+    font-size: 11px; color: #8a8099; line-height: 1.55;
+    border-left: 2px solid var(--line); padding-left: 10px;
+  }
+
+  /* UI 어노테이션 오버레이 */
+  .cap-wrap { position: relative; width: 100%; overflow: hidden; }
+  .ann-dot {
+    position: absolute;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 10px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 2px 6px rgba(0,0,0,0.35);
+    z-index: 5; pointer-events: none;
+  }
+  .ann-n {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 9px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* 버튼 설명 그리드 (이미지 하단) */
+  .ann-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5px 28px; width: 100%; max-width: 1120px; flex-shrink: 0;
+  }
+  .ann-grid-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12px; color: var(--ink); line-height: 1.4;
+  }
+
+  /* 요금 카드 */
+  .price-row { display: flex; gap: 8px; }
+  .price-card {
+    flex: 1; border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; background: #fafafa; text-align: center;
+  }
+  .price-plan { font-size: 12px; font-weight: 800; color: var(--purple); }
+  .price-val { font-size: 15px; font-weight: 800; color: var(--ink); margin: 2px 0; }
+  .price-desc { font-size: 10px; color: #8a8099; line-height: 1.4; }
+
+  .ui-diff-row {
+    width: 100%; max-width: 1120px; margin-top: 14px;
+    display: grid; grid-template-columns: 1.05fr 1fr 1fr; gap: 10px;
+  }
+  .ui-diff-card {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; background: #faf8ff;
+  }
+  .ui-diff-card.main { border-color: var(--purple); background: #fff; }
+  .ui-diff-title { font-size: 13px; font-weight: 800; color: var(--purple); margin-bottom: 5px; }
+  .ui-diff-text { font-size: 11px; color: #5a5070; line-height: 1.55; }
+  .ui-diff-text strong { color: var(--ink); font-weight: 800; }
+
+  .workflow-table {
+    width: 100%; max-width: 1120px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+  }
+  .workflow-col {
+    border: 1px solid var(--line); border-radius: 12px;
+    background: #fff; overflow: hidden;
+  }
+  .workflow-col.primary { border-color: var(--purple); box-shadow: 0 0 0 2px var(--purple-light); }
+  .workflow-head {
+    min-height: 76px; padding: 14px 16px;
+    background: var(--purple-light); border-bottom: 1px solid var(--line);
+  }
+  .workflow-col.primary .workflow-head { background: var(--purple); color: #fff; }
+  .workflow-name { font-size: 16px; font-weight: 800; margin-bottom: 5px; }
+  .workflow-tagline { font-size: 11px; line-height: 1.45; color: #5a5070; }
+  .workflow-col.primary .workflow-tagline { color: #eee8ff; }
+  .workflow-body { padding: 13px 15px 14px; display: flex; flex-direction: column; gap: 9px; }
+  .workflow-row { border-bottom: 1px solid #f0ebf7; padding-bottom: 8px; }
+  .workflow-row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .workflow-label { font-size: 10px; font-weight: 800; color: var(--purple); margin-bottom: 3px; }
+  .workflow-text { font-size: 11px; color: #4f465f; line-height: 1.5; }
+  .workflow-text strong { color: var(--ink); font-weight: 800; }
+  .workflow-bottom {
+    width: 100%; max-width: 1120px; margin-top: 14px;
+    border-left: 3px solid var(--purple); background: var(--purple-light);
+    border-radius: 0 10px 10px 0; padding: 12px 16px;
+    font-size: 13px; line-height: 1.65; color: var(--ink);
+  }
+  .workflow-bottom strong { color: var(--purple); font-weight: 800; }
+
+  /* 실습 순서 */
+  .step-list { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 820px; }
+  .step-item { display: flex; align-items: center; gap: 20px; }
+  .step-circle {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--purple); color: #fff;
+    font-size: 17px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content { font-size: 16px; color: var(--ink); line-height: 1.5; }
+  .step-content strong { font-weight: 800; }
+
+  /* 다크 시나리오 박스 */
+  .dark-box {
+    background: #1a1530; border-radius: 12px; padding: 16px 20px;
+    color: #e8e0ff; font-size: 13px; line-height: 2;
+  }
+
+  /* 진행 바 & 인디케이터 */
+  .progress-bar {
+    position: fixed; bottom: 0; left: 0;
+    width: 0%; height: 3px;
+    background: var(--purple);
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    z-index: 100;
+  }
+  .page-indicator {
+    position: fixed; bottom: 14px; right: 24px;
+    font-size: 12px; font-weight: 700;
+    color: #b0a8c8; font-family: 'Paperlogy', sans-serif;
+    z-index: 100; letter-spacing: 0.05em;
+  }
+
+  /* 좌우 클릭 영역 */
+  .nav-zone {
+    position: fixed; top: 0; width: 12%; height: 100%;
+    z-index: 50; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .nav-zone:hover { opacity: 1; }
+  .nav-zone.left { left: 0; }
+  .nav-zone.right { right: 0; }
+  .nav-arrow {
+    font-size: 22px; font-weight: 700; color: var(--purple);
+    background: var(--purple-light); border: 1.5px solid var(--line);
+    border-radius: 50%; width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  body.interactive-slide .nav-zone { pointer-events: none; }
+
+  /* Claude Cowork 인터랙티브 목업 */
+  .claude-demo {
+    width: 100%; max-width: 1120px; height: 500px;
+    border: 1px solid #383634; border-radius: 18px;
+    overflow: hidden; background: #1b1a18; color: #efede8;
+    display: grid; grid-template-columns: 248px 1fr;
+    box-shadow: 0 18px 48px rgba(22,18,38,0.18);
+  }
+  .claude-side {
+    background: #252421; border-right: 1px solid #3b3935;
+    padding: 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .claude-tabs {
+    height: 36px; border-radius: 10px; background: #32312e;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 3px; gap: 3px;
+  }
+  .claude-tab {
+    border: 0; border-radius: 8px; background: transparent; color: #b9b4aa;
+    font-family: inherit; font-size: 11px; font-weight: 800; cursor: pointer;
+  }
+  .claude-tab.active, .claude-tab:hover { background: #4a4843; color: #fffaf2; }
+  .claude-nav-btn {
+    width: 100%; min-height: 28px; border: 0; border-radius: 7px;
+    background: transparent; color: #ded9cf;
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 7px; font-family: inherit; font-size: 12px; font-weight: 700;
+    text-align: left; cursor: pointer;
+  }
+  .claude-nav-btn:hover, .claude-nav-btn.active { background: #171613; color: #fff; }
+  .claude-icon {
+    width: 16px; height: 16px; border-radius: 4px; border: 1px solid #837c70;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #cfc8bc; flex-shrink: 0;
+  }
+  .claude-update {
+    margin-top: auto; border: 1px solid #504d47; border-radius: 10px;
+    padding: 10px; display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: #efe9dc; background: #292824;
+  }
+  .claude-account {
+    border-top: 1px solid #3b3935; padding-top: 8px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: #d8d2c8;
+  }
+  .claude-main {
+    position: relative; padding: 32px 48px 24px;
+    background:
+      radial-gradient(circle at center, rgba(255,255,255,0.09) 1px, transparent 2px) 0 0 / 18px 18px,
+      #1b1a18;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .claude-hero {
+    margin-top: 4px; display: flex; align-items: center; gap: 12px;
+    color: #fffaf4; font-size: 25px; font-weight: 800;
+  }
+  .claude-star { color: #f9733d; font-size: 26px; }
+  .claude-learn { margin-top: 4px; color: #aaa297; font-size: 12px; text-decoration: underline; }
+  .claude-prompt {
+    width: 100%; max-width: 590px; margin-top: 20px; border-radius: 19px;
+    border: 1px solid #403e39; background: #2d2c28; overflow: hidden;
+  }
+  .claude-input {
+    min-height: 76px; padding: 16px 20px; color: #9f998f; font-size: 13px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .claude-bottom {
+    border-top: 1px solid #403e39; min-height: 44px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px; font-size: 12px; color: #d8d2c8;
+  }
+  .claude-chip-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .claude-chip {
+    border: 0; background: transparent; color: #d8d2c8;
+    font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer;
+  }
+  .claude-chip:hover { color: #fff; }
+  .claude-suggestions { width: 100%; max-width: 590px; margin-top: 24px; }
+  .claude-suggest-title { font-size: 12px; color: #aaa297; margin-bottom: 12px; }
+  .claude-suggest {
+    width: 100%; min-height: 38px; border: 0; border-top: 1px solid #45423d;
+    background: transparent; color: #e7e0d6; font-family: inherit;
+    display: flex; align-items: center; gap: 14px; padding: 8px 8px;
+    font-size: 13px; font-weight: 700; text-align: left; cursor: pointer;
+  }
+  .claude-suggest:hover { background: rgba(255,255,255,0.04); }
+  .claude-explain {
+    position: absolute; right: 34px; bottom: 30px; width: 270px;
+    border-left: 3px solid #f9733d; padding-left: 12px;
+    color: #d8d1c6; font-size: 12px; line-height: 1.55;
+  }
+  .claude-explain b { color: #fff8ef; font-weight: 800; }
+
+  /* Codex 앱 인터랙티브 목업 */
+  .codex-demo {
+    width: 100%; max-width: 1120px; height: 520px;
+    border: 1px solid #343238; border-radius: 18px;
+    overflow: hidden; background: #111113; color: #efeff1;
+    display: grid; grid-template-columns: 205px 1fr 270px; grid-template-rows: 46px 1fr;
+    box-shadow: 0 18px 48px rgba(22,18,38,0.18);
+  }
+  .codex-appbar {
+    grid-column: 1 / -1; grid-row: 1;
+    background: #141416; border-bottom: 1px solid #2d2c31;
+    display: grid; grid-template-columns: 300px 1fr 240px;
+    align-items: center; padding: 0 12px; position: relative; z-index: 8;
+  }
+  .codex-menubar { display: flex; align-items: center; gap: 18px; }
+  .codex-menu-btn {
+    border: 0; background: transparent; color: #d9d7df;
+    font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+    padding: 4px 0;
+  }
+  .codex-menu-btn:hover { color: #fff; }
+  .codex-app-title {
+    justify-self: center; color: #f3f3f5; font-size: 13px; font-weight: 800;
+    max-width: 420px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .codex-window-tools {
+    justify-self: end; display: flex; align-items: center; gap: 8px; position: relative;
+  }
+  .codex-app-switch {
+    height: 28px; border-radius: 10px; border: 1px solid #343238;
+    background: #202025; color: #e7e5ef; display: flex; align-items: center; gap: 6px;
+    padding: 0 8px; font-size: 11px; font-weight: 800; cursor: pointer;
+  }
+  .codex-vs-mark {
+    width: 17px; height: 17px; border-radius: 5px;
+    background: linear-gradient(135deg, #1685ff, #5258ff);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 10px; font-weight: 800;
+  }
+  .codex-app-menu {
+    display: none; position: absolute; top: 34px; right: 86px;
+    width: 210px; padding: 10px 8px; border-radius: 14px;
+    background: #2b2a2f; border: 1px solid #3d3b43;
+    box-shadow: 0 16px 34px rgba(0,0,0,0.38);
+  }
+  .codex-app-switch.open + .codex-app-menu { display: block; }
+  .codex-app-option {
+    width: 100%; border: 0; background: transparent; color: #f0eef6;
+    display: flex; align-items: center; gap: 10px; border-radius: 8px;
+    padding: 7px 8px; font-family: inherit; font-size: 12px; font-weight: 700;
+    text-align: left; cursor: pointer;
+  }
+  .codex-app-option:hover { background: #393740; }
+  .codex-app-option .codex-ico { border-color: transparent; background: #3a3840; }
+  .codex-head-icon {
+    width: 28px; height: 28px; border-radius: 8px; border: 1px solid #343238;
+    background: #1d1d22; color: #c8c5d1; font-size: 12px; font-weight: 800;
+  }
+  .codex-side {
+    grid-row: 2;
+    background: #151518; border-right: 1px solid #2d2c31;
+    padding: 16px 12px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .codex-brand {
+    height: 32px; display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 800; color: #f6f6f7; margin-bottom: 6px;
+  }
+  .codex-mark {
+    width: 20px; height: 20px; border-radius: 6px;
+    background: linear-gradient(135deg, #1570ff, #8b5cf6);
+  }
+  .codex-nav-btn {
+    width: 100%; min-height: 34px; border: 0; border-radius: 8px;
+    background: transparent; color: #d8d8dc;
+    display: flex; align-items: center; gap: 9px;
+    padding: 7px 8px; font-family: inherit; font-size: 12px; font-weight: 700;
+    text-align: left; cursor: pointer;
+  }
+  .codex-nav-btn:hover, .codex-nav-btn.active { background: #25252a; color: #fff; }
+  .codex-ico {
+    width: 18px; height: 18px; border: 1px solid #74717d; border-radius: 5px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #bdbac7; flex-shrink: 0;
+  }
+  .codex-thread-group { margin-top: 14px; border-top: 1px solid #2d2c31; padding-top: 12px; }
+  .codex-thread-title { font-size: 10px; font-weight: 800; color: #8d8998; margin: 0 0 7px 8px; }
+  .codex-thread {
+    border-radius: 8px; padding: 8px; font-size: 11px; line-height: 1.35;
+    color: #bfbcc8; background: #1b1b1f; margin-bottom: 6px;
+  }
+  .codex-main { grid-row: 2; position: relative; display: flex; flex-direction: column; min-width: 0; background: #101012; }
+  .codex-top {
+    height: 48px; border-bottom: 1px solid #2d2c31; padding: 0 16px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .codex-title-mini { font-size: 13px; font-weight: 800; color: #f4f4f5; }
+  .codex-toolbar { display: flex; gap: 8px; }
+  .codex-tool-pill {
+    height: 28px; min-width: 28px; padding: 0 9px; border-radius: 9px;
+    border: 1px solid #343238; background: #1d1d22; color: #c9c7d1;
+    font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  }
+  .codex-feed {
+    flex: 1; padding: 26px 38px 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px;
+  }
+  .codex-bubble {
+    align-self: flex-end; max-width: 520px; border-radius: 18px;
+    background: #2a2a2f; color: #f5f5f6; padding: 13px 16px;
+    font-size: 13px; line-height: 1.55;
+  }
+  .codex-response {
+    max-width: 640px; border-left: 3px solid #1570ff; padding-left: 14px;
+    color: #d9d7e0; font-size: 13px; line-height: 1.65;
+  }
+  .codex-response strong { color: #fff; font-weight: 800; }
+  .codex-composer {
+    margin: 0 38px 22px; min-height: 78px; border-radius: 20px;
+    background: #2b2b30; border: 1px solid #3a3840;
+    padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .codex-placeholder { color: #a7a3b0; font-size: 13px; }
+  .codex-compose-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .codex-chips { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+  .codex-chip {
+    border: 1px solid #4a4652; border-radius: 999px; color: #ddd9e8;
+    padding: 4px 8px; font-size: 10px; font-weight: 800; background: #26262b;
+  }
+  .codex-chip.warn { color: #ffb86b; border-color: #6b4c24; }
+  .codex-send {
+    width: 34px; height: 34px; border-radius: 50%; border: 0;
+    background: #f5f5f6; color: #151518; font-size: 17px; font-weight: 800;
+  }
+  .codex-env {
+    grid-row: 2;
+    background: #19191d; border-left: 1px solid #2d2c31;
+    padding: 16px 16px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .codex-env-title {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; font-weight: 800; color: #e8e6ee;
+  }
+  .codex-env-list { display: flex; flex-direction: column; gap: 8px; }
+  .codex-env-item {
+    border: 0; width: 100%; text-align: left; font-family: inherit;
+    border-radius: 8px; padding: 8px 9px; background: #202025;
+    display: flex; align-items: center; gap: 9px; font-size: 12px; color: #d9d6e1;
+    cursor: pointer;
+  }
+  .codex-env-item.muted { color: #918d9a; }
+  .codex-env-item.active { outline: 1px solid #1570ff; background: #1d2432; }
+  .codex-env-section {
+    border-top: 1px solid #313038; padding-top: 12px; margin-top: 2px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .codex-env-label { font-size: 12px; font-weight: 800; color: #9c98a5; margin-bottom: 1px; }
+  .codex-explain {
+    margin-top: auto; border-top: 1px solid #313038; padding-top: 12px;
+    font-size: 12px; line-height: 1.55; color: #c9c5d3;
+  }
+  .codex-explain b { color: #fff; font-weight: 800; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- ===== 슬라이드 01 — 표지 ===== -->
+<div class="slide centered active" id="s1">
+  <div class="title-kicker">AInspire 4기 · 0주차</div>
+  <div class="title-main">AI <span class="accent">코딩 툴</span><br>무엇을 쓸까?</div>
+  <div class="title-sub">Claude · Codex · Antigravity · VSCode Copilot — 2026년 5월 기준</div>
+  <div class="title-tags">
+    <span class="tag fill">비교</span>
+    <span class="tag">설치법</span>
+    <span class="tag">차이점</span>
+    <span class="tag">선택 가이드</span>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 02 — 배경 ===== -->
+<div class="slide" id="s2">
+  <div class="step-label">Background</div>
+  <div class="slide-title">코딩을 <span class="accent">모르는 사람</span>도<br>앱을 만드는 시대</div>
+  <div class="slide-subtitle">AI 코딩 툴이 코드를 대신 써준다 — 내가 할 일은 "무엇을 만들지" 말하는 것</div>
+  <div class="divider"></div>
+  <div class="point-list">
+    <div class="point-item">
+      <div class="point-num">1</div>
+      <div class="point-text">2025~2026년 사이 4개의 주요 AI 코딩 에이전트가 등장했다</div>
+    </div>
+    <div class="point-item">
+      <div class="point-num">2</div>
+      <div class="point-text">각각 만든 회사, 실행 환경, 요금, 난이도가 다르다</div>
+    </div>
+    <div class="point-item">
+      <div class="point-num">3</div>
+      <div class="point-text">상황에 맞는 툴을 고르면 속도가 10배 달라진다</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 03 — 비교표 ===== -->
+<div class="slide" id="s3">
+  <div class="step-label">Overview</div>
+  <div class="slide-title">4개 툴 <span class="accent">한눈에</span> 비교</div>
+  <div class="divider"></div>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>Claude 데스크탑</th>
+        <th>OpenAI Codex</th>
+        <th>Google Antigravity</th>
+        <th>VSCode + Copilot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>만든 곳</td>
+        <td>Anthropic</td>
+        <td>OpenAI</td>
+        <td>Google</td>
+        <td>GitHub (MS)</td>
+      </tr>
+      <tr>
+        <td>실행 환경</td>
+        <td>데스크탑 앱</td>
+        <td>데스크탑 앱 + 웹</td>
+        <td>데스크탑 앱 + CLI</td>
+        <td>VSCode 확장</td>
+      </tr>
+      <tr>
+        <td>무료 여부</td>
+        <td>❌ Pro $20/월~</td>
+        <td>ChatGPT Plus 포함</td>
+        <td class="hi">✅ 현재 무료</td>
+        <td class="hi">✅ Free 플랜</td>
+      </tr>
+      <tr>
+        <td>설치 난이도</td>
+        <td>쉬움 (앱)</td>
+        <td>쉬움 (앱)</td>
+        <td>쉬움 (앱)</td>
+        <td class="hi">가장 쉬움</td>
+      </tr>
+      <tr>
+        <td>AI 모델</td>
+        <td>Claude 전용</td>
+        <td>GPT 계열</td>
+        <td>Gemini 3.5</td>
+        <td>멀티모델 선택</td>
+      </tr>
+      <tr>
+        <td>에이전트 자율도</td>
+        <td class="hi">매우 높음</td>
+        <td>높음</td>
+        <td class="hi">매우 높음</td>
+        <td>보통~높음</td>
+      </tr>
+      <tr>
+        <td>음성 입력</td>
+        <td>✅ (VSCode 확장)</td>
+        <td class="hi">✅ Ctrl+M 말하기</td>
+        <td class="hi">✅ 네이티브 지원</td>
+        <td>✅ Ctrl+I 길게</td>
+      </tr>
+      <tr>
+        <td>스케줄 자동화</td>
+        <td>✅ /schedule · --bg</td>
+        <td class="hi">✅ Thread Automations</td>
+        <td class="hi">✅ 백그라운드 스케줄</td>
+        <td>✅ 백그라운드 에이전트</td>
+      </tr>
+      <tr>
+        <td>MCP 지원</td>
+        <td class="hi">✅ 공식 지원</td>
+        <td class="hi">✅ 앱·CLI·IDE 공유</td>
+        <td>—</td>
+        <td>✅ MCP 서버 연동</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="table-note">* 굵은 보라색: 해당 카테고리에서 특히 강점인 항목</div>
+</div>
+<!-- 출처 (2026-05-27 직접 확인)
+  Claude Code CHANGELOG: https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md
+  Codex 앱 기능: https://developers.openai.com/codex/app/features
+  Antigravity: https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/
+  VSCode Copilot: https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features
+-->
+
+<!-- ===== 슬라이드 04 — 핵심 차이점 ===== -->
+<div class="slide" id="s4">
+  <div class="step-label">Key Differences</div>
+  <div class="slide-title">같은 AI, <span class="accent">다른 철학</span></div>
+  <div class="divider"></div>
+  <div class="grid22">
+    <div class="card22">
+      <div class="card22-icon">💬</div>
+      <div class="card22-name">VSCode + Copilot</div>
+      <div class="card22-desc">타이핑하는 동안 옆에서 제안. 내가 코드를 쓰고, AI가 다음 줄을 예측한다. 통제권은 항상 나에게 있다.</div>
+      <div class="card22-badge">👤 인간 주도 — AI가 보조</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">📋</div>
+      <div class="card22-name">OpenAI Codex</div>
+      <div class="card22-desc">할 일을 맡기고 기다린다. GitHub 이슈를 던지면 AI가 코드 짜고 PR까지 올려준다. 내가 자리 비워도 돌아간다.</div>
+      <div class="card22-badge">📋 위임형 — 결과만 받는다</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🤝</div>
+      <div class="card22-name">Claude 데스크탑</div>
+      <div class="card22-desc">대화하면서 함께 만든다. 파일 읽고 수정하고 실행까지. MCP로 Drive·Notion·DB까지 넘나든다. 복잡한 판단도 같이 한다.</div>
+      <div class="card22-badge">🤝 협업형 — 맥락을 공유</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🤖</div>
+      <div class="card22-name">Google Antigravity</div>
+      <div class="card22-desc">목표만 주면 스스로 계획·분기·실행. 프론트/백엔드를 여러 에이전트가 동시에 맡는다. 브라우저까지 직접 열어 테스트한다.</div>
+      <div class="card22-badge">🤖 자율형 — AI가 주도</div>
+    </div>
+  </div>
+  <div class="spectrum-wrap">
+    <div class="spectrum-track">
+      <div class="spec-dot" style="left:6%;">
+        <div class="spec-dot-label">Copilot</div>
+      </div>
+      <div class="spec-dot" style="left:37%;">
+        <div class="spec-dot-label">Claude</div>
+      </div>
+      <div class="spec-dot" style="left:65%;">
+        <div class="spec-dot-label">Codex</div>
+      </div>
+      <div class="spec-dot" style="left:91%;">
+        <div class="spec-dot-label">Antigravity</div>
+      </div>
+    </div>
+    <div class="spectrum-labels">
+      <span>👤 내가 직접</span>
+      <span>🤖 AI가 알아서</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 05 — Claude 데스크탑 3개 모드 ===== -->
+<div class="slide" id="s5">
+  <div class="step-label">Tool 01 · Anthropic</div>
+  <div class="slide-title"><span class="accent">Claude</span> 데스크탑 — 앱 하나에 3가지 모드</div>
+  <div class="divider"></div>
+  <div class="grid3" style="margin-bottom:12px;">
+    <div class="mode-card">
+      <div class="mode-icon">💬</div>
+      <div class="mode-name">Chat</div>
+      <div class="mode-eng">일반 대화</div>
+      <div class="mode-desc">글쓰기·번역·요약·질문 등 텍스트 기반 작업 전부. Projects로 맥락을 프로젝트 단위 유지.</div>
+      <div class="mode-note">무료 플랜도 사용 가능</div>
+    </div>
+    <div class="mode-card" style="border-color:var(--purple);background:var(--purple-light);">
+      <div class="mode-icon">🖥️</div>
+      <div class="mode-name">Cowork</div>
+      <div class="mode-eng">내 PC에서 자율 실행</div>
+      <div class="mode-desc">목표만 주면 로컬 파일·앱을 직접 조작해 결과물을 가져다 줌. 터미널 없이 GUI로. 문서정리·리서치·데이터 추출 등 코딩 외 지식 업무 전담.</div>
+      <div class="mode-note">Pro $20/월 이상 · Dispatch(베타): 폰에서 지시 → PC가 완료</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-icon">⌨️</div>
+      <div class="mode-name">Code</div>
+      <div class="mode-eng">코딩 에이전트</div>
+      <div class="mode-desc">코드 읽기·수정·테스트·PR 생성까지. 멀티 세션 병렬 실행, /schedule로 반복 작업 자동화. MCP로 외부 서비스 연동.</div>
+      <div class="mode-note">Pro $20/월 이상 필요</div>
+    </div>
+  </div>
+  <div class="install-box">
+    <span class="label">Windows</span><span class="cmd">winget install Anthropic.Claude</span>
+    &nbsp;&nbsp;&nbsp;
+    <span class="label">Mac</span><span class="cmd">brew install --cask claude</span>
+    &nbsp;&nbsp;&nbsp;
+    <span class="label">또는</span><span style="color:#d0c8f0;">claude.ai/download 에서 직접 다운로드</span>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 06 — Claude Cowork UI 버튼 설명 ===== -->
+<div class="slide" id="s6">
+  <div class="step-label">Tool 01-B · Anthropic</div>
+  <div class="slide-title"><span class="accent">Claude Cowork</span> — 화면 구성</div>
+  <div class="divider"></div>
+  <div class="cap-wrap" style="border-radius:10px;flex-shrink:0;">
+    <img class="cap-img" style="max-height:320px;" src="img/cap_claude.png" alt="Claude Cowork UI"
+         onerror="this.style.display='none'">
+    <!-- 번호 좌표: 1920×1200, 컨테이너 1120×320px, top=y×0.1823, left=x/1920×100 -->
+    <div class="ann-dot" style="left:2.6%;top:9.5%;">1</div>
+    <div class="ann-dot" style="left:2.6%;top:21.9%;">2</div>
+    <div class="ann-dot" style="left:14%;top:91.1%;">3</div>
+    <div class="ann-dot" style="left:24%;top:91.1%;">4</div>
+    <div class="ann-dot" style="left:51.6%;top:91.1%;">5</div>
+    <div class="ann-dot" style="left:30.2%;top:99%;">6</div>
+  </div>
+  <div class="ann-grid" style="margin-top:12px;">
+    <div class="ann-grid-item"><div class="ann-n">1</div><div><strong style="font-weight:800;">New Task</strong> — 새 자율 실행 작업 시작. 목표 문장 하나만 입력하면 됨</div></div>
+    <div class="ann-grid-item"><div class="ann-n">2</div><div><strong style="font-weight:800;">Dispatch</strong> — 폰에서 지시 → 집 PC가 완료. 베타 기능 (Max 플랜)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">3</div><div><strong style="font-weight:800;">프로젝트에서 파일 ▼</strong> — Cowork가 직접 접근할 로컬 파일·폴더 지정</div></div>
+    <div class="ann-grid-item"><div class="ann-n">4</div><div><strong style="font-weight:800;">일정</strong> — 이 작업에 반복 스케줄 설정 (매일·매주 자동 실행)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">5</div><div><strong style="font-weight:800;">Legacy Model</strong> — 특정 목적에 이전 Claude 모델 사용 (기본: 최신)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">6</div><div><strong style="font-weight:800;">제안 카드</strong> — 파일 정리·문서 검토·스크린샷 분석 등 자주 쓰는 작업 바로가기</div></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 07 — Claude Cowork 인터랙티브 UI ===== -->
+<div class="slide" id="s7">
+  <div class="step-label">Tool 01-B · Anthropic Claude</div>
+  <div class="slide-title">Claude Cowork UI — <span class="accent">직접 눌러보기</span></div>
+  <div class="slide-subtitle">왼쪽 모드·메뉴와 입력창 옵션을 클릭하면 역할 설명이 바뀝니다.</div>
+  <div class="divider"></div>
+
+  <div class="claude-demo" id="claudeDemo">
+    <div class="claude-side">
+      <div class="claude-tabs">
+        <button class="claude-tab" data-claude-topic="chat">Chat</button>
+        <button class="claude-tab active" data-claude-topic="cowork">Cowork</button>
+        <button class="claude-tab" data-claude-topic="code">Code</button>
+      </div>
+      <button class="claude-nav-btn active" data-claude-topic="newTask"><span class="claude-icon">+</span><span>New task</span></button>
+      <button class="claude-nav-btn" data-claude-topic="projects"><span class="claude-icon">□</span><span>Projects</span></button>
+      <button class="claude-nav-btn" data-claude-topic="scheduled"><span class="claude-icon">◎</span><span>Scheduled</span></button>
+      <button class="claude-nav-btn" data-claude-topic="artifacts"><span class="claude-icon">↗</span><span>Live artifacts</span></button>
+      <button class="claude-nav-btn" data-claude-topic="dispatch"><span class="claude-icon">⇄</span><span>Dispatch <span style="font-size:10px;color:#9f988d;">베타</span></span></button>
+      <button class="claude-nav-btn" data-claude-topic="customize"><span class="claude-icon">☰</span><span>Customize</span></button>
+      <div class="claude-update"><span>업데이트하려면 다시 시작<br><span style="color:#aaa297;">v1.9255.2</span></span><span>→</span></div>
+      <div class="claude-account"><span>AInspire · Max</span><span>⌄</span></div>
+    </div>
+
+    <div class="claude-main">
+      <div class="claude-hero"><span class="claude-star">✷</span><span id="claudeTitle">할 일을 처리해 볼까요?</span></div>
+      <div class="claude-learn">Cowork를 안전하게 사용하는 방법 알아보기</div>
+      <div class="claude-prompt">
+        <div class="claude-input">
+          <span id="claudePromptText">스킬을 보려면 /를 입력하세요</span>
+          <span>⌕</span>
+        </div>
+        <div class="claude-bottom">
+          <div class="claude-chip-row">
+            <button class="claude-chip" data-claude-topic="attach">＋</button>
+            <button class="claude-chip" data-claude-topic="projectFiles">프로젝트에서 작업⌄</button>
+            <button class="claude-chip" data-claude-topic="question">질문⌄</button>
+          </div>
+          <button class="claude-chip" data-claude-topic="legacy">Legacy Model⌄</button>
+        </div>
+      </div>
+      <div class="claude-suggestions">
+        <div class="claude-suggest-title">작업을 골라보세요, 어떤 것이든</div>
+        <button class="claude-suggest" data-claude-topic="optimize"><span class="claude-icon">▣</span><span>이번 주 최적화하기</span></button>
+        <button class="claude-suggest" data-claude-topic="cleanup"><span class="claude-icon">□</span><span>스크린샷 정리하기</span></button>
+        <button class="claude-suggest" data-claude-topic="insight"><span class="claude-icon">▤</span><span>파일에서 인사이트 찾기</span></button>
+        <button class="claude-suggest" data-claude-topic="pluginsClaude"><span class="claude-icon">⌁</span><span>플러그인으로 맞춤 설정</span></button>
+      </div>
+      <div class="claude-explain" id="claudeExplain">
+        <b>New task</b><br>
+        새 Cowork 작업을 시작합니다. 목표를 입력하면 Claude가 로컬 파일과 앱을 사용해 결과물을 만듭니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 08 — OpenAI Codex ===== -->
+<div class="slide" id="s8">
+  <div class="step-label">Tool 02 · OpenAI</div>
+  <div class="slide-title"><span class="accent">OpenAI Codex</span> — 위임하고 기다린다</div>
+  <div class="divider"></div>
+  <div class="cap-wrap" style="border-radius:10px;flex-shrink:0;">
+    <img class="cap-img" style="max-height:320px;" src="img/cap_codex.png" alt="OpenAI Codex UI"
+         onerror="this.style.display='none'">
+    <!-- 번호 좌표: 1920×1200, 컨테이너 1120×320px, top=y×0.1823, left=x/1920×100 -->
+    <div class="ann-dot" style="left:5.2%;top:11.8%;">1</div>
+    <div class="ann-dot" style="left:1.8%;top:19.1%;">2</div>
+    <div class="ann-dot" style="left:1.8%;top:26.9%;">3</div>
+    <div class="ann-dot" style="left:1.8%;top:34.6%;">4</div>
+    <div class="ann-dot" style="left:29.2%;top:75.5%;">5</div>
+    <div class="ann-dot" style="left:31.3%;top:75.5%;">6</div>
+    <div class="ann-dot" style="left:49.5%;top:75.5%;">7</div>
+    <div class="ann-dot" style="left:55.2%;top:75.5%;">8</div>
+  </div>
+  <div class="ann-grid" style="margin-top:12px;">
+    <div class="ann-grid-item"><div class="ann-n">1</div><div><strong style="font-weight:800;">새 채팅</strong> — 새 대화·작업 세션 시작. 각 채팅은 독립 컨텍스트</div></div>
+    <div class="ann-grid-item"><div class="ann-n">2</div><div><strong style="font-weight:800;">검색</strong> — 기존 대화 이력 검색</div></div>
+    <div class="ann-grid-item"><div class="ann-n">3</div><div><strong style="font-weight:800;">플러그인</strong> — GitHub·Jira 등 외부 서비스 연동 설정</div></div>
+    <div class="ann-grid-item"><div class="ann-n">4</div><div><strong style="font-weight:800;">자동화</strong> — Thread Automations. 대화에 주기적 체크인 예약</div></div>
+    <div class="ann-grid-item"><div class="ann-n">5</div><div><strong style="font-weight:800;">+ 파일 첨부</strong> — 파일·이미지·코드베이스 대화에 포함</div></div>
+    <div class="ann-grid-item"><div class="ann-n">6</div><div><strong style="font-weight:800;">전체 권한</strong> — 에이전트 실행 권한 범위 (읽기전용 → 전체)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">7</div><div><strong style="font-weight:800;">모델 선택</strong> — codex-mini · o4-mini · o3 등 전환</div></div>
+    <div class="ann-grid-item"><div class="ann-n">8</div><div><strong style="font-weight:800;">마이크</strong> — 음성 입력 시작 (단축키 Ctrl+M)</div></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 09 — Codex 앱 인터랙티브 UI ===== -->
+<div class="slide" id="s9">
+  <div class="step-label">Tool 02 · OpenAI Codex</div>
+  <div class="slide-title">Codex 앱 UI — <span class="accent">직접 눌러보기</span></div>
+  <div class="slide-subtitle">왼쪽 메뉴와 입력창 칩을 클릭하면 각 영역의 역할이 바뀝니다.</div>
+  <div class="divider"></div>
+
+  <div class="codex-demo" id="codexDemo">
+    <div class="codex-appbar">
+      <div class="codex-menubar">
+        <button class="codex-menu-btn" data-codex-topic="fileMenu">파일</button>
+        <button class="codex-menu-btn" data-codex-topic="editMenu">편집</button>
+        <button class="codex-menu-btn" data-codex-topic="viewMenu">보기</button>
+        <button class="codex-menu-btn" data-codex-topic="windowMenu">창</button>
+        <button class="codex-menu-btn" data-codex-topic="helpMenu">도움말</button>
+      </div>
+      <div class="codex-app-title">Claude Code와 Codex 비교 정리</div>
+      <div class="codex-window-tools">
+        <button class="codex-app-switch" id="codexAppSwitch" data-codex-topic="editor">
+          <span class="codex-vs-mark">V</span><span>VS Code</span><span>⌄</span>
+        </button>
+        <div class="codex-app-menu" id="codexAppMenu">
+          <button class="codex-app-option" data-codex-editor="VS Code"><span class="codex-ico">V</span><span>VS Code</span></button>
+          <button class="codex-app-option" data-codex-editor="VS Code Insiders"><span class="codex-ico">I</span><span>VS Code Insiders</span></button>
+          <button class="codex-app-option" data-codex-editor="Cursor"><span class="codex-ico">C</span><span>Cursor</span></button>
+          <button class="codex-app-option" data-codex-editor="Antigravity"><span class="codex-ico">A</span><span>Antigravity</span></button>
+          <button class="codex-app-option" data-codex-editor="GitHub Desktop"><span class="codex-ico">G</span><span>GitHub Desktop</span></button>
+          <button class="codex-app-option" data-codex-editor="File Explorer"><span class="codex-ico">F</span><span>File Explorer</span></button>
+          <button class="codex-app-option" data-codex-editor="Terminal"><span class="codex-ico">T</span><span>Terminal</span></button>
+          <button class="codex-app-option" data-codex-editor="Git Bash"><span class="codex-ico">B</span><span>Git Bash</span></button>
+        </div>
+        <button class="codex-head-icon" data-codex-topic="info">i</button>
+        <button class="codex-head-icon" data-codex-topic="editView">▭</button>
+        <button class="codex-head-icon" data-codex-topic="splitView">◧</button>
+      </div>
+    </div>
+
+    <div class="codex-side">
+      <div class="codex-brand"><span class="codex-mark"></span><span>Codex</span></div>
+      <button class="codex-nav-btn active" data-codex-topic="new"><span class="codex-ico">+</span><span>새 채팅</span></button>
+      <button class="codex-nav-btn" data-codex-topic="search"><span class="codex-ico">⌕</span><span>검색</span></button>
+      <button class="codex-nav-btn" data-codex-topic="plugins"><span class="codex-ico">□</span><span>플러그인</span></button>
+      <button class="codex-nav-btn" data-codex-topic="automation"><span class="codex-ico">◎</span><span>자동화</span></button>
+
+      <div class="codex-thread-group">
+        <div class="codex-thread-title">최근 대화</div>
+        <div class="codex-thread">Claude Code와 Codex 비교 정리</div>
+        <div class="codex-thread">컨텍스트 사용량 모니터</div>
+        <div class="codex-thread">0주차 강의안 수정</div>
+      </div>
+    </div>
+
+    <div class="codex-main">
+      <div class="codex-top">
+        <div class="codex-title-mini" id="codexMiniTitle">Claude Code와 Codex 비교 정리</div>
+        <div class="codex-toolbar">
+          <button class="codex-tool-pill" data-codex-topic="model">5.5 높음</button>
+          <button class="codex-tool-pill" data-codex-topic="local">로컬</button>
+          <button class="codex-tool-pill" data-codex-topic="env">환경</button>
+        </div>
+      </div>
+
+      <div class="codex-feed">
+        <div class="codex-bubble" id="codexUserBubble">0주차 교안에 Codex 앱 UI를 인터랙티브로 넣어줘</div>
+        <div class="codex-response" id="codexResponse">
+          <strong>새 채팅</strong><br>
+          작업 단위별로 독립된 스레드를 시작합니다. 각 스레드는 별도 컨텍스트로 관리되어 주제 전환이 깔끔합니다.
+        </div>
+      </div>
+
+      <div class="codex-composer">
+        <div class="codex-placeholder" id="codexPlaceholder">작업을 자연어로 지시합니다.</div>
+        <div class="codex-compose-row">
+          <div class="codex-chips">
+            <button class="codex-chip" data-codex-topic="attach">+ 파일</button>
+            <button class="codex-chip warn" data-codex-topic="permission">전체 권한</button>
+            <button class="codex-chip" data-codex-topic="model">5.5 높음</button>
+          </div>
+          <button class="codex-send" data-codex-topic="send">↑</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="codex-env">
+      <div class="codex-env-title"><span>환경</span><span>⚙</span></div>
+      <div class="codex-env-list">
+        <button class="codex-env-item active" id="codexEnvPrimary" data-codex-topic="changes"><span class="codex-ico">⊞</span><span>변경 사항</span></button>
+        <button class="codex-env-item" data-codex-topic="local"><span class="codex-ico">▭</span><span>로컬</span></button>
+        <button class="codex-env-item" data-codex-topic="branch"><span class="codex-ico">⑂</span><span>master</span></button>
+        <button class="codex-env-item" data-codex-topic="commit"><span class="codex-ico">⌁</span><span>커밋</span></button>
+        <button class="codex-env-item muted" data-codex-topic="pr"><span class="codex-ico">●</span><span>풀 리퀘스트 상태를 불러올 수 없습니다</span></button>
+      </div>
+      <div class="codex-env-section">
+        <div class="codex-env-label">출처</div>
+        <button class="codex-env-item" data-codex-topic="web"><span class="codex-ico">◎</span><span>웹 검색</span></button>
+      </div>
+      <div class="codex-explain" id="codexExplain">
+        <b>환경 패널</b><br>
+        실행 위치, 브랜치, 커밋, PR 상태처럼 에이전트가 실제로 작업하는 조건을 확인합니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 10 — Google Antigravity 2.0 ===== -->
+<div class="slide" id="s10">
+  <div class="step-label">Tool 03 · Google</div>
+  <div class="slide-title">Google <span class="accent">Antigravity</span> 2.0 — AI가 팀처럼 일한다</div>
+  <div class="divider"></div>
+  <div class="cap-wrap" style="border-radius:10px;flex-shrink:0;">
+    <img class="cap-img" style="max-height:320px;" src="img/cap_antigravity.png" alt="Google Antigravity UI"
+         onerror="this.style.display='none'">
+    <!-- 번호 좌표: 1920×1200, 컨테이너 1120×320px, top=y×0.1823, left=x/1920×100 -->
+    <div class="ann-dot" style="left:4.7%;top:11.8%;">1</div>
+    <div class="ann-dot" style="left:4%;top:18.2%;">2</div>
+    <div class="ann-dot" style="left:4%;top:23.7%;">3</div>
+    <div class="ann-dot" style="left:40.9%;top:57.8%;">4</div>
+    <div class="ann-dot" style="left:29.9%;top:68.8%;">5</div>
+    <div class="ann-dot" style="left:34.4%;top:68.8%;">6</div>
+    <div class="ann-dot" style="left:52.6%;top:68.8%;">7</div>
+  </div>
+  <div class="ann-grid" style="margin-top:12px;">
+    <div class="ann-grid-item"><div class="ann-n">1</div><div><strong style="font-weight:800;">+ New Conversation</strong> — 새 대화·에이전트 작업 시작</div></div>
+    <div class="ann-grid-item"><div class="ann-n">2</div><div><strong style="font-weight:800;">Conversation History</strong> — 이전 대화 기록 목록</div></div>
+    <div class="ann-grid-item"><div class="ann-n">3</div><div><strong style="font-weight:800;">Scheduled Tasks</strong> — 예약 작업 목록·새 스케줄 설정 (백그라운드 자동화)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">4</div><div><strong style="font-weight:800;">New Conversation ∨</strong> — 대화 유형 선택 (일반·에이전트·멀티에이전트)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">5</div><div><strong style="font-weight:800;">+ 파일·도구 추가</strong> — 파일 첨부 또는 @ 입력으로 도구·파일 참조</div></div>
+    <div class="ann-grid-item"><div class="ann-n">6</div><div><strong style="font-weight:800;">Gemini 3.5 Flash ∨</strong> — 처리 속도·품질 선택 (Medium · Large · Ultra)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">7</div><div><strong style="font-weight:800;">→ 전송</strong> — 입력 내용으로 에이전트 작업 시작</div></div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 11 — VSCode + GitHub Copilot ===== -->
+<div class="slide" id="s11">
+  <div class="step-label">Tool 04 · GitHub</div>
+  <div class="slide-title">VSCode + <span class="accent">GitHub Copilot</span> — 가장 쉬운 시작점</div>
+  <div class="divider"></div>
+  <div class="cap-wrap" style="border-radius:10px;flex-shrink:0;">
+    <img class="cap-img" style="max-height:320px;" src="img/cap_vscode.png" alt="VSCode + GitHub Copilot UI"
+         onerror="this.style.display='none'">
+    <!-- 번호 좌표: 1920×1200, 컨테이너 1120×320px, top=y×0.1823, left=x/1920×100 -->
+    <div class="ann-dot" style="left:0.9%;top:7.4%;">1</div>
+    <div class="ann-dot" style="left:0.9%;top:14.2%;">2</div>
+    <div class="ann-dot" style="left:0.9%;top:21.2%;">3</div>
+    <div class="ann-dot" style="left:0.9%;top:27.2%;">4</div>
+    <div class="ann-dot" style="left:0.9%;top:33.3%;">5</div>
+    <div class="ann-dot" style="left:0.9%;top:45.5%;">6</div>
+    <div class="ann-dot" style="left:68.4%;top:6.9%;">7</div>
+    <div class="ann-dot" style="left:47.3%;top:62.3%;">8</div>
+  </div>
+  <div class="ann-grid" style="margin-top:12px;">
+    <div class="ann-grid-item"><div class="ann-n">1</div><div><strong style="font-weight:800;">Explorer</strong> — 프로젝트 파일·폴더 탐색기</div></div>
+    <div class="ann-grid-item"><div class="ann-n">2</div><div><strong style="font-weight:800;">Search</strong> — 전체 파일 내 텍스트 검색</div></div>
+    <div class="ann-grid-item"><div class="ann-n">3</div><div><strong style="font-weight:800;">Source Control</strong> — Git 변경사항 확인·커밋·브랜치 관리</div></div>
+    <div class="ann-grid-item"><div class="ann-n">4</div><div><strong style="font-weight:800;">Run &amp; Debug</strong> — 코드 실행 및 디버깅</div></div>
+    <div class="ann-grid-item"><div class="ann-n">5</div><div><strong style="font-weight:800;">Extensions</strong> — 확장 설치 관리 (여기서 GitHub Copilot 설치)</div></div>
+    <div class="ann-grid-item"><div class="ann-n">6</div><div><strong style="font-weight:800;">GitHub Copilot ✦</strong> — Copilot 채팅·에이전트 패널 열기</div></div>
+    <div class="ann-grid-item"><div class="ann-n">7</div><div><strong style="font-weight:800;">Copilot 상태 아이콘</strong> (우상단) — 연결 상태·플랜 확인·설정 바로가기</div></div>
+    <div class="ann-grid-item"><div class="ann-n">8</div><div><strong style="font-weight:800;">GitHub Copilot 시작 가이드</strong> — 인라인 제안·채팅·에이전트 모드 사용법 안내</div></div>
+  </div>
+  <div class="price-row" style="margin-top:8px;">
+    <div class="price-card">
+      <div class="price-plan">Free</div>
+      <div class="price-val">무료</div>
+      <div class="price-desc">완성 2,000회/월</div>
+    </div>
+    <div class="price-card" style="border-color:var(--purple);background:var(--purple-light);">
+      <div class="price-plan">Pro</div>
+      <div class="price-val">$10/월</div>
+      <div class="price-desc">무제한 완성</div>
+    </div>
+    <div class="price-card">
+      <div class="price-plan">Pro+</div>
+      <div class="price-val">$39/월</div>
+      <div class="price-desc">멀티모델 선택</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 12 — 선택 가이드 ===== -->
+<div class="slide" id="s12">
+  <div class="step-label">Selection Guide</div>
+  <div class="slide-title">나에게 맞는 <span class="accent">툴 선택</span></div>
+  <div class="divider"></div>
+  <div class="grid22" style="gap:18px;">
+    <div class="card22" style="border-color:var(--purple);">
+      <div class="card22-icon">🔰</div>
+      <div class="card22-name">지금 당장 무료로 시작하고 싶다</div>
+      <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ VSCode + Copilot Free</div>
+      <div class="card22-desc">설치 가장 쉬움. GitHub 계정만 있으면 바로 시작. 월 2,000회 무료.</div>
+    </div>
+    <div class="card22" style="border-color:var(--purple);">
+      <div class="card22-icon">🆓</div>
+      <div class="card22-name">무료로 에이전트 기능까지 쓰고 싶다</div>
+      <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ Google Antigravity</div>
+      <div class="card22-desc">현재 무료 프리뷰. GUI 있어서 직관적. 브라우저 자율 실행까지 가능.</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">💳</div>
+      <div class="card22-name">ChatGPT Plus 구독 중이다</div>
+      <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ OpenAI Codex</div>
+      <div class="card22-desc">추가 비용 없이 바로 사용. 데스크탑 앱과 웹 모두 지원.</div>
+    </div>
+    <div class="card22">
+      <div class="card22-icon">🚀</div>
+      <div class="card22-name">가장 강력한 AI 에이전트가 필요하다</div>
+      <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ Claude 데스크탑</div>
+      <div class="card22-desc">Chat·Cowork·Code 올인원. MCP 연동, Dispatch 자동화. Pro $20/월 이상 필요.</div>
+    </div>
+  </div>
+  <div class="ui-diff-row">
+    <div class="ui-diff-card main">
+      <div class="ui-diff-title">파일 트리를 보며 직접 다루고 싶다면</div>
+      <div class="ui-diff-text"><strong>VS Code / Cursor</strong>가 맞습니다. Explorer에서 폴더와 파일을 계속 펼쳐놓고, 내가 파일을 고르며 AI를 보조 도구처럼 붙입니다.</div>
+    </div>
+    <div class="ui-diff-card">
+      <div class="ui-diff-title">Claude 데스크탑 / Cowork</div>
+      <div class="ui-diff-text">파일 접근은 가능하지만 상시 Explorer형 UI는 아닙니다. 목표를 말하면 Claude가 필요한 파일을 찾아 처리하는 <strong>협업형 위임</strong>에 가깝습니다.</div>
+    </div>
+    <div class="ui-diff-card">
+      <div class="ui-diff-title">Codex 앱</div>
+      <div class="ui-diff-text">파일을 읽고 수정할 수 있지만 기본 화면은 파일 트리가 아니라 스레드와 변경사항 중심입니다. <strong>작업 단위 위임</strong>에 더 맞습니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 13 — 오늘 실습 ===== -->
+<div class="slide" id="s13">
+  <div class="step-label">실습</div>
+  <div class="slide-title">오늘 <span class="accent">직접</span> 설치해보기</div>
+  <div class="slide-subtitle">순서대로 따라하면 10분 안에 완료됩니다</div>
+  <div class="divider"></div>
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-circle">1</div>
+      <div class="step-content"><strong>VSCode 설치</strong> — code.visualstudio.com → 다운로드 → 설치</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">2</div>
+      <div class="step-content"><strong>GitHub Copilot 확장 설치</strong> — Extensions 탭 → "GitHub Copilot" 검색 → Install</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">3</div>
+      <div class="step-content"><strong>GitHub 계정 로그인</strong> — Sign in → 무료 플랜 자동 활성화</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">4</div>
+      <div class="step-content"><strong>Antigravity 설치</strong> — antigravity.google → 앱 다운로드 → 실행</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 슬라이드 14 — 엔딩 ===== -->
+<div class="slide centered" id="s14">
+  <div class="ending-main">툴보다 중요한 건<br><span class="accent">무엇을 만들지</span></div>
+  <div class="ending-sub">AI 코딩 툴은 계속 진화합니다.<br>오늘 하나 설치하고, 내일 하나 써보세요.</div>
+  <div class="title-tags">
+    <span class="tag fill">AInspire 4기</span>
+    <span class="tag">0주차 완료</span>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- 네비게이션 -->
+<div class="nav-zone left" onclick="go(-1)"><div class="nav-arrow">&#8592;</div></div>
+<div class="nav-zone right" onclick="go(1)"><div class="nav-arrow">&#8594;</div></div>
+<div class="progress-bar" id="progressBar"></div>
+<div class="page-indicator" id="pageIndicator">1 / 14</div>
+
+<script>
+(function(){
+  var TOTAL = 14;
+  var cur = 0;
+
+  function slide(i){ return document.getElementById('s'+(i+1)); }
+
+  function go(dir){
+    var next = cur + dir;
+    if(next < 0 || next >= TOTAL) return;
+
+    var from = slide(cur);
+    var to   = slide(next);
+
+    from.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    from.style.opacity    = '0';
+    from.style.transform  = dir > 0 ? 'translateX(-60px)' : 'translateX(60px)';
+
+    to.style.transition  = 'none';
+    to.style.opacity     = '0';
+    to.style.transform   = dir > 0 ? 'translateX(60px)' : 'translateX(-60px)';
+    to.style.pointerEvents = 'none';
+
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        to.style.transition  = 'opacity 0.35s ease, transform 0.35s ease';
+        to.style.opacity     = '1';
+        to.style.transform   = 'translateX(0)';
+        to.style.pointerEvents = 'all';
+      });
+    });
+
+    setTimeout(function(){
+      from.style.transition  = '';
+      from.style.opacity     = '';
+      from.style.transform   = '';
+      from.classList.remove('active');
+    }, 380);
+
+    to.classList.add('active');
+    cur = next;
+    updateUI();
+  }
+
+  function updateUI(){
+    document.getElementById('progressBar').style.width = ((cur+1)/TOTAL*100)+'%';
+    document.getElementById('pageIndicator').textContent = (cur+1)+' / '+TOTAL;
+    document.body.classList.toggle('interactive-slide', cur === 6 || cur === 8);
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+    if(e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+  });
+
+  function scale(){
+    var deck = document.getElementById('deck');
+    var s = Math.min(window.innerWidth/1280, window.innerHeight/720);
+    deck.style.transform = 'scale('+s+')';
+  }
+  window.addEventListener('resize', scale);
+  scale();
+  updateUI();
+
+  var claudeCopy = {
+    chat: {
+      title: 'Chat 모드',
+      prompt: 'Claude와 일반 대화를 시작합니다',
+      explain: '<b>Chat</b><br>글쓰기, 요약, 번역, 질의응답처럼 대화형 작업을 처리합니다. 프로젝트 단위 맥락 유지에 적합합니다.'
+    },
+    cowork: {
+      title: '할 일을 처리해 볼까요?',
+      prompt: '스킬을 보려면 /를 입력하세요',
+      explain: '<b>Cowork</b><br>내 PC에서 파일과 앱을 사용해 작업합니다. 문서 정리, 자료 조사, 파일 분석 같은 지식 업무를 맡기기 좋습니다.'
+    },
+    code: {
+      title: 'Code 모드',
+      prompt: '코드베이스에서 무엇을 바꿀까요?',
+      explain: '<b>Code</b><br>코드 읽기, 수정, 테스트, Git 작업을 수행하는 코딩 에이전트 모드입니다.'
+    },
+    newTask: {
+      title: '새 작업 시작',
+      prompt: '처리할 목표를 입력하세요',
+      explain: '<b>New task</b><br>새 Cowork 작업을 시작합니다. 목표를 입력하면 Claude가 로컬 파일과 앱을 사용해 결과물을 만듭니다.'
+    },
+    projects: {
+      title: 'Projects',
+      prompt: '프로젝트 맥락을 선택합니다',
+      explain: '<b>Projects</b><br>작업에 필요한 파일, 지식, 지침을 프로젝트 단위로 묶어 Claude가 참고하게 합니다.'
+    },
+    scheduled: {
+      title: 'Scheduled',
+      prompt: '반복 실행할 작업을 예약합니다',
+      explain: '<b>Scheduled</b><br>매일, 매주 같은 주기적 작업을 예약합니다. 반복 리서치나 점검 업무에 적합합니다.'
+    },
+    artifacts: {
+      title: 'Live artifacts',
+      prompt: '생성된 결과물을 확인합니다',
+      explain: '<b>Live artifacts</b><br>Claude가 만든 문서, 코드, 화면 결과물을 별도 산출물처럼 확인하고 다듬는 영역입니다.'
+    },
+    dispatch: {
+      title: 'Dispatch',
+      prompt: '폰에서 지시하고 PC에서 실행합니다',
+      explain: '<b>Dispatch</b><br>모바일에서 지시한 작업을 PC의 Claude가 이어서 처리하는 베타 기능입니다. PC가 켜져 있고 앱이 열려 있어야 합니다.'
+    },
+    customize: {
+      title: 'Customize',
+      prompt: '작업 방식과 연결 도구를 조정합니다',
+      explain: '<b>Customize</b><br>Claude가 사용할 도구, 플러그인, 개인화 설정을 조정하는 영역입니다.'
+    },
+    attach: {
+      title: '파일 추가',
+      prompt: '분석할 파일이나 이미지를 추가합니다',
+      explain: '<b>＋ 파일</b><br>작업에 필요한 파일, 이미지, 문서를 추가해 Claude가 실제 자료를 바탕으로 답하게 합니다.'
+    },
+    projectFiles: {
+      title: '프로젝트에서 작업',
+      prompt: 'Claude가 접근할 프로젝트를 고릅니다',
+      explain: '<b>프로젝트에서 작업</b><br>Cowork가 읽고 쓸 수 있는 로컬 프로젝트나 파일 범위를 지정합니다.'
+    },
+    question: {
+      title: '질문 모드',
+      prompt: '실행보다 확인이 필요한 질문을 합니다',
+      explain: '<b>질문</b><br>파일을 바로 바꾸기 전에 분석, 검토, 설명을 먼저 받을 때 쓰는 안전한 작업 방식입니다.'
+    },
+    legacy: {
+      title: 'Legacy Model',
+      prompt: '이전 모델을 선택합니다',
+      explain: '<b>Legacy Model</b><br>특정 워크플로에서 이전 Claude 모델이 필요할 때 선택합니다. 기본 작업은 최신 모델 사용이 일반적입니다.'
+    },
+    optimize: {
+      title: '이번 주 최적화하기',
+      prompt: '이번 주 일정과 파일을 정리해줘',
+      explain: '<b>제안 카드</b><br>자주 쓰는 작업을 바로 시작하는 카드입니다. 예시는 일정 최적화, 스크린샷 정리, 파일 분석 등입니다.'
+    },
+    cleanup: {
+      title: '스크린샷 정리하기',
+      prompt: '스크린샷 폴더를 분류하고 이름을 정리해줘',
+      explain: '<b>스크린샷 정리</b><br>로컬 파일을 읽고 분류하는 Cowork식 작업 예시입니다.'
+    },
+    insight: {
+      title: '파일에서 인사이트 찾기',
+      prompt: '자료 파일을 읽고 핵심 인사이트를 뽑아줘',
+      explain: '<b>파일 인사이트</b><br>문서나 데이터 파일을 바탕으로 요약, 패턴, 다음 액션을 추출하는 작업입니다.'
+    },
+    pluginsClaude: {
+      title: '플러그인 맞춤 설정',
+      prompt: '내 업무 도구와 연결해줘',
+      explain: '<b>플러그인</b><br>외부 서비스와 연결해 Claude의 작업 범위를 넓힙니다. MCP와 함께 설명하기 좋습니다.'
+    }
+  };
+
+  function setClaudeTopic(topic){
+    var data = claudeCopy[topic];
+    if(!data) return;
+    var title = document.getElementById('claudeTitle');
+    var prompt = document.getElementById('claudePromptText');
+    var explain = document.getElementById('claudeExplain');
+    if(title) title.textContent = data.title;
+    if(prompt) prompt.textContent = data.prompt;
+    if(explain) explain.innerHTML = data.explain;
+    document.querySelectorAll('.claude-nav-btn, .claude-tab').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-claude-topic') === topic);
+    });
+  }
+
+  var claudeDemo = document.getElementById('claudeDemo');
+  if(claudeDemo){
+    claudeDemo.addEventListener('click', function(e){
+      var target = e.target.closest('[data-claude-topic]');
+      if(!target) return;
+      e.preventDefault();
+      setClaudeTopic(target.getAttribute('data-claude-topic'));
+    });
+  }
+
+  var codexCopy = {
+    new: {
+      title: 'Claude Code와 Codex 비교 정리',
+      bubble: '새 작업을 시작하고 싶어',
+      response: '<strong>새 채팅</strong><br>작업 단위별로 독립된 스레드를 시작합니다. 각 스레드는 별도 컨텍스트로 관리되어 주제 전환이 깔끔합니다.',
+      explain: '<b>채팅 목록</b><br>왼쪽에는 프로젝트와 대화 기록이 쌓입니다. 강의 중에는 작업별로 새 채팅을 만드는 습관을 보여주기 좋습니다.'
+    },
+    fileMenu: {
+      title: '파일 메뉴',
+      bubble: '파일 메뉴에는 어떤 기능이 있어?',
+      response: '<strong>파일</strong><br>새 작업을 만들거나 현재 창, 프로젝트, 세션과 관련된 기본 작업에 접근하는 상단 메뉴입니다.',
+      explain: '<b>상단 메뉴</b><br>Codex 앱도 데스크톱 앱처럼 파일, 편집, 보기, 창, 도움말 메뉴를 갖습니다.'
+    },
+    editMenu: {
+      title: '편집 메뉴',
+      bubble: '편집 메뉴는 언제 써?',
+      response: '<strong>편집</strong><br>복사, 붙여넣기, 선택, 입력 관련 명령처럼 현재 대화 입력과 텍스트 작업에 연결되는 메뉴입니다.',
+      explain: '<b>텍스트 조작</b><br>프롬프트를 다듬거나 긴 답변을 복사할 때 쓰는 기본 메뉴입니다.'
+    },
+    viewMenu: {
+      title: '보기 메뉴',
+      bubble: '화면 구성을 바꾸고 싶어',
+      response: '<strong>보기</strong><br>패널 표시, 확대/축소, 화면 밀도처럼 앱의 보이는 방식을 조절하는 메뉴입니다.',
+      explain: '<b>화면 보기</b><br>강의 중에는 글자 크기와 패널 표시를 조절하는 곳으로 설명하면 됩니다.'
+    },
+    windowMenu: {
+      title: '창 메뉴',
+      bubble: '새 창이나 현재 창 상태를 관리하고 싶어',
+      response: '<strong>창</strong><br>현재 창, 새 창, 포커스 이동 등 데스크톱 앱 창 단위의 동작을 다루는 메뉴입니다.',
+      explain: '<b>창 관리</b><br>여러 작업을 나눠 볼 때 창 단위 조작이 필요할 수 있습니다.'
+    },
+    helpMenu: {
+      title: '도움말',
+      bubble: 'Codex 사용법을 확인하고 싶어',
+      response: '<strong>도움말</strong><br>문서, 업데이트, 문제 해결, 앱 정보처럼 지원 성격의 항목으로 들어가는 메뉴입니다.',
+      explain: '<b>도움말</b><br>처음 쓰는 사용자에게 공식 문서와 문제 해결 진입점으로 안내하기 좋습니다.'
+    },
+    editor: {
+      title: '외부 앱 열기',
+      bubble: '작업 결과를 어떤 앱에서 열 수 있어?',
+      response: '<strong>앱 선택 드롭다운</strong><br>VS Code, Cursor, Antigravity, GitHub Desktop, File Explorer, Terminal, Git Bash처럼 작업 결과를 열 앱을 고릅니다.',
+      explain: '<b>파일 편집 보기</b><br>상단의 VS Code 버튼을 누르면 편집기와 터미널 후보가 펼쳐집니다.'
+    },
+    info: {
+      title: '정보',
+      bubble: '이 스레드의 상태를 보고 싶어',
+      response: '<strong>정보</strong><br>현재 스레드, 작업 환경, 권한, 연결 상태처럼 이 대화의 메타 정보를 확인하는 버튼입니다.',
+      explain: '<b>정보 버튼</b><br>처음 보는 화면에서 현재 작업 상태를 빠르게 확인하는 진입점입니다.'
+    },
+    editView: {
+      title: '파일 편집 보기',
+      bubble: '수정된 파일을 바로 확인하고 싶어',
+      response: '<strong>파일 편집 보기</strong><br>Codex가 만든 변경 사항, diff, 파일 내용을 같은 앱 안에서 확인하는 보기입니다.',
+      explain: '<b>수정 확인</b><br>에이전트가 코드를 바꾼 뒤 리뷰 버튼과 함께 보여주는 핵심 영역입니다.'
+    },
+    splitView: {
+      title: '패널 보기',
+      bubble: '오른쪽 패널을 켜고 끄고 싶어',
+      response: '<strong>패널 보기</strong><br>환경, 출처, 변경 사항 같은 보조 패널을 열어 작업 맥락을 확인합니다.',
+      explain: '<b>우측 패널</b><br>캡처의 환경 패널처럼 작업 조건과 출처를 모아 보여줍니다.'
+    },
+    search: {
+      title: '검색',
+      bubble: '지난 대화에서 컨텍스트 모니터 내용을 찾아줘',
+      response: '<strong>검색</strong><br>이전 대화 제목과 내용을 찾아 다시 이어갈 수 있습니다. 오래된 실습 기록을 재사용할 때 유용합니다.',
+      explain: '<b>검색 패널</b><br>지난 수업, 실습, 오류 해결 기록을 다시 찾는 진입점입니다.'
+    },
+    plugins: {
+      title: '플러그인',
+      bubble: 'GitHub와 문서 도구를 연결하고 싶어',
+      response: '<strong>플러그인</strong><br>GitHub, 브라우저, 문서, 스프레드시트 같은 외부 도구를 연결해 Codex가 더 넓은 작업을 수행하게 합니다.',
+      explain: '<b>연동 확장</b><br>플러그인은 Codex가 사용할 수 있는 도구와 워크플로를 늘리는 영역입니다.'
+    },
+    automation: {
+      title: '자동화',
+      bubble: '매주 월요일에 코드 상태를 점검해줘',
+      response: '<strong>자동화</strong><br>반복 점검, 리마인더, 주기적 코드 리뷰처럼 나중에 다시 실행할 일을 예약합니다.',
+      explain: '<b>자동화</b><br>스레드에 붙는 후속 작업이나 별도 워크스페이스 작업을 예약할 수 있습니다.'
+    },
+    attach: {
+      title: '파일 첨부',
+      bubble: '이 HTML 파일을 보고 슬라이드를 추가해줘',
+      response: '<strong>+ 파일</strong><br>이미지, 문서, 코드 파일을 대화에 붙여 Codex가 실제 자료를 읽고 작업하게 합니다.',
+      explain: '<b>입력 자료</b><br>첨부된 파일은 다음 요청의 중요한 컨텍스트가 됩니다.'
+    },
+    permission: {
+      title: '권한 설정',
+      bubble: '필요하면 파일을 직접 수정해도 돼',
+      response: '<strong>전체 권한</strong><br>Codex가 파일 수정, 명령 실행, 네트워크 사용 등을 어느 범위까지 할 수 있는지 정합니다.',
+      explain: '<b>권한</b><br>수업에서는 읽기 전용, 작업공간 쓰기, 전체 권한의 차이를 꼭 구분해서 보여주는 것이 좋습니다.'
+    },
+    model: {
+      title: '모델 선택',
+      bubble: '복잡한 리팩터링이라 높은 추론으로 진행해줘',
+      response: '<strong>5.5 높음</strong><br>모델과 추론 강도를 고릅니다. 빠른 작업은 낮게, 설계·디버깅·긴 작업은 높게 잡는 식으로 조절합니다.',
+      explain: '<b>모델/추론</b><br>품질, 속도, 사용량의 균형을 조절하는 스위치입니다.'
+    },
+    local: {
+      title: '로컬 실행',
+      bubble: '내 PC의 현재 폴더에서 실행해줘',
+      response: '<strong>로컬</strong><br>현재 컴퓨터의 파일과 개발 환경을 사용해 작업합니다. 설치된 도구와 로컬 파일을 그대로 활용할 수 있습니다.',
+      explain: '<b>로컬 환경</b><br>현재 PC에서 직접 읽고 쓰는 모드입니다. 민감한 파일이 있는지 먼저 확인해야 합니다.'
+    },
+    changes: {
+      title: '변경 사항',
+      bubble: 'Codex가 수정한 파일을 보여줘',
+      response: '<strong>변경 사항</strong><br>Codex가 만든 diff와 수정 파일을 확인하고, 필요하면 리뷰하거나 되돌리는 영역입니다.',
+      explain: '<b>변경 사항</b><br>에이전트 결과물을 검수하는 핵심 패널입니다. 강의에서는 여기서 리뷰 흐름을 보여주면 좋습니다.'
+    },
+    branch: {
+      title: '브랜치',
+      bubble: '현재 브랜치가 어디야?',
+      response: '<strong>master</strong><br>Codex가 작업 중인 Git 브랜치를 보여줍니다. 여러 작업을 병렬로 할 때 반드시 확인해야 합니다.',
+      explain: '<b>브랜치</b><br>작업 위치를 잘못 잡으면 엉뚱한 곳에 변경이 생기므로 시작 전에 확인합니다.'
+    },
+    commit: {
+      title: '커밋',
+      bubble: '변경 내용을 커밋할 수 있어?',
+      response: '<strong>커밋</strong><br>작업 결과를 Git 커밋으로 묶는 흐름과 연결됩니다. 수업에서는 변경 확인 후 커밋 순서로 설명하면 됩니다.',
+      explain: '<b>Git 작업</b><br>변경 사항을 검수한 뒤 커밋으로 남기는 단계입니다.'
+    },
+    pr: {
+      title: '풀 리퀘스트',
+      bubble: 'PR 상태도 볼 수 있어?',
+      response: '<strong>풀 리퀘스트</strong><br>GitHub 연결 상태에 따라 PR 상태를 확인하거나 만들 수 있습니다. 연결이 없으면 상태를 불러오지 못할 수 있습니다.',
+      explain: '<b>PR 상태</b><br>원격 저장소 연결 여부에 따라 표시가 달라지는 항목입니다.'
+    },
+    env: {
+      title: '환경',
+      bubble: '지금 어떤 브랜치와 작업 상태인지 알려줘',
+      response: '<strong>환경</strong><br>작업 위치, 브랜치, 커밋, PR 상태처럼 에이전트가 실행되는 조건을 확인합니다.',
+      explain: '<b>환경 패널</b><br>Codex가 실제로 어느 폴더와 브랜치에서 작업하는지 확인하는 안전장치입니다.'
+    },
+    web: {
+      title: '웹 검색',
+      bubble: '최신 정보를 웹에서 찾아줘',
+      response: '<strong>웹 검색</strong><br>현재 대화에 웹 검색 출처가 붙었는지 확인하는 영역입니다. 최신 문서나 공식 출처를 확인할 때 사용합니다.',
+      explain: '<b>출처</b><br>웹 검색을 사용한 답변은 여기서 출처 맥락을 함께 보여줄 수 있습니다.'
+    },
+    send: {
+      title: '전송',
+      bubble: '0주차 교안에 Codex 앱 UI를 인터랙티브로 넣어줘',
+      response: '<strong>전송</strong><br>자연어 요청을 보내면 Codex가 필요한 파일을 읽고, 계획하고, 수정하고, 검증하는 루프를 시작합니다.',
+      explain: '<b>요청 시작</b><br>좋은 요청은 목표, 대상 파일, 원하는 출력 형태를 함께 적는 것이 핵심입니다.'
+    }
+  };
+
+  function setCodexTopic(topic){
+    var data = codexCopy[topic];
+    if(!data) return;
+    var title = document.getElementById('codexMiniTitle');
+    var appTitle = document.querySelector('.codex-app-title');
+    var bubble = document.getElementById('codexUserBubble');
+    var response = document.getElementById('codexResponse');
+    var explain = document.getElementById('codexExplain');
+    if(title) title.textContent = data.title;
+    if(appTitle) appTitle.textContent = data.title;
+    if(bubble) bubble.textContent = data.bubble;
+    if(response) response.innerHTML = data.response;
+    if(explain) explain.innerHTML = data.explain;
+    document.querySelectorAll('.codex-nav-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-codex-topic') === topic);
+    });
+    document.querySelectorAll('.codex-env-item').forEach(function(item){
+      item.classList.toggle('active', item.getAttribute('data-codex-topic') === topic);
+    });
+  }
+
+  var codexDemo = document.getElementById('codexDemo');
+  if(codexDemo){
+    codexDemo.addEventListener('click', function(e){
+      var appSwitch = e.target.closest('#codexAppSwitch');
+      if(appSwitch){
+        appSwitch.classList.toggle('open');
+      }
+
+      var editor = e.target.closest('[data-codex-editor]');
+      if(editor){
+        var label = document.querySelector('#codexAppSwitch span:nth-child(2)');
+        if(label) label.textContent = editor.getAttribute('data-codex-editor');
+        var switcher = document.getElementById('codexAppSwitch');
+        if(switcher) switcher.classList.remove('open');
+        setCodexTopic('editor');
+        e.preventDefault();
+        return;
+      }
+
+      var target = e.target.closest('[data-codex-topic]');
+      if(!target) return;
+      e.preventDefault();
+      setCodexTopic(target.getAttribute('data-codex-topic'));
+    });
+  }
+
+  /* 이미지는 각 슬라이드에 img 태그로 직접 삽입됨 — lazy-swap 불필요 */
+})();
+</script>
+<script src="../../../debug-annotate.js"></script>
+</body>
+</html>

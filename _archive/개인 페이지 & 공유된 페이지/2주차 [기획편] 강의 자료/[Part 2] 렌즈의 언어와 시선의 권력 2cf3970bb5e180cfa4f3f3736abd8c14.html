@@ -1,0 +1,788 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[Part 2] 렌즈의 언어와 시선의 권력</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2cf3970b-b5e1-80cf-a4f3-f3736abd8c14" class="page sans"><header><h1 class="page-title" dir="auto">[Part 2] 렌즈의 언어와 시선의 권력</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="2cf3970b-b5e1-80ae-8d6f-d15d5c5863bc" class="">📝 Course Overview</h1></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-800b-9a8b-ef10e38ce5c8" class="bulleted-list"><li style="list-style-type:disc"><strong>주제:</strong> 렌즈(Lens)는 단순한 유리가 아니라, 세상을 해석하는 &#x27;관점(Perspective)&#x27;이다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8003-a960-eb6f5fc34457" class="bulleted-list"><li style="list-style-type:disc"><strong>목표:</strong> 광각(Wide)과 망원(Telephoto), 심도(Depth)를 통해 피사체와의 <strong>심리적 거리</strong>를 조절한다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8010-885f-f3e8fcbd0527" class="bulleted-list"><li style="list-style-type:disc"><strong>필독 철학:</strong> &quot;카메라는 인간의 눈보다 더 진실하다.&quot; — <em>지가 베르토프 (키노 아이)</em></li></ul></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-807e-9b52-da395d119e2f"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-809c-b331-cf7759618e6b" class="">0. Opening: 렌즈는 거짓말을 한다</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-800c-b2c2-f78f8ef1a253" class="">&#x27;완전 영화&#x27;의 신화 (앙드레 바쟁)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8087-8d01-cb5322151eb0" class="">영화 평론가 앙드레 바쟁은 &lt;영화란 무엇인가&gt;에서 인간은 현실을 있는 그대로 보존하려는 욕망(미라 콤플렉스)이 있다고 했습니다. 하지만 <strong>렌즈는 현실을 있는 그대로 담지 않습니다.</strong> 렌즈는 공간을 <strong>왜곡</strong>하고, <strong>압축</strong>하고, <strong>선택적</strong>으로 보여줍니다.</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8031-8cee-d5225efa0616" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image.png"><img style="width:599.9777221679688px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-806e-8e75-f4c96e3bc860" class="">AI와 &#x27;기계의 눈&#x27; (Machine Gaze)</h3></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80cf-b67e-f57214fcd1a5" class="">AI는 물리적인 렌즈가 없습니다. 하지만 우리는 프롬프트를 통해 가상의 렌즈를 끼워야 합니다. 어떤 렌즈를 선택하느냐에 따라 관객은 피사체를 &#x27;훔쳐보는 사람&#x27;이 되기도 하고, &#x27;압도당하는 피해자&#x27;가 되기도 합니다. 오늘 우리는 이 &#x27;시선의 권력&#x27;을 배웁니다.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8078-90f0-e0231f960564" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8036-86d7-c68dcf4b1ea1" class="">일반적인 인물의 샷 사이즈</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-808f-ab33-de0166b62893" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%201.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80dd-98b1-da7859473198" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8063-9272-c229291530d9" class="">수강생 ‘유찬열’님이 만드신 미드저니 프롬프트 텍스트 ⇒ 비주얼 사전</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-800a-9ff4-f979970aa95a" class=""><a href="https://docs.google.com/spreadsheets/d/1kVvSrM5Vdg0jX_-F_qVDaHQfrXD6-DKZNDCaWK8c64M/edit?gid=1565156831#gid=1565156831">https://docs.google.com/spreadsheets/d/1kVvSrM5Vdg0jX_-F_qVDaHQfrXD6-DKZNDCaWK8c64M/edit?gid=1565156831#gid=1565156831</a></p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b9-86ac-d903b1cc4ac7" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-806c-9913-ee52d1cdd44d"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8089-b596-dcd2374bb85c" class="">1. 거리의 심리학: 광각 vs 망원</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8006-afbc-f72574ca8f0f" class="">1-1. 광각 렌즈 (Wide Angle): 왜곡과 소외</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80fb-9c8f-c85ca68aeefd" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 광각(16mm ~ 24mm)은 시야를 넓혀주지만, 가장자리를 왜곡시킵니다. 인물과 배경의 거리가 멀어 보이고, 코앞까지 다가온 듯한 <strong>부담감</strong>을 줍니다.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-803b-9216-e11011395c6d" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%202.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%202.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-807d-8be4-f5fbcca4d607" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-__73315.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-__73315.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8025-b3c4-eb914c499522" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80da-a094-f4bd337d0d98" class="bulleted-list"><li style="list-style-type:disc"><strong>왕가위와 &#x27;타락천사&#x27;:</strong> 왕가위 감독은 인물을 광각으로 아주 가까이 찍어, 물리적 거리는 가깝지만 심리적으로는 <strong>소외된 현대인의 고독</strong>을 표현했습니니다.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-800d-818a-e58962612840" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%203.png"><img style="width:624px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%203.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-806d-a8fc-df59dc52b766" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%204.png"><img style="width:607.9948120117188px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%204.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d1-9f76-d90b0613c660" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8025-af56-c1597fa8af35" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 기획 포인트:</strong> 캐릭터의 &#x27;외로움&#x27;이나 &#x27;기괴함&#x27;을 표현하고 싶다면 광각을 쓰십시오.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-807f-b34e-db08d2c1298f" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-803d-bfd2-edbdf22c9cd9" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%205.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%205.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8098-8297-d5b95877f65e" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%206.png"><img style="width:709.982177734375px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%206.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80e9-88c8-e114ee5d538e" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%207.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%207.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80df-94b8-e4bd31dc5161" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%208.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%208.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8023-8ad2-d9c5677bb59b" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%209.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%209.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-805a-8aea-e756827313ee" class="">🖼️ 시각 자료 예시: 광각의 심리</h3></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-80c4-ae4a-fbaadc2bffba" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8066-ab6e-dfcedfb6b8f4"><td id="k^&gt;k" class=""><strong>구분</strong></td><td id="dk[v" class="" style="width:588px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8034-a811-f2229098de2b"><td id="k^&gt;k" class=""><strong>Standard</strong><br/>(표준 화각)</td><td id="dk[v" class="" style="width:588px"><strong>설명:</strong> 50mm 정도의 평범한 화각. 편안하지만 감정적 임팩트가 없음.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8017-84b8-decfb9bb8421"><td id="k^&gt;k" class=""><strong>Wide Angle</strong><br/>(광각의 왜곡)</td><td id="dk[v" class="" style="width:588px"><strong>설명:</strong> 좁은 방, 카메라가 인물 코앞에 있어 얼굴이 약간 왜곡됨. 뒤로 보이는 배경은 아주 깊고 멀게 느껴져, 세상과 단절된 느낌을 줌.<br/><strong>Prompt:</strong> <code>Shot on 16mm wide angle lens, extreme close up of a lonely man&#x27;s face, fisheye distortion, small cramped room background, feeling of claustrophobia and isolation, wong kar-wai style, greenish moody lighting --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8035-b154-cd99a7150951" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__95482.jpeg"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__95482.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8025-af52-d9c0d074fa30" class="">16mm, <code>fisheye distortion</code></p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ca-94d1-ca3fc880bdb1" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8033-b3f7-c1dd9b991896" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__shot-on-50mm-angle-lens-a-caucasian-man-in-his-50s__95483.jpeg"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__shot-on-50mm-angle-lens-a-caucasian-man-in-his-50s__95483.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8088-aa63-f5b7b3ddd4f1" class="">50mm</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8007-ae35-ed999be931d5" class="">1-2. 망원 렌즈 (Telephoto): 압축과 관음</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8062-a02a-f4554ee27a96" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 망원(85mm ~ 200mm)은 공간을 압축합니다. 멀리 있는 배경이 인물 바로 뒤에 붙어있는 것처럼 보입니다. 또한, 멀리서 몰래 지켜보는 듯한 **&#x27;관음증적 시선(Voyeurism)&#x27;**을 만듭니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8071-b734-fa7292098329" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 기획 포인트:</strong> 인물을 배경으로부터 분리하여 **&#x27;주인공으로 영웅화&#x27;**하거나, 누군가에게 **&#x27;감시당하는 느낌&#x27;**을 줄 때 사용합니다.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80a0-9d87-de5662f66b70" class="">🖼️ 시각 자료 예시: 망원의 압축</h3></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-80c9-ad27-fe8b7a4a6527" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80f3-9ba7-dba050990258"><td id="LtGD" class=""><strong>구분</strong></td><td id="`abh" class="" style="width:590px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80fd-8e64-f7c644c97356"><td id="LtGD" class=""><strong>Telephoto</strong><br/>(압축 효과)</td><td id="`abh" class="" style="width:590px"><strong>설명:</strong> 수많은 인파 속에 있지만, 배경이 흐릿하게 압축되어 주인공만 선명하게 떠오름. 군중 속의 고독.<br/><strong>Prompt:</strong> <code>Shot on 200mm telephoto lens, compression effect, a woman standing still in a busy crowd, background is extremely blurred (bokeh) and looks close to her, cinematic isolation, spy film aesthetic, sharp focus on eyes --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-8013-bf14-c4cc4d22e1c8"/></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8015-93f0-f8a30712cb28" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__18185.jpeg"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__18185.jpeg"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-802c-9fe8-ebed1571f0ec" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__shot-on-200mm-telephoto-lens-compression-effect-a-__18186.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__shot-on-200mm-telephoto-lens-compression-effect-a-__18186.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8051-b9ad-d7c82bdfe997" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80e1-99c1-f20e3bc75281" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2010.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2010.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-806c-84e4-df6e85f695a9" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2011.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2011.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80d8-b532-c36e9d7225f6" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2012.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2012.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80ca-b849-de6aab3230e8" class="">2. 시선의 권력: 앵글 (Angle)</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8032-ace5-cd673a84b94c" class="">2-1. 남성적 시선 vs 카메라의 시선 (로라 멀비)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80cc-b412-ce3d71c96aad" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 로라 멀비는 &lt;시각적 쾌락과 내러티브 영화&gt;에서 카메라가 대상을 훑어보는 방식에 <strong>권력</strong>이 작용한다고 했습니다(Male Gaze).</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8068-96dd-fbe6f4872b0c" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 카메라 높이는 곧 &#x27;누가 지배하는가&#x27;를 결정합니다.<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8067-befb-dbf543745893" class="bulleted-list"><li style="list-style-type:circle"><strong>High Angle (부감):</strong> 관객이 신(God)처럼 내려다봄. 피사체는 약하고 처량해 보임.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80d3-bfb0-d26ef6722b8d" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2013.png"><img style="width:681.982177734375px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2013.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8002-957e-c7d47a88977c" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2014.png"><img style="width:681.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2014.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8016-b20b-f993d591c825" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8085-af5a-ef2f44174f10" class="bulleted-list"><li style="list-style-type:circle"><strong>Low Angle (앙각):</strong> 피사체가 거인처럼 보임. 관객은 위압감을 느낌. <strong>권위, 공포.</strong></li></ul></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-800f-8bac-f4464950d5ef" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2015.png"><img style="width:681.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2015.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-806f-96c2-c56b89fd718e" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2016.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2016.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-805b-b0c1-eecca3971ebe" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8007-b7fa-deef340f4208" class="">2-2. 더치 앵글 (Dutch Angle): 세상의 기울어짐</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80f3-a36b-fe0b9504894d" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-806f-960e-dbe69b6ae700" class="bulleted-list"><li style="list-style-type:disc"><strong>이론:</strong> 독일 표현주의 영화에서 유래한 것으로, 카메라를 비스듬히 기울여 찍는 기법입니다. 심리적 불안, 정신 착란, <strong>비정상적인 상황</strong>을 암시합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8098-ad66-c40a06562624" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 기획 포인트:</strong> AI 영상이 너무 &#x27;안정적&#x27;이라 지루하다면, 앵글을 비틀어(Tilt) <strong>긴장감</strong>을 주십시오.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8071-a883-f573b6586a6d" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2017.png"><img style="width:709.982177734375px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2017.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8061-84f8-fcc213864cd0" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2018.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2018.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8000-a3df-e5dbf8cf6da1" class="">🖼️ 시각 자료 예시: 불안의 기울기</h3></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-80e4-8f15-c460035a1935" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-805b-b4bd-cf5592aac133"><td id="uxNJ" class=""><strong>구분</strong></td><td id="^\XH" class="" style="width:589.0000152587891px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-809d-bba6-f4bf3625428f"><td id="uxNJ" class=""><strong>Straight</strong><br/>(수평 정샷)</td><td id="^\XH" class="" style="width:589.0000152587891px"><strong>설명:</strong> 똑바로 서 있는 악당. 무섭긴 하지만 심리적으로 불안하지는 않음.</td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8076-82be-cf16fc89bd23"><td id="uxNJ" class=""><strong>Dutch Angle</strong><br/>(기울어진 샷)</td><td id="^\XH" class="" style="width:589.0000152587891px"><strong>설명:</strong> 화면이 30도 정도 기울어져 있음. 악당이 웃고 있는데, 세상이 뒤틀린 듯한 느낌 때문에 멀미가 날 것 같은 불안감이 조성됨.<br/><strong>Prompt:</strong> <code>Dutch angle shot, camera tilted 45 degrees, chaotic composition, a mad villain laughing, disorienting atmosphere, psychological horror, dynamic imbalance, noir lighting --ar 16:9</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80bb-a582-dd439abb2c13" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__73320.jpeg"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__73320.jpeg"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8077-9de5-daf6d4292f8c" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__utch-angle-shot-camera-tilted-45-degrees-chaotic-c__73318.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__utch-angle-shot-camera-tilted-45-degrees-chaotic-c__73318.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8057-9e74-f6c47b9ab607" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__73319.jpeg"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__73319.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-809e-a1b6-f8acb9f22a69" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8085-b5a2-f0c4d55fda05" class="">3. 심도 (Depth of Field): 무엇을 보게 할 것인가</h2></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80a8-8886-e61a51d84c15" class="">3-1. 얕은 심도 (Shallow Depth): 선택과 집중</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8029-9d63-cf324a14c284" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 초점이 맞은 부분만 선명하고 나머지는 흐리는(Bokeh) 기법.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80a4-a4db-d4e21b17d019" class="bulleted-list"><li style="list-style-type:disc"><strong>인문학적 의미:</strong> 인간의 주의력은 한계가 있습니다. 감독은 &quot;이것만 봐!&quot;라고 관객의 눈을 강제로 고정시킵니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8055-8115-e86bc115cc9f" class="bulleted-list"><li style="list-style-type:disc"><strong>AI Tip:</strong> <code>f/1.8</code>, <code>bokeh</code> 활용. 감성적이고 몽환적인 연출.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-802d-9924-f18a3da2182b" class="">“얕은 심도”가 <strong>확실히 나오게</strong> 하는 한 줄 추가 팁(프롬프트에 그대로 넣기)</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8082-9b5a-c054d57cef7f" class="bulleted-list"><li style="list-style-type:disc"><strong>“focus falloff is very fast, only a thin plane is sharp”</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-802e-9a3b-e3e1566b53a1" class="bulleted-list"><li style="list-style-type:disc"><strong>“tack-sharp focal point, everything else smoothly defocused”</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80b3-a51e-d6ca35cc0058" class="bulleted-list"><li style="list-style-type:disc"><strong>“creamy bokeh, circular bokeh balls, soft background melt”</strong></li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d1-b308-d87cb32ae67f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-804c-9078-e1c96d8bd5c1" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80a0-a3a6-e94ff348d96f" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-85mm-f18-shallow-depth-of-field-foreground-bokeh-__18192.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-85mm-f18-shallow-depth-of-field-foreground-bokeh-__18192.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801b-9b49-f64e9505f7c0" class="">전경에 흐릿하게 흔들리는 꽃잎이 크게 걸려 있고(전경은 완전히 아웃포커스), 그 너머 중간 거리의 인물 얼굴 한 지점(한쪽 눈 또는 속눈썹)에만 초점이 맞는다. 배경의 나무와 하늘은 부드럽게 번져 파스텔 톤으로 흐르며, 햇빛이 잎사귀 사이로 들어와 작은 빛 알갱이(보케)를 만든다. 인물은 바람을 느끼며 눈을 감았다 뜨고, 그 순간 선명한 초점면은 마치 기억의 조각처럼 떠오른다.<br/>촬영: 85mm, f/1.8, shallow depth of field, foreground bokeh veil, background creamy bokeh, soft highlight roll-off, cinematic film grain, dreamy and emotional mood, natural light, gentle diffusion.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80f6-82c3-f2febcf0b571" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8002-8c1a-d4ab79bf8570" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-macro-detail-50mm-or-100mm-macro-look-f18-ultra-s__18190.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-macro-detail-50mm-or-100mm-macro-look-f18-ultra-s__18190.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8028-bc1b-e9869dfcb439" class="">촬영: macro detail, 50mm or 100mm macro look, f/1.8, ultra shallow depth, micro-contrast on focal engraving, creamy bokeh balls, cinematic soft highlights, warm tungsten practical light + cool neon spill, filmic grain, dreamy mood, gentle vignetting.<br/>포인트: “초점면 하나만 살아있고 나머지는 물처럼 흐른다”를 가장 직관적으로 보여줌.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ea-87a9-c981875a5204" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-806c-b58a-da98ca9d8cbc" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8086-9dbc-cf2bc131bd4e" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-35mm-or-50mm-cinematic-lens-look-f18-shallow-dept__18191.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-35mm-or-50mm-cinematic-lens-look-f18-shallow-dept__18191.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8097-bd4f-c60d7f254e7d" class="">촬영: 35mm or 50mm cinematic lens look, f/1.8, shallow depth of field, strong bokeh from neon signs and car headlights, wet street reflections, soft bloom, subtle anamorphic-like streak hints (very subtle), film grain, low-light cinematic grade, dreamy noir mood.<br/>연출: focus locked on one tiny detail, everything else melts into luminous bokeh.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80c6-8439-c25fe88ea492" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80e4-bfcd-f9ca005dc404" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-35mm-or-50mm-cinematic-lens-look-f18-shallow-dept__18193.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-35mm-or-50mm-cinematic-lens-look-f18-shallow-dept__18193.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b0-b6d6-ca24b07edfc9" class="">비가 막 그친 밤, 젖은 아스팔트 위로 네온이 번져 반사된다. 프레임 중앙을 지나가는 한 사람의 손끝(혹은 우산 끝)에만 초점이 정확히 맞아 물방울이 맺힌 표면이 선명하다. 주변의 간판, 헤드라이트, 신호등은 모두 커다란 빛의 구슬(보케)로 변해 몽환적인 바다처럼 흔들린다. 인물은 천천히 걸으며, 숨을 내쉴 때마다 미세한 입김이 빛 속에서 잠깐 나타났다가 사라진다.<br/>촬영: 35mm or 50mm cinematic lens look, f/1.8, shallow depth of field, strong bokeh from neon signs and car headlights, wet street reflections, soft bloom, subtle anamorphic-like streak hints (very subtle), film grain, low-light cinematic grade, dreamy noir mood.<br/>연출: focus locked on one tiny detail, everything else melts into luminous bokeh.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e9-9878-c3db622c56e5" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-80e3-a9c4-d01ce5dbcfb0" class="">3-2. 깊은 심도 (Deep Focus): 리얼리즘의 민주주의 (앙드레 바쟁)</h3></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80e1-beaf-ee0fdabc4850" class="bulleted-list"><li style="list-style-type:disc"><strong>개념:</strong> 화면의 맨 앞부터 맨 뒤까지 모든 곳에 초점이 맞는 기법 (예: 오손 웰즈의 &lt;시민 케인&gt;).</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8094-918e-f8c5ae606f47" class="bulleted-list"><li style="list-style-type:disc"><strong>인문학적 의미:</strong> 바쟁은 딥 포커스가 관객에게 &#x27;볼 권리(자유)&#x27;를 준다고 했습니다. 관객은 화면 구석구석을 탐색하며 스스로 의미를 찾습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8015-80d2-d3f1e30c371b" class="bulleted-list"><li style="list-style-type:disc"><strong>AI Tip:</strong> <code>f/22</code>, <code>deep focus</code> 활용. 사실적이고 다큐멘터리 같은 연출.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-805d-a449-df04724ce3ee" class="">“딥 포커스 확정” 키워드 세트 (프롬프트에 그대로 붙여 넣기)</p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80c9-bffb-cb2a95001d5d" class="bulleted-list"><li style="list-style-type:disc"><strong>deep focus, everything in focus from foreground to background</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8012-91cd-daf0ce358284" class="bulleted-list"><li style="list-style-type:disc"><strong>foreground-to-background sharpness, no bokeh, no background blur</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-801b-b8d1-fec5ba9080ca" class="bulleted-list"><li style="list-style-type:disc"><strong>f/11–f/16, wide lens 18–28mm</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80b5-be4d-f4dcf06a70ae" class="bulleted-list"><li style="list-style-type:disc"><strong>high resolving power, high clarity, uniform sharpness</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-800e-962e-d7172bd4c7a2" class="bulleted-list"><li style="list-style-type:disc"><strong>layered composition (foreground/midground/background all readable)</strong></li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d3-b16d-e720afbd4bff" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-805f-8f29-c1bc6197323b" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-1824mm-deep-focus-f11-high-clarity-distant-detail__73322.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-1824mm-deep-focus-f11-high-clarity-distant-detail__73322.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-802a-8de5-cfe3db8d6231" class="">넓게 펼쳐진 들판. 전경의 풀잎 끝에 맺힌 이슬이 반짝이며 디테일이 선명하고, 중경의 인물이 천천히 걸어가는 발자국과 옷의 질감이 또렷하다. 원경의 산 능선, 구름의 레이어, 멀리 있는 나무 한 그루의 실루엣까지 흐림 없이 선명하게 보인다. 바람의 흐름이 느껴지도록 풀의 방향성과 하늘의 움직임도 디테일을 유지하며, 프레임 전체가 “숨 쉬는” 시네마틱 리얼리즘으로 표현된다.<br/>촬영: 18–24mm, deep focus, f/11, high clarity, distant detail retention, natural light, cinematic grade, subtle grain, sharp from foreground dew to far mountains.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b3-afd1-fbdc868b4500" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8012-a219-e9ca4f5f21f5" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-24mm-deep-focus-f11f16-high-contrast-noir-lightin__73323.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-24mm-deep-focus-f11f16-high-contrast-noir-lightin__73323.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8042-968c-c7c537723f2d" class="">클래식한 흑백 혹은 저채도의 톤. 전경에는 한 인물이 카메라 바로 앞에 서서 긴장된 표정으로 숨을 고르고 있다. 동시에 원경에서는 문틈 너머 다른 인물이 등장하거나, 창가에서 누군가가 대화를 나누는 장면이 진행된다. 전경 인물의 피부 결, 눈빛, 옷의 주름과 원경의 인물 실루엣, 배경 공간의 구조가 모두 동일한 선명도로 보이며, 관객이 한 장면 안에서 두 사건을 동시에 “읽게” 만든다.<br/>촬영: 24mm, deep focus, f/11–f/16, high contrast noir lighting, crisp focus across all planes, sharp architectural lines, classic cinematic composition, controlled shadows, subtle grain.<br/>연출: story happening in foreground and background simultaneously, no focus separation.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8065-83bf-dbfecb416536" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-805b-b292-cc6465fd5baf" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-2124mm-deep-focus-f16-strong-practical-lighting-w__73324.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-2124mm-deep-focus-f16-strong-practical-lighting-w__73324.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8092-8509-e96f18132825" class="">좁은 주방에서 시작되는 장면. 전경에 커다랗게 놓인 유리컵의 물방울과 유리 표면의 굴절이 선명하고, 중경의 인물이 요리를 하는 손동작과 칼날의 반사까지 또렷하다. 원경의 창가 너머로 보이는 거리, 나무의 잎사귀, 멀리 지나가는 차량의 디테일까지 선명하게 유지된다. 작은 공간임에도 깊이감이 강하게 느껴지고, 화면 전체가 균일하게 초점을 공유한다.<br/>촬영: 21–24mm, deep focus, f/16, strong practical lighting + window daylight, high clarity, uniform sharpness, cinematic realism, no bokeh, no soft blur.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-807b-8b7e-cdf11f0cea69" class="">
+</p></div><div style="display:contents" dir="ltr"><table id="2cf3970b-b5e1-8036-a95c-f23aa2b2155c" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-8041-86f2-ee84e3989e11"><td id="xL]j" class=""><strong>구분</strong></td><td id="u^]}" class="" style="width:583.0000152587891px"><strong>내용 및 프롬프트 제안</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-809c-a16c-f75d9fe27ad8"><td id="xL]j" class=""><strong>Shallow Depth</strong><br/>(감정 집중)</td><td id="u^]}" class="" style="width:583.0000152587891px"><strong>설명:</strong> 세상은 지워지고 오직 슬픔이라는 감정만 남음.<br/><strong>Prompt:</strong> <code>Macro shot, f/1.8, focus on a tear dropping from an eye, extreme bokeh background, emotional intimacy.</code></td></tr></div><div style="display:contents" dir="ltr"><tr id="2cf3970b-b5e1-80d5-b1ee-e471c1a049fc"><td id="xL]j" class=""><strong>Deep Focus</strong><br/>(사실주의)</td><td id="u^]}" class="" style="width:583.0000152587891px"><strong>설명:</strong> 시장의 생동감, 다양한 군상들의 이야기가 동시에 펼쳐짐.<br/><strong>Prompt:</strong> <code>Wide shot, f/22, deep focus, a bustling market scene, every person and object is sharp and clear, hyper-realism, documentary style.</code></td></tr></div></tbody></table></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8050-ac6f-c8ae05977dac" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__macro-shot-f18-focus-on-a-tear-dropping-from-an-ey__18187.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__macro-shot-f18-focus-on-a-tear-dropping-from-an-ey__18187.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8011-a3ba-c13240dd28f1" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__wide-shot-f22-deep-focus-a-bustling-market-scene-e__18188.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__wide-shot-f22-deep-focus-a-bustling-market-scene-e__18188.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-803d-914c-cff82ba61079" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-80a8-92be-e2f279f9b342" class="">4. 관계의 거리와 화각 (Focal Length &amp; Perspective)</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801b-bddc-ec3356ff785f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8080-a7cf-c60afee17dd3" class=""><strong>4-1. 충분히 다가가지 않았다 (망원 렌즈와 침투)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80cd-855d-df21297173b5" class="bulleted-list"><li style="list-style-type:disc"><strong>이론 (로버트 카파):</strong> &quot;당신의 사진이 만족스럽지 않다면, <strong>충분히 다가가지 않은 것</strong>이다.&quot; 망원 렌즈(85mm~200mm)는 물리적 거리를 삭제하고 피사체의 내면으로 &#x27;침투&#x27;하는 도구입니다. 배경을 압축하여(Compression) 피사체와 관객 사이의 공기를 제거합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-807a-a42e-cab0f784ad4c" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 단순히 얼굴을 크게(Close-up) 만드는 것이 아닙니다. 인물의 &#x27;호흡&#x27;과 &#x27;미세한 떨림&#x27;이 느껴질 정도로 심리적 거리를 좁혀야 합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b5-9709-f7defbdc4635" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8086-9c48-c2e7df282569" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-__18199.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-__18199.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-80c2-a2c6-f6b4c64f0bd5" class="">Bad Example (의미 없는 줌인)<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-800c-a181-e68ad10a0c0c" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 인물 얼굴이 크지만, 감정이 없는 증명사진.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8026-aebb-cc985ad875d5" class=""><strong>Good Example (심리적 침투_망원)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8075-b1f1-e581a493e4da" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 인물의 눈동자가 화면을 장악함. 배경이 압축되어 사라지고, 관객은 인물의 거친 숨소리까지 들릴 듯한 <strong>부담감과 친밀감</strong>을 동시에 느낌.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8058-a7bf-d54bd6f99d5a" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt:</strong> <code>Extreme close-up of an eye, telephoto lens 85mm, intense intimacy, shallow depth of field, detailed iris texture, emotional connection, psychological penetration, soft lighting --ar 16:9</code></li></ul></div></blockquote></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-802f-8479-ea8b4a6b2369" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__18195.jpeg"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__18195.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80fa-a846-e2695786453f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8073-94ff-c888f34c2273" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e3-9584-df8b6e3a174c" class=""><strong>4-2. 고독의 공간 (광각 렌즈와 왜곡)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8064-82ed-c9a69cb2a786" class="bulleted-list"><li style="list-style-type:disc"><strong>이론 (공간의 방관자):</strong> 광각 렌즈(16mm~35mm)는 인물보다 &#x27;세계(World)&#x27;를 더 많이 보여줍니다. 넓은 세상 속에 던져진 개인의 <strong>왜소함, 고독, 소외</strong>를 표현할 때 강력합니다. 렌즈 가장자리의 왜곡(Distortion)은 불안한 심리를 대변합니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-804c-9c47-deb9b82868b0" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 인물을 영웅처럼 보이게 하려면 <strong>로우 앵글 광각</strong>을, 세상에 홀로 남겨진 느낌을 주려면 <strong>하이 앵글 광각</strong>을 사용하여 공간이 인물을 압도하게 만드십시오.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8046-9e25-c45be70e5545" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80b2-9cac-ea49dca16a3f" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2019.png"><img style="width:709.982177734375px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/image%2019.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-80bc-aa0d-d900c134cc6a" class="">Bad Example (단순한 풍경)<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8043-ab65-d42806f24302" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 사람이 서 있음. 인물의 정서가 배제된 단순 풍경화.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8054-9686-fa94689d6d0a" class=""><strong>Good Example (공간의 압도_광각)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8073-934f-e1a60e925de4" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 텅 빈 거대한 지하철역 한가운데 홀로 서 있는 직장인. 광각의 왜곡으로 공간은 더 차갑고 거대해 보이며, 인물은 <strong>먼지처럼 작고 외롭게</strong> 느껴짐.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80df-afc3-ef40ad1fa2c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt:</strong> <code>Ultra wide shot, 16mm lens distortion, a tiny lonely office worker standing in the center of an empty massive futuristic subway station, cold symmetry, sense of isolation, vast space vs small human --ar 16:9</code></li></ul></div></blockquote></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-801b-9685-dd3587140355" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__ultra-wide-shot-16mm-lens-distortion-a-tiny-lonely__18196.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__ultra-wide-shot-16mm-lens-distortion-a-tiny-lonely__18196.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-809b-b081-de464e2c7ea1" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-801c-97e4-e10ff8ff6fa7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-807f-a2b3-e76680558f86" class=""><strong>4-3. 정직한 목격자 (표준 렌즈와 객관성) [New]</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80a6-8622-f3d35d9ccaae" class="bulleted-list"><li style="list-style-type:disc"><strong>이론 (오즈 야스지로):</strong> 표준 렌즈(50mm)는 인간의 눈과 가장 유사한 화각입니다. 왜곡도, 과장된 압축도 없습니다. 이는 대상을 있는 그대로 바라보겠다는 감독의 &#x27;정직한 태도&#x27;이자 &#x27;성실한 목격&#x27;입니다. 오즈 야스지로는 다다미 샷(낮은 눈높이)과 50mm를 통해 일상을 경건하게 담아냈습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80b3-9f54-e95872cf1c50" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 화려한 기교를 빼고, 상황을 <strong>담백하고 리얼하게</strong> 전달하고 싶다면 50mm를 지정하십시오. 다큐멘터리나 진정성 있는 드라마에 적합합니다.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-80da-90c1-d64c06dd34b5" class="">Good Example (담백한 응시_표준)<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8046-abb2-f09bad88dee0" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 가족이 식탁에 둘러앉아 밥을 먹는 장면. 왜곡 없이 편안한 시선. 관객이 그 자리에 함께 있는 듯한 <strong>현장감과 평온함</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-802c-a0af-ed6ec41028e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt:</strong> <code>Medium shot, 50mm lens, eye-level, a family eating dinner together, warm atmosphere, realistic proportions, no distortion, ozu style, documentary feel, authentic moment --ar 16:9</code><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-808d-bb66-e20a24aab75e" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__18198.jpeg"><img style="width:647.1339721679688px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__the-style-is-candid-image-photography-with-natural__18198.jpeg"/></a></figure></div></li></ul></div></blockquote></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-809c-8cee-e894dac2c8a5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ee-b864-c3b4ea13a241" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-80fa-83d8-dcba58aafb4c"/></div><div style="display:contents" dir="auto"><h2 id="2cf3970b-b5e1-8020-9617-e16ba7c249e3" class="">5. 시선의 권력과 심도 (Depth of Field)</h2></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8075-a840-f8460de24563" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80ca-b52b-c2af23b80131" class=""><strong>5-1. 민주적 시선 (딥 포커스 Deep Focus)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80fb-9e94-e077838a5567" class="bulleted-list"><li style="list-style-type:disc"><strong>이론 (앙드레 바쟁):</strong> 화면의 전경부터 후경까지 모든 요소에 초점이 맞는 딥 포커스(Deep Focus)는 관객의 자유로운 시선을 보장하는 &#x27;민주적 기법&#x27;입니다. 관객은 감독이 강요하는 것만 보는 게 아니라, 화면 구석구석을 탐색하며 스스로 의미를 찾습니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-803b-bffe-ccc641689249" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 상황의 맥락(Context)이 중요할 때는 심도를 깊게(f-값 높임/f/16) 설정하십시오. 인물과 환경의 <strong>인과관계</strong>를 한 화면에 담아야 합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a1-89c9-cb8cf1d61e7c" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80ba-9cdc-c72bb3787c91" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/ainspire_kr_Medium_shot_photojournalism_style_deep_focus_f16__1d8554b2-9b3b-443a-a13d-47af4841882e_2.png"><img style="width:709.9910888671875px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/ainspire_kr_Medium_shot_photojournalism_style_deep_focus_f16__1d8554b2-9b3b-443a-a13d-47af4841882e_2.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-805b-be11-ff0fc002943d" class="">Bad Example (맥락이 삭제된 아웃포커싱)<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80ec-8a56-dd92aebeda0f" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 재난 현장인데 배경이 다 흐려져서 어디인지 알 수 없음. 비극의 원인이 소거됨.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80a9-864f-c6c46fa71ab3" class=""><strong>Good Example (현실의 직시_딥 포커스)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-808f-a2c0-c3fff95947c8" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 전경에는 지친 소방관의 얼굴이, 후경에는 불에 탄 건물이 <strong>모두 선명하게(Deep Focus)</strong> 보임. 인물의 피로와 그 원인이 되는 환경이 연결됨.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80a2-bb2a-c5b9f4241d84" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt:</strong> <code>Medium shot, photojournalism style, deep focus, f/16, exhausted firefighter in foreground, burnt building ruins clearly visible in background, harsh reality, sharp details everywhere, storytelling --ar 16:9</code><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80cf-9a68-df10db87bfdf" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__medium-shot-photojournalism-style-deep-focus-f16-e__18202.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__medium-shot-photojournalism-style-deep-focus-f16-e__18202.png"/></a></figure></div></li></ul></div></blockquote></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e7-bcbd-fe89aca987d7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8041-b489-f525a35b9676" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b1-9ce8-d02311034ef1" class=""><strong>5-2. 기억의 선택 (쉘로우 포커스 Shallow Focus)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8020-b9e2-c8e8cdc517f5" class="bulleted-list"><li style="list-style-type:disc"><strong>이론 (선택적 기억):</strong> 얕은 심도(Shallow Focus)는 우리가 중요한 순간만을 기억하고 나머지는 잊어버리는 &#x27;기억의 매커니즘&#x27;과 닮았습니다. 배경의 흐림(Bokeh)은 단순한 예쁨이 아니라, 인물을 둘러싼 세계를 지워버림으로써 <strong>주관적 내면</strong>으로 들어가는 행위입니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8075-8322-d6fba42728e3" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 몽환적이거나, 사랑에 빠졌거나, 혹은 충격으로 인해 주변 소리가 들리지 않는 &#x27;단절&#x27;의 상태를 표현할 때 사용합니다.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80cc-9674-c8a67f929d72" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80eb-9613-d61e3a79280e" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-f22-__18204.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__-f22-__18204.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-8072-bce4-ec2cc2a6c099" class="">Bad Example (산만한 배경)<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8011-98e6-ce8d4426440b" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 결정적인 고백의 순간, 뒤에 지나가는 행인의 옷차림이 너무 선명해 시선이 분산됨.</li></ul></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8067-b3d3-c7451c940e1a" class=""><strong>Good Example (세상과의 단절_쉘로우 포커스)</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8023-add8-e08885cee4b0" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 복잡한 도심 속이지만 연인의 얼굴을 제외한 모든 불빛이 아름다운 **보케(빛망울)**로 뭉개짐. 세상에 둘만 남은 듯한 <strong>주관적 시간</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8005-bd62-fd903c5db97c" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt:</strong> <code>Cinematic close-up, lovers looking at each other, extreme shallow depth of field, f/1.2, creamy bokeh of city night lights in background, dreamy atmosphere, subjective focus, isolating the subject from chaos --ar 16:9</code></li></ul></div></blockquote></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-806d-becb-f3849a13c436" class="image"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__cinematic-closeup-lovers-looking-at-each-other-ext__18201.png"><img style="width:2752px" src="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__cinematic-closeup-lovers-looking-at-each-other-ext__18201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80c6-ae79-ed8c9edb30ea" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80b3-8f4b-d921887c737b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8039-b971-fc23eddf5010" class=""><strong>5-3. 생각의 이동 (랙 포커스 Rack Focus) [New]</strong></p></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-809f-8cc2-e64c0b42eaf0" class="bulleted-list"><li style="list-style-type:disc"><strong>이론 (관계의 전환):</strong> 영상에서는 초점이 A에서 B로 이동하는 랙 포커스(Rack Focus)가 가능합니다. 이는 단순히 초점이 바뀌는 것이 아니라, &#x27;주도권의 이동&#x27;이자 &#x27;생각의 변화&#x27;를 시각화하는 것입니다.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8007-af88-de8fe2c879da" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 적용:</strong> 비디오 생성 AI(kling, veo3.1 등)를 사용할 때 프롬프트에 이 기법을 명시하면, 서사가 있는 영상을 만들 수 있습니다. &quot;중요한 것이 바뀌었다&quot;는 것을 대사 없이 보여줍니다.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-8021-873b-cd20519184ad" class="">Good Example (진실의 발견_랙 포커스)<div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80f1-8391-ccea33dba6f5" class="bulleted-list"><li style="list-style-type:disc"><strong>설명:</strong> 처음엔 앞쪽의 남자가 웃고 있는 것에 초점이 맞다가, 서서히 뒤쪽의 거울에 비친 그가 칼을 들고 있는 모습으로 초점이 이동함. <strong>반전과 서스펜스</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80ba-ae44-ed16e28cdb97" class="bulleted-list"><li style="list-style-type:disc"><strong>Prompt:</strong> <code>Rack focus shot, shifting focus from a smiling man in the foreground to a reflection in the mirror behind him holding a knife, changing focus, revelation, suspense, cinematic transition, storytelling --ar 16:9</code></li></ul></div></blockquote></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-8006-81cb-dd21b5cae138"><div class="source"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__rack-focus-shot-shifting-focus-from-a-smiling-man-__18205.mp4">attachment:8d4369db-c853-44a5-9dac-dc41126dea49:freepik__rack-focus-shot-shifting-focus-from-a-smiling-man-__18205.mp4</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2cf3970b-b5e1-80f2-83cc-f81a4ee308a4"><div class="source"><a href="%5BPart%202%5D%20%EB%A0%8C%EC%A6%88%EC%9D%98%20%EC%96%B8%EC%96%B4%EC%99%80%20%EC%8B%9C%EC%84%A0%EC%9D%98%20%EA%B6%8C%EB%A0%A5/freepik__rack-focus-shot-shifting-focus-from-a-smiling-man-__18206.mp4">attachment:ad1dd33d-420f-4672-8c76-a4784d44cfed:freepik__rack-focus-shot-shifting-focus-from-a-smiling-man-__18206.mp4</a></div></figure></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80d9-8351-f09e94e63300" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2cf3970b-b5e1-800b-80db-ddf34c8490ca"/></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8004-8ab1-eefb063a4b95" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8083-b47a-eca57681d6ff" class=""><strong>Closing: 당신의 렌즈는 무엇을 &#x27;선택&#x27;하고 무엇을 &#x27;배제&#x27;합니까?</strong><br/>영상 기획은 &quot;무엇을 찍을까&quot;보다 &quot;무엇을 지울까&quot;가 더 중요할 때가 많습니다.<br/>망원 렌즈와 얕은 심도로 배경을 지워버릴지(집중), 광각 렌즈와 딥 포커스로 세상을 다 보여줄지(관찰), 당신의 철학에 따라 AI에게 <strong>정확한 광학적 언어</strong>로 지시하십시오.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80e6-8f27-ea54c43f6354" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2cf3970b-b5e1-8007-b506-fd1277c85661" class="">[실습 과제] </h3></div><div style="display:contents" dir="auto"><ol type="1" id="2cf3970b-b5e1-8055-8ec9-ed731496c6b3" class="numbered-list" start="1"><li><strong>Mission 1. 권력의 재배치 (Angle)</strong><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-806f-bf38-e38db5cf34b7" class="bulleted-list"><li style="list-style-type:disc">동일한 캐릭터(예: 정장을 입은 남자)를 대상으로 두 가지 이미지를 생성하시오.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-8062-87c4-ecd57c546f78" class="bulleted-list"><li style="list-style-type:disc"><strong>지배자:</strong> 로우 앵글(Low Angle)을 사용하여 위압적인 모습.</li></ul></div><div style="display:contents" dir="auto"><ul id="2cf3970b-b5e1-80f4-9517-f681dfa0d26a" class="bulleted-list"><li style="list-style-type:disc"><strong>패배자:</strong> 하이 앵글(High Angle)과 광각(Wide Angle)을 사용하여 작고 초라한 모습.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><blockquote id="2cf3970b-b5e1-80e6-a1dd-e6bed2c0539e" class="">💡 Insight Note<div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8053-b594-ffe4d23b6397" class="">&quot;영화는 단순히 보여주는 것이 아니다. <strong>관객이 보지 못한 것을 보게 하는 것</strong>이다.&quot; — <em>로베르 브레송</em></p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80af-9b74-c2954bd7e991" class="">기술은 &#x27;어떻게(How)&#x27;를 해결해주지만, &#x27;무엇을(What)&#x27;과 &#x27;왜(Why)&#x27;는 여전히 인간의 몫입니다. AI는 캔버스를 채우려 하고, 감독은 <strong>캔버스를 비우려(Negative Space)</strong> 해야 합니다.</p></div></blockquote></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-804a-8128-d3d4c4cdb51f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8011-a999-c7a5c9324b1b" class="">많은 사람들이 AI 프롬프트 창에 &quot;Cinematic shot(영화 같은 장면)&quot;이라고만 적습니다. 그건 감독의 태도가 아닙니다. 여러분이 표현하고 싶은 것이 현대인의 고독입니까, 아니면 영웅의 탄생입니까? 그 의도에 맞춰 렌즈의 미리(mm) 수를 정하고, 카메라의 높낮이를 지시하십시오.</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-80eb-a584-c7f302554e43" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2cf3970b-b5e1-8025-83c8-d0c769bce91d" class="">베르토프의 말처럼, 여러분의 카메라는 인간의 눈보다 더 진실해야 합니다. 우리가 보여주고자 하는 브랜드의 철학, 그 내면의 진실을 꿰뚫는 &#x27;관점(Perspective)&#x27;을 가지십시오.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,626 @@
+/* ==========================================================================
+   AInspire Premium Article Viewer CSS (Toss Tech Blog Style)
+   ========================================================================== */
+
+:root {
+    /* 기존 AInspire 테마 계승 및 확장 */
+    --article-max-width: 760px;
+    --font-heading: 'Outfit', 'Pretendard', sans-serif;
+    --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Toss Light-Dark Harmonies */
+    --toss-blue: #3182f6;
+    --toss-blue-hover: #1b64da;
+    --toss-grey-bg: rgba(255, 255, 255, 0.03);
+    --toss-grey-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Base Layout for Viewer Page */
+.viewer-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding-top: 7.5rem; /* Fixed 헤더와 본문 겹침 방지를 위해 5.5rem에서 7.5rem으로 여백 상향 조정 */
+}
+
+/* Article Top Navigation Row */
+.article-top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Navigation Back Button in Header */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+}
+.btn-back i {
+    transition: transform 0.2s ease;
+}
+.btn-back:hover {
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.05);
+    border-color: rgba(0, 229, 255, 0.25);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.1);
+}
+.btn-back:hover i {
+    transform: translateX(-2px);
+}
+
+/* Article Container */
+.toss-article {
+    width: 100%;
+    max-width: var(--article-max-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+}
+
+/* Article Header */
+.article-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+}
+.article-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.35;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+.article-meta-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.article-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.author-name {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.author-role {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+.article-date {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* Article Content Body */
+.article-body-content {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: rgba(245, 243, 247, 0.95);
+    font-family: var(--font-body);
+    letter-spacing: -0.015em;
+}
+
+.article-body-content p {
+    margin-bottom: 2rem;
+    word-break: keep-all;
+    font-weight: 400;
+}
+
+/* Headings inside Article */
+.article-body-content h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 3.5rem 0 1.25rem;
+    letter-spacing: -0.02em;
+}
+.article-body-content h3 {
+    font-size: 1.28rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin: 2.5rem 0 1rem;
+}
+
+/* Aside Box / Highlight Box (Toss-style Gray Box) */
+.article-aside-box {
+    background: var(--toss-grey-bg);
+    border: 1px solid var(--toss-grey-border);
+    border-radius: 18px;
+    padding: 1.5rem 1.75rem;
+    margin: 2.25rem 0;
+}
+.article-aside-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+.article-aside-box li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+.article-aside-box li:last-child {
+    margin-bottom: 0;
+}
+.article-aside-box li::before {
+    content: "•";
+    color: var(--accent-purple);
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0.25rem;
+    top: -2px;
+}
+
+/* Blockquote / Callout Box */
+.article-body-content blockquote {
+    position: relative;
+    background: rgba(143, 85, 255, 0.03);
+    border-left: 4px solid var(--accent-purple);
+    border-radius: 4px 20px 20px 4px;
+    padding: 2rem 2.25rem;
+    margin: 3rem 0;
+    font-size: 1.12rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+    font-style: normal;
+    font-weight: 500;
+    box-shadow: inset 0 0 30px rgba(143, 85, 255, 0.02);
+}
+.article-body-content blockquote::before {
+    content: "“";
+    position: absolute;
+    top: 0.5rem;
+    left: 0.8rem;
+    font-size: 4.5rem;
+    font-family: 'Outfit', sans-serif;
+    color: var(--accent-purple);
+    opacity: 0.15;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* Inline Links inside Articles */
+.article-body-content a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed rgba(0, 229, 255, 0.4);
+    transition: all 0.2s ease;
+}
+.article-body-content a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+/* Lists styling inside article content */
+.article-body-content ul, 
+.article-body-content ol {
+    margin-top: 0.5rem;
+    margin-bottom: 2.25rem;
+    padding-left: 1.5rem;
+}
+.article-body-content li {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    font-size: 1.05rem;
+}
+.article-body-content ul li::marker {
+    color: var(--accent-purple);
+}
+.article-body-content ol li::marker {
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.article-body-content strong {
+    color: var(--accent-yellow);
+    font-weight: 700;
+}
+
+/* Coffee Chat Banner (Toss Style) */
+.coffeechat-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background: linear-gradient(135deg, rgba(22, 11, 38, 0.8) 0%, rgba(12, 6, 24, 0.9) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 5rem 0 3.5rem;
+    flex-wrap: wrap;
+}
+.coffeechat-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+.coffeechat-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: rgba(143, 85, 255, 0.15);
+    border: 1px solid rgba(143, 85, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-purple);
+}
+.coffeechat-icon-wrapper img {
+    width: 32px;
+    height: 32px;
+}
+.coffeechat-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+.coffeechat-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+.btn-coffeechat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: var(--toss-blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(49, 130, 246, 0.25);
+    white-space: nowrap;
+}
+.btn-coffeechat:hover {
+    background-color: var(--toss-blue-hover);
+    box-shadow: 0 6px 20px rgba(49, 130, 246, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Comment Area */
+.comment-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+}
+.comment-count-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+}
+.comment-contact-email {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.comment-contact-email a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+}
+
+/* Comment Editor */
+.comment-editor-box {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+    align-items: flex-start;
+}
+.comment-profile-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.comment-profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.comment-form-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+.nickname-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.nickname-input-box {
+    display: flex;
+    align-items: center;
+    background: rgba(12, 6, 24, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 6px 12px;
+    flex-grow: 1;
+    max-width: 240px;
+}
+.nickname-input {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    outline: none;
+    width: 100%;
+}
+.btn-random-nickname {
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-random-nickname:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+.comment-textarea-box {
+    background: rgba(12, 6, 24, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+.comment-textarea-box:focus-within {
+    border-color: var(--accent-purple);
+    box-shadow: var(--glow-purple);
+}
+.comment-textarea {
+    width: 100%;
+    min-height: 80px;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+}
+.comment-textarea::placeholder {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.comment-submit-row {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-comment-submit {
+    padding: 10px 20px;
+    background-color: var(--toss-blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-comment-submit:hover:not(:disabled) {
+    background-color: var(--toss-blue-hover);
+    transform: translateY(-1px);
+}
+.btn-comment-submit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Comment List */
+.comment-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.comment-item {
+    display: flex;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.comment-item:last-child {
+    border-bottom: none;
+}
+.comment-item-body {
+    flex-grow: 1;
+}
+.comment-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.comment-item-nickname {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+}
+.comment-item-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.comment-item-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-break: break-all;
+}
+.btn-comment-delete {
+    background: none;
+    border: none;
+    color: var(--accent-pdf);
+    font-size: 0.78rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.btn-comment-delete:hover {
+    opacity: 1;
+    background: rgba(255, 74, 90, 0.08);
+}
+
+/* Recommend Section */
+.recommend-section {
+    margin-top: 6rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 4rem;
+}
+.recommend-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.75rem;
+}
+.recommend-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.recommend-item-link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.recommend-item-link:hover {
+    background: rgba(143, 85, 255, 0.05);
+    border-color: rgba(143, 85, 255, 0.25);
+    transform: translateY(-2px);
+}
+.recommend-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-purple);
+    flex-shrink: 0;
+}
+.recommend-item-link:hover .recommend-icon-box {
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.08);
+    border-color: rgba(0, 229, 255, 0.2);
+}
+.recommend-item-body {
+    flex-grow: 1;
+}
+.recommend-item-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+.recommend-item-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Article Table Styling */
+.article-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2.25rem 0;
+    font-size: 0.95rem;
+    border: 1px solid var(--toss-grey-border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+.article-table th, .article-table td {
+    padding: 14px 18px;
+    border: 1px solid var(--toss-grey-border);
+    text-align: left;
+    word-break: keep-all;
+}
+.article-table th {
+    background: rgba(255, 255, 255, 0.02);
+    color: #fff;
+    font-weight: 700;
+}
+.article-table td {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.article-table tr:hover {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .toss-article {
+        padding-top: 1.5rem;
+        padding-bottom: 4rem;
+    }
+    .article-title {
+        font-size: 1.8rem;
+    }
+    .coffeechat-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+    .btn-coffeechat {
+        width: 100%;
+    }
+    .comment-editor-box {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .nickname-input-box {
+        max-width: 100%;
+    }
+}

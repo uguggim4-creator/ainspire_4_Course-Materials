@@ -1,0 +1,12 @@
+node_modules/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.mp3
+*.wav
+*.zip
+*.psd
+*.ai
+.DS_Store
+Thumbs.db
