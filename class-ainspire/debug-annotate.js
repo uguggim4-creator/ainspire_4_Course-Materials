@@ -55,7 +55,21 @@
       width:22px;height:22px;line-height:22px;text-align:center;background:#ff3b6b;color:#fff;
       border-radius:50%;font:bold 12px sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.4);pointer-events:none;}
     body.dbg-on *{cursor:crosshair !important;}
-    .dbg-hi{outline:2px dashed #ff3b6b !important;outline-offset:2px;}`;
+    .dbg-hi{outline:2px dashed #ff3b6b !important;outline-offset:2px;}
+    .dbg-memo{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:2147483647;
+      width:min(440px,86vw);background:#1b1430;color:#fff;border:1px solid #6020ff;border-radius:10px;
+      box-shadow:0 10px 36px rgba(0,0,0,.55);padding:14px;font:13px 'Malgun Gothic',sans-serif;}
+    .dbg-memo-head{font-weight:700;font-size:13px;color:#cbb9ff;margin-bottom:8px;}
+    .dbg-memo-tag{display:block;font-weight:400;font-size:11px;color:#9a8fb5;margin-top:3px;word-break:break-all;}
+    .dbg-memo-ta{width:100%;box-sizing:border-box;background:#0f0b1c;color:#fff;border:1px solid #2a2340;
+      border-radius:6px;padding:8px;font:13px 'Malgun Gothic',sans-serif;resize:vertical;}
+    .dbg-memo-actions{display:flex;gap:8px;margin-top:10px;justify-content:flex-end;}
+    .dbg-memo-actions button{padding:7px 16px;border:0;border-radius:6px;cursor:pointer;font-weight:700;
+      font:12px 'Malgun Gothic',sans-serif;}
+    .dbg-memo-ok{background:#6020ff;color:#fff;}
+    .dbg-memo-cancel{background:#2a2340;color:#cbb9ff;}
+    body.dbg-on .dbg-memo, body.dbg-on .dbg-memo *{cursor:default !important;}
+    body.dbg-on .dbg-memo textarea{cursor:text !important;}`;
   document.head.appendChild(pinStyle);
 
   function placePin(n, x, y) {
@@ -70,11 +84,42 @@
     document.querySelectorAll('.dbg-pin').forEach(p => p.remove());
   }
 
+  // ── 메모 입력창 (native prompt 대체) ──
+  // native prompt()는 반복 호출 시 브라우저가 "추가 대화 차단"으로 막아버려
+  // 이후 클릭이 무반응(요소 선택 불가)이 된다. 비차단 인페이지 입력창으로 대체.
+  function closeMemoBox() {
+    document.querySelectorAll('.dbg-memo').forEach(b => b.remove());
+  }
+  function askMemo(el, cb) {
+    closeMemoBox();
+    const preview = (el.textContent || '').trim().slice(0, 40)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const box = document.createElement('div');
+    box.className = 'dbg-memo';
+    box.innerHTML =
+      '<div class="dbg-memo-head">수정 요청 메모'
+      + '<span class="dbg-memo-tag">[' + el.tagName.toLowerCase() + '] ' + preview + '</span></div>'
+      + '<textarea class="dbg-memo-ta" rows="3" placeholder="이 요소에 대한 수정 요청을 적어주세요  ·  Enter 저장 / Esc 취소"></textarea>'
+      + '<div class="dbg-memo-actions"><button class="dbg-memo-cancel">취소</button><button class="dbg-memo-ok">저장</button></div>';
+    document.body.appendChild(box);
+    const ta = box.querySelector('.dbg-memo-ta');
+    ta.focus();
+    const done = (val) => { closeMemoBox(); cb(val); };
+    box.querySelector('.dbg-memo-ok').addEventListener('click', (e) => { e.stopPropagation(); done(ta.value); });
+    box.querySelector('.dbg-memo-cancel').addEventListener('click', (e) => { e.stopPropagation(); done(null); });
+    ta.addEventListener('keydown', (e) => {
+      e.stopPropagation(); // deck/Tab 단축키로 전파 차단 (타이핑 중 슬라이드 이동·토글 방지)
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); done(ta.value); }
+      else if (e.key === 'Escape') { e.preventDefault(); done(null); }
+    });
+  }
+
   // ── 하이라이트 + 클릭 캡처 (모든 모드 공통) ──
   let last = null;
   document.addEventListener('mouseover', e => {
     if (!active) return;
     if (window.__dbgInPanel && window.__dbgInPanel(e.target)) return;
+    if (e.target.closest && (e.target.closest('.nav-zone') || e.target.closest('.dbg-memo'))) return;
     if (last) last.classList.remove('dbg-hi');
     last = e.target; last.classList.add('dbg-hi');
   });
@@ -82,18 +127,22 @@
   document.addEventListener('click', e => {
     if (!active) return;
     if (window.__dbgInPanel && window.__dbgInPanel(e.target)) return;
+    // 메모 입력창 내부 클릭은 그대로 통과
+    if (e.target.closest && e.target.closest('.dbg-memo')) return;
+    // 슬라이드 좌우 이동(nav-zone)은 가로채지 않고 정상 이동시킨다 (주석 중에도 페이지 넘김 가능)
+    if (e.target.closest && e.target.closest('.nav-zone')) return;
     e.preventDefault(); e.stopPropagation();
     const el = e.target;
-    const memo = prompt('수정 요청을 적어주세요:\n\n[' + el.tagName.toLowerCase() + '] '
-      + (el.textContent || '').trim().slice(0, 40));
-    if (memo === null || memo.trim() === '') return;
-    const rec = {
-      where: locationLabel(),
-      selector: describe(el),
-      current: (el.textContent || '').trim().slice(0, 60),
-      memo: memo.trim(), x: e.pageX, y: e.pageY
-    };
-    handleNote(rec);
+    const x = e.pageX, y = e.pageY;
+    askMemo(el, (memo) => {
+      if (memo === null || memo.trim() === '') return;
+      handleNote({
+        where: locationLabel(),
+        selector: describe(el),
+        current: (el.textContent || '').trim().slice(0, 60),
+        memo: memo.trim(), x: x, y: y, page: pageName
+      });
+    });
   }, true);
 
   document.body.classList.add('dbg-on');
@@ -119,7 +168,9 @@
     });
     // Tab 단축키 → 부모에게 토글 요청 위임
     document.addEventListener('keydown', e => {
-      if (e.key === 'Tab') { e.preventDefault(); try { window.parent.postMessage({ __dbg: 'tab-toggle' }, '*'); } catch (err) {} }
+      if (e.key !== 'Tab') return;
+      if (e.target.closest && e.target.closest('.dbg-memo')) return; // 메모 타이핑 중 제외
+      e.preventDefault(); try { window.parent.postMessage({ __dbg: 'tab-toggle' }, '*'); } catch (err) {}
     });
     // 떴다/사라진다 통지
     try { window.parent.postMessage({ __dbg: 'child-on' }, '*'); } catch (err) {}
@@ -163,7 +214,7 @@
   panel.id = 'dbg-panel';
   panel.innerHTML = `
     <h4>주석 모드 · 클릭해서 메모</h4>
-    <div id="dbg-hint">요소를 클릭하면 메모를 남길 수 있습니다.<br>다 적은 뒤 "전체 복사"를 눌러 전달하세요.<br><b>일시정지</b>를 누르면 평소처럼 클릭/조작이 됩니다.</div>
+    <div id="dbg-hint">요소를 클릭 → 메모 입력(Enter 저장 / Esc 취소).<br>다 적은 뒤 "전체 복사"를 눌러 전달하세요.<br>좌우 화살표(←/→)로는 주석 중에도 페이지 이동이 됩니다.</div>
     <div id="dbg-list"></div>
     <div id="dbg-actions">
       <button id="dbg-copy">전체 복사</button>
@@ -190,7 +241,9 @@
 
   // Tab 단축키 — 부모 페이지 직접 누를 때
   document.addEventListener('keydown', e => {
-    if (e.key === 'Tab') { e.preventDefault(); doToggle(); }
+    if (e.key !== 'Tab') return;
+    if (e.target.closest && e.target.closest('.dbg-memo')) return; // 메모 타이핑 중 제외
+    e.preventDefault(); doToggle();
   });
 
   function addNote(rec) {
@@ -222,7 +275,12 @@
       if (childWin) childWin.postMessage({ __dbg: 'setActive', value: active }, '*'); }
     if (d.__dbg === 'child-off') { childActive = false; childWin = null;
       document.body.classList.toggle('dbg-on', active); }
-    if (d.__dbg === 'note')      { const rec = d.rec; rec.fromChild = true; addNote(rec); }
+    if (d.__dbg === 'note')      { const rec = d.rec; rec.fromChild = true;
+      // 어느 모달/덱에서 적은 메모인지 식별: 포털 모달 제목 우선, 없으면 자식 페이지명
+      const mt = (document.getElementById('modal-title') || {}).textContent;
+      const label = (mt && mt.trim()) ? mt.trim() : (rec.page || '');
+      if (label) rec.where = label + ' · ' + rec.where;
+      addNote(rec); }
     if (d.__dbg === 'tab-toggle') doToggle();
   });
 

@@ -517,6 +517,12 @@
     text-align: left; cursor: pointer;
   }
   .claude-nav-btn:hover, .claude-nav-btn.active { background: #171613; color: #fff; }
+  .claude-nav-set { display: none; flex-direction: column; gap: 8px; }
+  .claude-nav-set.active { display: flex; }
+  .claude-nav-note {
+    border-top: 1px solid #3b3935; margin-top: 4px; padding: 10px 7px 0;
+    color: #9f988d; font-size: 10px; line-height: 1.45;
+  }
   .claude-icon {
     width: 16px; height: 16px; border-radius: 4px; border: 1px solid #837c70;
     display: inline-flex; align-items: center; justify-content: center;
@@ -547,7 +553,8 @@
   .claude-learn { margin-top: 4px; color: #aaa297; font-size: 12px; text-decoration: underline; }
   .claude-prompt {
     width: 100%; max-width: 590px; margin-top: 20px; border-radius: 19px;
-    border: 1px solid #403e39; background: #2d2c28; overflow: hidden;
+    border: 1px solid #403e39; background: #2d2c28; overflow: visible;
+    position: relative; z-index: 10;
   }
   .claude-input {
     min-height: 76px; padding: 16px 20px; color: #9f998f; font-size: 13px;
@@ -563,7 +570,61 @@
     border: 0; background: transparent; color: #d8d2c8;
     font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer;
   }
-  .claude-chip:hover { color: #fff; }
+  .claude-chip:hover, .claude-chip.active { color: #fff; }
+  .claude-question-wrap { position: relative; display: inline-flex; }
+  .claude-run-menu {
+    display: none; position: absolute; left: -12px; top: 27px; width: 190px;
+    padding: 8px; border: 1px solid #54504a; border-radius: 12px;
+    background: #302f2b; box-shadow: 0 16px 36px rgba(0,0,0,0.34);
+    z-index: 30;
+  }
+  .claude-question-wrap.open .claude-run-menu { display: flex; flex-direction: column; gap: 4px; }
+  .claude-run-option {
+    border: 0; border-radius: 8px; background: transparent; color: #ddd7ce;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    width: 100%; padding: 7px 8px; font-family: inherit; font-size: 11px;
+    font-weight: 800; text-align: left; cursor: pointer;
+  }
+  .claude-run-option:hover, .claude-run-option.active { background: #403d38; color: #fff8ef; }
+  .claude-toggle {
+    width: 28px; height: 16px; border-radius: 999px; background: #5a554d;
+    position: relative; flex-shrink: 0;
+  }
+  .claude-toggle::after {
+    content: ""; position: absolute; top: 3px; left: 3px; width: 10px; height: 10px;
+    border-radius: 50%; background: #c7c0b6; transition: transform 0.18s ease;
+  }
+  .claude-run-option.active .claude-toggle { background: #f9733d; }
+  .claude-run-option.active .claude-toggle::after { transform: translateX(12px); background: #fffaf4; }
+  .claude-mode-panel { display: none; width: 100%; max-width: 590px; margin-top: 16px; }
+  .claude-chat-preview, .claude-code-preview { display: none; }
+  .claude-demo.mode-chat .claude-chat-preview {
+    display: flex; flex-direction: column; gap: 9px;
+    border: 1px solid #403e39; border-radius: 16px; padding: 14px;
+    background: rgba(45,44,40,0.82);
+  }
+  .claude-chat-msg {
+    max-width: 82%; border-radius: 14px; padding: 9px 12px;
+    font-size: 12px; line-height: 1.45; color: #eee8de;
+  }
+  .claude-chat-msg.user { align-self: flex-end; background: #4a4843; }
+  .claude-chat-msg.ai { align-self: flex-start; background: #24231f; border: 1px solid #3d3a34; }
+  .claude-demo.mode-code .claude-code-preview {
+    display: grid; grid-template-columns: 155px 1fr; min-height: 116px;
+    border: 1px solid #403e39; border-radius: 16px; overflow: hidden;
+    background: #171614;
+  }
+  .claude-code-files {
+    border-right: 1px solid #403e39; padding: 10px; display: flex;
+    flex-direction: column; gap: 7px; font-size: 11px; color: #cfc7bc;
+  }
+  .claude-code-file.active { color: #fff8ef; font-weight: 800; }
+  .claude-code-editor {
+    padding: 11px 14px; font-family: "Courier New", monospace;
+    font-size: 11px; line-height: 1.6; color: #ddd7ce;
+  }
+  .claude-code-editor .kw { color: #ff9f6e; }
+  .claude-code-editor .ok { color: #9ee6a8; }
   .claude-suggestions { width: 100%; max-width: 590px; margin-top: 24px; }
   .claude-suggest-title { font-size: 12px; color: #aaa297; margin-bottom: 12px; }
   .claude-suggest {
@@ -577,6 +638,7 @@
     position: absolute; right: 34px; bottom: 30px; width: 270px;
     border-left: 3px solid #f9733d; padding-left: 12px;
     color: #d8d1c6; font-size: 12px; line-height: 1.55;
+    pointer-events: none;
   }
   .claude-explain b { color: #fff8ef; font-weight: 800; }
 
@@ -971,23 +1033,38 @@
 <!-- ===== 슬라이드 07 — Claude Cowork 인터랙티브 UI ===== -->
 <div class="slide" id="s7">
   <div class="step-label">Tool 01-B · Anthropic Claude</div>
-  <div class="slide-title">Claude Cowork UI — <span class="accent">직접 눌러보기</span></div>
+  <div class="slide-title">Claude UI - <span class="accent">직접 눌러보기</span></div>
   <div class="slide-subtitle">왼쪽 모드·메뉴와 입력창 옵션을 클릭하면 역할 설명이 바뀝니다.</div>
   <div class="divider"></div>
 
-  <div class="claude-demo" id="claudeDemo">
+  <div class="claude-demo mode-cowork" id="claudeDemo">
     <div class="claude-side">
       <div class="claude-tabs">
         <button class="claude-tab" data-claude-topic="chat">Chat</button>
         <button class="claude-tab active" data-claude-topic="cowork">Cowork</button>
         <button class="claude-tab" data-claude-topic="code">Code</button>
       </div>
-      <button class="claude-nav-btn active" data-claude-topic="newTask"><span class="claude-icon">+</span><span>New task</span></button>
-      <button class="claude-nav-btn" data-claude-topic="projects"><span class="claude-icon">□</span><span>Projects</span></button>
-      <button class="claude-nav-btn" data-claude-topic="scheduled"><span class="claude-icon">◎</span><span>Scheduled</span></button>
-      <button class="claude-nav-btn" data-claude-topic="artifacts"><span class="claude-icon">↗</span><span>Live artifacts</span></button>
-      <button class="claude-nav-btn" data-claude-topic="dispatch"><span class="claude-icon">⇄</span><span>Dispatch <span style="font-size:10px;color:#9f988d;">베타</span></span></button>
-      <button class="claude-nav-btn" data-claude-topic="customize"><span class="claude-icon">☰</span><span>Customize</span></button>
+      <div class="claude-nav-set" data-claude-mode="chat">
+        <button class="claude-nav-btn" data-claude-topic="chatNew"><span class="claude-icon">+</span><span>New chat</span></button>
+        <button class="claude-nav-btn" data-claude-topic="chatProjects"><span class="claude-icon">□</span><span>Projects</span></button>
+        <button class="claude-nav-btn" data-claude-topic="chatArtifacts"><span class="claude-icon">↗</span><span>Artifacts</span></button>
+        <button class="claude-nav-btn" data-claude-topic="chatCustomize"><span class="claude-icon">☰</span><span>Customize</span></button>
+      </div>
+      <div class="claude-nav-set active" data-claude-mode="cowork">
+        <button class="claude-nav-btn active" data-claude-topic="newTask"><span class="claude-icon">+</span><span>New task</span></button>
+        <button class="claude-nav-btn" data-claude-topic="projects"><span class="claude-icon">□</span><span>Projects</span></button>
+        <button class="claude-nav-btn" data-claude-topic="scheduled"><span class="claude-icon">◎</span><span>Scheduled</span></button>
+        <button class="claude-nav-btn" data-claude-topic="artifacts"><span class="claude-icon">↗</span><span>Live artifacts</span></button>
+        <button class="claude-nav-btn" data-claude-topic="dispatch"><span class="claude-icon">⇄</span><span>Dispatch <span style="font-size:10px;color:#9f988d;">베타</span></span></button>
+        <button class="claude-nav-btn" data-claude-topic="customize"><span class="claude-icon">☰</span><span>Customize</span></button>
+      </div>
+      <div class="claude-nav-set" data-claude-mode="code">
+        <button class="claude-nav-btn" data-claude-topic="codeNew"><span class="claude-icon">+</span><span>New session</span></button>
+        <button class="claude-nav-btn" data-claude-topic="codeRoutines"><span class="claude-icon">↯</span><span>Routines</span></button>
+        <button class="claude-nav-btn" data-claude-topic="codeDispatch"><span class="claude-icon">▢</span><span>Dispatch <span style="font-size:10px;color:#9f988d;">베타</span></span></button>
+        <button class="claude-nav-btn" data-claude-topic="codeCustomize"><span class="claude-icon">☰</span><span>Customize</span></button>
+        <button class="claude-nav-btn" data-claude-topic="codeMore"><span class="claude-icon">⌄</span><span>더보기</span></button>
+      </div>
       <div class="claude-update"><span>업데이트하려면 다시 시작<br><span style="color:#aaa297;">v1.9255.2</span></span><span>→</span></div>
       <div class="claude-account"><span>AInspire · Max</span><span>⌄</span></div>
     </div>
@@ -995,6 +1072,26 @@
     <div class="claude-main">
       <div class="claude-hero"><span class="claude-star">✷</span><span id="claudeTitle">할 일을 처리해 볼까요?</span></div>
       <div class="claude-learn">Cowork를 안전하게 사용하는 방법 알아보기</div>
+      <div class="claude-mode-panel" id="claudeModePanel">
+        <div class="claude-chat-preview">
+          <div class="claude-chat-msg user">이번 강의 흐름을 3줄로 정리해줘</div>
+          <div class="claude-chat-msg ai">설치 → 화면 이해 → 첫 작업 실행 순서로 안내하면 초보자도 따라가기 쉽습니다.</div>
+        </div>
+        <div class="claude-code-preview">
+          <div class="claude-code-files">
+            <div class="claude-code-file active">app.js</div>
+            <div class="claude-code-file">package.json</div>
+            <div class="claude-code-file">README.md</div>
+          </div>
+          <div class="claude-code-editor">
+            <div><span class="kw">function</span> createLesson() {</div>
+            <div>&nbsp;&nbsp;<span class="ok">✓</span> read files</div>
+            <div>&nbsp;&nbsp;<span class="ok">✓</span> edit code</div>
+            <div>&nbsp;&nbsp;<span class="ok">✓</span> run tests</div>
+            <div>}</div>
+          </div>
+        </div>
+      </div>
       <div class="claude-prompt">
         <div class="claude-input">
           <span id="claudePromptText">스킬을 보려면 /를 입력하세요</span>
@@ -1004,7 +1101,13 @@
           <div class="claude-chip-row">
             <button class="claude-chip" data-claude-topic="attach">＋</button>
             <button class="claude-chip" data-claude-topic="projectFiles">프로젝트에서 작업⌄</button>
-            <button class="claude-chip" data-claude-topic="question">질문⌄</button>
+            <div class="claude-question-wrap" id="claudeQuestionMenu">
+              <button class="claude-chip" data-claude-topic="question">질문⌄</button>
+              <div class="claude-run-menu">
+                <button class="claude-run-option active" data-claude-topic="confirm">실행 전 확인<span class="claude-toggle"></span></button>
+                <button class="claude-run-option" data-claude-topic="autoRun">묻지 않고 실행<span class="claude-toggle"></span></button>
+              </div>
+            </div>
           </div>
           <button class="claude-chip" data-claude-topic="legacy">Legacy Model⌄</button>
         </div>
@@ -1553,6 +1656,7 @@
       from.style.transition  = '';
       from.style.opacity     = '';
       from.style.transform   = '';
+      from.style.pointerEvents = '';
       from.classList.remove('active');
     }, 380);
 
@@ -1560,6 +1664,7 @@
     cur = next;
     updateUI();
   }
+  window.go = go;
 
   function updateUI(){
     document.getElementById('progressBar').style.width = ((cur+1)/TOTAL*100)+'%';
@@ -1583,86 +1688,172 @@
 
   var claudeCopy = {
     chat: {
-      title: 'Chat 모드',
-      prompt: 'Claude와 일반 대화를 시작합니다',
-      explain: '<b>Chat</b><br>글쓰기, 요약, 번역, 질의응답처럼 대화형 작업을 처리합니다. 프로젝트 단위 맥락 유지에 적합합니다.'
+      mode: 'chat',
+      navTopic: 'chatNew',
+      title: '무엇을 도와드릴까요?',
+      prompt: 'Claude에게 메시지 보내기',
+      explain: '<b>Chat</b><br>왼쪽 메뉴가 New chat, Projects, Artifacts, Customize 중심으로 바뀝니다. 일반 Claude 대화를 시작하는 화면입니다.'
     },
     cowork: {
+      mode: 'cowork',
+      navTopic: 'newTask',
       title: '할 일을 처리해 볼까요?',
       prompt: '스킬을 보려면 /를 입력하세요',
       explain: '<b>Cowork</b><br>내 PC에서 파일과 앱을 사용해 작업합니다. 문서 정리, 자료 조사, 파일 분석 같은 지식 업무를 맡기기 좋습니다.'
     },
     code: {
-      title: 'Code 모드',
+      mode: 'code',
+      navTopic: 'codeRoutines',
+      title: '코드베이스에서 작업하기',
       prompt: '코드베이스에서 무엇을 바꿀까요?',
-      explain: '<b>Code</b><br>코드 읽기, 수정, 테스트, Git 작업을 수행하는 코딩 에이전트 모드입니다.'
+      explain: '<b>Code</b><br>왼쪽 메뉴가 New session, Routines, Dispatch, Customize 중심으로 바뀝니다. 코드 작업용 흐름입니다.'
+    },
+    chatNew: {
+      mode: 'chat',
+      title: '새 대화 시작',
+      prompt: 'Claude에게 메시지 보내기',
+      explain: '<b>New chat</b><br>일반 질문, 글쓰기, 요약처럼 파일 실행이 필요 없는 새 대화를 시작합니다.'
+    },
+    chatProjects: {
+      mode: 'chat',
+      title: 'Projects',
+      prompt: '프로젝트 맥락을 선택합니다',
+      explain: '<b>Projects</b><br>대화에 참고할 지식, 파일, 지침을 프로젝트 단위로 묶어 사용합니다.'
+    },
+    chatArtifacts: {
+      mode: 'chat',
+      title: 'Artifacts',
+      prompt: '생성된 결과물을 확인합니다',
+      explain: '<b>Artifacts</b><br>대화 중 만든 문서, 코드, 화면 결과물을 다시 확인합니다.'
+    },
+    chatCustomize: {
+      mode: 'chat',
+      title: 'Customize',
+      prompt: '대화 설정을 조정합니다',
+      explain: '<b>Customize</b><br>일반 Claude 대화에서 사용할 개인화 설정과 연결 도구를 조정합니다.'
+    },
+    codeNew: {
+      mode: 'code',
+      title: 'New session',
+      prompt: '코드베이스에서 무엇을 바꿀까요?',
+      explain: '<b>New session</b><br>코드 작업을 위한 새 세션을 시작합니다.'
+    },
+    codeRoutines: {
+      mode: 'code',
+      title: 'Routines',
+      prompt: '반복할 코드 작업 루틴을 고릅니다',
+      explain: '<b>Routines</b><br>자주 쓰는 코드 작업 절차를 빠르게 실행하는 메뉴입니다.'
+    },
+    codeDispatch: {
+      mode: 'code',
+      title: 'Dispatch',
+      prompt: '다른 기기에서 시작한 작업을 이어받습니다',
+      explain: '<b>Dispatch</b><br>모바일 등에서 지시한 작업을 PC의 Claude Code에서 이어서 실행하는 베타 기능입니다.'
+    },
+    codeCustomize: {
+      mode: 'code',
+      title: 'Customize',
+      prompt: '코드 작업 설정을 조정합니다',
+      explain: '<b>Customize</b><br>코드 작업에 필요한 개인화 설정과 연결 도구를 조정합니다.'
+    },
+    codeMore: {
+      mode: 'code',
+      title: '더보기',
+      prompt: '추가 코드 메뉴를 펼칩니다',
+      explain: '<b>더보기</b><br>화면에 바로 보이지 않는 추가 코드 메뉴를 여는 항목입니다.'
     },
     newTask: {
+      mode: 'cowork',
       title: '새 작업 시작',
       prompt: '처리할 목표를 입력하세요',
       explain: '<b>New task</b><br>새 Cowork 작업을 시작합니다. 목표를 입력하면 Claude가 로컬 파일과 앱을 사용해 결과물을 만듭니다.'
     },
     projects: {
+      mode: 'cowork',
       title: 'Projects',
       prompt: '프로젝트 맥락을 선택합니다',
       explain: '<b>Projects</b><br>작업에 필요한 파일, 지식, 지침을 프로젝트 단위로 묶어 Claude가 참고하게 합니다.'
     },
     scheduled: {
+      mode: 'cowork',
       title: 'Scheduled',
       prompt: '반복 실행할 작업을 예약합니다',
       explain: '<b>Scheduled</b><br>매일, 매주 같은 주기적 작업을 예약합니다. 반복 리서치나 점검 업무에 적합합니다.'
     },
     artifacts: {
+      mode: 'cowork',
       title: 'Live artifacts',
       prompt: '생성된 결과물을 확인합니다',
       explain: '<b>Live artifacts</b><br>Claude가 만든 문서, 코드, 화면 결과물을 별도 산출물처럼 확인하고 다듬는 영역입니다.'
     },
     dispatch: {
+      mode: 'cowork',
       title: 'Dispatch',
       prompt: '폰에서 지시하고 PC에서 실행합니다',
       explain: '<b>Dispatch</b><br>모바일에서 지시한 작업을 PC의 Claude가 이어서 처리하는 베타 기능입니다. PC가 켜져 있고 앱이 열려 있어야 합니다.'
     },
     customize: {
+      mode: 'cowork',
       title: 'Customize',
       prompt: '작업 방식과 연결 도구를 조정합니다',
       explain: '<b>Customize</b><br>Claude가 사용할 도구, 플러그인, 개인화 설정을 조정하는 영역입니다.'
     },
     attach: {
+      mode: 'cowork',
       title: '파일 추가',
       prompt: '분석할 파일이나 이미지를 추가합니다',
       explain: '<b>＋ 파일</b><br>작업에 필요한 파일, 이미지, 문서를 추가해 Claude가 실제 자료를 바탕으로 답하게 합니다.'
     },
     projectFiles: {
+      mode: 'cowork',
       title: '프로젝트에서 작업',
       prompt: 'Claude가 접근할 프로젝트를 고릅니다',
       explain: '<b>프로젝트에서 작업</b><br>Cowork가 읽고 쓸 수 있는 로컬 프로젝트나 파일 범위를 지정합니다.'
     },
     question: {
+      mode: 'cowork',
       title: '질문 모드',
       prompt: '실행보다 확인이 필요한 질문을 합니다',
-      explain: '<b>질문</b><br>파일을 바로 바꾸기 전에 분석, 검토, 설명을 먼저 받을 때 쓰는 안전한 작업 방식입니다.'
+      explain: '<b>질문</b><br>질문 메뉴 아래에서 실행 방식을 고릅니다. 실행 전 확인은 작업 전에 확인을 받고, 묻지 않고 실행은 승인 절차를 줄입니다.'
+    },
+    confirm: {
+      mode: 'cowork',
+      title: '실행 전 확인',
+      prompt: '작업 전에 확인을 받고 진행합니다',
+      explain: '<b>실행 전 확인</b><br>파일 변경, 앱 조작, 실행 같은 행동 전에 Claude가 먼저 확인을 요청하는 안전한 설정입니다.'
+    },
+    autoRun: {
+      mode: 'cowork',
+      title: '묻지 않고 실행',
+      prompt: '반복 작업을 빠르게 진행합니다',
+      explain: '<b>묻지 않고 실행</b><br>반복적이고 위험도가 낮은 작업을 확인 질문 없이 바로 진행하는 실행 방식입니다.'
     },
     legacy: {
+      mode: 'cowork',
       title: 'Legacy Model',
       prompt: '이전 모델을 선택합니다',
       explain: '<b>Legacy Model</b><br>특정 워크플로에서 이전 Claude 모델이 필요할 때 선택합니다. 기본 작업은 최신 모델 사용이 일반적입니다.'
     },
     optimize: {
+      mode: 'cowork',
       title: '이번 주 최적화하기',
       prompt: '이번 주 일정과 파일을 정리해줘',
       explain: '<b>제안 카드</b><br>자주 쓰는 작업을 바로 시작하는 카드입니다. 예시는 일정 최적화, 스크린샷 정리, 파일 분석 등입니다.'
     },
     cleanup: {
+      mode: 'cowork',
       title: '스크린샷 정리하기',
       prompt: '스크린샷 폴더를 분류하고 이름을 정리해줘',
       explain: '<b>스크린샷 정리</b><br>로컬 파일을 읽고 분류하는 Cowork식 작업 예시입니다.'
     },
     insight: {
+      mode: 'cowork',
       title: '파일에서 인사이트 찾기',
       prompt: '자료 파일을 읽고 핵심 인사이트를 뽑아줘',
       explain: '<b>파일 인사이트</b><br>문서나 데이터 파일을 바탕으로 요약, 패턴, 다음 액션을 추출하는 작업입니다.'
     },
     pluginsClaude: {
+      mode: 'cowork',
       title: '플러그인 맞춤 설정',
       prompt: '내 업무 도구와 연결해줘',
       explain: '<b>플러그인</b><br>외부 서비스와 연결해 Claude의 작업 범위를 넓힙니다. MCP와 함께 설명하기 좋습니다.'
@@ -1675,11 +1866,32 @@
     var title = document.getElementById('claudeTitle');
     var prompt = document.getElementById('claudePromptText');
     var explain = document.getElementById('claudeExplain');
+    var demo = document.getElementById('claudeDemo');
+    var mode = data.mode || 'cowork';
+    var activeTopic = data.navTopic || topic;
+    if(demo){
+      demo.classList.toggle('mode-chat', mode === 'chat');
+      demo.classList.toggle('mode-cowork', mode === 'cowork');
+      demo.classList.toggle('mode-code', mode === 'code');
+    }
     if(title) title.textContent = data.title;
     if(prompt) prompt.textContent = data.prompt;
     if(explain) explain.innerHTML = data.explain;
-    document.querySelectorAll('.claude-nav-btn, .claude-tab').forEach(function(btn){
+    document.querySelectorAll('.claude-tab').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-claude-topic') === mode);
+    });
+    document.querySelectorAll('.claude-nav-set').forEach(function(set){
+      set.classList.toggle('active', set.getAttribute('data-claude-mode') === mode);
+    });
+    document.querySelectorAll('.claude-nav-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-claude-topic') === activeTopic);
+    });
+    document.querySelectorAll('.claude-chip').forEach(function(btn){
       btn.classList.toggle('active', btn.getAttribute('data-claude-topic') === topic);
+    });
+    document.querySelectorAll('.claude-run-option').forEach(function(btn){
+      var active = btn.getAttribute('data-claude-topic') === topic;
+      btn.classList.toggle('active', active || (topic === 'question' && btn.getAttribute('data-claude-topic') === 'confirm'));
     });
   }
 
@@ -1689,7 +1901,18 @@
       var target = e.target.closest('[data-claude-topic]');
       if(!target) return;
       e.preventDefault();
-      setClaudeTopic(target.getAttribute('data-claude-topic'));
+      var topic = target.getAttribute('data-claude-topic');
+      var questionMenu = document.getElementById('claudeQuestionMenu');
+      if(questionMenu){
+        if(topic === 'question'){
+          questionMenu.classList.toggle('open');
+        } else if(topic === 'confirm' || topic === 'autoRun'){
+          questionMenu.classList.add('open');
+        } else {
+          questionMenu.classList.remove('open');
+        }
+      }
+      setClaudeTopic(topic);
     });
   }
 

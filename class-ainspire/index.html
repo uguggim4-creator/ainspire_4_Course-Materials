@@ -905,6 +905,8 @@
     <script>
         let currentFilter = 'all';
         let searchQuery = '';
+        let currentModalFrameSrc = '';
+        let currentModalItemType = '';
 
         // 카드 렌더링 함수
         function renderMaterials(data) {
@@ -1017,7 +1019,7 @@
 
             if (item.fileType === 'article') {
                 // 로컬 HTML 아티클: 뷰어를 임베드 모드로 띄움
-                frameSrc = `viewer.html?id=${id}&embed=1&_=${Date.now()}`;
+                frameSrc = `viewer.html?id=${id}&embed=1`;
                 openNewHref = `viewer.html?id=${id}`;
             } else if (item.fileType === 'pdf' || item.fileType === 'excel') {
                 // Google Drive 미리보기
@@ -1040,7 +1042,7 @@
             } else {
                 // link: 로컬 HTML 페이지(슬라이드/CineGuide) 임베드
                 const sep = item.filePath.includes('?') ? '&' : '?';
-                frameSrc = `${item.filePath}${sep}embed=1&_=${Date.now()}`;
+                frameSrc = `${item.filePath}${sep}embed=1`;
                 openNewHref = item.filePath;
             }
 
@@ -1061,9 +1063,27 @@
 
             const loading = document.getElementById('modal-loading');
             const frame = document.getElementById('modal-frame');
-            loading.style.display = 'flex';
-            frame.onload = () => { loading.style.display = 'none'; };
-            frame.src = frameSrc;
+            if (frameSrc === currentModalFrameSrc) {
+                loading.style.display = 'none';
+                try {
+                    frame.contentWindow.postMessage({ type: 'ainspire:modal-open' }, location.origin);
+                } catch (err) {
+                    // Cross-origin iframes such as Google Drive cannot be controlled from here.
+                }
+            } else {
+                loading.style.display = 'flex';
+                frame.onload = () => {
+                    loading.style.display = 'none';
+                    try {
+                        frame.contentWindow.postMessage({ type: 'ainspire:modal-open' }, location.origin);
+                    } catch (err) {
+                        // Cross-origin iframes such as Google Drive cannot be controlled from here.
+                    }
+                };
+                frame.src = frameSrc;
+                currentModalFrameSrc = frameSrc;
+                currentModalItemType = item.fileType;
+            }
 
             const overlay = document.getElementById('material-modal');
             overlay.classList.add('open');
@@ -1075,9 +1095,20 @@
             const overlay = document.getElementById('material-modal');
             overlay.classList.remove('open');
             document.body.style.overflow = '';
-            // iframe 정지(영상/소리 멈춤)
+            // 로컬 iframe은 DOM을 유지해 재오픈을 빠르게 하고, 내부 미디어만 멈춘다.
             const frame = document.getElementById('modal-frame');
-            setTimeout(() => { if (!overlay.classList.contains('open')) frame.src = 'about:blank'; }, 250);
+            try {
+                frame.contentWindow.postMessage({ type: 'ainspire:modal-close' }, location.origin);
+            } catch (err) {
+                // Cross-origin iframes such as Google Drive cannot be controlled from here.
+            }
+            setTimeout(() => {
+                if (!overlay.classList.contains('open') && currentModalItemType !== 'article' && currentModalItemType !== 'link') {
+                    frame.src = 'about:blank';
+                    currentModalFrameSrc = '';
+                    currentModalItemType = '';
+                }
+            }, 250);
         }
 
         // ESC로 닫기

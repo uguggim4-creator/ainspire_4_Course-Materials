@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -1293,7 +1293,7 @@ footer a {
     <section class="main-container" id="shot-directory" style="border-top: 1px solid var(--border-color);">
         <div class="section-title-area">
             <div class="section-number">Chapter 02</div>
-            <h2 class="section-title">카메라 샷 가이드북 (23가지 기법)</h2>
+            <h2 class="section-title">카메라 샷 가이드북 (프레이밍 & 앵글)</h2>
         </div>
 
         <!-- Search and Filter Controls -->
@@ -1305,9 +1305,7 @@ footer a {
             <div class="filter-tabs">
                 <button class="filter-btn active" data-filter="all">전체</button>
                 <button class="filter-btn" data-filter="framing">프레이밍 (Framing)</button>
-                <button class="filter-btn" data-filter="movement">카메라 무브먼트 (Movement)</button>
                 <button class="filter-btn" data-filter="angles">앵글 (Angles)</button>
-                <button class="filter-btn" data-filter="special">특수 기법 (Special)</button>
             </div>
         </div>
 
@@ -1435,7 +1433,7 @@ footer a {
             <div class="shot-card glass" data-category="angles" id="shot-card-4">
                 <div class="shot-preview">
                     
-                    <video src="img/4_pov.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <video src="img/4_pov.mp4" loop muted playsinline preload="metadata" class="shot-media"></video>
                     <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
                         <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
                         <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -1588,122 +1586,8 @@ footer a {
                 </div>
             </div>
     
-            <div class="shot-card glass" data-category="special" id="shot-card-8">
-                <div class="shot-preview">
-                    
-                    <video src="img/8_slow_motion.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-special">특수 기법</span>
-                </div>
-                <div class="shot-info">
-                    <h3>8. 슬로모션 (Slow Motion)</h3>
-                    <p class="shot-description">실제보다 느린 속도로 영상을 재생하여, 특정 순간을 강조하고 감각적인 효과를 더하는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 8)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 8)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 8)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-8">
-                            <ul>
-                                <li>감정의 극대화 및 드라마틱한 분위기 연출</li><li>놓치기 쉬운 순간의 디테일 포착</li><li>아름다움, 긴장감, 감동 등 시각적/감정적 임팩트 강화</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-8">
-                            <ul>
-                                <li>액션 장면의 중요한 순간, 스포츠 하이라이트 (예: 운동선수 골, 액션의 총알)</li><li>감동적이거나 아름다운 장면 (예: 웨딩 꽃잎)</li><li>제품 광고에서 시각적인 매력을 높일 때 (예: 광고의 음료)</li><li>심리적 긴장감을 조성하는 극적인 순간</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-8">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'slow motion')"><span class="chip-label">slow motion</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'slow-mo capture')"><span class="chip-label">slow-mo capture</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'high frame rate slow motion')"><span class="chip-label">high frame rate slow motion</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="special" id="shot-card-9">
-                <div class="shot-preview">
-                    
-                    <video src="img/9_time_lapse.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-special">특수 기법</span>
-                </div>
-                <div class="shot-info">
-                    <h3>9. 타임랩스 (Timelapse)</h3>
-                    <p class="shot-description">긴 시간 동안 촬영된 장면을 실제보다 빠르게 재생하여, 시간의 흐름과 변화를 압축적으로 보여주는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 9)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 9)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 9)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-9">
-                            <ul>
-                                <li>시간의 흐름, 변화, 성장 과정 압축 전달</li><li>반복적인 움직임이나 패턴 강조</li><li>역동적인 에너지와 리듬감 부여</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-9">
-                            <ul>
-                                <li>해 뜨고 지는 풍경, 도시의 낮과 밤 변화</li><li>식물의 성장, 건설 과정 등 장시간의 변화를 보여줄 때</li><li>브이로그나 다큐멘터리에서 특정 구간의 시간 압축 및 전환 시</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-9">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'time lapse')"><span class="chip-label">time lapse</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'hyperlapse')"><span class="chip-label">hyperlapse</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'accelerated time passage')"><span class="chip-label">accelerated time passage</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="special" id="shot-card-10">
-                <div class="shot-preview">
-                    
-                    <img src="img/10_reaction_shot.png" alt="preview" class="shot-media">
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-special">특수 기법</span>
-                </div>
-                <div class="shot-info">
-                    <h3>10. 리액션 샷 (Reaction Shot)</h3>
-                    <p class="shot-description">특정 사건이나 상황에 대한 인물의 즉각적인 감정적 반응을 포착하는 샷</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 10)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 10)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 10)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-10">
-                            <ul>
-                                <li>인물의 감정 상태 명확히 전달 및 관객 공감 유발</li><li>장면의 긴장감, 유머, 놀라움 등 감정적 파급력 확장</li><li>이야기의 리듬과 템포 조절</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-10">
-                            <ul>
-                                <li>극적인 사건 발생 직후 인물의 표정 변화를 보여줄 때 (예: 시험 결과 놀람, 선물 기쁨)</li><li>코미디에서 유머러스한 반응을 강조하거나, 서스펜스에서 긴장감을 높일 때 (예: 공포영화 놀람)</li><li>관중의 환호나 놀람 등 집단적인 반응을 담을 때</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-10">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'reaction shot')"><span class="chip-label">reaction shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'character reaction close-up')"><span class="chip-label">character reaction close-up</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'emotional response shot')"><span class="chip-label">emotional response shot</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
             <div class="shot-card glass" data-category="framing" id="shot-card-11">
                 <div class="shot-preview">
@@ -1717,7 +1601,7 @@ footer a {
                     <span class="shot-badge badge-framing">프레이밍</span>
                 </div>
                 <div class="shot-info">
-                    <h3>11. 인서트 샷 (Insert Shot)</h3>
+                    <h3>8. 인서트 샷 (Insert Shot)</h3>
                     <p class="shot-description">주요 장면의 흐름을 끊지 않으면서, 특정 사물이나 인물의 디테일, 또는 배경의 일부를 클로즈업하여 보여주는 보조 샷</p>
                     
                     <div class="shot-tabs">
@@ -1756,7 +1640,7 @@ footer a {
                     <span class="shot-badge badge-framing">프레이밍</span>
                 </div>
                 <div class="shot-info">
-                    <h3>12. 컷어웨이 (Cutaway)</h3>
+                    <h3>9. 컷어웨이 (Cutaway)</h3>
                     <p class="shot-description">주요 피사체나 대화에서 잠시 벗어나 주변 환경, 다른 인물, 소품 등을 보여주며 장면을 전환하거나 보충하는 샷</p>
                     
                     <div class="shot-tabs">
@@ -1783,244 +1667,16 @@ footer a {
                 </div>
             </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-13">
-                <div class="shot-preview">
-                    
-                    <video src="img/13_steadicam_shot.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>13. 스테디캠 샷 (Steadicam Shot)</h3>
-                    <p class="shot-description">스테디캠 장비를 사용하여 카메라의 흔들림을 최소화하고, 부드럽고 유려하게 움직이며 촬영하는 샷</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 13)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 13)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 13)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-13">
-                            <ul>
-                                <li>높은 몰입감과 현장감 제공</li><li>인물의 감정이나 시선 흐름을 자연스럽게 따라가며 긴장감 조성</li><li>공간감을 살리면서 부드러운 시각적 이동 연출</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-13">
-                            <ul>
-                                <li>추격, 액션 장면 등 역동적이면서 안정적인 움직임이 필요한 순간</li><li>롱테이크 기법을 활용하여 특정 공간이나 상황을 끊김 없이 보여줄 때 (예: 〈샤이닝〉 호텔 복도, 〈좋은 친구들〉 레스토랑 입장)</li><li>콘서트나 스포츠 중계에서 생생한 현장감을 전달할 때</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-13">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'steadicam shot')"><span class="chip-label">steadicam shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'smooth tracking shot')"><span class="chip-label">smooth tracking shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'fluid camera movement')"><span class="chip-label">fluid camera movement</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-14">
-                <div class="shot-preview">
-                    
-                    <img src="img/14_handheld_shot.png" alt="preview" class="shot-media">
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>14. 핸드헬드 샷 (Handheld Shot)</h3>
-                    <p class="shot-description">카메라를 손에 들고 직접 촬영하여 의도적인 흔들림을 주거나, 있는 그대로의 현장감을 담는 샷</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 14)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 14)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 14)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-14">
-                            <ul>
-                                <li>강렬한 현장감과 리얼리티 전달</li><li>불안, 혼란, 긴장감 등 날것의 감정 표현</li><li>다큐멘터리적인 사실감과 몰입감 증대</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-14">
-                            <ul>
-                                <li>전쟁 영화, 공포 영화, 추격 장면 등 강렬한 긴장감을 조성할 때</li><li>뉴스, 다큐멘터리, 브이로그 등 현실적이고 생생한 분위기를 연출할 때</li><li>액션 장면에서 관객을 상황 속으로 더 깊이 끌어들이고자 할 때</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-14">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'handheld camera')"><span class="chip-label">handheld camera</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'shaky cam')"><span class="chip-label">shaky cam</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'documentary style handheld')"><span class="chip-label">documentary style handheld</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-15">
-                <div class="shot-preview">
-                    
-                    <video src="img/15_zoom_in_out.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>15. 줌인/줌아웃 (Zoom In/Out)</h3>
-                    <p class="shot-description">카메라 렌즈의 초점 거리를 조절하여 피사체를 확대(줌인)하거나 축소(줌아웃)하는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 15)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 15)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 15)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-15">
-                            <ul>
-                                <li>특정 피사체나 디테일에 대한 집중 및 강조</li><li>관객과의 심리적 거리감 변화 유도</li><li>감정의 점진적 변화 또는 정보 전달</li><li>공간감의 확장 또는 축소</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-15">
-                            <ul>
-                                <li>줌인: 인물의 표정 변화나 중요한 사물에 초점을 맞춰 감정이나 정보를 강조할 때</li><li>줌아웃: 특정 상황에서 벗어나 전체적인 공간감이나 배경을 보여주며 심리적 전환을 유도할 때</li><li>광고에서 제품의 특정 디테일을 부각하거나, 전환 효과를 줄 때</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-15">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'zoom in')"><span class="chip-label">zoom in</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'zoom out')"><span class="chip-label">zoom out</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'optical zoom shot')"><span class="chip-label">optical zoom shot</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-16">
-                <div class="shot-preview">
-                    
-                    <video src="img/16_panning.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>16. 패닝 (Panning)</h3>
-                    <p class="shot-description">카메라를 한 축에 고정하고 좌우로 수평 이동하며 촬영하는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 16)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 16)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 16)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-16">
-                            <ul>
-                                <li>넓은 공간을 시각적으로 확장하여 보여줌</li><li>움직이는 피사체를 자연스럽게 추적</li><li>장면 간의 부드러운 연결 및 리듬감 부여</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-16">
-                            <ul>
-                                <li>자동차 경주, 스포츠 경기 등 움직이는 피사체를 따라갈 때</li><li>광활한 풍경의 파노라마를 담거나 무대 전체를 조망할 때</li><li>이야기 전환 시 공간적 설명을 추가하거나 움직임을 강조할 때</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-16">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'panning shot')"><span class="chip-label">panning shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'horizontal pan')"><span class="chip-label">horizontal pan</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera pan following subject')"><span class="chip-label">camera pan following subject</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-17">
-                <div class="shot-preview">
-                    
-                    <video src="img/17_tilt.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>17. 틸트 (Tilt)</h3>
-                    <p class="shot-description">카메라를 한 축에 고정하고 위아래로 수직 이동하며 촬영하는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 17)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 17)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 17)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-17">
-                            <ul>
-                                <li>피사체의 높이, 크기, 위엄 등 강조</li><li>관객의 시선을 특정 방향으로 유도</li><li>공간감 또는 인물의 심리적 위압감 표현</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-17">
-                            <ul>
-                                <li>거대한 빌딩이나 나무를 아래에서 위로/위에서 아래로 훑으며 그 크기를 강조할 때</li><li>인물이 하늘을 올려다보는 시선을 따라가며 몽환적이거나 고독한 분위기를 연출할 때</li><li>권위적이거나 위압적인 존재감을 부각할 때</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-17">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'tilt up')"><span class="chip-label">tilt up</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'tilt down')"><span class="chip-label">tilt down</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'vertical camera tilt')"><span class="chip-label">vertical camera tilt</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="special" id="shot-card-18">
-                <div class="shot-preview">
-                    
-                    <video src="img/18_jump_cut.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-special">특수 기법</span>
-                </div>
-                <div class="shot-info">
-                    <h3>18. 점프컷 (Jump Cut)</h3>
-                    <p class="shot-description">시간의 흐름이나 동작의 일부를 과감하게 생략하여, 장면의 리듬을 빠르게 만들거나 시간 압축, 긴장감, 스타일을 강조하는 편집 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 18)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 18)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 18)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-18">
-                            <ul>
-                                <li>시간의 효율적인 압축 및 전달</li><li>장면의 리듬감, 속도감, 역동성 부여</li><li>특정 스타일, 긴장감, 유머러스한 분위기 연출</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-18">
-                            <ul>
-                                <li>요리 과정, 준비 과정, 여행 이동 등 긴 시간을 짧게 보여줄 때 (예: 요리 과정 압축)</li><li>유튜브, 숏폼, 뮤직비디오 등 빠르고 스타일리시한 편집이 필요할 때 (지루함을 방지하고 시선을 계속 붙잡아야 하는 순간)</li><li>액션이나 코미디에서 특정 순간을 강조하며 재미를 더할 때 <Little Shop of Horrors> (1986)</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-18">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'jump cut')"><span class="chip-label">jump cut</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'abrupt edit cut')"><span class="chip-label">abrupt edit cut</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'discontinuous editing')"><span class="chip-label">discontinuous editing</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
             <div class="shot-card glass" data-category="angles" id="shot-card-19">
                 <div class="shot-preview">
                     
-                    <video src="img/19_high_low_angle.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <video src="img/19_high_low_angle.mp4" loop muted playsinline preload="metadata" class="shot-media"></video>
                     <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
                         <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
                         <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -2029,7 +1685,7 @@ footer a {
                     <span class="shot-badge badge-angles">앵글</span>
                 </div>
                 <div class="shot-info">
-                    <h3>19. 하이 앵글 (High Angle) & 로우 앵글 (Low Angle)</h3>
+                    <h3>10. 하이 앵글 (High Angle) & 로우 앵글 (Low Angle)</h3>
                     <p class="shot-description">카메라를 피사체의 위(하이 앵글) 또는 아래(로우 앵글)에 위치시켜 촬영하는 기법으로, 피사체의 힘과 감정을 시각적으로 표현</p>
                     
                     <div class="shot-tabs">
@@ -2059,7 +1715,7 @@ footer a {
             <div class="shot-card glass" data-category="angles" id="shot-card-20">
                 <div class="shot-preview">
                     
-                    <video src="img/20_camera_positions.mp4" autoplay loop muted playsinline class="shot-media"></video>
+                    <video src="img/20_camera_positions.mp4" loop muted playsinline preload="metadata" class="shot-media"></video>
                     <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
                         <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
                         <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -2068,7 +1724,7 @@ footer a {
                     <span class="shot-badge badge-angles">앵글</span>
                 </div>
                 <div class="shot-info">
-                    <h3>20. 카메라 포지션 앵글: 정면, 측면, 뒷모습 (Front, Side, Back Angles)</h3>
+                    <h3>11. 카메라 포지션 앵글: 정면, 측면, 뒷모습 (Front, Side, Back Angles)</h3>
                     <p class="shot-description">카메라가 피사체와 어떤 관계(정면, 측면, 뒷면)를 맺는지에 따라 인물과의 심리적 거리를 조절하고 다양한 감정을 전달하는 앵글</p>
                     
                     <div class="shot-tabs">
@@ -2107,7 +1763,7 @@ footer a {
                     <span class="shot-badge badge-angles">앵글</span>
                 </div>
                 <div class="shot-info">
-                    <h3>21. 더치 틸트 (Dutch Tilt / Canted Angle)</h3>
+                    <h3>12. 더치 틸트 (Dutch Tilt / Canted Angle)</h3>
                     <p class="shot-description">카메라를 수평 축을 기준으로 한쪽으로 기울여 촬영하는 앵글로, 화면이 비스듬하게 기울어짐</p>
                     
                     <div class="shot-tabs">
@@ -2134,83 +1790,7 @@ footer a {
                 </div>
             </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-22">
-                <div class="shot-preview">
-                    
-                    <video src="img/22_tracking_shot.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>22. 트래킹 샷 (Tracking Shot / Dolly Shot)</h3>
-                    <p class="shot-description">카메라를 레일 위나 이동 장비(돌리)에 고정하여 피사체를 따라 수평 또는 수직으로 부드럽게 이동하며 촬영하는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 22)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 22)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 22)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-22">
-                            <ul>
-                                <li>피사체의 움직임을 자연스럽고 안정적으로 따라가며 몰입감 증대</li><li>인물의 여정, 특정 공간 탐험, 시간의 흐름을 동적으로 표현</li><li>장면의 연속성과 인물과의 심리적 연결 강조</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-22">
-                            <ul>
-                                <li>복도를 걷는 인물을 따라가며 긴장감을 조성하거나 공간을 탐색할 때.</li><li>새로운 환경을 소개하거나 특정 오브젝트로 시선을 유도할 때.</li><li>대화 장면에서 인물 간의 관계 변화를 부드러운 움직임으로 보여줄 때.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-22">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'tracking shot')"><span class="chip-label">tracking shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'dolly shot')"><span class="chip-label">dolly shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera following movement')"><span class="chip-label">camera following movement</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
-            <div class="shot-card glass" data-category="movement" id="shot-card-23">
-                <div class="shot-preview">
-                    
-                    <video src="img/23_crane_shot.mp4" autoplay loop muted playsinline class="shot-media"></video>
-                    <svg class="viewfinder-svg" viewBox="0 0 250 145" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 10 20 L 10 10 L 20 10 M 230 10 L 240 10 L 240 20 M 10 120 L 10 130 L 20 130 M 230 130 L 240 130 L 240 120" fill="none" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-        
-                    <span class="shot-badge badge-movement">카메라 무브먼트</span>
-                </div>
-                <div class="shot-info">
-                    <h3>23. 크레인 샷 (Crane Shot / Jib Shot)</h3>
-                    <p class="shot-description">카메라를 크레인이나 지브(Jib) 암에 장착하여 수직, 수평, 대각선 등 복합적인 움직임을 통해 넓은 범위의 촬영을 하는 기법</p>
-                    
-                    <div class="shot-tabs">
-                        <button class="shot-tab-btn active" onclick="switchShotTab(this, 'effects', 23)">핵심 효과</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'usages', 23)">활용 방법</button>
-                        <button class="shot-tab-btn" onclick="switchShotTab(this, 'prompts', 23)">AI 프롬프트</button>
-                    </div>
-                    
-                    <div class="tab-content">
-                        <div class="tab-panel active" id="tab-effects-23">
-                            <ul>
-                                <li>웅장하고 드라마틱한 스케일 표현</li><li>장면 전환 시 부드러운 이동과 시각적 정보 확장</li><li>관객에게 압도적인 시각적 경험 제공, 감정적 고조</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-usages-23">
-                            <ul>
-                                <li>영화의 오프닝/클로징에서 장소나 인물들을 한 번에 보여주며 분위기를 압도할 때.</li><li>군중이나 대규모 전투 장면에서 전체적인 상황을 조망할 때.</li><li>특정 인물에게서 시작하여 넓은 환경으로 시선을 이동시키며 이야기를 확장할 때.</li>
-                            </ul>
-                        </div>
-                        <div class="tab-panel" id="tab-prompts-23">
-                            <span class="prompt-chip" onclick="copyPrompt(this,'crane shot')"><span class="chip-label">crane shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'jib shot')"><span class="chip-label">jib shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera rising overhead')"><span class="chip-label">camera rising overhead</span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
     
         </div>
     </section>
@@ -2251,7 +1831,7 @@ footer a {
                 <p class="comp-text">수평선(평온함), 수직선(위엄), 대각선(긴장감), 곡선(긴장 완화) 등 사물이 형성하는 라인을 활용해 시선을 배치하고 소실점(Vanishing Point)을 향하게 유도하여 압도적인 깊이감과 압박감을 부여합니다.</p>
                 <div class="comp-interactive-area">
                     <div class="vanishing-point-mock" style="position: relative; overflow: hidden;">
-                        <video src="img/chapter_3-2_vanishing_point.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;"></video>
+                        <video src="img/chapter_3-2_vanishing_point.mp4" loop muted playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;"></video>
                         <div class="vp-line vp-line-1" style="z-index:2;"></div>
                         <div class="vp-line vp-line-2" style="z-index:2;"></div>
                         <div class="vp-line vp-line-3" style="z-index:2;"></div>
@@ -2268,7 +1848,7 @@ footer a {
                 <p class="comp-text">카메라를 바라보는 직시(관객과의 직접적인 대화), 옆면 배치(신비감과 거리감 유발), 상하 시선 배치(권력과 힘의 수직적 관계 묘사) 등을 통해 인물의 내면 심리를 묘사하고 화면 속 몰입도를 높입니다.</p>
                 <div class="comp-interactive-area" style="flex-direction: column; gap: 1rem; padding: 1.5rem; height: auto; min-height: 260px;">
                     <div class="gaze-mock-preview" style="width: 100%; aspect-ratio: 16 / 9; position: relative; overflow: hidden; border-radius: 8px; background:#04060A; display:flex; align-items:center; justify-content:center;">
-                        <video src="img/chapter_3-3_gaze_line.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:contain; position:absolute; top:0; left:0; z-index:1; opacity:0.85;"></video>
+                        <video src="img/chapter_3-3_gaze_line.mp4" loop muted playsinline preload="metadata" style="width:100%; height:100%; object-fit:contain; position:absolute; top:0; left:0; z-index:1; opacity:0.85;"></video>
                     </div>
                     <div style="display: flex; gap: 1rem; width: 100%; z-index:2;">
                         <div class="btn btn-secondary" style="flex: 1; text-align: center; justify-content: center; font-size: 0.85rem;" onclick="changeGaze('front')">직시 (소통)</div>
@@ -2287,7 +1867,7 @@ footer a {
                 <p class="comp-text">어두운 배경 속에 밝은 피사체를 배치하여 강조하는 명암 대비, 보색 매칭을 사용하는 색상 대비, 그리고 역광 촬영을 통해 대상의 세부를 숨기고 신비감을 연출하는 실루엣 서사적 기능을 적용합니다.</p>
                 <div class="comp-interactive-area">
                     <div class="contrast-mock" id="contrast-mock" style="position: relative; overflow: hidden;">
-                        <video src="img/chapter_3-4_contrast_silhouette.mp4" autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;" id="contrast-video"></video>
+                        <video src="img/chapter_3-4_contrast_silhouette.mp4" loop muted playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:1; opacity:0.85;" id="contrast-video"></video>
                     </div>
                 </div>
             </div>
@@ -2298,7 +1878,7 @@ footer a {
     <section class="main-container" id="camera-movement" style="border-top: 1px solid var(--border-color);">
         <div class="section-title-area">
             <div class="section-number">Chapter 04</div>
-            <h2 class="section-title">카메라 무브먼트</h2>
+            <h2 class="section-title">카메라 무브먼트 & 특수 기법</h2>
         </div>
 
         <div class="controls-area" style="margin-bottom:3rem;">
@@ -2316,7 +1896,7 @@ footer a {
             <div class="movement-grid" style="margin-bottom:3.5rem;">
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-1">
-                    <video src="img/dolly_in_v2.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/dolly_in_v2.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
                         <h3>돌리 인 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Dolly In)</span></h3>
@@ -2327,13 +1907,13 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-1"><ul><li>피사체와의 심리적 거리 좁힘</li><li>긴장감·집중·강조 효과</li><li>배경 원근감 변화로 입체감 증가</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-1"><span class="prompt-chip" onclick="copyPrompt(this,'dolly in')"><span class="chip-label">dolly in</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera moving forward')"><span class="chip-label">camera moving forward</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'push in')"><span class="chip-label">push in</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-1"><span class="prompt-chip" onclick="copyPrompt(this,'The camera slowly dollies in, pushing forward smoothly toward her face. She stays still with a calm natural expression, only subtle ambient motion in the light and hair. Smooth cinematic push-in, steady forward dolly movement, shallow depth of field.')"><span class="chip-label">The camera slowly dollies in, pushing forward smoothly toward her face. She stays still with a calm natural expression, only subtle ambient motion in the light and hair. Smooth cinematic push-in, steady forward dolly movement, shallow depth of field.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-2">
-                    <video src="img/dolly_out_v2.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/dolly_out_v2.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
                         <h3>돌리 아웃 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Dolly Out)</span></h3>
@@ -2344,47 +1924,47 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-2"><ul><li>고립감·이별·단절 표현</li><li>인물을 환경 속에 위치시키며 상황 확장</li><li>클라이맥스 이후 여운 전달</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-2"><span class="prompt-chip" onclick="copyPrompt(this,'dolly out')"><span class="chip-label">dolly out</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera pulling back')"><span class="chip-label">camera pulling back</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'pull out')"><span class="chip-label">pull out</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-2"><span class="prompt-chip" onclick="copyPrompt(this,'The camera slowly dollies out, pulling steadily backward away from the woman to gradually reveal more of the warm cafe around her. She remains calm and still. Smooth cinematic pull-back, steady backward dolly movement.')"><span class="chip-label">The camera slowly dollies out, pulling steadily backward away from the woman to gradually reveal more of the warm cafe around her. She remains calm and still. Smooth cinematic pull-back, steady backward dolly movement.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-3">
-                    <video src="img/tracking_v2.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/tracking_v2.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
-                        <h3>트래킹 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Tracking Shot)</span></h3>
-                        <p class="shot-description">피사체를 따라 좌우·앞뒤로 이동하며 생동감 부여.</p>
+                        <h3>트래킹 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Tracking / Dolly)</span></h3>
+                        <p class="shot-description">카메라를 레일 위나 이동 장비(돌리)에 고정하여 피사체를 따라 수평·수직으로 부드럽게 이동하며 촬영하는 기법.</p>
                         <div class="shot-tabs">
                             <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-3')">핵심 효과</button>
                             <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-3')">AI 프롬프트</button>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-panel active" id="meffects-mcard-3"><ul><li>피사체와 함께 이동하는 생동감</li><li>공간 탐색·여정 표현</li><li>관객을 장면 속으로 끌어들임</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-3"><span class="prompt-chip" onclick="copyPrompt(this,'tracking shot')"><span class="chip-label">tracking shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'follow camera')"><span class="chip-label">follow camera</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera follows subject')"><span class="chip-label">camera follows subject</span>📋</span></div>
+                            <div class="tab-panel active" id="meffects-mcard-3"><ul><li>피사체의 움직임을 자연스럽고 안정적으로 따라가며 몰입감 증대</li><li>인물의 여정·공간 탐험·시간의 흐름을 동적으로 표현</li><li>장면의 연속성과 인물과의 심리적 연결 강조</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-3"><span class="prompt-chip" onclick="copyPrompt(this,'Tracking shot: the camera moves sideways alongside the woman as she walks at a relaxed pace, keeping her in profile in frame. Smooth lateral tracking movement, steady follow, natural walking motion, gentle parallax in the sunlit street background.')"><span class="chip-label">Tracking shot: the camera moves sideways alongside the woman as she walks at a relaxed pace, keeping her in profile in frame. Smooth lateral tracking movement, steady follow, natural walking motion, gentle parallax in the sunlit street background.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-4">
-                    <video src="img/crane_v2.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/23_crane_shot.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
                         <h3>크레인 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Crane / Jib)</span></h3>
-                        <p class="shot-description">수직 이동으로 높이감과 시네마틱함 제공.</p>
+                        <p class="shot-description">카메라를 크레인·지브(Jib) 암에 장착해 수직·수평·대각선 등 복합적 움직임으로 넓은 범위를 촬영하는 기법.</p>
                         <div class="shot-tabs">
                             <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-4')">핵심 효과</button>
                             <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-4')">AI 프롬프트</button>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-panel active" id="meffects-mcard-4"><ul><li>웅장함·스케일 전달</li><li>수직 이동으로 드라마틱한 reveal</li><li>장면 전환의 우아한 마무리</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-4"><span class="prompt-chip" onclick="copyPrompt(this,'crane shot')"><span class="chip-label">crane shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'jib movement')"><span class="chip-label">jib movement</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera rising up')"><span class="chip-label">camera rising up</span>📋</span></div>
+                            <div class="tab-panel active" id="meffects-mcard-4"><ul><li>웅장하고 드라마틱한 스케일 표현</li><li>장면 전환 시 부드러운 이동과 시각적 정보 확장</li><li>압도적인 시각적 경험과 감정적 고조</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-4"><span class="prompt-chip" onclick="copyPrompt(this,'Crane shot: the camera rises smoothly upward from the low angle, craning up to reveal the tall architecture and open sky above her as she looks gently upward. Majestic vertical crane movement, smooth and cinematic.')"><span class="chip-label">Crane shot: the camera rises smoothly upward from the low angle, craning up to reveal the tall architecture and open sky above her as she looks gently upward. Majestic vertical crane movement, smooth and cinematic.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-5">
-                    <video src="img/robot_arm.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/robot_arm.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
                         <h3>로봇암 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Robot Arm)</span></h3>
@@ -2395,13 +1975,13 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-5"><ul><li>정밀한 반복 재현 가능</li><li>역동적이고 세련된 3D 궤적</li><li>광고·뮤직비디오의 고급스러운 연출</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-5"><span class="prompt-chip" onclick="copyPrompt(this,'robot arm camera motion')"><span class="chip-label">robot arm camera motion</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'precision camera movement')"><span class="chip-label">precision camera movement</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-5"><span class="prompt-chip" onclick="copyPrompt(this,'High-energy robot-arm camera move: the camera rapidly sweeps and whips around the woman through many different angles and compositions, darting in close then pulling wide, arcing from low to high, snapping between framings quickly and constantly back and forth. Fast precise motorized 3D camera trajectories, dynamic high-end commercial and music-video energy, she holds a confident pose, cinematic, sharp and clean.')"><span class="chip-label">High-energy robot-arm camera move: the camera rapidly sweeps and whips around the woman through many different angles and compositions, darting in close then pulling wide, arcing from low to high, snapping between framings quickly and constantly back and forth. Fast precise motorized 3D camera trajectories, dynamic high-end commercial and music-video energy, she holds a confident pose, cinematic, sharp and clean.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-6">
-                    <video src="img/arc.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/arc.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
                         <h3>아크 / POI <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Arc Shot)</span></h3>
@@ -2412,13 +1992,13 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-6"><ul><li>인물·오브젝트의 중요도 극적 강조</li><li>360도 환경 소개</li><li>클라이맥스 순간의 감정 고조</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-6"><span class="prompt-chip" onclick="copyPrompt(this,'arc shot')"><span class="chip-label">arc shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'orbiting camera')"><span class="chip-label">orbiting camera</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'circular tracking around subject')"><span class="chip-label">circular tracking around subject</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-6"><span class="prompt-chip" onclick="copyPrompt(this,'Arc shot: the camera moves in a smooth semicircular arc around the seated woman, orbiting partway around her while keeping her centered. Graceful curved tracking movement, cinematic, gentle background parallax.')"><span class="chip-label">Arc shot: the camera moves in a smooth semicircular arc around the seated woman, orbiting partway around her while keeping her centered. Graceful curved tracking movement, cinematic, gentle background parallax.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="physical" id="mcard-7">
-                    <video src="img/drone.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/drone.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
                         <h3>드론 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Drone Shot)</span></h3>
@@ -2429,7 +2009,58 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-7"><ul><li>공간의 광활함·스케일 전달</li><li>장소 소개 및 문맥 제공</li><li>시네마틱한 웅장함</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-7"><span class="prompt-chip" onclick="copyPrompt(this,'drone shot')"><span class="chip-label">drone shot</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'aerial tracking')"><span class="chip-label">aerial tracking</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'bird\'s-eye cinematic shot')"><span class="chip-label">bird's-eye cinematic shot</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-7"><span class="prompt-chip" onclick="copyPrompt(this,'Drone shot: the aerial camera rises and pulls back smoothly, revealing the wide open space and distant cityscape around the lone woman. Sweeping ascending aerial movement, cinematic scale.')"><span class="chip-label">Drone shot: the aerial camera rises and pulls back smoothly, revealing the wide open space and distant cityscape around the lone woman. Sweeping ascending aerial movement, cinematic scale.</span>📋</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movement-card glass" data-mgroup="physical" id="mcard-17">
+                    <video src="img/13_steadicam_shot.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <div class="shot-info">
+                        <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
+                        <h3>스테디캠 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Steadicam)</span></h3>
+                        <p class="shot-description">스테디캠 장비로 카메라 흔들림을 최소화하고 부드럽고 유려하게 이동하며 촬영하는 샷.</p>
+                        <div class="shot-tabs">
+                            <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-17')">핵심 효과</button>
+                            <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-17')">AI 프롬프트</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="meffects-mcard-17"><ul><li>높은 몰입감과 현장감 제공</li><li>인물의 감정·시선 흐름을 자연스럽게 추적</li><li>공간감을 살린 부드러운 시각적 이동</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-17"><span class="prompt-chip" onclick="copyPrompt(this,'[가상 예시] Steadicam shot: the camera glides smoothly and fluidly alongside the subject with no shake, following at a steady floating pace through the space. Smooth gimbal-stabilized movement, immersive and continuous, cinematic.')"><span class="chip-label">[가상 예시] Steadicam shot: the camera glides smoothly and fluidly alongside the subject with no shake, following at a steady floating pace through the space. Smooth gimbal-stabilized movement, immersive and continuous, cinematic.</span>📋</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movement-card glass" data-mgroup="physical" id="mcard-18">
+                    <video src="img/handheld.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <div class="shot-info">
+                        <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
+                        <h3>핸드헬드 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Handheld)</span></h3>
+                        <p class="shot-description">카메라를 손에 들고 촬영해 의도적 흔들림과 날것의 현장감을 담는 샷.</p>
+                        <div class="shot-tabs">
+                            <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-18')">핵심 효과</button>
+                            <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-18')">AI 프롬프트</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="meffects-mcard-18"><ul><li>강렬한 현장감과 리얼리티 전달</li><li>불안·혼란·긴장 등 날것의 감정 표현</li><li>다큐멘터리적 사실감과 몰입감 증대</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-18"><span class="prompt-chip" onclick="copyPrompt(this,'Handheld shot: the camera is held by hand with natural organic shake and sway, subtle bobbing and constant micro-movements, documentary-style raw realism. The subject moves slightly and naturally. Immersive handheld camera motion, gritty and real, keep the face natural, consistent and undistorted.')"><span class="chip-label">Handheld shot: the camera is held by hand with natural organic shake and sway, subtle bobbing and constant micro-movements, documentary-style raw realism. The subject moves slightly and naturally. Immersive handheld camera motion, gritty and real, keep the face natural, consistent and undistorted.</span>📋</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movement-card glass" data-mgroup="physical" id="mcard-19">
+                    <video src="img/15_zoom_in_out.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <div class="shot-info">
+                        <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);color:var(--accent-cyan);">물리적 이동</span>
+                        <h3>줌인 / 줌아웃 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Zoom In/Out)</span></h3>
+                        <p class="shot-description">렌즈의 초점 거리를 조절해 피사체를 확대(줌인)하거나 축소(줌아웃)하는 기법.</p>
+                        <div class="shot-tabs">
+                            <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-19')">핵심 효과</button>
+                            <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-19')">AI 프롬프트</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="meffects-mcard-19"><ul><li>특정 피사체·디테일에 대한 집중 및 강조</li><li>관객과의 심리적 거리감 변화 유도</li><li>공간감의 확장 또는 축소</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-19"><span class="prompt-chip" onclick="copyPrompt(this,'[가상 예시] Zoom shot: a smooth optical zoom slowly pushes in to magnify the subject, then eases back out, the framing tightening and widening while the camera stays fixed in place. Controlled lens zoom, cinematic.')"><span class="chip-label">[가상 예시] Zoom shot: a smooth optical zoom slowly pushes in to magnify the subject, then eases back out, the framing tightening and widening while the camera stays fixed in place. Controlled lens zoom, cinematic.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
@@ -2443,41 +2074,41 @@ footer a {
             <div class="movement-grid" style="margin-bottom:3.5rem;">
 
                 <div class="movement-card glass" data-mgroup="rotation" id="mcard-8">
-                    <video src="img/pan_v2.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/pan_v2.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);color:var(--accent-pink);">회전</span>
-                        <h3>팬 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Pan)</span></h3>
-                        <p class="shot-description">좌우 회전. 공간 전달·추적에 활용.</p>
+                        <h3>패닝 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Panning)</span></h3>
+                        <p class="shot-description">카메라를 한 축에 고정하고 좌우로 수평 이동하며 촬영하는 기법.</p>
                         <div class="shot-tabs">
                             <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-8')">핵심 효과</button>
                             <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-8')">AI 프롬프트</button>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-panel active" id="meffects-mcard-8"><ul><li>넓은 공간·파노라마 전달</li><li>움직이는 피사체 추적</li><li>두 대상 사이의 관계 연결</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-8"><span class="prompt-chip" onclick="copyPrompt(this,'panning left')"><span class="chip-label">panning left</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'panning right')"><span class="chip-label">panning right</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'slow pan')"><span class="chip-label">slow pan</span>📋</span></div>
+                            <div class="tab-panel active" id="meffects-mcard-8"><ul><li>넓은 공간을 시각적으로 확장하여 보여줌</li><li>움직이는 피사체를 자연스럽게 추적</li><li>장면 간의 부드러운 연결 및 리듬감 부여</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-8"><span class="prompt-chip" onclick="copyPrompt(this,'Panning shot: the camera pans smoothly to the right across the cafe, starting on the woman and revealing the room and warm light. Steady horizontal pan, smooth rotation, cinematic.')"><span class="chip-label">Panning shot: the camera pans smoothly to the right across the cafe, starting on the woman and revealing the room and warm light. Steady horizontal pan, smooth rotation, cinematic.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="rotation" id="mcard-9">
-                    <video src="img/tilt_v2.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/17_tilt.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);color:var(--accent-pink);">회전</span>
                         <h3>틸트 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Tilt)</span></h3>
-                        <p class="shot-description">상하 회전. 인물 전신 reveal·건물 높이 강조.</p>
+                        <p class="shot-description">카메라를 한 축에 고정하고 위아래로 수직 이동하며 촬영하는 기법.</p>
                         <div class="shot-tabs">
                             <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-9')">핵심 효과</button>
                             <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-9')">AI 프롬프트</button>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-panel active" id="meffects-mcard-9"><ul><li>인물 전신 또는 건물 높이 reveal</li><li>시선 수직 유도</li><li>위압감·장엄함 연출</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-9"><span class="prompt-chip" onclick="copyPrompt(this,'tilt up')"><span class="chip-label">tilt up</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'tilt down to reveal')"><span class="chip-label">tilt down to reveal</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera tilting up')"><span class="chip-label">camera tilting up</span>📋</span></div>
+                            <div class="tab-panel active" id="meffects-mcard-9"><ul><li>피사체의 높이·크기·위엄 강조</li><li>관객의 시선을 특정 방향으로 유도</li><li>공간감 또는 인물의 심리적 위압감 표현</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-9"><span class="prompt-chip" onclick="copyPrompt(this,'Tilt shot: the camera tilts smoothly and steadily upward from her feet up to her face, revealing her full figure beside the tall window. Smooth controlled vertical tilt-up, cinematic. Keep her face and body natural, anatomically correct and consistent throughout, no warping or distortion.')"><span class="chip-label">Tilt shot: the camera tilts smoothly and steadily upward from her feet up to her face, revealing her full figure beside the tall window. Smooth controlled vertical tilt-up, cinematic. Keep her face and body natural, anatomically correct and consistent throughout, no warping or distortion.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="rotation" id="mcard-10">
-                    <video src="img/roll_dutch.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/roll_dutch.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);color:var(--accent-pink);">회전</span>
                         <h3>롤 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Roll / Dutch)</span></h3>
@@ -2488,13 +2119,13 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-10"><ul><li>심리적 불안·혼란·비틀림 표현</li><li>비정상적 상황 암시</li><li>독특한 스타일 연출</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-10"><span class="prompt-chip" onclick="copyPrompt(this,'dutch angle')"><span class="chip-label">dutch angle</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'camera roll')"><span class="chip-label">camera roll</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'tilted shot')"><span class="chip-label">tilted shot</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-10"><span class="prompt-chip" onclick="copyPrompt(this,'Dutch roll shot: the camera slowly and smoothly rolls on its axis, gradually introducing a dutch tilt angle for an unsettling, tense mood. She stays still with a pensive expression. Slow controlled cinematic camera roll, stable image, keep her face natural and consistent, no warping or distortion artifacts.')"><span class="chip-label">Dutch roll shot: the camera slowly and smoothly rolls on its axis, gradually introducing a dutch tilt angle for an unsettling, tense mood. She stays still with a pensive expression. Slow controlled cinematic camera roll, stable image, keep her face natural and consistent, no warping or distortion artifacts.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="rotation" id="mcard-11">
-                    <video src="img/orbit.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/orbit.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);color:var(--accent-pink);">회전</span>
                         <h3>올빗 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Orbit / 360°)</span></h3>
@@ -2505,7 +2136,7 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-11"><ul><li>클라이맥스·승리·변화의 순간 강조</li><li>인물 중심성 극대화</li><li>영웅적·마법적 분위기 연출</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-11"><span class="prompt-chip" onclick="copyPrompt(this,'orbiting camera')"><span class="chip-label">orbiting camera</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'360 degree rotation around subject')"><span class="chip-label">360 degree rotation around subject</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-11"><span class="prompt-chip" onclick="copyPrompt(this,'Orbit shot: the camera smoothly orbits around the woman standing centered in the open space, a full circular movement around her. Heroic, cinematic, smooth orbital tracking.')"><span class="chip-label">Orbit shot: the camera smoothly orbits around the woman standing centered in the open space, a full circular movement around her. Heroic, cinematic, smooth orbital tracking.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
@@ -2519,41 +2150,41 @@ footer a {
             <div class="movement-grid">
 
                 <div class="movement-card glass" data-mgroup="special-fx" id="mcard-12">
-                    <video src="img/slow_motion.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/8_slow_motion.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
                         <h3>슬로우 모션 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Slow Motion)</span></h3>
-                        <p class="shot-description">감정·액션 강조. 찰나를 늘여 몰입 유도.</p>
+                        <p class="shot-description">실제보다 느린 속도로 재생하여 특정 순간을 강조하고 감각적 효과를 더하는 기법.</p>
                         <div class="shot-tabs">
                             <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-12')">핵심 효과</button>
                             <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-12')">AI 프롬프트</button>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-panel active" id="meffects-mcard-12"><ul><li>감정·액션의 극대화</li><li>찰나의 디테일 포착</li><li>드라마틱한 몰입 유도</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-12"><span class="prompt-chip" onclick="copyPrompt(this,'slow motion')"><span class="chip-label">slow motion</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'slow-mo')"><span class="chip-label">slow-mo</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'dramatic slow motion')"><span class="chip-label">dramatic slow motion</span>📋</span></div>
+                            <div class="tab-panel active" id="meffects-mcard-12"><ul><li>감정의 극대화 및 드라마틱한 분위기 연출</li><li>놓치기 쉬운 순간의 디테일 포착</li><li>시각적·감정적 임팩트 강화</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-12"><span class="prompt-chip" onclick="copyPrompt(this,'Slow motion: she turns her head as her long hair flows and lifts gracefully through the air in dramatic slow motion, soft backlight catching the strands. Smooth slow-mo, gentle camera drift, cinematic.')"><span class="chip-label">Slow motion: she turns her head as her long hair flows and lifts gracefully through the air in dramatic slow motion, soft backlight catching the strands. Smooth slow-mo, gentle camera drift, cinematic.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="special-fx" id="mcard-13">
-                    <video src="img/time_lapse.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/9_time_lapse.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
                         <h3>타임랩스 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Time Lapse)</span></h3>
-                        <p class="shot-description">장시간 압축. 환경 변화·시간 경과 표현.</p>
+                        <p class="shot-description">긴 시간 촬영한 장면을 빠르게 재생해 시간의 흐름과 변화를 압축적으로 보여주는 기법.</p>
                         <div class="shot-tabs">
                             <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-13')">핵심 효과</button>
                             <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-13')">AI 프롬프트</button>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-panel active" id="meffects-mcard-13"><ul><li>시간 경과·변화 압축 표현</li><li>반복 패턴과 리듬감</li><li>장소의 역동적 에너지 전달</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-13"><span class="prompt-chip" onclick="copyPrompt(this,'time lapse')"><span class="chip-label">time lapse</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'hyperlapse')"><span class="chip-label">hyperlapse</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'fast forward motion')"><span class="chip-label">fast forward motion</span>📋</span></div>
+                            <div class="tab-panel active" id="meffects-mcard-13"><ul><li>시간의 흐름·변화·성장 과정 압축 전달</li><li>반복적인 움직임·패턴 강조</li><li>역동적인 에너지와 리듬감 부여</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-13"><span class="prompt-chip" onclick="copyPrompt(this,'Time lapse: the woman sits still by the panoramic window while the sky and city behind her change rapidly, clouds rushing and light shifting from day toward dusk. Fast-forward environmental motion, she remains the still anchor.')"><span class="chip-label">Time lapse: the woman sits still by the panoramic window while the sky and city behind her change rapidly, clouds rushing and light shifting from day toward dusk. Fast-forward environmental motion, she remains the still anchor.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="special-fx" id="mcard-14">
-                    <video src="img/dolly_zoom.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/dolly_zoom.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
                         <h3>돌리 줌 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Vertigo Effect)</span></h3>
@@ -2564,13 +2195,13 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-14"><ul><li>심리적 충격·현기증·공포 연출</li><li>주체와 배경의 이질적 분리감</li><li>극적인 내면 붕괴 표현</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-14"><span class="prompt-chip" onclick="copyPrompt(this,'dolly zoom')"><span class="chip-label">dolly zoom</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'vertigo effect')"><span class="chip-label">vertigo effect</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'trombone shot')"><span class="chip-label">trombone shot</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-14"><span class="prompt-chip" onclick="copyPrompt(this,'Dolly zoom: the camera slowly dollies backward while gently zooming in, keeping the woman exactly the same size in the frame. The background shifts its perspective smoothly and stays clean, sharp and stable, no melting, no warping, no distortion or glitch artifacts in the background. Subtle controlled vertigo effect, the woman stays calm and still, cinematic and clean.')"><span class="chip-label">Dolly zoom: the camera slowly dollies backward while gently zooming in, keeping the woman exactly the same size in the frame. The background shifts its perspective smoothly and stays clean, sharp and stable, no melting, no warping, no distortion or glitch artifacts in the background. Subtle controlled vertigo effect, the woman stays calm and still, cinematic and clean.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="special-fx" id="mcard-15">
-                    <video src="img/rack_focus.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/rack_focus.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
                         <h3>랙 포커스 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Rack Focus)</span></h3>
@@ -2581,13 +2212,13 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-15"><ul><li>관객 시선의 대상 전환</li><li>정보 우선순위 변화 표현</li><li>감정 전이·내면 변화 암시</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-15"><span class="prompt-chip" onclick="copyPrompt(this,'rack focus')"><span class="chip-label">rack focus</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'focus pull')"><span class="chip-label">focus pull</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'shallow depth of field shift')"><span class="chip-label">shallow depth of field shift</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-15"><span class="prompt-chip" onclick="copyPrompt(this,'Rack focus: the focus pulls smoothly from the sharp foreground coffee cup and plant to her face in the background, shifting attention to her. Shallow depth of field focus pull, camera held still.')"><span class="chip-label">Rack focus: the focus pulls smoothly from the sharp foreground coffee cup and plant to her face in the background, shifting attention to her. Shallow depth of field focus pull, camera held still.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="movement-card glass" data-mgroup="special-fx" id="mcard-16">
-                    <video src="img/whip_pan.mp4" autoplay loop muted playsinline style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <video src="img/whip_pan.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
                     <div class="shot-info">
                         <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
                         <h3>휩 팬 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Whip Pan)</span></h3>
@@ -2598,7 +2229,41 @@ footer a {
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="meffects-mcard-16"><ul><li>빠른 장면 전환의 역동적 에너지</li><li>빠른 속도감·흥분감 전달</li><li>숏폼·뮤직비디오의 스타일리시한 컷</li></ul></div>
-                            <div class="tab-panel" id="mprompts-mcard-16"><span class="prompt-chip" onclick="copyPrompt(this,'whip pan')"><span class="chip-label">whip pan</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'fast pan transition')"><span class="chip-label">fast pan transition</span>📋</span><span class="prompt-chip" onclick="copyPrompt(this,'swish pan')"><span class="chip-label">swish pan</span>📋</span></div>
+                            <div class="tab-panel" id="mprompts-mcard-16"><span class="prompt-chip" onclick="copyPrompt(this,'Whip pan: starting on the woman, the camera executes a very fast horizontal whip-pan, the frame exploding into heavy directional motion blur as it whips sideways. Rapid swish-pan transition, dynamic short-form energy, strong blur streaks.')"><span class="chip-label">Whip pan: starting on the woman, the camera executes a very fast horizontal whip-pan, the frame exploding into heavy directional motion blur as it whips sideways. Rapid swish-pan transition, dynamic short-form energy, strong blur streaks.</span>📋</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movement-card glass" data-mgroup="special-fx" id="mcard-20">
+                    <video src="img/reaction.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <div class="shot-info">
+                        <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
+                        <h3>리액션 샷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Reaction Shot)</span></h3>
+                        <p class="shot-description">특정 사건·상황에 대한 인물의 즉각적인 감정적 반응을 포착하는 샷.</p>
+                        <div class="shot-tabs">
+                            <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-20')">핵심 효과</button>
+                            <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-20')">AI 프롬프트</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="meffects-mcard-20"><ul><li>인물의 감정 전달·관객 공감 유발</li><li>긴장·유머·놀라움 등 감정적 파급력 확장</li><li>이야기의 리듬과 템포 조절</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-20"><span class="prompt-chip" onclick="copyPrompt(this,'Cinematic reaction shot: her expression shifts naturally, eyes widen slightly with a subtle look of surprise, then softens into a faint emotional reaction, gentle small head movement and a soft blink. Keep the face natural, consistent and undistorted, shallow depth of field, subtle realistic motion, no warping.')"><span class="chip-label">Cinematic reaction shot: her expression shifts naturally, eyes widen slightly with a subtle look of surprise, then softens into a faint emotional reaction, gentle small head movement and a soft blink. Keep the face natural, consistent and undistorted, shallow depth of field, subtle realistic motion, no warping.</span>📋</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movement-card glass" data-mgroup="special-fx" id="mcard-21">
+                    <video src="img/18_jump_cut.mp4" loop muted playsinline preload="metadata" style="width:100%;border-radius:8px;margin-bottom:0.75rem;"></video>
+                    <div class="shot-info">
+                        <span style="display:inline-block;margin-bottom:0.75rem;padding:0.25rem 0.75rem;font-size:0.75rem;font-weight:700;border-radius:100px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--accent-gold);">특수 효과</span>
+                        <h3>점프컷 <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500;">(Jump Cut)</span></h3>
+                        <p class="shot-description">시간·동작 일부를 과감히 생략해 리듬을 빠르게 하고 시간 압축·긴장·스타일을 강조하는 편집 기법.</p>
+                        <div class="shot-tabs">
+                            <button class="shot-tab-btn active" onclick="switchMovTab(this,'meffects','mcard-21')">핵심 효과</button>
+                            <button class="shot-tab-btn" onclick="switchMovTab(this,'mprompts','mcard-21')">AI 프롬프트</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="meffects-mcard-21"><ul><li>시간의 효율적인 압축 및 전달</li><li>리듬감·속도감·역동성 부여</li><li>스타일·긴장·유머러스한 분위기 연출</li></ul></div>
+                            <div class="tab-panel" id="mprompts-mcard-21"><span class="prompt-chip" onclick="copyPrompt(this,'[가상 예시] Jump cut: the subject stays roughly in place while time skips forward in abrupt cuts, pose and position snapping between takes for a fast stylized rhythm. Discontinuous editing, energetic short-form pacing.')"><span class="chip-label">[가상 예시] Jump cut: the subject stays roughly in place while time skips forward in abrupt cuts, pose and position snapping between takes for a fast stylized rhythm. Discontinuous editing, energetic short-form pacing.</span>📋</span></div>
                         </div>
                     </div>
                 </div>
@@ -2696,7 +2361,61 @@ footer a {
     <!-- Interactive Scripts -->
     <script>
         // Initialize Lucide Icons
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        const managedVideos = Array.from(document.querySelectorAll('video'));
+        let shouldPlayVisibleVideos = true;
+        let videoSyncQueued = false;
+
+        function pauseAllManagedVideos() {
+            managedVideos.forEach(video => video.pause());
+        }
+
+        function isVideoVisible(video) {
+            const rect = video.getBoundingClientRect();
+            return rect.bottom > 0 && rect.top < window.innerHeight && rect.right > 0 && rect.left < window.innerWidth;
+        }
+
+        function syncVisibleVideos() {
+            videoSyncQueued = false;
+            managedVideos.forEach(video => {
+                if (shouldPlayVisibleVideos && document.visibilityState === 'visible' && isVideoVisible(video)) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        }
+
+        function queueVideoSync() {
+            if (videoSyncQueued) return;
+            videoSyncQueued = true;
+            requestAnimationFrame(syncVisibleVideos);
+        }
+
+        managedVideos.forEach(video => {
+            video.muted = true;
+            video.playsInline = true;
+            video.preload = 'metadata';
+        });
+        queueVideoSync();
+        window.addEventListener('scroll', queueVideoSync, { passive: true });
+        window.addEventListener('resize', queueVideoSync);
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') pauseAllManagedVideos();
+            else queueVideoSync();
+        });
+        window.addEventListener('message', event => {
+            if (event.origin !== location.origin) return;
+            if (event.data && event.data.type === 'ainspire:modal-close') {
+                shouldPlayVisibleVideos = false;
+                pauseAllManagedVideos();
+            }
+            if (event.data && event.data.type === 'ainspire:modal-open') {
+                shouldPlayVisibleVideos = true;
+                queueVideoSync();
+            }
+        });
 
         // Sticky Header scroll styling
         window.addEventListener('scroll', () => {
@@ -2792,12 +2511,12 @@ footer a {
 
         // Filtering Logic for Shot Directory
         const searchInput = document.getElementById('search-input');
-        const filterBtns = document.querySelectorAll('.filter-btn');
+        const filterBtns = document.querySelectorAll('#shot-directory .filter-btn');
         const shotCards = document.querySelectorAll('.shot-card');
 
         function filterShots() {
             const searchQuery = searchInput.value.toLowerCase().trim();
-            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            const activeFilter = document.querySelector('#shot-directory .filter-btn.active').getAttribute('data-filter');
 
             shotCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
