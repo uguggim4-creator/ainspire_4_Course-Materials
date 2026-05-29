@@ -845,6 +845,121 @@
     font-size: 12px; line-height: 1.55; color: #c9c5d3;
   }
   .codex-explain b { color: #fff; font-weight: 800; }
+
+  /* 성능 비교 슬라이드 전용 스타일 */
+  .perf-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 1120px;
+    margin-top: 14px;
+  }
+  .perf-table-wrap {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .perf-chart-wrap {
+    background: var(--purple-light);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .perf-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .perf-table th {
+    font-weight: 800;
+    color: var(--purple);
+    border-bottom: 2px solid var(--line);
+    padding: 10px 8px;
+    text-align: left;
+  }
+  .perf-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f0ebf7;
+    color: var(--ink);
+  }
+  .perf-table tr:last-child td {
+    border-bottom: none;
+  }
+  .perf-model-name {
+    font-weight: 800;
+  }
+  .perf-model-desc {
+    font-size: 11px;
+    color: #8a8099;
+    margin-top: 2px;
+  }
+  .perf-score-hi {
+    color: var(--purple);
+    font-weight: 800;
+  }
+  .perf-chart-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .perf-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .perf-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .perf-bar-track {
+    height: 12px;
+    background: #e5dff0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .perf-bar-fill {
+    height: 100%;
+    background: var(--purple);
+    border-radius: 6px;
+    transition: width 1s ease-in-out;
+  }
+  .perf-bar-fill.gemini {
+    background: linear-gradient(90deg, #1570ff, #8b5cf6);
+  }
+  .perf-bar-fill.claude {
+    background: #f9733d;
+  }
+  .perf-bar-fill.gpt {
+    background: #10a37f;
+  }
+  .perf-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+  .perf-badge.gold {
+    background: #fff3cd;
+    color: #856404;
+  }
+  .perf-badge.silver {
+    background: #e2e3e5;
+    color: #383d41;
+  }
+  .perf-badge.bronze {
+    background: #f8d7da;
+    color: #721c24;
+  }
 </style>
 </head>
 <body>
@@ -854,8 +969,8 @@
 <!-- ===== 슬라이드 02 — 배경 ===== -->
 <div class="slide centered active" id="s1">
   <div class="title-kicker">AInspire 4기 · 입문편 0주차</div>
-  <div class="title-main">AI 코딩 툴 <span class="accent">비교</span></div>
-  <div class="title-sub">Claude · OpenAI Codex · Google Antigravity · VSCode Copilot<br>네 가지 도구의 철학과 차이를 한 번에 정리합니다</div>
+  <div class="title-main">AI 에이전트 <span class="accent">비교</span></div>
+  <div class="title-sub">Claude · OpenAI Codex · Google Antigravity · VSCode Copilot<br>네 가지 에이전트의 차이를 한번에 정리합니다</div>
   <div class="title-tags">
     <span class="tag fill">Claude</span>
     <span class="tag">OpenAI Codex</span>
@@ -866,21 +981,21 @@
 
 <div class="slide" id="s2">
   <div class="step-label">Background</div>
-  <div class="slide-title">코딩을 <span class="accent">모르는 사람</span>도<br>앱을 만드는 시대</div>
-  <div class="slide-subtitle">AI 코딩 툴이 코드를 대신 써준다 — 내가 할 일은 "무엇을 만들지" 말하는 것</div>
+  <div class="slide-title">AI <span class="accent">에이전트</span>,<br>무엇을 써야 할까요?</div>
+  <div class="slide-subtitle">AI 에이전트의 차이점</div>
   <div class="divider"></div>
   <div class="point-list">
     <div class="point-item">
       <div class="point-num">1</div>
-      <div class="point-text">최근 3개의 주요 AI 코딩 에이전트가 등장했습니다</div>
+      <div class="point-text">Anthropic · OpenAI · Google — AI를 끌고 가는 3개의 거대 기업들이 에이전트 모델을 계속해서 발전시키고 있습니다</div>
     </div>
     <div class="point-item">
       <div class="point-num">2</div>
-      <div class="point-text">만든 회사(Anthropic·OpenAI·Google)도, 실행 방식(앱·웹·확장)도, 요금(무료~유료)도, 자율도와 난이도도 제각각입니다</div>
+      <div class="point-text">이 에이전트들은 만든 회사도, 요금도, 성능도 제각각입니다</div>
     </div>
     <div class="point-item">
       <div class="point-num">3</div>
-      <div class="point-text">목적과 상황에 맞는 툴을 골라야 합니다</div>
+      <div class="point-text">어떤 에이전트를 쓰는 게 좋을지 상황에 맞게 알려드리겠습니다!</div>
     </div>
   </div>
 </div>
@@ -943,25 +1058,112 @@
 
 <!-- ===== 슬라이드 04 — 핵심 차이점 ===== -->
 <div class="slide" id="s4">
-  <div class="step-label">Key Differences</div>
-  <div class="slide-title">같은 AI, <span class="accent">다른 철학</span></div>
+  <div class="step-label">Performance</div>
+  <div class="slide-title">AI 에이전트의 <span class="accent">성능 비교</span></div>
   <div class="divider"></div>
-  <div class="grid22">
-    <div class="card22">
-      <div class="card22-name">OpenAI Codex</div>
-      <div class="card22-desc">할 일을 맡기고 기다린다. GitHub 이슈를 던지면 AI가 코드 짜고 PR까지 올려준다. 내가 자리 비워도 돌아간다.</div>
-      <div class="card22-badge">위임형 — 결과만 받는다</div>
+  <div class="perf-container">
+    <div class="perf-table-wrap">
+      <table class="perf-table">
+        <thead>
+          <tr>
+            <th>대상 모델</th>
+            <th>SWE-bench Verified<br><span style="font-size: 10px; font-weight: 400; color: #8a8099;">(실제 개발력)</span></th>
+            <th>LiveCodeBench<br><span style="font-size: 10px; font-weight: 400; color: #8a8099;">(알고리즘)</span></th>
+            <th>HumanEval<br><span style="font-size: 10px; font-weight: 400; color: #8a8099;">(기초 코딩)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="perf-model-name">GPT-5.5<span class="perf-badge gold">1위</span></div>
+              <div class="perf-model-desc">OpenAI (2026)</div>
+            </td>
+            <td class="perf-score-hi">82.6%</td>
+            <td>89.5%</td>
+            <td>96.8%</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="perf-model-name">Claude Opus 4.7<span class="perf-badge silver">2위</span></div>
+              <div class="perf-model-desc">Anthropic (2026)</div>
+            </td>
+            <td>82.0%</td>
+            <td class="perf-score-hi">90.2%</td>
+            <td class="perf-score-hi">97.2%</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="perf-model-name">Gemini 3.5 Flash<span class="perf-badge bronze">3위</span></div>
+              <div class="perf-model-desc">Google (2026)</div>
+            </td>
+            <td>78.8%</td>
+            <td>85.4%</td>
+            <td>94.5%</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="perf-model-name">Claude 3.7 Sonnet</div>
+              <div class="perf-model-desc">Thinking Mode (2025)</div>
+            </td>
+            <td>68.2%</td>
+            <td>81.5%</td>
+            <td>93.2%</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="perf-model-name">GPT-4o</div>
+              <div class="perf-model-desc">OpenAI (2024)</div>
+            </td>
+            <td>45.0%</td>
+            <td>67.3%</td>
+            <td>90.2%</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card22">
-      <div class="card22-name">Claude 데스크탑</div>
-      <div class="card22-desc">대화하면서 함께 만든다. 파일 읽고 수정하고 실행까지. MCP로 Drive·Notion·DB까지 넘나든다. 복잡한 판단도 같이 한다.</div>
-      <div class="card22-badge">협업형 — 맥락을 공유</div>
+    
+    <div class="perf-chart-wrap">
+      <div class="perf-chart-title">SWE-bench Verified 성능 분석 (실제 개발력)</div>
+      
+      <div class="perf-bar-row">
+        <div class="perf-bar-label"><span>GPT-5.5 (OpenAI)</span><span>82.6%</span></div>
+        <div class="perf-bar-track"><div class="perf-bar-fill gpt" style="width: 82.6%;"></div></div>
+      </div>
+      
+      <div class="perf-bar-row">
+        <div class="perf-bar-label"><span>Claude Opus 4.7 (Anthropic)</span><span>82.0%</span></div>
+        <div class="perf-bar-track"><div class="perf-bar-fill claude" style="width: 82.0%;"></div></div>
+      </div>
+      
+      <div class="perf-bar-row">
+        <div class="perf-bar-label"><span>Gemini 3.5 Flash (Google)</span><span>78.8%</span></div>
+        <div class="perf-bar-track"><div class="perf-bar-fill gemini" style="width: 78.8%;"></div></div>
+      </div>
+      
+      <div class="perf-bar-row">
+        <div class="perf-bar-label"><span>Claude 3.7 Sonnet (Anthropic)</span><span>68.2%</span></div>
+        <div class="perf-bar-track"><div class="perf-bar-fill" style="width: 68.2%;"></div></div>
+      </div>
+      
+      <div class="perf-bar-row">
+        <div class="perf-bar-label"><span>GPT-4o (OpenAI)</span><span>45.0%</span></div>
+        <div class="perf-bar-track"><div class="perf-bar-fill" style="width: 45.0%;"></div></div>
+      </div>
     </div>
-    <div class="card22">
-      <div class="card22-name">Google Antigravity</div>
-      <div class="card22-desc">목표만 주면 스스로 계획·분기·실행. 프론트/백엔드를 여러 에이전트가 동시에 맡는다. 브라우저까지 직접 열어 테스트한다.</div>
-      <div class="card22-badge">자율형 — AI가 주도</div>
-    </div>
+  </div>
+  <div class="table-note" style="margin-top:12px;">모델 성능 순위는 업데이트로 자주 바뀌므로, 비교 시점이 중요합니다. (2026년 5월 기준)</div>
+  <div class="source-line">
+    출처: SWE-bench Verified (swebench.com), LiveCodeBench (livecodebench.github.io) 리더보드 및 각 사 공식 발표 자료 기준
+  </div>
+</div>
+
+<!-- ===== 슬라이드 05-인트로 — Claude 소개 ===== -->
+<div class="slide centered" id="s5intro">
+  <div class="title-kicker">Tool 01 · Anthropic</div>
+  <div class="title-main">첫 번째, <span class="accent">Claude</span></div>
+  <div class="title-sub" style="max-width:700px;">대화하며 함께 일하는 협업형 AI. 파일을 직접 읽고 수정·실행하며, MCP로 외부 도구와 데이터까지 연결합니다.</div>
+  <div class="install-box" style="max-width:560px;text-align:center;">
+    <span class="label">다운로드</span><a href="https://claude.com/download" target="_blank" rel="noopener">claude.com/download</a>
   </div>
 </div>
 
@@ -1169,6 +1371,17 @@
   </div>
 </div>
 
+<!-- ===== 슬라이드 08-인트로 — Codex 소개 ===== -->
+<div class="slide centered" id="s8intro">
+  <div class="title-kicker">Tool 02 · OpenAI</div>
+  <div class="title-main">두 번째, <span class="accent">Codex</span></div>
+  <div class="title-sub" style="max-width:700px;">작업을 통째로 맡기는 위임형 에이전트. 스레드 단위로 코드를 작성하고, 변경사항(diff)을 리뷰합니다. ChatGPT 구독에 포함됩니다.</div>
+  <div class="install-box" style="max-width:600px;text-align:center;">
+    <span class="label">다운로드</span><a href="https://developers.openai.com/codex/app" target="_blank" rel="noopener">developers.openai.com/codex/app</a><br>
+    <span style="font-size:11px;color:#8a80aa;">Windows는 Microsoft Store에서 설치</span>
+  </div>
+</div>
+
 <!-- ===== 슬라이드 08 — OpenAI Codex ===== -->
 <div class="slide" id="s8">
   <div class="step-label">Tool 02 · OpenAI</div>
@@ -1341,6 +1554,16 @@
   </div>
 </div>
 
+<!-- ===== 슬라이드 10-인트로 — Antigravity 소개 ===== -->
+<div class="slide centered" id="s10intro">
+  <div class="title-kicker">Tool 03 · Google</div>
+  <div class="title-main">세 번째, <span class="accent">Antigravity</span></div>
+  <div class="title-sub" style="max-width:700px;">목표만 주면 스스로 계획·실행하는 자율형 에이전트. 브라우저까지 직접 조작합니다. 현재 무료 프리뷰(한도 축소)로 제공됩니다.</div>
+  <div class="install-box" style="max-width:560px;text-align:center;">
+    <span class="label">다운로드</span><a href="https://antigravity.google/download" target="_blank" rel="noopener">antigravity.google/download</a>
+  </div>
+</div>
+
 <!-- ===== 슬라이드 10 — Google Antigravity 2.0 ===== -->
 <div class="slide" id="s10">
   <div class="step-label">Tool 03 · Google</div>
@@ -1405,10 +1628,21 @@
   </div>
 </div>
 
+<!-- ===== 슬라이드 11-인트로 — VSCode 소개 ===== -->
+<div class="slide centered" id="s11intro">
+  <div class="title-kicker">Tool 04 · GitHub</div>
+  <div class="title-main">네 번째, <span class="accent">VSCode</span></div>
+  <div class="title-sub" style="max-width:700px;">가장 널리 쓰이는 무료 코드 편집기. GitHub Copilot뿐 아니라 Codex 확장, Claude 확장도 설치해 AI 코딩 환경으로 만들 수 있습니다.</div>
+  <div class="install-box" style="max-width:560px;text-align:center;">
+    <span class="label">다운로드</span><a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>
+  </div>
+</div>
+
 <!-- ===== 슬라이드 11 — VSCode + GitHub Copilot ===== -->
 <div class="slide" id="s11">
   <div class="step-label">Tool 04 · GitHub</div>
   <div class="slide-title">VSCode + <span class="accent">GitHub Copilot</span> — 가장 쉬운 시작점</div>
+  <div class="slide-subtitle" style="margin-bottom:12px;"><strong style="color:var(--ink);font-weight:800;">VSCode</strong>는 가장 널리 쓰이는 무료 코드 편집기입니다. 여기에 <strong style="color:var(--ink);font-weight:800;">GitHub Copilot</strong>뿐 아니라 <strong style="color:var(--ink);font-weight:800;">Codex 확장</strong>, <strong style="color:var(--ink);font-weight:800;">Claude 확장</strong>도 설치해 함께 쓸 수 있습니다.</div>
   <div class="divider"></div>
   <div class="cap-wrap" style="width:880px;height:270px;margin:0 auto;border-radius:10px;flex-shrink:0;">
     <img class="cap-img" style="object-fit:cover;object-position:top;" src="img/cap_vscode.png" alt="VSCode + GitHub Copilot UI"
@@ -1476,25 +1710,25 @@
   <div class="slide-title">나에게 맞는 <span class="accent">툴 선택</span></div>
   <div class="divider"></div>
   <div class="grid22" style="gap:18px;">
-    <div class="card22" style="border-color:var(--purple);">
+    <div class="card22">
       <div class="card22-name">지금 당장 무료로 시작하고 싶다</div>
       <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ VSCode + Copilot Free</div>
-      <div class="card22-desc">설치 가장 쉬움. GitHub 계정만 있으면 바로 시작. 월 2,000회 무료.</div>
+      <div class="card22-desc">Free 무료 · Pro $10/월 · Pro+ $39/월</div>
     </div>
-    <div class="card22" style="border-color:var(--purple);">
-      <div class="card22-name">무료로 에이전트 기능까지 쓰고 싶다</div>
+    <div class="card22">
+      <div class="card22-name">Gemini 구독 중이다</div>
       <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ Google Antigravity</div>
-      <div class="card22-desc">현재 무료 프리뷰. GUI 있어서 직관적. 브라우저 자율 실행까지 가능.</div>
+      <div class="card22-desc">Free $0(프리뷰·한도 축소) · AI Pro $20/월 · AI Ultra $200/월</div>
     </div>
     <div class="card22">
-      <div class="card22-name">ChatGPT Plus 구독 중이다</div>
+      <div class="card22-name">ChatGPT 구독 중이다</div>
       <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ OpenAI Codex</div>
-      <div class="card22-desc">추가 비용 없이 바로 사용. 데스크탑 앱과 웹 모두 지원.</div>
+      <div class="card22-desc">ChatGPT Plus $20/월에 포함 · Pro $100~$200/월</div>
     </div>
     <div class="card22">
-      <div class="card22-name">가장 강력한 AI 에이전트가 필요하다</div>
+      <div class="card22-name">Claude 구독 중이다</div>
       <div style="font-size:15px;font-weight:800;color:var(--purple);margin:4px 0;">→ Claude 데스크탑</div>
-      <div class="card22-desc">Chat·Cowork·Code 올인원. MCP 연동, Dispatch 자동화. Pro $20/월 이상 필요.</div>
+      <div class="card22-desc">Free $0 · Pro $20/월 · Max $100~$200/월</div>
     </div>
   </div>
 </div>
@@ -1502,10 +1736,10 @@
 <!-- ===== 슬라이드 13 — UI 작업 방식 차이 ===== -->
 <div class="slide" id="s13">
   <div class="step-label">Workflow Difference</div>
-  <div class="slide-title">파일을 <span class="accent">보면서</span> 할까,<br>일을 <span class="accent">맡기고</span> 볼까?</div>
-  <div class="slide-subtitle">AI가 파일을 읽고 수정할 수 있는 것과, 사용자가 파일 트리를 계속 보며 조작할 수 있는 것은 다릅니다.</div>
+  <div class="slide-title">나에게 맞는 <span class="accent">툴 선택</span> 2</div>
+  <div class="slide-subtitle">파일을 보면서 할까, 일을 다 시키고 확인할까</div>
   <div class="divider"></div>
-  <div class="workflow-table">
+  <div class="workflow-table" style="grid-template-columns:1fr 1fr;max-width:900px;margin:0 auto;">
     <div class="workflow-col primary">
       <div class="workflow-head">
         <div class="workflow-name">VS Code / Cursor</div>
@@ -1528,41 +1762,21 @@
     </div>
     <div class="workflow-col primary">
       <div class="workflow-head">
-        <div class="workflow-name">Claude 데스크탑 / Cowork</div>
-        <div class="workflow-tagline">목표 입력 + 프로젝트/파일 권한 중심</div>
+        <div class="workflow-name">Claude · Codex · Antigravity</div>
+        <div class="workflow-tagline">목표 입력 + 위임·리뷰 중심</div>
       </div>
       <div class="workflow-body">
         <div class="workflow-row">
           <div class="workflow-label">화면의 중심</div>
-          <div class="workflow-text">상시 파일 트리보다 <strong>작업 입력창, 프로젝트 선택, 제안 카드</strong>가 중심입니다.</div>
+          <div class="workflow-text">상시 파일 트리보다 <strong>작업 입력창, 프로젝트 선택, 변경사항 리뷰</strong>가 중심입니다.</div>
         </div>
         <div class="workflow-row">
           <div class="workflow-label">작업 방식</div>
-          <div class="workflow-text">“이 폴더 정리해줘”처럼 목표를 말하면 Claude가 필요한 파일을 찾아 처리하는 <strong>협업형 위임</strong>입니다.</div>
+          <div class="workflow-text">“이 폴더 정리해줘”처럼 목표를 말하면 <strong>AI가 필요한 파일을 찾아 처리</strong>하고, 사용자는 결과를 확인하는 위임형입니다.</div>
         </div>
         <div class="workflow-row">
           <div class="workflow-label">잘 맞는 사람</div>
-          <div class="workflow-text">코딩뿐 아니라 문서, 이미지, 로컬 파일 정리까지 AI와 대화하며 맡기고 싶은 사람.</div>
-        </div>
-      </div>
-    </div>
-    <div class="workflow-col primary">
-      <div class="workflow-head">
-        <div class="workflow-name">Codex 앱</div>
-        <div class="workflow-tagline">스레드 + 변경사항 리뷰 중심</div>
-      </div>
-      <div class="workflow-body">
-        <div class="workflow-row">
-          <div class="workflow-label">화면의 중심</div>
-          <div class="workflow-text">파일 트리 대신 <strong>작업 스레드, 권한, 환경, 변경사항</strong>을 중심으로 보여줍니다.</div>
-        </div>
-        <div class="workflow-row">
-          <div class="workflow-label">작업 방식</div>
-          <div class="workflow-text">“이 기능 추가하고 테스트해줘”처럼 작업 단위로 맡기고, 결과 diff를 확인하는 <strong>작업 위임형</strong>입니다.</div>
-        </div>
-        <div class="workflow-row">
-          <div class="workflow-label">잘 맞는 사람</div>
-          <div class="workflow-text">여러 작업을 스레드로 나눠 맡기고, 완료된 변경사항을 리뷰하는 흐름이 편한 사람.</div>
+          <div class="workflow-text">코딩뿐 아니라 문서, 이미지, 로컬 파일 정리까지 AI에게 맡기고 결과를 검토하고 싶은 사람.</div>
         </div>
       </div>
     </div>
@@ -1572,44 +1786,83 @@
   </div>
 </div>
 
-<!-- ===== 슬라이드 14 — Claude 요금과 구독·토큰 ===== -->
+<!-- ===== 슬라이드 14 — 토큰·컨텍스트·구독 개념 ===== -->
 <div class="slide" id="s14">
-  <div class="step-label">Pricing Logic</div>
-  <div class="slide-title">Claude 요금별로 <span class="accent">토큰은</span> 얼마나 되나요?</div>
-  <div class="slide-subtitle">구독료와 토큰은 조금 다른 개념입니다.</div>
+  <div class="step-label">Core Concept</div>
+  <div class="slide-title">토큰·컨텍스트·구독은 <span class="accent">어떻게</span> 연결되나</div>
+  <div class="slide-subtitle">토큰이 기본 단위, 컨텍스트는 한 번에 보는 양, 구독은 그 소비량의 한도입니다.</div>
   <div class="divider"></div>
 
   <div class="pricing-logic">
     <div class="logic-box emph">
-      <div class="logic-title">구독 플랜별 공개 기준</div>
+      <div class="logic-title">세 가지 개념</div>
       <div class="logic-list">
-        <div class="logic-item"><span class="logic-step">1</span><div><strong>Free:</strong> 무료, occasional use. 정확한 월 토큰 수는 공개되지 않고 제한적으로 제공됩니다.</div></div>
-        <div class="logic-item"><span class="logic-step">2</span><div><strong>Pro:</strong> 월 $20 또는 연 $200. Free보다 넉넉한 standard capacity가 주어지지만, 고정 토큰 묶음은 아닙니다.</div></div>
-        <div class="logic-item"><span class="logic-step">3</span><div><strong>Max 5x:</strong> 월 $100. Pro 대비 세션당 5배 사용량으로 자주 쓰는 사람에게 맞습니다.</div></div>
-        <div class="logic-item"><span class="logic-step">4</span><div><strong>Max 20x:</strong> 월 $200. Pro 대비 세션당 20배 사용량으로 거의 매일 많이 쓰는 사람에게 맞습니다.</div></div>
+        <div class="logic-item"><span class="logic-step">1</span><div><strong>토큰:</strong> 모델이 읽고 쓰는 최소 단위(대략 단어 조각)입니다. 입력과 출력이 모두 토큰으로 계산됩니다.</div></div>
+        <div class="logic-item"><span class="logic-step">2</span><div><strong>컨텍스트:</strong> 모델이 한 번 답할 때 동시에 보는 전체 — 지금까지의 대화 + 첨부 파일 + 이번 질문입니다. 이것이 곧 입력 토큰이 됩니다.</div></div>
+        <div class="logic-item"><span class="logic-step">3</span><div><strong>구독:</strong> 토큰을 직접 사는 것이 아니라, 이 소비량을 일정 시간 안에서 쓸 수 있는 사용량 한도로 관리하는 방식입니다.</div></div>
       </div>
     </div>
 
     <div class="logic-box">
-      <div class="logic-title">토큰 수로 딱 잘라 말하기 어려운 이유</div>
+      <div class="logic-title">왜 “월 N토큰”으로 못 박나</div>
       <table class="token-table">
         <thead>
-          <tr><th>구분</th><th>강의에서 말할 표현</th></tr>
+          <tr><th>구분</th><th>내용</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>구독</strong></td><td>월 토큰을 사는 방식이 아니라, 일정 시간·세션 안에서 쓸 수 있는 사용량 한도입니다.</td></tr>
-          <tr><td><strong>한도</strong></td><td>모델, 대화 길이, 파일 첨부, 출력량에 따라 같은 질문도 소모량이 달라집니다.</td></tr>
-          <tr><td><strong>비교</strong></td><td>그래서 숫자는 “Pro보다 Max가 5배/20배 넉넉하다”처럼 상대 한도로 설명하는 편이 정확합니다.</td></tr>
+          <tr><td><strong>단위 자체</strong></td><td>토큰 묶음을 파는 상품이 아니라 사용량(%) 한도로 관리하므로, 공개된 월 토큰 숫자 자체가 없습니다.</td></tr>
+          <tr><td><strong>소비량 변동</strong></td><td>대화가 길수록·모델이 클수록(Opus&gt;Sonnet)·출력이 길수록 1회 소비량이 달라, 고정 토큰으로 환산할 수 없습니다.</td></tr>
         </tbody>
       </table>
       <div class="source-line">
-        출처: Claude Help Center “Choose a Claude plan”. 2026년 5월 기준.
+        출처: Anthropic 토큰·컨텍스트 윈도우 문서. 2026년 5월 기준.
       </div>
     </div>
   </div>
 
   <div class="pricing-callout">
-    강의 표현: <strong>“Claude 구독은 월 토큰을 정액으로 사는 상품이 아닙니다. Free는 제한적, Pro는 표준 사용량, Max는 Pro 대비 5배 또는 20배 더 넉넉한 한도라고 이해하면 됩니다.”</strong>
+    <strong>‘컨텍스트 윈도우’와 ‘사용량 한도’는 다른 개념입니다.</strong> 컨텍스트 윈도우는 한 대화에 담을 수 있는 최대 크기이고, 사용량 한도는 일정 시간 안에 쓸 수 있는 총량입니다. 다음 장에서 그 한도가 어떻게 적용되는지 봅니다.
+  </div>
+</div>
+
+<!-- ===== 슬라이드 14b — 사용량 한도 구조 ===== -->
+<div class="slide" id="s14b">
+  <div class="step-label">Usage Limits</div>
+  <div class="slide-title">한도는 <span class="accent">시간 창</span>으로 적용됩니다</div>
+  <div class="slide-subtitle">5시간·주간 두 가지 창으로 관리되며, 구독 포함분에는 월간 제한이 없습니다.</div>
+  <div class="divider"></div>
+
+  <div class="pricing-logic">
+    <div class="logic-box emph">
+      <div class="logic-title">한도가 적용되는 창</div>
+      <div class="logic-list">
+        <div class="logic-item"><span class="logic-step">1</span><div><strong>5시간:</strong> 첫 메시지를 보낸 시점부터 시작되는 롤링 창입니다. 소진되면 리셋 시각까지 기다립니다.</div></div>
+        <div class="logic-item"><span class="logic-step">2</span><div><strong>7일(주간):</strong> 일주일 단위 창입니다. Max는 전체 모델용과 Sonnet 전용으로 주간 한도가 두 개 적용됩니다.</div></div>
+        <div class="logic-item"><span class="logic-step">3</span><div><strong>월간:</strong> 구독 포함 사용량에는 없습니다. ‘월간 상한’은 초과 사용(extra usage) 크레딧을 켰을 때 그 추가 지출에만 적용됩니다.</div></div>
+      </div>
+    </div>
+
+    <div class="logic-box">
+      <div class="logic-title">플랜별 상대 한도</div>
+      <table class="token-table">
+        <thead>
+          <tr><th>플랜</th><th>한도</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Free</strong></td><td>무료, 제한적으로 제공됩니다.</td></tr>
+          <tr><td><strong>Pro</strong></td><td>월 $20 또는 연 $200. 표준 사용량.</td></tr>
+          <tr><td><strong>Max 5x</strong></td><td>월 $100. Pro 대비 세션당 5배.</td></tr>
+          <tr><td><strong>Max 20x</strong></td><td>월 $200. Pro 대비 세션당 20배.</td></tr>
+        </tbody>
+      </table>
+      <div class="source-line">
+        출처: Claude Help Center “Choose a Claude plan”, “What is the Max plan?”, “Manage extra usage”. 2026년 5월 기준.
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-callout">
+    <strong>남은 양은 토큰 개수가 아니라 사용량 %로 보입니다.</strong> 사용량 화면(또는 데스크톱 사용량 표시기)에서 5시간·7일 한도와 다음 리셋 시각을 직접 확인할 수 있습니다.
   </div>
 </div>
 
@@ -1657,27 +1910,25 @@
 
 <!-- ===== 슬라이드 16 — 오늘 실습 ===== -->
 <div class="slide" id="s16">
-  <div class="step-label">실습</div>
-  <div class="slide-title">오늘 <span class="accent">직접</span> 설치해보기</div>
-  <div class="slide-subtitle">순서대로 따라하면 10분 안에 완료됩니다</div>
+  <div class="step-label">결론</div>
+  <div class="slide-title">정리하면, <span class="accent">이렇게</span></div>
   <div class="divider"></div>
-  <div class="step-list">
-    <div class="step-item">
-      <div class="step-circle">1</div>
-      <div class="step-content"><strong>VSCode 설치</strong> — code.visualstudio.com → 다운로드 → 설치</div>
+  <div class="point-list">
+    <div class="point-item">
+      <div class="point-num">1</div>
+      <div class="point-text"><strong>성능</strong> — 모델 성능 순위는 업데이트로 언제든 뒤집힙니다. 다만 현재 기준으로는 <strong>GPT-5.5</strong>와 <strong>Claude Opus 4.7(4.8)</strong>이 선두입니다.</div>
     </div>
-    <div class="step-item">
-      <div class="step-circle">2</div>
-      <div class="step-content"><strong>GitHub Copilot 확장 설치</strong> — Extensions 탭 → "GitHub Copilot" 검색 → Install</div>
+    <div class="point-item">
+      <div class="point-num">2</div>
+      <div class="point-text"><strong>요금</strong> — 대부분 월 $20 안팎이면 시작합니다. Claude Pro $20 · ChatGPT Plus $20 · Gemini AI Pro $20 · Copilot Pro $10.</div>
     </div>
-    <div class="step-item">
-      <div class="step-circle">3</div>
-      <div class="step-content"><strong>GitHub 계정 로그인</strong> — Sign in → 무료 플랜 자동 활성화</div>
+    <div class="point-item">
+      <div class="point-num">3</div>
+      <div class="point-text"><strong>구독 기반</strong> — 모두 구독제이므로, 이미 구독 중인 서비스가 있다면 그것을 그대로 써도 무방합니다.</div>
     </div>
-    <div class="step-item">
-      <div class="step-circle">4</div>
-      <div class="step-content"><strong>Antigravity 설치</strong> — antigravity.google → 앱 다운로드 → 실행</div>
-    </div>
+  </div>
+  <div class="workflow-bottom" style="margin-top:18px;max-width:1100px;">
+    한 줄 요약: <strong>이미 쓰는 구독으로 시작하고, 성능 순위는 그때그때 다시 확인하세요.</strong>
   </div>
 </div>
 

@@ -43,6 +43,19 @@ const materialData = [
     },
 
     {
+        id: "week0-lecture-2",
+        category: "week1",
+        categoryKo: "4기 입문편",
+        title: "0주차 강의안 2편 - Claude Code 시작 가이드",
+        summary: "Claude Code를 처음 시작하는 사람을 위한 세팅 가이드. 다운로드부터 권한 모드(ask·plan·auto), CLAUDE.md 작성, 전역 세팅·Skills·Hooks·에이전트·병렬까지. 무엇을 깔고 어떻게 설정하는지 흐름으로 정리한 0주차 2편 슬라이드.",
+        fileType: "link",
+        filePath: "materials/4기-입문편/0주차-강의안-2편/0주차-강의안-2편-deck.html",
+        readTime: "슬라이드 · 18장",
+        date: "0주차 강의안",
+        icon: "settings"
+    },
+
+    {
         id: "media-tools",
         category: "week1",
         categoryKo: "4기 입문편",
