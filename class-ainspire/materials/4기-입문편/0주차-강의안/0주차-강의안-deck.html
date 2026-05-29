@@ -227,6 +227,20 @@
   .mode-desc { font-size: 12px; color: #5a5070; line-height: 1.6; }
   .mode-note { font-size: 11px; color: var(--purple); font-weight: 700; margin-top: 4px; border-top: 1px solid var(--line); padding-top: 6px; }
 
+  /* 모드 핵심 비교축 */
+  .mode-axis {
+    width: 100%; max-width: 1120px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--purple-light); padding: 6px 16px; margin-bottom: 12px;
+  }
+  .mode-axis-row {
+    display: grid; grid-template-columns: 86px 1fr 1.1fr; gap: 14px;
+    font-size: 12.5px; color: var(--ink); padding: 4px 0; align-items: center;
+  }
+  .mode-axis-row + .mode-axis-row { border-top: 1px solid var(--line); }
+  .mode-axis-head { font-size: 10.5px; font-weight: 800; color: var(--purple); letter-spacing: 0.06em; text-transform: uppercase; }
+  .mode-axis .ax-k { font-weight: 800; color: var(--purple); }
+
   /* 설치 박스 */
   .install-box {
     background: #1a1530; color: #e8e0ff;
@@ -375,7 +389,7 @@
   .mini-price-row .price-val { font-size: 13px; }
   .mini-price-row .price-desc { font-size: 9px; }
   .download-shot {
-    width: 720px; height: 300px; margin: 34px auto 0;
+    width: 720px; height: 168px; margin: 14px auto 0;
     border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
     flex-shrink: 0; background: #11100f;
   }
@@ -838,7 +852,19 @@
 <div class="deck" id="deck">
 
 <!-- ===== 슬라이드 02 — 배경 ===== -->
-<div class="slide active" id="s2">
+<div class="slide centered active" id="s1">
+  <div class="title-kicker">AInspire 4기 · 입문편 0주차</div>
+  <div class="title-main">AI 코딩 툴 <span class="accent">비교</span></div>
+  <div class="title-sub">Claude · OpenAI Codex · Google Antigravity · VSCode Copilot<br>네 가지 도구의 철학과 차이를 한 번에 정리합니다</div>
+  <div class="title-tags">
+    <span class="tag fill">Claude</span>
+    <span class="tag">OpenAI Codex</span>
+    <span class="tag">Google Antigravity</span>
+    <span class="tag">VSCode Copilot</span>
+  </div>
+</div>
+
+<div class="slide" id="s2">
   <div class="step-label">Background</div>
   <div class="slide-title">코딩을 <span class="accent">모르는 사람</span>도<br>앱을 만드는 시대</div>
   <div class="slide-subtitle">AI 코딩 툴이 코드를 대신 써준다 — 내가 할 일은 "무엇을 만들지" 말하는 것</div>
@@ -963,6 +989,20 @@
     </div>
   </div>
   <div class="divider"></div>
+  <div class="mode-axis">
+    <div class="mode-axis-row mode-axis-head">
+      <span>구분</span><span>누가 실행하나</span><span>무엇을 다루나</span>
+    </div>
+    <div class="mode-axis-row">
+      <span class="ax-k">Chat</span><span>내가 직접 — 대화로 주고받음</span><span>텍스트 — 글·질문·번역·요약</span>
+    </div>
+    <div class="mode-axis-row">
+      <span class="ax-k">Cowork</span><span>AI가 내 PC에서 자율 실행</span><span>로컬 파일·앱 — 코딩 외 지식 업무</span>
+    </div>
+    <div class="mode-axis-row">
+      <span class="ax-k">Code</span><span>AI가 코드베이스에서 실행</span><span>코드 — 읽기·수정·테스트·PR</span>
+    </div>
+  </div>
   <div class="grid3" style="margin-bottom:10px;">
     <div class="mode-card">
       <div class="mode-name">Chat</div>
@@ -2156,5 +2196,31 @@
 })();
 </script>
 <script src="../../../debug-annotate.js"></script>
+<script>
+/* 인접 슬라이드 이미지 프리디코드 + 다음 영상 버퍼링 (흰 화면 방지, 추가 다운로드 없음) */
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  function warm(slide) {
+    if (!slide) return;
+    slide.querySelectorAll('img').forEach(function (img) {
+      if (img.decode) { img.decode().catch(function () {}); }
+    });
+    if (!slide.classList.contains('active')) {
+      slide.querySelectorAll('video').forEach(function (v) {
+        if (v.preload !== 'auto') { v.preload = 'auto'; try { v.load(); } catch (e) {} }
+      });
+    }
+  }
+  function warmAround() {
+    var idx = slides.findIndex(function (s) { return s.classList.contains('active'); });
+    if (idx < 0) return;
+    warm(slides[idx]); warm(slides[idx + 1]); warm(slides[idx - 1]);
+  }
+  var mo = new MutationObserver(warmAround);
+  slides.forEach(function (s) { mo.observe(s, { attributes: true, attributeFilter: ['class'] }); });
+  warmAround();
+})();
+</script>
 </body>
 </html>

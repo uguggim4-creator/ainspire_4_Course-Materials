@@ -1638,5 +1638,31 @@
 <!-- 디테일 편집용 주석 모드 (?debug=1 일 때만 활성) -->
 <script src="../../../debug-annotate.js"></script>
 
+<script>
+/* 인접 슬라이드 이미지 프리디코드 + 다음 영상 버퍼링 (흰 화면 방지, 추가 다운로드 없음) */
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  function warm(slide) {
+    if (!slide) return;
+    slide.querySelectorAll('img').forEach(function (img) {
+      if (img.decode) { img.decode().catch(function () {}); }
+    });
+    if (!slide.classList.contains('active')) {
+      slide.querySelectorAll('video').forEach(function (v) {
+        if (v.preload !== 'auto') { v.preload = 'auto'; try { v.load(); } catch (e) {} }
+      });
+    }
+  }
+  function warmAround() {
+    var idx = slides.findIndex(function (s) { return s.classList.contains('active'); });
+    if (idx < 0) return;
+    warm(slides[idx]); warm(slides[idx + 1]); warm(slides[idx - 1]);
+  }
+  var mo = new MutationObserver(warmAround);
+  slides.forEach(function (s) { mo.observe(s, { attributes: true, attributeFilter: ['class'] }); });
+  warmAround();
+})();
+</script>
 </body>
 </html>
