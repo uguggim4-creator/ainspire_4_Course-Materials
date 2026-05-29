@@ -102,7 +102,7 @@ const materialData = [
         summary: "Claude Code 입문용 핵심 설정 모음. 에이전트 전역 규칙(CLAUDE.md), 번거로운 권한 승인 팝업을 차단하는 전역 권한 정책(settings.json.template) 및 대리·대기 스킬(Skills)이 포함되어 있습니다.",
         fileType: "article",
         filePath: "materials/4기-입문편/0주차-강의안-2편/claude-basic-setup-manual.html",
-        downloadPath: "materials/4기-입문편/0주차-강의안-2편/claude-basic-setup.zip",
+        downloadPath: "https://drive.google.com/uc?export=download&id=1cn0r6QsTwc9J6WXq9ROMUXaG5jaLVrJg",
         readTime: "설명서 & 파일",
         date: "설정 파일",
         icon: "settings"
@@ -115,7 +115,7 @@ const materialData = [
         summary: "바이트댄스 Seedance 2.0 비디오 전용 고품질 프롬프트 작성 스킬(skills/seedance-prompt)입니다. @레퍼런스 문법·카메라 무빙·시간 분할 프롬프트 등 실전 패턴과 예시를 담았습니다.",
         fileType: "article",
         filePath: "materials/4기-입문편/0주차-강의안-2편/claude-video-setup-manual.html",
-        downloadPath: "materials/4기-입문편/0주차-강의안-2편/claude-video-setup.zip",
+        downloadPath: "https://drive.google.com/uc?export=download&id=1-gfKZ5qfcxEmXVIDkzTVqBttaLHQ79le",
         readTime: "설명서 & 파일",
         date: "설정 파일",
         icon: "download"
@@ -128,7 +128,7 @@ const materialData = [
         summary: "AI 번역투와 어투를 자연스럽게 한국어로 다듬어주는 글쓰기 스킬(skills/humanizer) 및 사용자가 입력할 지시문의 품질을 스스로 체크하고 검수해 주는 프롬프트 검수 스킬 패키지입니다.",
         fileType: "article",
         filePath: "materials/4기-입문편/0주차-강의안-2편/claude-writing-helper-manual.html",
-        downloadPath: "materials/4기-입문편/0주차-강의안-2편/claude-writing-helper.zip",
+        downloadPath: "https://drive.google.com/uc?export=download&id=1FGRYCi0ML1H28OXLWcYID7jiIkHodeW9",
         readTime: "설명서 & 파일",
         date: "설정 파일",
         icon: "download"
@@ -141,7 +141,7 @@ const materialData = [
         summary: "Claude Code로 어도비 프리미어 프로(Adobe Premiere Pro)를 직접 조작하기 위한 통합 패키지. 자동 설치용 CLI 스크립트와 CEP 연동 플러그인(MCP Bridge) 소스 일체가 포함되어 있습니다.",
         fileType: "article",
         filePath: "materials/4기-입문편/0주차-강의안-2편/claude-premiere-mcp-manual.html",
-        downloadPath: "materials/4기-입문편/0주차-강의안-2편/claude-premiere-mcp.zip",
+        downloadPath: "https://drive.google.com/uc?export=download&id=1IbLSjapasau_yXE7K5EkLUe3RAFoDelg",
         readTime: "설명서 & 파일",
         date: "MCP 도구",
         icon: "film"
