@@ -640,6 +640,20 @@
     flex-direction: column;
     gap: 14px;
   }
+  .case-claude-shot {
+    margin: 10px 0 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #080612;
+  }
+  .case-claude-shot img {
+    width: 100%;
+    height: 220px;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+  }
 
   .tool-right {
     display: flex;
@@ -935,13 +949,13 @@
   <!-- 슬라이드 4: STEP 2 — 개발 환경 켜기 -->
   <div class="slide" data-index="3">
     <div class="step-label">STEP 2 / 개발 환경 켜기</div>
-    <div class="slide-title"><span class="accent">IDE</span>를 열고 서버를 실행합니다</div>
+    <div class="slide-title"><span class="accent">IDE</span>란 뭘까요?</div>
     <div class="divider"></div>
     <div class="tool-body">
       <div class="tool-left">
-        <div style="font-size:12px;font-weight:700;color:#bba4ff;letter-spacing:0.08em;margin-bottom:8px;">CASE 1 — Claude / Antigravity / Codex (AI가 직접 실행)</div>
-        <div style="margin-bottom:14px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-          <img src="../../../assets/img/vibe-journey-slide4-case1.png" alt="Claude 에이전트가 npm install과 npm run dev를 직접 실행해 localhost:3000 개발 서버를 띄운 화면" style="width:100%;display:block;">
+        <div style="font-size:12px;font-weight:700;color:#bba4ff;letter-spacing:0.08em;margin-bottom:8px;">CASE 1 — Claude Desktop은 IDE가 아니라 AI 작업 앱</div>
+        <div class="case-claude-shot">
+          <img src="../0주차-강의안/img/cap_claude.png" alt="Claude 데스크탑 앱에서 AI 에이전트가 작업을 실행하는 화면">
         </div>
         <div style="font-size:12px;font-weight:700;color:#bba4ff;letter-spacing:0.08em;margin-bottom:8px;">CASE 2 — VS Code / Cursor (직접 터미널 입력)</div>
         <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">

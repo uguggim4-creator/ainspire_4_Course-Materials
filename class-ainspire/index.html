@@ -19,7 +19,7 @@
             /* AInspire 프리미엄 다크 퍼플 & 글라스모피즘 스타일 정의 */
             --bg-primary: #05020c;
             --bg-secondary: #0c0618;
-            --bg-card: rgba(22, 11, 38, 0.45);
+            --bg-card: rgba(8, 4, 18, 0.92);
             --border-color: rgba(255, 255, 255, 0.08);
             
             --text-primary: #f5f3f7;
@@ -430,6 +430,7 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             position: relative;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 10px 32px rgba(0, 0, 0, 0.22);
         }
         .material-card::before {
             content: '';
@@ -525,6 +526,11 @@
             border: 1px solid rgba(150, 150, 150, 0.3);
             color: #999;
         }
+        .badge-format.zip {
+            background: rgba(0, 176, 255, 0.12);
+            border: 1px solid rgba(0, 176, 255, 0.3);
+            color: #00b0ff;
+        }
 
         .card-body {
             padding: 0 1.5rem 1.5rem;
@@ -543,9 +549,9 @@
             color: #fff;
         }
         .card-body p {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
+            font-size: 0.92rem;
+            color: #d0c8dd;
+            line-height: 1.78;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -929,7 +935,8 @@
                 let formatBadgeColor = '';
                 if (item.fileType === 'pdf') formatBadgeColor = 'pdf';
                 else if (item.fileType === 'excel') formatBadgeColor = 'excel';
-                else if (item.fileType === 'article') formatBadgeColor = 'article';
+                else if (item.fileType === 'article') formatBadgeColor = item.downloadPath ? 'zip' : 'article';
+                else if (item.fileType === 'zip') formatBadgeColor = 'zip';
                 else if (item.fileType === 'coming-soon') formatBadgeColor = 'coming-soon';
                 else formatBadgeColor = 'link';
 
@@ -943,11 +950,12 @@
                     actionText = 'Notion 열기';
                     actionIcon = 'external-link';
                 } else if (item.fileType === 'article') {
-                    actionText = '읽기';
+                    actionText = item.downloadPath ? '설명서' : '읽기';
                     actionIcon = 'book-open';
                 } else if (item.fileType === 'folder') {
                     actionText = '폴더 열기';
                     actionIcon = 'folder-open';
+
                 } else if (item.fileType === 'coming-soon') {
                     actionText = '준비 중';
                     actionIcon = 'clock';
@@ -960,7 +968,7 @@
                         </div>
                         <div class="badge-group">
                             <span class="badge badge-category">${item.categoryKo}</span>
-                            <span class="badge badge-format ${formatBadgeColor}">${item.fileType === 'coming-soon' ? '준비 중' : item.fileType}</span>
+                            <span class="badge badge-format ${formatBadgeColor}">${item.fileType === 'coming-soon' ? '준비 중' : (item.downloadPath ? 'zip' : item.fileType)}</span>
                         </div>
                     </div>
                     <div class="card-body">
@@ -970,7 +978,7 @@
                     <div class="card-footer">
                         <span class="left-meta">${item.date}</span>
                         <span class="footer-actions">
-                            ${(item.fileType === 'pdf' || item.fileType === 'excel') ? `
+                            ${(item.fileType === 'pdf' || item.fileType === 'excel' || item.downloadPath) ? `
                             <button class="card-download" title="다운로드" onclick="event.stopPropagation(); downloadMaterial('${item.id}')">
                                 <i data-lucide="download" style="width: 15px; height: 15px;"></i>
                             </button>` : ''}
@@ -990,9 +998,9 @@
         function downloadMaterial(id) {
             const item = materialData.find(m => m.id === id);
             if (!item) return;
-            const url = item.driveId
+            const url = item.downloadPath || (item.driveId
                 ? `https://drive.google.com/uc?export=download&id=${item.driveId}`
-                : item.filePath;
+                : item.filePath);
             window.open(url, '_blank', 'noopener');
         }
 
@@ -1026,6 +1034,7 @@
                 // Notion 페이지: iframe 차단으로 새 탭 직접 열기
                 window.open(item.notionUrl, '_blank', 'noopener');
                 return;
+
             } else {
                 // link: 로컬 HTML 페이지(슬라이드/CineGuide) 임베드
                 const sep = item.filePath.includes('?') ? '&' : '?';

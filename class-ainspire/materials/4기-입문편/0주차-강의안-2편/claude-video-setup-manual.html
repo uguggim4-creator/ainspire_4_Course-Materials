@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 영상 제작 & 자동화 패키지 — AInspire 4기</title>
+<style>
+  @font-face { font-family:'Paperlogy'; src:url('../../../assets/fonts/Paperlogy-4Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Paperlogy'; src:url('../../../assets/fonts/Paperlogy-7Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Paperlogy'; src:url('../../../assets/fonts/Paperlogy-8ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+
+  :root { --ink:#1a1530; --purple:#6020ff; --line:#e5dff0; --purple-light:#f7f3ff; --muted:#5a5070; }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Paperlogy',sans-serif; background:#f4f1fb; color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased; padding:40px 20px; }
+
+  .card { max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:24px; padding:52px 52px 44px; box-shadow:0 20px 60px rgba(26,21,48,.08); }
+
+  .kicker { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--purple); margin-bottom:12px; }
+  .title { font-size:clamp(26px,4vw,38px); font-weight:800; letter-spacing:-.03em; line-height:1.15; margin-bottom:14px; }
+  .divider { width:48px; height:3px; background:var(--purple); border-radius:2px; margin-bottom:24px; }
+  .lead { font-size:15px; color:var(--muted); margin-bottom:28px; }
+
+  .hero { background:linear-gradient(135deg,#6020ff,#3d12c9); color:#fff; border-radius:18px; padding:30px 28px; text-align:center; margin-bottom:32px; }
+  .hero .big { font-size:21px; font-weight:800; line-height:1.4; margin-bottom:16px; }
+  .hero .step { font-size:14px; color:#e3d8ff; margin-bottom:8px; }
+  .hero .say { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:99px; padding:10px 20px; font-size:16px; font-weight:700; margin-top:6px; }
+
+  .dolist-title { font-size:16px; font-weight:800; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .step-item { display:flex; align-items:flex-start; gap:14px; border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:10px; }
+  .step-num { width:26px; height:26px; border-radius:50%; background:var(--purple); color:#fff; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-text { font-size:14.5px; color:var(--ink); line-height:1.55; }
+  .step-text strong { color:var(--purple); }
+
+  .note { font-size:13px; color:var(--muted); background:var(--purple-light); border-left:3px solid var(--purple); border-radius:0 10px 10px 0; padding:12px 16px; margin-top:16px; line-height:1.6; }
+
+  .btn-wrap { display:flex; justify-content:center; margin-top:36px; }
+  .btn-download { display:inline-flex; align-items:center; gap:8px; background:var(--purple); color:#fff; font-weight:700; text-decoration:none; padding:14px 30px; border-radius:99px; transition:background .2s,transform .2s; box-shadow:0 8px 24px rgba(96,32,255,.22); }
+  .btn-download:hover { background:#4b10df; transform:translateY(-2px); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="kicker">Folder 1.1 · 영상 제작</div>
+  <h1 class="title">AI 영상 제작 &amp; 자동화 패키지</h1>
+  <div class="divider"></div>
+  <p class="lead">Seedance 2.0 영상 프롬프트 작성 스킬과 프리미어 프로 타임라인 자동 조립 스킬 묶음입니다.</p>
+
+  <div class="hero">
+    <div class="big">이걸 다운로드받고,<br>클로드한테 <u>설치.md</u>를 읽게 하세요!</div>
+    <div class="step">① 아래 버튼으로 zip 받아 압축 풀기 &nbsp;→&nbsp; ② 그 폴더를 Claude Code에서 열고 이렇게 말하기</div>
+    <div class="say">"설치.md 읽고 세팅해줘"</div>
+  </div>
+
+  <div class="dolist-title">🤖 그러면 클로드가 하는 일</div>
+  <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>seedance-prompt</strong> · <strong>premiere-assemble</strong> 스킬을 ~/.claude/skills 에 설치</div></div>
+  <div class="step-item"><div class="step-num">2</div><div class="step-text">두 스킬이 어떤 이름으로 등록됐는지 <strong>확인 후 안내</strong></div></div>
+
+  <div class="note">⚠️ 프리미어 자동 조립(premiere-assemble)을 쓰려면 <strong>Premiere Pro MCP 패키지</strong>가 설치돼 있고 프리미어 안의 MCP Bridge 패널이 켜져 있어야 합니다. 설치 후에는 "밤거리 빗속 사이버펑크 영상 프롬프트 만들어줘"처럼 자연어로 시키면 됩니다.</div>
+
+  <div class="btn-wrap">
+    <a href="claude-video-setup.zip" download class="btn-download">
+      <i data-lucide="download"></i> 패키지 다운로드 (.zip)
+    </a>
+  </div>
+</div>
+<script src="../../../assets/js/lucide.min.js"></script>
+<script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>
