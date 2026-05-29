@@ -834,7 +834,7 @@
         <div class="search-filter-bar">
             <div class="tabs-row">
                 <ul class="filter-tabs">
-                    <li><button class="tab-btn active" onclick="filterCategory('all', event)">전체 자료</button></li>
+                    <li><button class="tab-btn active" onclick="filterCategory('package', event)">패키지 자료</button></li>
                     <li><button class="tab-btn" onclick="filterCategory('week1', event)">4기 입문편</button></li>
                     <li><button class="tab-btn" onclick="filterCategory('week4', event)">4기 자료</button></li>
                     <li><button class="tab-btn" onclick="filterCategory('week2', event)">2기 자료</button></li>
@@ -896,7 +896,7 @@
     <!-- 자료 데이터 로드 및 렌더링 스크립트 -->
     <script src="data-materials.js"></script>
     <script>
-        let currentFilter = 'all';
+        let currentFilter = 'package';
         let searchQuery = '';
         let currentModalFrameSrc = '';
         let currentModalItemType = '';
@@ -1140,7 +1140,14 @@
         // 카테고리 필터링 함수
         function filterCategory(category, event) {
             currentFilter = category;
-            
+
+            // 카테고리 선택 시 검색어 초기화 (검색은 전체 기준이므로 탭과 충돌 방지)
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.value = '';
+            searchQuery = '';
+            const clearBtn = document.getElementById('clear-btn');
+            if (clearBtn) clearBtn.style.display = 'none';
+
             // 모든 탭의 active 클래스 제거 및 클릭된 탭 추가
             const tabs = document.querySelectorAll('.tab-btn');
             tabs.forEach(tab => tab.classList.remove('active'));
@@ -1156,17 +1163,15 @@
         function applyFilters() {
             let filtered = materialData;
 
-            // 1. 카테고리 필터
-            if (currentFilter !== 'all') {
-                filtered = filtered.filter(item => item.category === currentFilter);
-            }
-
-            // 2. 검색어 필터
+            // 검색어가 있으면 카테고리 무시하고 전체 자료에서 검색
             if (searchQuery.length > 0) {
                 filtered = filtered.filter(item => {
-                    return item.title.toLowerCase().includes(searchQuery) || 
+                    return item.title.toLowerCase().includes(searchQuery) ||
                            item.summary.toLowerCase().includes(searchQuery);
                 });
+            } else if (currentFilter !== 'all') {
+                // 검색어가 없을 때만 카테고리 필터 적용
+                filtered = filtered.filter(item => item.category === currentFilter);
             }
 
             renderMaterials(filtered);
@@ -1180,21 +1185,21 @@
             searchQuery = '';
             document.getElementById('clear-btn').style.display = 'none';
 
-            // 카테고리 '전체'로 복구
-            currentFilter = 'all';
+            // 카테고리 '패키지 자료'로 복구
+            currentFilter = 'package';
             const tabs = document.querySelectorAll('.tab-btn');
             tabs.forEach((tab, index) => {
                 if (index === 0) tab.classList.add('active');
                 else tab.classList.remove('active');
             });
 
-            renderMaterials(materialData);
+            applyFilters();
         }
 
         // 초기 로딩
         window.addEventListener('DOMContentLoaded', () => {
-            // 전체 자료 카드 렌더링
-            renderMaterials(materialData);
+            // 기본 탭(패키지 자료) 카드 렌더링
+            applyFilters();
 
             // 헤더 스크롤 이펙트
             window.addEventListener('scroll', function() {
