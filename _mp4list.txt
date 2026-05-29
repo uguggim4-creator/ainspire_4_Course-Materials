@@ -1,0 +1,237 @@
+﻿5625387	F:\ainspire 4기 강의\class-ainspire\cineguide\img\13_steadicam_shot.mp4
+5505583	F:\ainspire 4기 강의\class-ainspire\cineguide\img\15_zoom_in_out.mp4
+7069402	F:\ainspire 4기 강의\class-ainspire\cineguide\img\16_panning.mp4
+4880170	F:\ainspire 4기 강의\class-ainspire\cineguide\img\17_tilt.mp4
+7075873	F:\ainspire 4기 강의\class-ainspire\cineguide\img\18_jump_cut.mp4
+11264876	F:\ainspire 4기 강의\class-ainspire\cineguide\img\19_high_low_angle.mp4
+9642495	F:\ainspire 4기 강의\class-ainspire\cineguide\img\20_camera_positions.mp4
+7055696	F:\ainspire 4기 강의\class-ainspire\cineguide\img\22_tracking_shot.mp4
+5437937	F:\ainspire 4기 강의\class-ainspire\cineguide\img\23_crane_shot.mp4
+4618153	F:\ainspire 4기 강의\class-ainspire\cineguide\img\4_pov.mp4
+5534497	F:\ainspire 4기 강의\class-ainspire\cineguide\img\8_slow_motion.mp4
+11352010	F:\ainspire 4기 강의\class-ainspire\cineguide\img\9_time_lapse.mp4
+6469975	F:\ainspire 4기 강의\class-ainspire\cineguide\img\arc.mp4
+5833826	F:\ainspire 4기 강의\class-ainspire\cineguide\img\chapter_3-2_vanishing_point.mp4
+5684969	F:\ainspire 4기 강의\class-ainspire\cineguide\img\chapter_3-3_gaze_line.mp4
+4308800	F:\ainspire 4기 강의\class-ainspire\cineguide\img\chapter_3-4_contrast_silhouette.mp4
+5163085	F:\ainspire 4기 강의\class-ainspire\cineguide\img\dolly_in_v2.mp4
+5450408	F:\ainspire 4기 강의\class-ainspire\cineguide\img\dolly_out_v2.mp4
+7213561	F:\ainspire 4기 강의\class-ainspire\cineguide\img\dolly_zoom.mp4
+9323555	F:\ainspire 4기 강의\class-ainspire\cineguide\img\drone.mp4
+11324452	F:\ainspire 4기 강의\class-ainspire\cineguide\img\handheld.mp4
+8112647	F:\ainspire 4기 강의\class-ainspire\cineguide\img\orbit.mp4
+8700878	F:\ainspire 4기 강의\class-ainspire\cineguide\img\pan_v2.mp4
+4268631	F:\ainspire 4기 강의\class-ainspire\cineguide\img\rack_focus.mp4
+2655448	F:\ainspire 4기 강의\class-ainspire\cineguide\img\reaction.mp4
+9187363	F:\ainspire 4기 강의\class-ainspire\cineguide\img\robot_arm.mp4
+5785725	F:\ainspire 4기 강의\class-ainspire\cineguide\img\robot_arm_hf.mp4
+5257015	F:\ainspire 4기 강의\class-ainspire\cineguide\img\roll_dutch.mp4
+8394020	F:\ainspire 4기 강의\class-ainspire\cineguide\img\tracking_v2.mp4
+9701859	F:\ainspire 4기 강의\class-ainspire\cineguide\img\whip_pan.mp4
+1141365	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\11_인서트샷.mp4
+5625387	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\13_스태디캠샷.mp4
+1894865	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\14_핸드핼드샷.mp4
+5505583	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\15_줌인줌아웃.mp4
+7069402	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\16_패닝.mp4
+4880170	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\17_틸트.mp4
+7075873	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\18_점프컷.mp4
+11264876	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\19_하이앤로우앵글.mp4
+9642495	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\20_정면측면뒷면.mp4
+1395423	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\21_더치틸트샷.mp4
+7055696	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\22_트래킹샷.mp4
+5437937	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\23_크레인샷.mp4
+1440112	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\3_클로즈업.mp4
+1188566	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\5_오버숄더샷.mp4
+1723241	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\6_투샷(그룹샷).mp4
+992863	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\7_탑뷰.mp4
+5534497	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\8_슬로모션.mp4
+11352010	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\9_타임랩스.mp4
+5833826	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\chapter_3-2_라인&소실점.mp4
+5684969	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\chapter_3-3_라인&시선.mp4
+4308800	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\chapter_3-4_콘트라스트&실루엣.mp4
+3504846	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\crane.mp4
+7023428	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\crane_v2.mp4
+2524102	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\dolly_in.mp4
+3167764	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\dolly_out.mp4
+6024607	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\pan.mp4
+5187852	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\reaction_raw.mp4
+8023784	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\slow_motion.mp4
+3922501	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\tilt.mp4
+5810798	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\tilt_v2.mp4
+6692969	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\time_lapse.mp4
+4317177	F:\ainspire 4기 강의\class-ainspire\cineguide\img\보류\tracking.mp4
+2911070	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\final_shorts.mp4
+76585	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-ffmpeg1-flow.mp4
+86124	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-ffmpeg2-flow.mp4
+292789	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-premiere-mcp-10s-2x.mp4
+2333606	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-premiere-mcp.mp4
+3145776	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-premiere-timeline.mp4
+931801	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-remotion-result.mp4
+77286	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-whisper-flow.mp4
+40460	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-whisper-result.mp4
+79753	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\rec-ytdlp-flow.mp4
+28523658	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\sample.mp4
+484738	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\sample_compressed.mp4
+2990004	F:\ainspire 4기 강의\class-ainspire\materials\4기-입문편\미디어도구\demo-assets\vertical_9x16.mp4
+5625387	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\13_steadicam_shot.mp4
+5505583	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\15_zoom_in_out.mp4
+7069402	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\16_panning.mp4
+4880170	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\17_tilt.mp4
+7075873	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\18_jump_cut.mp4
+11264876	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\19_high_low_angle.mp4
+9642495	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\20_camera_positions.mp4
+7055696	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\22_tracking_shot.mp4
+5437937	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\23_crane_shot.mp4
+4618153	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\4_pov.mp4
+5534497	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\8_slow_motion.mp4
+11352010	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\9_time_lapse.mp4
+5833826	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\chapter_3-2_vanishing_point.mp4
+5684969	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\chapter_3-3_gaze_line.mp4
+4308800	F:\ainspire 4기 강의\class-ainspire\_archive\cineguide_보류\img\chapter_3-4_contrast_silhouette.mp4
+1963393	F:\ainspire 4기 강의\_archive\01_0주차_설치_실행_자동화\강의안\자료집_v3\이미지\실제작업\seedance_컷영상1.mp4
+3335476	F:\ainspire 4기 강의\_archive\01_0주차_설치_실행_자동화\강의안\자료집_v3\이미지\실제작업\seedance_컷영상2.mp4
+2296567	F:\ainspire 4기 강의\_archive\01_0주차_설치_실행_자동화\강의안\자료집_v3\이미지\실제작업\tvcf_레퍼런스.mp4
+2474344	F:\ainspire 4기 강의\_archive\cinemaguide\img\10_리액션샷.mp4
+2344243	F:\ainspire 4기 강의\_archive\cinemaguide\img\11_인서트샷.mp4
+5625387	F:\ainspire 4기 강의\_archive\cinemaguide\img\13_스태디캠샷.mp4
+4039817	F:\ainspire 4기 강의\_archive\cinemaguide\img\14_핸드핼드샷.mp4
+5505583	F:\ainspire 4기 강의\_archive\cinemaguide\img\15_줌인줌아웃.mp4
+7069402	F:\ainspire 4기 강의\_archive\cinemaguide\img\16_패닝.mp4
+4880170	F:\ainspire 4기 강의\_archive\cinemaguide\img\17_틸트.mp4
+7075873	F:\ainspire 4기 강의\_archive\cinemaguide\img\18_점프컷.mp4
+11264876	F:\ainspire 4기 강의\_archive\cinemaguide\img\19_하이앤로우앵글.mp4
+2403540	F:\ainspire 4기 강의\_archive\cinemaguide\img\1_롱샷(와이드).mp4
+9642495	F:\ainspire 4기 강의\_archive\cinemaguide\img\20_정면측면뒷면.mp4
+2737960	F:\ainspire 4기 강의\_archive\cinemaguide\img\21_더치틸트샷.mp4
+7055696	F:\ainspire 4기 강의\_archive\cinemaguide\img\22_트래킹샷.mp4
+5437937	F:\ainspire 4기 강의\_archive\cinemaguide\img\23_크레인샷.mp4
+3284121	F:\ainspire 4기 강의\_archive\cinemaguide\img\2_미디엄샷.mp4
+3229261	F:\ainspire 4기 강의\_archive\cinemaguide\img\3_클로즈업.mp4
+4618153	F:\ainspire 4기 강의\_archive\cinemaguide\img\4_pov.mp4
+2753884	F:\ainspire 4기 강의\_archive\cinemaguide\img\5_오버숄더샷.mp4
+3197976	F:\ainspire 4기 강의\_archive\cinemaguide\img\6_투샷(그룹샷).mp4
+2904360	F:\ainspire 4기 강의\_archive\cinemaguide\img\7_탑뷰.mp4
+5534497	F:\ainspire 4기 강의\_archive\cinemaguide\img\8_슬로모션.mp4
+11352010	F:\ainspire 4기 강의\_archive\cinemaguide\img\9_타임랩스.mp4
+5833826	F:\ainspire 4기 강의\_archive\cinemaguide\img\chapter_3-2_라인&소실점.mp4
+5684969	F:\ainspire 4기 강의\_archive\cinemaguide\img\chapter_3-3_라인&시선.mp4
+4308800	F:\ainspire 4기 강의\_archive\cinemaguide\img\chapter_3-4_콘트라스트&실루엣.mp4
+2474344	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\10_리액션샷.mp4
+2344243	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\11_인서트샷.mp4
+4039817	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\14_핸드핼드샷.mp4
+2403540	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\1_롱샷(와이드).mp4
+2737960	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\21_더치틸트샷.mp4
+3284121	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\2_미디엄샷.mp4
+3229261	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\3_클로즈업.mp4
+2753884	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\5_오버숄더샷.mp4
+3197976	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\6_투샷(그룹샷).mp4
+2904360	F:\ainspire 4기 강의\_archive\cinemaguide\video_new\7_탑뷰.mp4
+2911070	F:\ainspire 4기 강의\_archive\demo-assets\final_shorts.mp4
+76585	F:\ainspire 4기 강의\_archive\demo-assets\rec-ffmpeg1-flow.mp4
+86124	F:\ainspire 4기 강의\_archive\demo-assets\rec-ffmpeg2-flow.mp4
+931801	F:\ainspire 4기 강의\_archive\demo-assets\rec-remotion-result.mp4
+77286	F:\ainspire 4기 강의\_archive\demo-assets\rec-whisper-flow.mp4
+40460	F:\ainspire 4기 강의\_archive\demo-assets\rec-whisper-result.mp4
+79753	F:\ainspire 4기 강의\_archive\demo-assets\rec-ytdlp-flow.mp4
+28523658	F:\ainspire 4기 강의\_archive\demo-assets\sample.mp4
+2990004	F:\ainspire 4기 강의\_archive\demo-assets\vertical_9x16.mp4
+5741522	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 1] 기술의 복제 시대, 기획의 본질\freepik__-60fps-__54968.mp4
+6840003	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 1] 기술의 복제 시대, 기획의 본질\freepik__a-mesmerizing-macro-shot-reveals-a-crystalclear-dr__54969.mp4
+6037508	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 1] 기술의 복제 시대, 기획의 본질\freepik__super-slow-motion__54967.mp4
+4613782	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 2] 렌즈의 언어와 시선의 권력\freepik__rack-focus-shot-shifting-focus-from-a-smiling-man-__18205.mp4
+1791955	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 2] 렌즈의 언어와 시선의 권력\freepik__rack-focus-shot-shifting-focus-from-a-smiling-man-__18206.mp4
+12623526	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 4] 미장센, 공간을 지배하는 권력 (The Power of Mise-en-sc\kling_20251221_Image_to_Video_orbit_left_2894_0.mp4
+25103083	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 4] 미장센, 공간을 지배하는 권력 (The Power of Mise-en-sc\kling_20251221_Image_to_Video_orbit_righ_2884_0.mp4
+8197127	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 4] 미장센, 공간을 지배하는 권력 (The Power of Mise-en-sc\kling_20251221_Image_to_Video_slow_orbit_2898_0.mp4
+25735395	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\2주차 [기획편] 강의 자료\[Part 4] 미장센, 공간을 지배하는 권력 (The Power of Mise-en-sc\kling_20251221_Image_to_Video__2897_0.mp4
+5172029	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\20251222_1603_01kd2azp0eegnt6casa3ky2ng3.mp4
+8104468	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Cinematic_action_realism_202512221653_206j6.mp4
+5755364	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Cinematic_realism_8_202512221511_75rme.mp4
+11615035	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Cinematic_realism_8_202512221652_s7l8c.mp4
+5045037	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Cinematic_war_film_202512221710_jz9iv.mp4
+6598408	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Create_an_edited_202512221735_cu83r.mp4
+4712298	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Create_an_edited_202512221735_unl4y.mp4
+5766435	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Create_an_edited_202512221736_00z46.mp4
+8251969	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Create_an_edited_202512221736_k0ptk.mp4
+6994956	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Cyberpunk_sf_8_202512221652_fdxkd.mp4
+2402084	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Extreme_macro_shot_202512221601_wsmii.mp4
+16370640	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Action_sho_3668_0.mp4
+6004298	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Cinematic__3861_0.mp4
+12196354	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Cinematic__4018_0.mp4
+14364601	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Cinematic__4030_0.mp4
+9452274	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Close_up_o_3673_0.mp4
+13899328	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Dynamic_fa_3666_0.mp4
+3975898	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Extreme_ma_3675_0.mp4
+17257601	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Intense_co_3676_0.mp4
+5810174	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Minimalist_3671_0.mp4
+7996929	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Reaction_s_3669_0.mp4
+9082242	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Underwater_3667_0.mp4
+2577450	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Wide_shot__3674_0.mp4
+10740290	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251222_Text_to_Video_Wide_shot__3676_0.mp4
+4877822	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251223_Text_to_Video_Cinematic__1544_0.mp4
+5938812	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251223_Text_to_Video_Cinematic__1554_0.mp4
+4888791	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251223_Text_to_Video_Cinematic__1556_0.mp4
+9379755	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251223_Text_to_Video_Cinematic__1590_0.mp4
+6542064	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\kling_20251223_Text_to_Video_Cinematic__1592_0.mp4
+3545233	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 6] 비가시성의 시각화, 소리와 침묵 (The Aesthetics of Soun\Minimalist_composition_a_202512221600_hdoru.mp4
+61823907	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\777.mp4
+58818514	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\77777.mp4
+37725082	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\777777777.mp4
+62231533	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\7777777777.mp4
+25857499	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\777777777777777.mp4
+3510258	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\Create_a_graphic_202512230903_9kv29.mp4
+3915416	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\Create_a_graphic_202512230903_bppgo.mp4
+8002408	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video_Prompt__A__1998_1.mp4
+14807822	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video_Prompt__Ex_1996_1.mp4
+25069962	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video_Prompt__Fa_1984_0.mp4
+20691792	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video_Prompt__Si_1990_0.mp4
+4958359	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video_Prompt__Su_1986_0.mp4
+8142762	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video____________1984_0.mp4
+11013572	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video____________1989_1.mp4
+20308251	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video____________1991_0.mp4
+11645066	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video____________1993_0.mp4
+8580461	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video____________1993_1.mp4
+16284353	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 7] 충돌의 미학, 몽타주와 편집의 6원칙 (The Architecture of\kling_20251223_Text_to_Video____________1994_1.mp4
+13346089	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part 8] 시뮬라크르와 작가주의, 비전 디렉터의 탄생\kling_20251223_Text_to_Video_8_10s_cine_3596_0.mp4
+11024147	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\a85827c1-8cb8-4745-bf4c-e8199eba1671.mp4
+12283199	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Bullet_time_effect_202512211451_c8x18.mp4
+11697145	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\e36d42a3-0d4c-4916-b6e4-d6c4b55423ad.mp4
+4564628	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Gimbal_shot_smooth_202512221336_r9po9.mp4
+8260515	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Handheld_camera_movement_202512221337_s7p0j.mp4
+8771833	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_camera_360_3557_0.mp4
+8710923	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Front_shot_3489_0.mp4
+15414348	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_left_Pan___3474_0.mp4
+7209455	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Pull_Out_3558_0.mp4
+6004112	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Push_In_3565_0.mp4
+7257757	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Tilt_Down_3595_0.mp4
+8216379	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Tilt_Down_3675_0.mp4
+15332946	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Tilt_Up_3477_0.mp4
+6960588	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\kling_20251221_Image_to_Video_Tilt_up_3565_0.mp4
+6062922	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Low_angle_action_202512211455_6lt0x.mp4
+3282612	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Macro_shot_rain_202512211452_lsi0m.mp4
+7075650	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Sliding_camera_movement_202512211453_c35o6.mp4
+3604703	F:\ainspire 4기 강의\_archive\개인 페이지 & 공유된 페이지\3주차 [기획 심화편] 강의자료\[Part5] 움직임의 미학, 카메라는 펜이다 (The Aesthetics of Motio\Surreal_video_reverse_202512211454_lstxd.mp4
+5625387	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\13_steadicam_shot.mp4
+5505583	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\15_zoom_in_out.mp4
+7069402	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\16_panning.mp4
+4880170	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\17_tilt.mp4
+7075873	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\18_jump_cut.mp4
+11264876	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\19_high_low_angle.mp4
+9642495	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\20_camera_positions.mp4
+7055696	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\22_tracking_shot.mp4
+5437937	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\23_crane_shot.mp4
+4618153	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\4_pov.mp4
+5534497	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\8_slow_motion.mp4
+11352010	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\9_time_lapse.mp4
+5833826	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\chapter_3-2_vanishing_point.mp4
+5684969	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\chapter_3-3_gaze_line.mp4
+4308800	F:\ainspire 4기 강의\_archive\공용\cinemaguide\img\chapter_3-4_contrast_silhouette.mp4
+2911070	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\final_shorts.mp4
+76585	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\rec-ffmpeg1-flow.mp4
+86124	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\rec-ffmpeg2-flow.mp4
+931801	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\rec-remotion-result.mp4
+77286	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\rec-whisper-flow.mp4
+40460	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\rec-whisper-result.mp4
+79753	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\rec-ytdlp-flow.mp4
+28523658	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\sample.mp4
+2990004	F:\ainspire 4기 강의\_archive\배포용\01_AI미디어도구모음\demo-assets\vertical_9x16.mp4

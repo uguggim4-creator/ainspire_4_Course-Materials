@@ -17,6 +17,32 @@
 const materialData = [
     // === 4기 입문편 ===
     {
+        id: "beginner-guide",
+        category: "week1",
+        categoryKo: "4기 입문편",
+        title: "왕초보 가이드 — AI 영상 제작 첫 걸음",
+        summary: "아무것도 몰라도 OK. 레퍼런스 수집부터 AI 이미지·영상 생성까지 전체 흐름을 순서대로 따라가는 입문 슬라이드. 핵심 도구 4가지, 프롬프트 공식, 자주 하는 실수 TOP 5까지 담았습니다.",
+        fileType: "link",
+        filePath: "materials/4기-입문편/왕초보가이드/왕초보가이드.html",
+        readTime: "슬라이드 · 10장",
+        date: "왕초보 가이드",
+        icon: "map"
+    },
+
+    {
+        id: "week0-lecture",
+        category: "week1",
+        categoryKo: "4기 입문편",
+        title: "0주차 강의안 - AI 코딩 툴 비교",
+        summary: "Claude 데스크탑(Chat·Cowork·Code 3모드), OpenAI Codex, Google Antigravity 2.0, VSCode Copilot의 철학·기능·설치법·차이점을 비교하는 0주차 강의 슬라이드. 2026년 5월 공식 문서 기준.",
+        fileType: "link",
+        filePath: "materials/4기-입문편/0주차-강의안/0주차-강의안-deck.html",
+        readTime: "슬라이드 · 12장",
+        date: "0주차 강의안",
+        icon: "code-2"
+    },
+
+    {
         id: "media-tools",
         category: "week1",
         categoryKo: "4기 입문편",
@@ -51,32 +77,6 @@ const materialData = [
         readTime: "사전 · 90개",
         date: "용어 사전",
         icon: "book-open"
-    },
-
-    {
-        id: "week0-lecture",
-        category: "week1",
-        categoryKo: "4기 입문편",
-        title: "0주차 강의안 — AI 코딩 툴 비교 Claude · Codex · Antigravity · VSCode",
-        summary: "Claude 데스크탑(Chat·Cowork·Code 3모드), OpenAI Codex, Google Antigravity 2.0, VSCode Copilot의 철학·기능·설치법·차이점을 비교하는 0주차 강의 슬라이드. 2026년 5월 공식 문서 기준.",
-        fileType: "link",
-        filePath: "materials/4기-입문편/0주차-강의안/0주차-강의안-deck.html",
-        readTime: "슬라이드 · 12장",
-        date: "0주차 강의안",
-        icon: "code-2"
-    },
-
-    {
-        id: "beginner-guide",
-        category: "week1",
-        categoryKo: "4기 입문편",
-        title: "왕초보 가이드 — AI 영상 제작 첫 걸음",
-        summary: "아무것도 몰라도 OK. 레퍼런스 수집부터 AI 이미지·영상 생성까지 전체 흐름을 순서대로 따라가는 입문 슬라이드. 핵심 도구 4가지, 프롬프트 공식, 자주 하는 실수 TOP 5까지 담았습니다.",
-        fileType: "link",
-        filePath: "materials/4기-입문편/왕초보가이드/왕초보가이드.html",
-        readTime: "슬라이드 · 10장",
-        date: "왕초보 가이드",
-        icon: "map"
     },
 
     // === 3기 자료 ===

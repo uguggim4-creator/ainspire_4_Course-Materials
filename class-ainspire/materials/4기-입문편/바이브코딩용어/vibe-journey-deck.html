@@ -913,8 +913,8 @@
             <div class="chat-bubble ai">프로젝트 구조를 만들었습니다. <code>app/</code>, <code>components/</code>, <code>lib/</code> 폴더와 기본 페이지를 생성했어요. 현재 <strong>컨텍스트</strong>에 파일 구조가 모두 올라와 있으니, 이어서 화면을 채우겠습니다.</div>
           </div>
         </div>
-        <div style="margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);max-height:140px;">
-          <img src="https://images.ctfassets.net/e5382hct74si/3FzOcjbPpSaGArTNoTkWg9/c99d5c42d87f6e2c77d86fd383245027/Untitled_design__26_.png" alt="AI 영상 갤러리 웹앱 화면" style="width:100%;display:block;object-fit:cover;object-position:top;">
+        <div style="margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.08);background:#f4f2fb;">
+          <img src="../../../assets/img/vibe-journey-slide3-app.png" alt="실제로 만든 AI 영상 생성 웹앱 — 프롬프트 입력 후 생성된 영상이 갤러리에 표시된 화면" style="width:100%;height:160px;display:block;object-fit:contain;">
         </div>
       </div>
       <div class="tool-right tool-right--tall">
@@ -940,21 +940,12 @@
     <div class="tool-body">
       <div class="tool-left">
         <div style="font-size:12px;font-weight:700;color:#bba4ff;letter-spacing:0.08em;margin-bottom:8px;">CASE 1 — Claude / Antigravity / Codex (AI가 직접 실행)</div>
-        <div class="chat-flow" style="margin-bottom:12px;">
-          <div class="chat-row ai">
-            <div class="chat-who">AI</div>
-            <div class="chat-bubble ai">파일을 생성했습니다. 바로 <code>npm install</code>과 <code>npm run dev</code>를 실행하겠습니다. 완료되면 <code>localhost:3000</code>에서 확인하세요.</div>
-          </div>
+        <div style="margin-bottom:14px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
+          <img src="../../../assets/img/vibe-journey-slide4-case1.png" alt="Claude 에이전트가 npm install과 npm run dev를 직접 실행해 localhost:3000 개발 서버를 띄운 화면" style="width:100%;display:block;">
         </div>
         <div style="font-size:12px;font-weight:700;color:#bba4ff;letter-spacing:0.08em;margin-bottom:8px;">CASE 2 — VS Code / Cursor (직접 터미널 입력)</div>
-        <div class="chat-flow">
-          <div class="chat-row ai">
-            <div class="chat-who">AI</div>
-            <div class="chat-bubble ai"><strong>IDE</strong> 하단 <strong>Terminal</strong>을 열고 아래 두 줄을 순서대로 입력하세요.<br><br><code>npm install</code><br><code>npm run dev</code><br><br><strong>NPM</strong>이 패키지를 설치하고 개발 서버를 시작합니다. <code>localhost:3000</code>으로 확인하세요.</div>
-          </div>
-        </div>
-        <div style="margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
-          <img src="https://user-images.githubusercontent.com/109394049/234560752-3b5d4d4b-b602-4ece-ace3-93af1bbd433d.PNG" alt="VS Code 터미널에서 npm run dev 실행" style="width:100%;display:block;">
+        <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
+          <img src="../../../assets/img/vibe-journey-slide4-ide.png" alt="VS Code 코드 에디터와 터미널에서 npm install·npm run dev 실행, localhost:3000 준비 완료" style="width:100%;display:block;">
         </div>
       </div>
       <div class="tool-right tool-right--tall">
@@ -1089,15 +1080,15 @@
         <div class="chat-flow">
           <div class="chat-row me">
             <div class="chat-who">나</div>
-            <div class="chat-bubble me">supabase-js랑 lucide-react 설치해줘. package.json에 어디 들어가는 거야?</div>
+            <div class="chat-bubble me">갤러리에 예쁜 아이콘도 넣고 나중에 영상도 저장해야 하는데, 이런 기능 내가 직접 다 만들어야 해?</div>
           </div>
           <div class="chat-row ai">
             <div class="chat-who">AI</div>
-            <div class="chat-bubble ai">터미널에서 실행하겠습니다.<br><br><code>npm install @supabase/supabase-js lucide-react</code><br><br>두 패키지 모두 배포 환경에서도 필요한 <strong>Dependency</strong>라 <code>package.json</code>의 <code>"dependencies"</code>에 기록됩니다. 이런 외부 코드 묶음을 <strong>Library</strong>라고 합니다.</div>
+            <div class="chat-bubble ai">직접 안 만들어도 됩니다. 다른 개발자가 공개해둔 기능 묶음을 <strong>패키지</strong>라 하고, 그중 한 가지 기능을 모아둔 걸 <strong>Library</strong>라고 해요. 아이콘은 lucide-react, 영상 저장은 supabase-js를 설치하겠습니다.<br><br><code>npm install @supabase/supabase-js lucide-react</code><br><br>둘 다 앱이 실제로 돌아갈 때 필요해서 <strong>Dependency</strong>로 <code>package.json</code>에 기록됩니다.</div>
           </div>
           <div class="chat-row me">
             <div class="chat-who">나</div>
-            <div class="chat-bubble me">typescript는 뭐야? 다른 칸에 들어가던데.</div>
+            <div class="chat-bubble me">아까 보니까 typescript는 package.json에서 다른 칸에 들어가 있던데, 그건 왜 그래?</div>
           </div>
           <div class="chat-row ai">
             <div class="chat-who">AI</div>

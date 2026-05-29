@@ -165,6 +165,14 @@
       if (d.__dbg === 'setActive') { active = !!d.value;
         document.body.classList.toggle('dbg-on', active); }
       if (d.__dbg === 'clearPins') clearPins();
+      // 포털 모달 닫힘/열림 통지 — iframe DOM이 유지돼 pagehide가 안 와도
+      // 부모의 childActive를 동기화해 닫은 뒤 메인 페이지 메모가 살아나게 한다.
+      if (d.type === 'ainspire:modal-close') {
+        try { window.parent.postMessage({ __dbg: 'child-off' }, '*'); } catch (err) {}
+      }
+      if (d.type === 'ainspire:modal-open') {
+        try { window.parent.postMessage({ __dbg: 'child-on' }, '*'); } catch (err) {}
+      }
     });
     // Tab 단축키 → 부모에게 토글 요청 위임
     document.addEventListener('keydown', e => {

@@ -213,6 +213,9 @@
   .demo-clip.chat { background: #fff; }
   /* 결과물 영상(세로/가로 혼재) — 비율 유지 */
   .demo-clip.result { object-fit: contain; }
+  .slide[data-index="2"] .tool-right {
+    margin-top: -22px;
+  }
 
   /* 영상 출처 표기 */
   .demo-credit {
@@ -774,6 +777,34 @@
     background: var(--purple-light);
     color: var(--purple);
     border: 1px solid var(--line);
+  }
+  .mcp-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .mcp-tab {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--purple-light);
+    color: var(--purple);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+  }
+  .mcp-tab.active {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: #fff;
+  }
+  .mcp-panel { display: none; }
+  .mcp-panel.active {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   /* ── 반응형 ─────────────────────────────── */
@@ -1426,35 +1457,62 @@
   ───────────────────────────────────────── -->
   <div class="slide" data-index="9">
     <div class="step-label">MCP / Higgsfield</div>
-    <div class="slide-title"><span class="accent">Higgsfield MCP</span> — AI가 이미지·영상을 직접 생성</div>
+    <div class="slide-title"><span class="accent">Higgsfield MCP</span></div>
     <div class="divider"></div>
 
     <div class="tool-body">
       <div class="tool-left">
-        <div>
-          <span class="mcp-badge">MCP 연동</span>
-          <span class="mcp-badge alt">API 키 불필요 · OAuth</span>
-          <span class="mcp-badge alt">mcp.higgsfield.ai/mcp</span>
+        <div class="mcp-tabs" data-tabs>
+          <button class="mcp-tab active" type="button" data-tab="higgsfield-mcp">MCP 연동</button>
+          <button class="mcp-tab" type="button" data-tab="higgsfield-oauth">API 키 불필요 · OAuth</button>
+          <button class="mcp-tab" type="button" data-tab="higgsfield-url">mcp.higgsfield.ai/mcp</button>
         </div>
-        <div class="info-block">
-          <div class="info-block-label">MCP가 뭔가요?</div>
-          <div class="info-block-text">
-            MCP(Model Context Protocol)는 AI에게 외부 도구를 연결해주는 통로입니다. Higgsfield MCP를 붙이면 AI가 대화창 안에서 곧바로 이미지·영상 생성 모델(Seedance, Kling, Veo 등)을 호출할 수 있습니다. 별도 사이트를 오갈 필요가 없습니다.
+
+        <div class="mcp-panel active" data-panel="higgsfield-mcp">
+          <div class="info-block">
+            <div class="info-block-label">MCP가 뭔가요?</div>
+            <div class="info-block-text">
+              MCP(Model Context Protocol)는 AI에게 외부 도구를 연결해주는 통로입니다. Higgsfield MCP를 붙이면 AI가 대화창 안에서 곧바로 이미지·영상 생성 모델(Seedance, Kling, Veo 등)을 호출할 수 있습니다.
+            </div>
           </div>
-        </div>
-        <div class="info-block">
-          <div class="info-block-label">핵심 강점 — 레퍼런스 재사용</div>
-          <div class="info-block-text">
-            한 번 만든 이미지의 <strong style="color:var(--purple);font-weight:700;">generation_id</strong>를 다음 생성의 재료로 그대로 넘기면, 같은 캐릭터·배경을 여러 컷에 추가 비용 없이 재활용합니다. 20컷짜리 시리즈도 캐릭터 일관성을 유지할 수 있습니다.
-          </div>
-        </div>
-        <div class="example-block">
-          <div>
-            <div class="ex-label">이렇게 요청하세요</div>
-            <div class="ex-request">
-              <div class="ex-request-text">
-                "Higgsfield로 이 캐릭터 첫 프레임 만들고, Seedance로 4초 영상까지 뽑아줘."
+          <div class="example-block">
+            <div>
+              <div class="ex-label">이렇게 요청하세요</div>
+              <div class="ex-request">
+                <div class="ex-request-text">
+                  "Higgsfield로 이 캐릭터 첫 프레임 만들고, Seedance로 4초 영상까지 뽑아줘."
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mcp-panel" data-panel="higgsfield-oauth">
+          <div class="info-block">
+            <div class="info-block-label">로그인 방식</div>
+            <div class="info-block-text">
+              별도 API 키를 복사하지 않고 OAuth 로그인으로 연결합니다. 수강생 입장에서는 키 발급·보관보다 계정 로그인 흐름이 단순합니다.
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-block-label">핵심 강점 — 레퍼런스 재사용</div>
+            <div class="info-block-text">
+              한 번 만든 이미지의 <strong style="color:var(--purple);font-weight:700;">generation_id</strong>를 다음 생성의 재료로 그대로 넘기면, 같은 캐릭터·배경을 여러 컷에 추가 비용 없이 재활용합니다.
+            </div>
+          </div>
+        </div>
+
+        <div class="mcp-panel" data-panel="higgsfield-url">
+          <div class="info-block">
+            <div class="info-block-label">연결 주소</div>
+            <div class="info-block-text">
+              MCP 클라이언트에 <strong style="color:var(--purple);font-weight:700;">mcp.higgsfield.ai/mcp</strong>를 등록하면 Higgsfield 도구가 목록에 나타납니다.
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-block-label">연결 후 확인할 것</div>
+            <div class="info-block-text">
+              generate_image, generate_video, media_upload, job_status 같은 도구가 보이면 정상입니다. 생성 작업은 보통 상태 확인을 반복하는 폴링 방식으로 진행됩니다.
             </div>
           </div>
         </div>
@@ -1512,39 +1570,51 @@
   ───────────────────────────────────────── -->
   <div class="slide" data-index="10">
     <div class="step-label">MCP / Premiere Pro</div>
-    <div class="slide-title"><span class="accent">Premiere Pro MCP</span> — AI가 편집 타임라인을 조립</div>
+    <div class="slide-title"><span class="accent">Premiere Pro MCP</span></div>
     <div class="divider"></div>
 
     <div class="tool-body">
       <div class="tool-left">
-        <div>
-          <span class="mcp-badge">MCP 연동</span>
-          <span class="mcp-badge alt">CEP 브릿지 패널 필요</span>
+        <div class="mcp-tabs" data-tabs>
+          <button class="mcp-tab active" type="button" data-tab="premiere-mcp">MCP 연동</button>
+          <button class="mcp-tab" type="button" data-tab="premiere-cep">CEP 브릿지 패널 필요</button>
         </div>
-        <div class="info-block">
-          <div class="info-block-label">무엇을 자동화하나요?</div>
-          <div class="info-block-text">
-            FFmpeg가 명령어로 영상을 조립한다면, Premiere Pro MCP는 실제 편집 프로그램을 AI가 직접 조작합니다. 소스 임포트, 시퀀스 생성, 클립 배치·트림, 줌·패닝 모션, BGM 삽입까지 타임라인 작업을 자동으로 처리합니다.
+
+        <div class="mcp-panel active" data-panel="premiere-mcp">
+          <div class="info-block">
+            <div class="info-block-label">무엇을 자동화하나요?</div>
+            <div class="info-block-text">
+              FFmpeg가 명령어로 영상을 조립한다면, Premiere Pro MCP는 실제 편집 프로그램을 AI가 직접 조작합니다. 소스 임포트, 시퀀스 생성, 클립 배치·트림, 줌·패닝 모션, BGM 삽입까지 타임라인 작업을 자동으로 처리합니다.
+            </div>
           </div>
-        </div>
-        <div class="info-block">
-          <div class="info-block-label">동작 구조</div>
-          <div class="info-block-text">
-            Adobe가 공식 지원하는 <strong style="color:var(--purple);font-weight:700;">CEP 확장 패널</strong> 안에서 AI 명령을 받아, <strong style="color:var(--purple);font-weight:700;">CSInterface.evalScript()</strong>로 Premiere의 <strong style="color:var(--purple);font-weight:700;">ExtendScript 엔진</strong>에 작업을 전달합니다. 결과물은 <strong style="color:var(--purple);font-weight:700;">편집 가능한 프로젝트(.prproj)</strong>로 남아, 사람이 트랜지션·색보정으로 마무리할 수 있습니다.
-          </div>
-        </div>
-        <div class="example-block">
-          <div>
-            <div class="ex-label">이렇게 요청하세요</div>
-            <div class="ex-request">
-              <div class="ex-request-text">
-                "이 영상 소스 폴더 임포트해서 시퀀스 만들고, 씬마다 줌인 모션이랑 BGM까지 깔아줘."
+          <div class="example-block">
+            <div>
+              <div class="ex-label">이렇게 요청하세요</div>
+              <div class="ex-request">
+                <div class="ex-request-text">
+                  "이 영상 소스 폴더 임포트해서 시퀀스 만들고, 씬마다 줌인 모션이랑 BGM까지 깔아줘."
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="demo-credit" style="margin-top:10px;">
-          출처: <strong style="color:var(--ink);">hetpatel-11/Adobe_Premiere_Pro_MCP</strong> (GitHub) · 원본 macOS 전용 → 윈도우 임시 경로(<code style="background:#f2eeff;padding:2px 6px;border-radius:4px;font-size:10px;">%LOCALAPPDATA%\Temp\premiere-mcp-bridge</code>)로 수정 적용
+
+        <div class="mcp-panel" data-panel="premiere-cep">
+          <div class="info-block">
+            <div class="info-block-label">동작 구조</div>
+            <div class="info-block-text">
+              Adobe가 공식 지원하는 <strong style="color:var(--purple);font-weight:700;">CEP 확장 패널</strong> 안에서 AI 명령을 받아, <strong style="color:var(--purple);font-weight:700;">CSInterface.evalScript()</strong>로 Premiere의 <strong style="color:var(--purple);font-weight:700;">ExtendScript 엔진</strong>에 작업을 전달합니다.
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-block-label">결과물</div>
+            <div class="info-block-text">
+              결과물은 <strong style="color:var(--purple);font-weight:700;">편집 가능한 프로젝트(.prproj)</strong>로 남아, 사람이 트랜지션·색보정으로 마무리할 수 있습니다.
+            </div>
+          </div>
+          <div class="demo-credit" style="margin-top:0;">
+            출처: <strong style="color:var(--ink);">hetpatel-11/Adobe_Premiere_Pro_MCP</strong> (GitHub) · 원본 macOS 전용 → 윈도우 임시 경로(<code style="background:#f2eeff;padding:2px 6px;border-radius:4px;font-size:10px;">%LOCALAPPDATA%\Temp\premiere-mcp-bridge</code>)로 수정 적용
+          </div>
         </div>
       </div>
 
@@ -1606,7 +1676,6 @@
 
   <!-- 이식 02 — Higgsfield 패널이 뭔가요? -->
   <div class="slide" data-index="11">
-    <div class="step-label">패널이란?</div>
     <div class="slide-title"><span class="accent">Higgsfield 패널</span>이 뭔가요?</div>
     <div class="slide-subtitle">Premiere Pro / After Effects 안에 Higgsfield 영상 생성 UI를 패널로 띄우는 공식 확장</div>
     <div class="divider"></div>
@@ -1685,21 +1754,9 @@
       <div class="step-item">
         <div class="step-circle">3</div>
         <div class="step-content">
-          <strong>PlayerDebugMode 켜기</strong> — 아래 PowerShell 한 줄 실행<br>
-          <span style="color:#5a5070;font-size:13px;">(zip으로 풀면 서명이 끊겨서 Adobe가 거부 → 디버그 모드 필수)</span>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-circle">4</div>
-        <div class="step-content">
           실행 중인 <strong>Premiere Pro 완전 종료 후 재실행</strong>
         </div>
       </div>
-    </div>
-    <div class="install-box" style="margin-top:18px;">
-      <span class="line"><span class="label">PowerShell (관리자 불필요)</span></span>
-      <span class="line"><span class="cmd">foreach ($v in 11,12) { New-ItemProperty -Path "HKCU:\Software\Adobe\CSXS.$v" -Name "PlayerDebugMode" -Value "1" -PropertyType String -Force }</span></span>
-      <span class="line" style="font-size:11px;color:#8a80aa;margin-top:6px;">CSXS.11 = Premiere 2021~2023 / CSXS.12 = Premiere 2024~ · 둘 다 켜두면 버전 상관없이 안전</span>
     </div>
   </div>
 
@@ -1731,7 +1788,7 @@
     <div class="step-label">Step 4 · Panel UI</div>
     <div class="slide-title"><span class="accent">Higgsfield 패널</span> 둘러보기</div>
     <div class="divider"></div>
-    <div class="cap-wrap" style="width:560px;height:420px;margin:0 auto;flex-shrink:0;">
+    <div class="cap-wrap" style="width:282px;height:500px;margin:0 auto;flex-shrink:0;">
       <img class="cap-img" src="img/cap_panel.png" alt="Higgsfield 패널"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <div class="cap-placeholder" style="display:none;">
@@ -1740,12 +1797,6 @@
         <span>모델 선택 / 프롬프트 / 생성 버튼이 보이게</span>
         <span class="ph-path">img/cap_panel.png</span>
       </div>
-    </div>
-    <div class="ann-grid" style="margin-top:18px;">
-      <div class="ann-grid-item"><div class="ann-n">①</div><div><strong>모델 선택</strong> — Seedance 2.0, Veo3, Kling 등 영상 모델 / 이미지 모델 선택</div></div>
-      <div class="ann-grid-item"><div class="ann-n">②</div><div><strong>프롬프트 입력</strong> — 영상으로 만들 장면 묘사</div></div>
-      <div class="ann-grid-item"><div class="ann-n">③</div><div><strong>레퍼런스</strong> — 현재 선택 클립이 자동으로 ref 후보로 들어옴 (Live Link)</div></div>
-      <div class="ann-grid-item"><div class="ann-n">④</div><div><strong>Generate</strong> — 클릭 시 Higgsfield 서버로 작업 전송 → 진행 상황 표시</div></div>
     </div>
   </div>
 
@@ -1757,7 +1808,7 @@
     <div class="divider"></div>
     <div class="can-cannot">
       <div class="can-box ok">
-        <div class="can-title"><div class="can-mark">O</div>패널이 직접 하는 것</div>
+        <div class="can-title">패널로 할 수 있는 것</div>
         <div class="can-list">
           <div class="can-row">Premiere에서 현재 선택한 클립 정보 읽기 (Live Link)</div>
           <div class="can-row">Higgsfield 서버로 영상·이미지 생성 요청</div>
@@ -1767,7 +1818,7 @@
         </div>
       </div>
       <div class="can-box no">
-        <div class="can-title"><div class="can-mark">X</div>패널이 안 하는 것 (사용자가 직접)</div>
+        <div class="can-title">할 수 없는 것</div>
         <div class="can-list">
           <div class="can-row"><strong>타임라인 위 클립을 자동 교체</strong> — 임포트만 됨, 드래그는 직접</div>
           <div class="can-row">시퀀스에 자동 삽입 / overwrite</div>
@@ -1868,6 +1919,23 @@
       video.play().catch(() => {});
     });
   }
+
+  document.querySelectorAll('[data-tabs]').forEach(tabGroup => {
+    tabGroup.querySelectorAll('[data-tab]').forEach(tab => {
+      tab.addEventListener('click', event => {
+        event.stopPropagation();
+        const target = tab.dataset.tab;
+        const slide = tab.closest('.slide');
+
+        tabGroup.querySelectorAll('[data-tab]').forEach(item => {
+          item.classList.toggle('active', item === tab);
+        });
+        slide.querySelectorAll('[data-panel]').forEach(panel => {
+          panel.classList.toggle('active', panel.dataset.panel === target);
+        });
+      });
+    });
+  });
 
   function goTo(index) {
     if (index < 0 || index >= TOTAL) return;
