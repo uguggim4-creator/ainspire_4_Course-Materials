@@ -18,4 +18,6 @@ node_modules/
 # 로컬 디스크에는 남기고 Vercel 배포에는 제외
 materials/4기-입문편/왕초보가이드/higgsfield/screenshots/*.png
 !materials/4기-입문편/왕초보가이드/higgsfield/screenshots/00-home.png
+!materials/4기-입문편/왕초보가이드/higgsfield/screenshots/00-home-top70.png
 materials/4기-입문편/왕초보가이드/magnific/screenshots/*.png
+!materials/4기-입문편/왕초보가이드/magnific/screenshots/image-top70.png
